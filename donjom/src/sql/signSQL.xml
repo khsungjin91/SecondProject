@@ -19,6 +19,10 @@
 	select * from member where email=#email#
 </select>
 
+<select id="getmemberInfo" resultClass="settingDto" parameterClass="int">
+	select * from memberinfo where no=#no#
+</select>
+
 <select id="getno" resultClass="int" parameterClass="String">
 	select no from member where email=#email#
 </select>

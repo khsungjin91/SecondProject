@@ -65,6 +65,7 @@ public class SignInBean {
 			country = element.getTextContent();
 			i++;
 		}
+		
 		//settingDto 에 나라 코드를 넣는다.
 		sedto.setPlace(country);
 		

@@ -3,11 +3,20 @@ package setting.bean;
 public class SettingDto {
 
 	
-		private String name,birth,gender,mobilenum,bankcode,bankaccnum,socialnum,address;
+		private String name,birth,gender,mobilenum,bankcode,bankaccnum,socialnum,address,randomacc;
 		private int no;
 		
 		
 		
+		
+		public String getRandomacc() {
+			return randomacc;
+		}
+
+		public void setRandomacc(String randomacc) {
+			this.randomacc = randomacc;
+		}
+
 		public String getBankaccnum() {
 			return bankaccnum;
 		}

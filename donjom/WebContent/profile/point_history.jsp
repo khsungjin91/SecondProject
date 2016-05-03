@@ -8,5 +8,16 @@
 </head>
 <body>
 
+<h2> 충전환급 </h2>
+
+<ul>
+	<li><a href="point_deposit.dj">충전</a></li>
+	<li><a href="point_withdrow.dj">환급</a></li>
+	<li><a href="point_history.dj">충전/환급내역</a></li>
+</ul>
+
+
+오픈중비중입니다.
+
 </body>
 </html>

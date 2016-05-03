@@ -61,7 +61,7 @@ ${dto.email}		<br/>
 	<li><a href="dashboard.dj">대시보드</a></li>
 	<li><a href="invest_history.dj">투자내역</a></li>
 	<li><a href="laon_history.dj">대출내역</a></li>
-	<li><a href="point.dj">충전/환급</a></li>
+	<li><a href="point_deposit.dj">충전/환급</a></li>
 	<li><a href="notification.dj">알림메세지</a></li>
 	<li><a href="setting.dj">설정</a></li>
 	<li><a href="helf.dj">도움말</a></li>	
