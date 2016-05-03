@@ -169,7 +169,7 @@ DJ대표고객사들
 <a href="help.dj">도움말</a>
 
 <%-- 간단한회사정보 --%>
-${companyinformation}
+
 
 
 <%-- sns정보 및 사용가능한 sns --%>

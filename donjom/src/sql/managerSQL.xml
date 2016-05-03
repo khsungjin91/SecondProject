@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap > 
+<sqlMap> 
 
-	<sql id ="m_member">
+	<select id ="m_member" parameterClass="String">
 		select nickname, email from member
 							
-	</sql>
+	</select>
 
-	<sql id ="m_memberInfo">
+	<select id ="m_memberInfo" parameterClass="String">
 		select name,birth,mobilenum,bankcode,bankaccnum,socialnum,address
 		from memberInfo
-	</sql>
+	</select>
+	
 </sqlMap>

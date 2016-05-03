@@ -5,10 +5,10 @@
 
 	<settings  useStatementNamespaces="true" />
 	
-
-	<sqlMap resource="/sql/sampleSQL.xml"/>
 	<sqlMap resource="/sql/signSQL.xml"/>
+	<sqlMap resource="/sql/managerSQL.xml"/>
 	
-		
-</sqlMapConfig>
+	
+	
+	</sqlMapConfig>
 

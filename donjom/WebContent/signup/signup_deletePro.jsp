@@ -10,11 +10,11 @@
 
 <script>
 
-alert("삭제되었습니다.");
+alert("탈퇴되었습니다.");
 
 parent.self.close();
 
-parent.window.location.href="main.dj";
+opener.window.location.href="main.dj";
 
 </script>
 
