@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>manager page</title>
+<title>confirm member page</title>
 </head>
 <body>
 	<select> 
@@ -38,9 +38,9 @@
 			<td>회원 상태</td>
 			<td>가상계좌</td>
 		</tr>
-		<c:forEach var="list1" items="${list1}">
+		<c:forEach var="list" items="${list}">
 		<tr>
-		<td>${list1. }</td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>

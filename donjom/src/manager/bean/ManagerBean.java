@@ -1,5 +1,9 @@
 package manager.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts2.views.xslt.ArrayAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -21,12 +25,32 @@ public class ManagerBean {
 		return mv;
 	}
 	@RequestMapping("/manager_member.dj")
-	public ModelAndView managermember(){
+	public String managermember(){
+	
+		return "/manager/manager_member.jsp";
+	}
+	
+	@RequestMapping("/manager_confirm.dj")
+	public ModelAndView managerconfirm(){
 		
+		List list= new ArrayList();
+		list = sqlMap.queryForList("m_memberInfo", null);
+		mv.addObject("list",list);
+		mv.setViewName("/manager/manager_confirm.jsp");
 		
-		mv.setViewName("/manager/manager_member.jsp");
 		return mv;
 	}
+	@RequestMapping("/manager_noconfirm.dj")
+	public ModelAndView managernoconfirm(){
+		
+		List list= new ArrayList();
+		list = sqlMap.queryForList("m_member", null);
+		mv.addObject("list",list);
+		mv.setViewName("/manager/manager_noconfirm.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping("/manager_page.dj")
 	public ModelAndView managercategory(){
 		
