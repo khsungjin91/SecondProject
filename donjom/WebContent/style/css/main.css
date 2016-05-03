@@ -1,0 +1,26 @@
+@CHARSET "EUC-KR";
+
+<<<<<<< HEAD
+=======
+
+ body{margin:0; padding:0;}
+ img{border:0;}
+ *{margin:0; padding:0;}
+ *htm{height:1px;} 
+ 
+ #wrap{}
+ 
+ #header{ padding:30px; }
+ 
+ #top_menu{ padding-top:70px; height:200px; background:url("../image/main-bn.jpg"); no-repeat; }
+ 		  
+ #top_menu ul{font-size: 14px; color: #000000; font-weight: bold; }
+ #top_menu li{ list-style: none; text-decoration: none;display:inline;}
+ .logo {float: left; padding-left: 40px;}
+ .menu_line{float:left; padding-left: 50px;}
+<<<<<<< HEAD
+=======
+>>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/test
+>>>>>>> branch 'test' of https://github.com/KHproject/project.git

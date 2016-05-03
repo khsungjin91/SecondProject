@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+<typeAlias alias="signDto" type="sign.bean.memberDto"/>
+<typeAlias alias="settingDto" type="setting.bean.SettingDto"/>
+<typeAlias alias="sessionDto" type="sign.bean.sessionDto"/>
+
+
+<select id="signcheck" resultClass="int" parameterClass="signDto">
+	select count(*) from member where email=#email# and pw=#pw#
+</select>
+
+<select id="findPw"  resultClass="String" parameterClass="String">
+	select pw from member where email=#email#
+</select>
+
+<select id="getoneInfo" resultClass="signDto" parameterClass="String">
+	select * from member where email=#email#
+</select>
+
+<select id="getno" resultClass="int" parameterClass="String">
+	select no from member where email=#email#
+</select>
+
+<select id="getoneCert" resultClass="settingDto" parameterClass="int">
+	select * from memberinfo where no=#no#
+</select>
+
+<select id="getsession" resultClass="sessionDto" parameterClass="int">
+	select * from login where no=#no# order by time desc
+</select>
+
+<select id="idcheck" resultClass="int" parameterClass="String">
+	select count(*) from member where email=#email#
+</select>
+
+<insert id="signUp" parameterClass="signDto">
+ insert into member(no,nickname,email,pw,terms,join) values(MEMBER_NO.NEXTVAL,#nickname#,#email#,#pw#,#terms#,sysdate)
+</insert>
+
+<insert id="certinput" parameterClass="settingDto">
+	insert into memberinfo(no,name,birth,gender,mobilenum,bankcode,bankaccnum) values(#no#,#name#,#birth#,#gender#,#mobilenum#,#bankcode#,#bankaccnum#)
+</insert>
+
+<insert id="sessioninput" parameterClass="sessionDto">
+	insert into login values(#no#,sysdate,#move#,#ip#,#place#)
+</insert>
+
+<update id="modifyInfo" parameterClass="signDto">
+	update member set nickname=#nickname#,pw=#pw#,profile=#profile#,snsreceive=#snsreceive#,emailreceive=#emailreceive# where email=#email#
+</update>
+
+<update id="modifyInfo2" parameterClass="signDto">
+	update member set snsreceive=#snsreceive#,emailreceive=#emailreceive# where email=#email#
+</update>
+
+<update id="detailinput" parameterClass="settingDto">
+	update memberinfo set socialnum=#socialnum#, address=#address# where no=#no#
+</update>
+
+<delete id="deleteEmail" parameterClass="signDto">
+	delete from member where email=#email#
+</delete>
+
+
+
+</sqlMap>
