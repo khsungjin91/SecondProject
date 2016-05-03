@@ -17,6 +17,10 @@
 	<context:component-scan base-package="main.bean"/>
 	<context:component-scan base-package="setting.bean"/>
 	<context:component-scan base-package="point.bean"/>
+	<context:component-scan base-package="mail.bean"/>
+	
+	
+	
 	
 
 	<bean id="ModelAndView" class="org.springframework.web.servlet.ModelAndView"/>

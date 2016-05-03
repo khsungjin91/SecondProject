@@ -58,7 +58,7 @@
 성별		남자<input type="radio" name="gender" value="men">
 		여자<input type="radio" name="gender" value="woman">										<br/>
 휴대폰번호	<input type="text" name="mobilenum">													
-	<input type="button" value="인증하기" onclick=""><!-- 메일로 대체하기 -->							<br/>
+	<input type="button" value="인증하기" onclick="javascript:window.location='sendMail.dj'"><!-- 메일로 대체하기 -->							<br/>
 은행명	<input type="text" name="bankcode">														<br/>
 계좌번호	<input type="text" name="bankaccnum">													<br/>
 <input type="submit" value="입력완료">																<br/>
