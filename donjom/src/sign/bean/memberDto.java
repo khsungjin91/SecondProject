@@ -4,7 +4,17 @@ package sign.bean;
 public class memberDto {
 	
 
-	private String email,pw,nickname,terms,snsreceive,emailreceive,join,profile;
+	private String email,pw,nickname,terms,snsreceive,emailreceive,join,profile,confirm;
+	
+	
+	
+	public String getConfirm() {
+		return confirm;
+	}
+
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
 
 	public void setProfile(String profile) {
 		this.profile = profile;

@@ -12,4 +12,8 @@
 		from memberInfo
 	</select>
 	
+	<update id="confirmUp" parameterClass="java.util.Map">
+		update member set confirm=#on# where email=#email# 
+	</update>
+	
 </sqlMap>

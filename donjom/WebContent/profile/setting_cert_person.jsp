@@ -6,6 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    $("#button").click(function(){
+        callAjax();
+    });
+  });
+  function callAjax(){
+	  
+	  
+      $.ajax({
+	        type: "post",
+	        url : "/donjom/mail/confirm.jsp",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	chemail : $('#checkemail').val(),
+	        },
+	        success: test,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+   	});
+  }
+  function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+      $("#mailback").html(aaa);
+      console.log(resdata);
+  }
+  function whenError(){
+      alert("Error");
+  }
+
+</script>
+
 </head>
 <body>
 
@@ -41,7 +73,6 @@
 생년월일	<input type="text" name="birth" value="${dto.birth}" disabled="disabled">				<br/>
 성별		<input type="text" name="gender" value="${dto.gender}" disabled="disabled">				<br/>
 휴대폰번호	<input type="text" name="mobilenum" value="${dto.mobilenum}" disabled="disabled">		<br/>
-
 <!-- ajax 사용 -->
 은행명	<input type="text" name="bankcode" value="${dto.bankcode}" disabled="disabled">			<br/>
 계좌번호	<input type="text" name="bankaccnum" value="${dto.bankaccnum}" disabled="disabled">		<br/>
@@ -51,20 +82,27 @@
 
 
 <c:if test="${dto.name == null}">
-<form action="setting_cert_pro.dj" method="post">	
+<form action="setting_cert_pro.dj" method="post" name="userinput">	
 <input type="hidden" name="no" value="${no}">	
 이름		<input type="text" name="name">															<br/>
 생년월일	<input type="text" name="birth">														<br/>
 성별		남자<input type="radio" name="gender" value="men">
 		여자<input type="radio" name="gender" value="woman">										<br/>
-휴대폰번호	<input type="text" name="mobilenum">													
-	<input type="button" value="인증하기" onclick="javascript:window.location='sendMail.dj'"><!-- 메일로 대체하기 -->							<br/>
+<c:if test="${memdto.confirm == 0}">
+메일인증하기<input type="text" value="${memdto.email}" name="checkemail" id="checkemail">			
+<input type="button" value="인증하기" id="button"><!-- 메일로 대체하기 -->  								<br/>
+<div id="mailback"></div>																		<br/>
+</c:if>		
+<c:if test="${memdto.confirm == 1}">
+메일인증하기 인증완료																					<br/>
+</c:if>																				
+휴대폰번호	<input type="text" name="mobilenum">													<br/>
 은행명	<input type="text" name="bankcode">														<br/>
 계좌번호	<input type="text" name="bankaccnum">													<br/>
 <input type="submit" value="입력완료">																<br/>
 </form>
 </c:if>
-※ 23:30~01:00 사이에는 은행 전산망 점검 시간으로 이용에 제한이 있을수 있습니다.										<br/>
+※ 23:30~01:00 사이에는 은행 전산망 점검 시간으로 이용에 제한이 있을수 있습니다.											<br/>
 ※ 환급계좌 변경은 SMS 본인인증 후 가능합니다																	<br/><br/>
 
 

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import sign.bean.memberDto;
+
 @Controller
 public class SettingCertBean {
 
@@ -20,19 +22,23 @@ public class SettingCertBean {
 		ModelAndView mv;
 		
 		@RequestMapping("/setting_cert_person.dj")
-		public ModelAndView personCertView(HttpSession session,SettingDto dto){
+		public ModelAndView personCertView(HttpSession session,SettingDto dto,memberDto memdto){
 			
 			String email = (String)session.getAttribute("memId");
 			
 			int no = (Integer)sqlMap.queryForObject("getno", email);
 			
 			dto = (SettingDto)sqlMap.queryForObject("getoneCert", no);
+			memdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
 			
+			mv.addObject("memdto", memdto);
 			mv.addObject("dto", dto);
 			mv.addObject("no", no);
 			mv.setViewName("/profile/setting_cert_person.jsp");
 			return mv;
 		}
+		
+		
 		
 		@RequestMapping("/setting_cert_pro.dj")
 		public ModelAndView personCertPro(SettingDto certDto){
