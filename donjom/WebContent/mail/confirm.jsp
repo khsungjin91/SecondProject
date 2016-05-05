@@ -13,15 +13,42 @@
 
 function success(userinput){
 	
+	var callback = callAjax();
 	var confirmNo = $("#confirm").val();
 	var mailSendNo = $("#mailSend").val();
 
-	window.location = "sendMailPro.dj?mailSend=" + mailSendNo +"&confirm="+confirmNo ;
+	if(confirmNo == mailSendNo){
 		
+		alert("인증완료");
+		
+		parent.document.userinput.$("#mailback").val(callback);
+		
+	}else{
+		
+		alert("인증번호를 다시 확인해주세요.");
+		
+	}
+}
+
+function callAjax(){
+    $.ajax({
+	        type: "post",
+	        url : "/donjom/mail/confirmPro.jsp",
+	        success: test,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+ 	});
+}
+function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    $("#mailback").html(aaa);
+    console.log(resdata);
+}
+function whenError(){
+    alert("Error");
 }
 
 </script>
 
+<% request.setCharacterEncoding("euc-kr"); %>
 <%
 String chemail = request.getParameter("chemail");
 
@@ -69,10 +96,8 @@ else {
 
 
 %>
-
-
-<%=chemail%>로  
-메일전송을 완료했습니다. 
+		
+메일전송이 완료되었습니다. 인증번호를 확인해 주세요. <br/>
 
 <input type="hidden" name="mailSend" value="<%=mailSend%>" id="mailSend">
 <input type="text" name="confirm" id="confirm">

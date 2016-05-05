@@ -9,21 +9,7 @@
 </head>
 <body>
 
-<c:if test="${confirmNo == 1}">
-<script>
-alert("인증되었습니다.");
-history.go(-1);
-</script>
-</c:if>
-
-<c:if test="${confirmNo == 0}">
-<script>
-alert("인증번호가 다릅니다. 다시확인해주세요");
-history.go(-1);
-</script>
-</c:if>
-
-
+인증완료되었습니다.
 
 </body>
 </html>

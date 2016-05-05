@@ -10,6 +10,10 @@
 
 function checkIt(){
 	
+	var pw = document.userinput.newpw.value;
+	var pwch = document.userinput.pwch.value;
+	
+	
 	if(!document.userinput.nickname.value){	
 		alert("닉네임을 입력해주세요");
 		document.userinput.nickname.focus();
@@ -19,6 +23,11 @@ function checkIt(){
 	if(!document.userinput.pw.value){
 		alert("현재비밀번호를 입력해주세요");
 		document.userinput.pw.focus();
+		return false;
+	}
+	if(pw != pwch){
+		alert("새로운 비밀번호가 서로 맞지않습니다.");
+		document.userinput.pwch.focus();
 		return false;
 	}
 	
@@ -32,7 +41,9 @@ function pwcheck(){
 	var pwch = f1.pwch.value;
 	
 	if(pw != pwch){
-		document.getElementById("checkPwd").innerHTML = "<font color=red>비밀번호를 확인해주세요.</font>";	
+		
+		document.getElementById("checkPwd").innerHTML = "<font color=red>비밀번호를 확인해주세요.</font>";
+		
 	}else{
 		
 		document.getElementById("checkPwd").innerHTML = "<font color=green>비밀번호가 동일합니다.</font>";
@@ -94,7 +105,7 @@ ${dto.email}		<br/>
 새비밀번호 <input type="password" name="newpw">			<br/>
 새비밀번호 확인 <input type="password" name="pwch" onkeyup="pwcheck()">	<br/>
 <div id="checkPwd">비밀번호를 확인해주세요</div>
-현재비밀번호 <input type="password" name="pw">			<br/>
+현재비밀번호 <input type="password" name="pw">		<br/>
 ※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.			<br/>
 
 <input type="submit" value="수정" onclick="return checkIt()">				<br/><br/>

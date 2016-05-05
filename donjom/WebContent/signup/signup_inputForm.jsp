@@ -60,6 +60,9 @@ function getMyProfile(){
 
 function checkIt(){
 	
+	var pw = document.userinput.pw.value;
+	var pwch = document.userinput.pwch.value;
+	
 	if(!document.userinput.nickname.value){
 		alert("닉네임을 입력해주세요");
 		document.userinput.nickname.focus();
@@ -87,6 +90,12 @@ function checkIt(){
 	if(!document.userinput.terms.checked){
 		alert("약관의 동의를 하셔야합니다.");
 		document.userinput.terms.focus();
+		return false;
+	}
+	
+	if(pw != pwch){
+		alert("새로운 비밀번호가 서로 맞지않습니다.");
+		document.userinput.pwch.focus();
 		return false;
 	}
 }

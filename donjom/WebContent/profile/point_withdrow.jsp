@@ -29,7 +29,8 @@
 
 <c:if test="${dto.socialnum == null}">
 
-환급을 진행하시려면 회원인증이 필요합니다.		<br/>
+-환급을 진행하시려면 회원인증이 필요합니다.			<br/>
+-원천징수 정보까지 입력하셔야 최종인증이 완료됩니다.		<br/>
 (회원인증 후에도 환급 진행이 불가하다면, 이메일 또는 전화로 문의 바랍니다.) <br/>
 
 <input type="button" value="인증하러가기" onclick="javascript:window.location='setting_cert_person.dj'">

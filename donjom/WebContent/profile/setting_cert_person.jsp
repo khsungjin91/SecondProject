@@ -15,6 +15,7 @@ $(document).ready(function(){
         callAjax();
     });
   });
+  
   function callAjax(){
 	  
 	  
@@ -36,6 +37,44 @@ $(document).ready(function(){
       alert("Error");
   }
 
+  
+  
+  function check(){
+	  
+	  var f1 = document.userinput;
+	  
+	  if(!f1.name.value){
+		  alert("이름을 입력해주세요.");
+		  f1.name.focus();
+		  return false;
+	  }
+	  if(!f1.birth.value){
+		  alert("생년월일을 입력해주세요.");
+		  f1.birth.focus();
+		  return false;
+	  }
+	  if(!f1.gender.checked){
+		  alert("성별을 체크해주세요.");
+		  f1.gender.focus();
+		  return false;
+	  }
+	  if(!f1.mobilenum.value){
+		  alert("전화번호를 입력해주세요.");
+		  f1.mobilenum.focus();
+		  return false;
+	  }
+	  if(!f1.bankcode.value){
+		  alert("은행명을 입력해주세요.");
+		  f1.bankcode.focus();
+		  return false;
+	  }
+	  if(!f1.bankaccnum.value){
+		  alert("계좌번호를 입력해주세요.");
+		  f1.bankaccnum.focus();
+		  return false;
+	  }
+	  
+  }
 </script>
 
 </head>
@@ -88,18 +127,16 @@ $(document).ready(function(){
 생년월일	<input type="text" name="birth">														<br/>
 성별		남자<input type="radio" name="gender" value="men">
 		여자<input type="radio" name="gender" value="woman">										<br/>
-<c:if test="${memdto.confirm == 0}">
-메일인증하기<input type="text" value="${memdto.email}" name="checkemail" id="checkemail">			
-<input type="button" value="인증하기" id="button"><!-- 메일로 대체하기 -->  								<br/>
-<div id="mailback"></div>																		<br/>
-</c:if>		
-<c:if test="${memdto.confirm == 1}">
-메일인증하기 인증완료																					<br/>
-</c:if>																				
+
+<div id="mailback">
+메일인증하기<input type="text" value="${memdto.email}" name="checkemail" id="checkemail">						
+<input type="button" value="인증하기" id="button">
+</div>		
+																			
 휴대폰번호	<input type="text" name="mobilenum">													<br/>
 은행명	<input type="text" name="bankcode">														<br/>
 계좌번호	<input type="text" name="bankaccnum">													<br/>
-<input type="submit" value="입력완료">																<br/>
+<input type="submit" value="입력완료" onclick="return check()">									<br/>
 </form>
 </c:if>
 ※ 23:30~01:00 사이에는 은행 전산망 점검 시간으로 이용에 제한이 있을수 있습니다.											<br/>
