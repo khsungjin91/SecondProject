@@ -29,6 +29,11 @@ public class PointCalculator {
 		dto.setCh_price(ch_price);
 		
 		sqlMap.insert("ch_noinput", dto);
+		int ch_point = (Integer)sqlMap.queryForObject("getchar", no);
+		
+		dto.setTotal_ch(ch_point);
+		
+		sqlMap.update("input_total_ch", dto);
 		
 		mv.setViewName("/point/point_deposit_Pro.jsp");
 	return mv;	
@@ -46,6 +51,11 @@ public class PointCalculator {
 		dto.setRe_price(re_price);
 		
 		sqlMap.insert("re_noinput", dto);
+		int re_point = (Integer)sqlMap.queryForObject("getre", no);
+		
+		dto.setTotal_re(re_point);
+		
+		sqlMap.update("input_total_re", dto);
 		
 		mv.setViewName("/point/point_withdrow_Pro.jsp");
 		return mv;

@@ -5,11 +5,24 @@ import java.sql.Timestamp;
 public class PointDto {
 	
 	
-	private int no,ch_price,re_price;
+	private int no,ch_price,re_price,total_ch,total_re;
 	private Timestamp ch_charday,re_reday;
 	private String ch_name;
 	
 	
+	
+	public int getTotal_ch() {
+		return total_ch;
+	}
+	public void setTotal_ch(int total_ch) {
+		this.total_ch = total_ch;
+	}
+	public int getTotal_re() {
+		return total_re;
+	}
+	public void setTotal_re(int total_re) {
+		this.total_re = total_re;
+	}
 	public int getNo() {
 		return no;
 	}

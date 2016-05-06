@@ -64,7 +64,7 @@ public class SettingCertBean {
 			String email = (String)session.getAttribute("memId");
 			
 			int no = (Integer)sqlMap.queryForObject("getno", email);
-			sqlMap.insert("total_price", no);
+	
 			sqlMap.update("detailinput", dtDto);
 			
 			mv.addObject("setting", setting);

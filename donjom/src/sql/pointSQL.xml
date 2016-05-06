@@ -5,16 +5,16 @@
 
 <typeAlias alias="pointDto" type="point.bean.PointDto"/>
 
-<select id="findname" resultClass="String" parameterClass="int">
-select name from memberinfo where no=#no#
-</select>
-
 <select id="getchar" resultClass="int" parameterClass="int">
 	select sum(ch_price) from charging where no=#no#
 </select>
 
 <select id="getre" resultClass="int" parameterClass="int">
 	select sum(re_price) from refunds where no=#no#
+</select>
+
+<select id="get_total" resultClass="int" parameterClass="int">
+	select (total_ch - total_re) total from memprice where no=#no#
 </select>
 
 <insert id="ch_noinput" parameterClass="pointDto">
@@ -28,5 +28,14 @@ select name from memberinfo where no=#no#
 <insert id="total_price" parameterClass="int">
 	insert into memprice values(#no#,0,0)
 </insert>
+
+<update id="input_total_ch" parameterClass="pointDto">
+	update memprice set total_ch=#total_ch# where no=#no#
+</update>
+
+<update id="input_total_re" parameterClass="pointDto">
+	update memprice set total_re=#total_re# where no=#no#
+</update>
+
 
 </sqlMap>

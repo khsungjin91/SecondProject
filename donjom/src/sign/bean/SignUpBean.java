@@ -29,6 +29,10 @@ public class SignUpBean {
 		
 		sqlMap.insert("signUp", dto);
 		
+		int no = (Integer)sqlMap.queryForObject("getno", dto.getEmail());
+		
+		sqlMap.insert("total_price", no);
+		
 		mv.setViewName("/signup/signup_inputPro.jsp");
 		return mv;
 	}
@@ -58,9 +62,6 @@ public class SignUpBean {
 		
 		mv.setViewName("/user/signError.jsp");
 	}
-	
-	
-	
 		return mv;
 	}
 	
