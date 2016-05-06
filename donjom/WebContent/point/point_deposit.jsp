@@ -18,7 +18,7 @@
 </ul>
 
 충전하기
-보유예치금: 0원
+보유예치금: 원													<br/>
 계좌이체 후 충전 반영 시간은 <b>약 1~10분</b> 사이 입니다. 					<br/>
 충전을 위해 <b>본인인증</b>과 <b>은행정보</b> 등록이 필요합니다.				<br/>
 예치금은 가상 계좌에 원화를 <b>충전한 만큼 1:1</b>로 이루어집니다.				<br/>
@@ -32,6 +32,7 @@
 (회원인증 후에도 가상계좌 생성이 불가하다면, 이메일 또는 전화로 문의 바랍니다.) <br/>
 
 <input type="button" value="인증하러가기" onclick="javascript:window.location='setting_cert_person.dj'">
+
 </c:if>
 
 
@@ -41,6 +42,11 @@
 예금주  ${dto.name}			<br/>
 <%--계좌번호  ${dto.randomacc}--%>	<br/>
 입금자명  ${dto.name}		<br/>
+
+<form action="point_charging.dj" method="post">
+<input type="text" name="ch_price">
+<input type="submit" value="충전하기">
+</form>
 
 ※ 위 가상계좌 번호로 투자금을 이체하시면 충전된 예치금으로 투자가 가능합니다.
 </c:if>

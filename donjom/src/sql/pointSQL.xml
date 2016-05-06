@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+<typeAlias alias="pointDto" type="point.bean.PointDto"/>
+
+<select id="findname" resultClass="String" parameterClass="int">
+select name from memberinfo where no=#no#
+</select>
+
+<insert id="ch_noinput" parameterClass="pointDto">
+	insert into charging values(#no#,#ch_price#,sysdate)
+</insert>
+
+<insert id="re_noinput" parameterClass="int">
+	insert into refunds values(#no#,#re_price#,sysdate)
+</insert>
+
+</sqlMap>

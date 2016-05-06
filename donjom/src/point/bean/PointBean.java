@@ -29,7 +29,7 @@ public class PointBean {
 		
 		
 		mv.addObject("dto", dto);
-		mv.setViewName("/profile/point_deposit.jsp");
+		mv.setViewName("/point/point_deposit.jsp");
 		return mv;
 	}
 	
@@ -44,7 +44,7 @@ public class PointBean {
 		
 		
 		mv.addObject("dto", dto);
-		mv.setViewName("/profile/point_withdrow.jsp");
+		mv.setViewName("/point/point_withdrow.jsp");
 		return mv;
 		
 	}
@@ -52,7 +52,7 @@ public class PointBean {
 	@RequestMapping("/point_history.dj")
 	public ModelAndView pointHistory(){
 		
-		mv.setViewName("/profile/point_history.jsp");
+		mv.setViewName("/point/point_history.jsp");
 		return mv;
 	}
 

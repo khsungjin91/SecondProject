@@ -24,8 +24,7 @@
 	
 
 	<bean id="ModelAndView" class="org.springframework.web.servlet.ModelAndView"/>
-	
-	
+
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="-1" />
 		<property name="defaultEncoding" value="euc-kr"/>

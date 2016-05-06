@@ -18,10 +18,9 @@ $(document).ready(function(){
   
   function callAjax(){
 	  
-	  
       $.ajax({
 	        type: "post",
-	        url : "/donjom/mail/confirm.jsp",
+	        url : "/donjom/confirm.dj",
 	        data: {	// url 페이지도 전달할 파라미터
 	        	chemail : $('#checkemail').val(),
 	        },
@@ -111,6 +110,9 @@ $(document).ready(function(){
 이름		<input type="text" name="name" value="${dto.name}" disabled="disabled" >				<br/>
 생년월일	<input type="text" name="birth" value="${dto.birth}" disabled="disabled">				<br/>
 성별		<input type="text" name="gender" value="${dto.gender}" disabled="disabled">				<br/>
+<c:if test="${memdto.confirm == 1}">
+메일인증완료상태입니다.			<br/>
+</c:if>
 휴대폰번호	<input type="text" name="mobilenum" value="${dto.mobilenum}" disabled="disabled">		<br/>
 <!-- ajax 사용 -->
 은행명	<input type="text" name="bankcode" value="${dto.bankcode}" disabled="disabled">			<br/>
@@ -128,11 +130,13 @@ $(document).ready(function(){
 성별		남자<input type="radio" name="gender" value="men">
 		여자<input type="radio" name="gender" value="woman">										<br/>
 
+<c:if test="${memdto.confirm == 0}">
 <div id="mailback">
 메일인증하기<input type="text" value="${memdto.email}" name="checkemail" id="checkemail">						
 <input type="button" value="인증하기" id="button">
-</div>		
-																			
+</div>	
+</c:if>
+																		
 휴대폰번호	<input type="text" name="mobilenum">													<br/>
 은행명	<input type="text" name="bankcode">														<br/>
 계좌번호	<input type="text" name="bankaccnum">													<br/>

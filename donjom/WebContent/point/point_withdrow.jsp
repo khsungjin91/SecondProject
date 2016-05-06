@@ -42,7 +42,7 @@
 <form action="point_withdrowPro.dj" method="post">
 환급가능액 0원													<br/>
 1일 환급한도 여분액 무제한											<br/>
-환급액 <input type="text" value="0" name="backmoney"/>원		<br/>
+환급액 <input type="text" value="0" name="refunds"/>원		<br/>
 은행명 ${dto.bankcode}											<br/>
 환급계좌번호 ${dto.bankaccnum}									<br/>		
 예금주 ${dto.name}												<br/>	

@@ -7,8 +7,7 @@
 	
 	<sqlMap resource="/sql/signSQL.xml"/>
 	<sqlMap resource="/sql/managerSQL.xml"/>
-	
-	
-	
+	<sqlMap resource="/sql/pointSQL.xml"/>
+
 	</sqlMapConfig>
 

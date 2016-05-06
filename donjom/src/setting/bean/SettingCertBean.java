@@ -41,8 +41,13 @@ public class SettingCertBean {
 		
 		
 		@RequestMapping("/setting_cert_pro.dj")
-		public ModelAndView personCertPro(SettingDto certDto){
+		public ModelAndView personCertPro(SettingDto certDto,HttpSession session){
 			int setting = 1;
+			
+			
+			String email = (String)session.getAttribute("memId");
+			
+			int no = (Integer)sqlMap.queryForObject("getno", email);
 			
 			sqlMap.insert("certinput", certDto);
 			
