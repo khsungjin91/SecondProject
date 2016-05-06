@@ -8,54 +8,62 @@
 <title>confirm member page</title>
 </head>
 <body>
-	<select> 
-		<option>회원이름</option>
-		<option>인증회원/일반회원</option>
-		<option>상품코드</option>
-		<option>상환중</option>
-		<option>상환완료</option>
-		<option>연체</option>
-		<option>부도</option>
+<form action="confirm_search.dj" method="post">
+	<select name="confirm"> 
+		<option value="name">회원이름</option>
+		<option value="mobilenum">핸드폰번호</option>
+		<option value="bankaccnum">계좌번호</option>
+		<option value="virtualacc">가상계좌</option>
 	</select>
-	<input type="text" align="right">
-	<input type="submit" value="검색" align="right">
-
+	<input type="text" align="right" name="search"/>
+	<input type="submit" value="검색" align="right"/>
+</form>
 	<table border=1>
 		<tr>
 			<td>회원이름 </td>
-			<td>회원이메일</td>
-			<td>일반회원/인증회원</td>
 			<td>생년월일</td>
+			<td>성 별</td>
 			<td>핸드폰번호</td>
-			<td>회원 거래은행</td>
-			<td>회원 계좌번호</td>
-			<td>회원 주민번호</td>
-			<td>회원 주소</td>
-			<td>대출 금액</td>
-			<td>투자 금액</td>
-			<td>상환 금액</td>
-			<td>환불 금액</td>
-			<td>회원 상태</td>
+			<td>주 소</td>
 			<td>가상계좌</td>
+			<td>거래은행</td>
+			<td>계좌번호</td>
+			<td>진행상황</td>
 		</tr>
-		<c:forEach var="list" items="${list}">
+	<c:if test="${setting == 1}">
+	<c:forEach var="list" items="${list}">
 		<tr>
+		<td>${list.name}</td>
+		<td>${list.birth}</td>
+		<td>${list.gender}</td>
+		<td>${list.mobilenum}</td>
+		<td>${list.address}</td>
 		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		
-		
-		
-		
+		<td>${list.bankcode}</td>
+		<td>${list.bankaccnum}</td>
+		<td>
+		<input type="button" value="상세보기" onclick="javascript:location.href=''"/>		
+		</td>
 		</tr>
-		</c:forEach>
-	</table>
+	</c:forEach>
+	</c:if>
 
+	<c:if test="${setting == 2 }">
+	<c:forEach var="list2" items ="${list}">
+		<tr>
+		<td>${list2.name}</td>
+		<td>${list2.birth}</td>
+		<td>${list2.gender}</td>
+		<td>${list2.mobilenum}</td>
+		<td>${list2.address}</td>
+		<td></td>
+		<td>${list2.bankcode}</td>
+		<td>${list2.bankaccnum}</td>
+		<td>
+		<input type ="button" value="상세보기"/>
+		</td>
+	</c:forEach>	
+	</c:if>
+	</table>
 </body>
 </html>

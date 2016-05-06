@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap> 
+<sqlMap > 
 
-	<select id ="m_member" parameterClass="String">
-		select nickname, email from member
-							
-	</select>
-
-	<select id ="m_memberInfo" parameterClass="String">
-		select name,birth,mobilenum,bankcode,bankaccnum,socialnum,address
-		from memberInfo
+	<typeAlias alias="mem" type="sign.bean.memberDto"/>
+	<typeAlias alias="memInfo" type="setting.bean.SettingDto"/>
+	
+	<!-- 일반회원의 이름,메일,가입날짜 조회 -->
+	<select id ="m_member" resultClass="mem" >
+		select nickname, email,join from member	where confirm=0		
 	</select>
 	
-	<update id="confirmUp" parameterClass="java.util.Map">
-		update member set confirm=#on# where email=#email# 
-	</update>
+	<!-- 일반회원 검색 -->
+	<select id ="noconfirm_search" resultClass="mem" parameterClass="java.util.Map" >
+		select nickname, email,join from member 
+		where $noconfirm$ like '%' || #search# || '%' 
+		and confirm=0
+	</select>
+
+	<!-- 인증회원의 전체 조회 -->
+	<select id ="m_memberInfo" resultClass="memInfo">
+		select i.name,i.birth,i.gender,i.mobilenum,i.bankcode,i.bankaccnum,i.address, m.email,m.join
+		from member m ,memberinfo i
+		where m.no=i.no 
+	</select>
+	
+	<!-- 인증회원 검색 -->
+	<select id="confirm_search" resultClass="memInfo" parameterClass="java.util.Map">
+		select i.name,i.birth,i.gender,i.mobilenum,i.bankcode,i.bankaccnum,i.address, m.email,m.join 
+		from member m,memberinfo i 
+		where $confirm$ like '%'|| #search# ||'%'
+		and m.no=i.no
+	
+	</select>
+	
 	
 </sqlMap>

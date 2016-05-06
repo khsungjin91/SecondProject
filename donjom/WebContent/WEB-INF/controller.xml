@@ -18,6 +18,8 @@
 	<context:component-scan base-package="setting.bean"/>
 	<context:component-scan base-package="point.bean"/>
 	<context:component-scan base-package="mail.bean"/>
+	<context:component-scan base-package="manager.bean"/>
+	
 	
 	
 	
