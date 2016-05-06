@@ -8,53 +8,47 @@
 <title>manager page</title>
 </head>
 <body>
-	<select> 
-		<option>회원이름</option>
-		<option>인증회원/일반회원</option>
-		<option>상품코드</option>
-		<option>상환중</option>
-		<option>상환완료</option>
-		<option>연체</option>
-		<option>부도</option>
+
+<form action="noconfirm_search.dj" method="post">
+
+	<select name="noconfirm">
+		<option value="nickname">닉네임</option>
+		<option value="email">이메일</option>
 	</select>
 	
-	<input type="text" align="right">
-	<input type="submit" value="검색" align="right">
+	<input type="text" align="right" name="search">
+	<input type="submit" align="right" value="검색">	
+</form>
+
+
 
 	<table border=1>
 		<tr>
-			<td>회원이름 </td>
-			<td>회원이메일</td>
-			<td>일반회원/인증회원</td>
-			<td>생년월일</td>
-			<td>핸드폰번호</td>
-			<td>회원 거래은행</td>
-			<td>회원 계좌번호</td>
-			<td>회원 주민번호</td>
-			<td>회원 주소</td>
-			<td>대출 금액</td>
-			<td>투자 금액</td>
-			<td>상환 금액</td>
-			<td>환불 금액</td>
-			<td>회원 상태</td>
-			<td>가상계좌</td>
+			<td>닉네임</td>
+			<td>이메일</td>
+			<td>가입날짜</td>
 		</tr>
-		<c:forEach var="list1" items="${list1}">
-		<tr>
-		<td>${list1. }</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		
-		
-		
-		</tr>
+	<c:if test="${setting == 1}">
+		<c:forEach var="list" items="${list}">
+			<tr>
+				<td>${list.nickname}</td>
+				<td>${list.email}</td>
+				<td>${list.join}</td>
+			</tr>
 		</c:forEach>
+	</c:if>
+	
+	
+	<c:if test="${setting == 2}">
+		<c:forEach var="list" items="${list}">
+			<tr>
+				<td>${list.nickname}</td>
+				<td>${list.email}</td>
+				<td>${list.join}</td>
+			</tr>
+		</c:forEach>
+	</c:if>
+	
 	</table>
 
 </body>
