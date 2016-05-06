@@ -20,7 +20,7 @@ $(document).ready(function(){
 	  
       $.ajax({
 	        type: "post",
-	        url : "/donjom/confirm.dj",
+	        url : "/donjom/confirm.dj" ,
 	        data: {	// url 페이지도 전달할 파라미터
 	        	chemail : $('#checkemail').val(),
 	        },

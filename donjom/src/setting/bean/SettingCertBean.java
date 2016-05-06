@@ -43,8 +43,7 @@ public class SettingCertBean {
 		@RequestMapping("/setting_cert_pro.dj")
 		public ModelAndView personCertPro(SettingDto certDto,HttpSession session){
 			int setting = 1;
-			
-			
+
 			String email = (String)session.getAttribute("memId");
 			
 			int no = (Integer)sqlMap.queryForObject("getno", email);
@@ -59,9 +58,13 @@ public class SettingCertBean {
 		
 		
 		@RequestMapping("/setting_detail_pro.dj")
-		public ModelAndView personDetailPro(SettingDto dtDto){
+		public ModelAndView personDetailPro(SettingDto dtDto,HttpSession session){
 			int setting = 1;
 			
+			String email = (String)session.getAttribute("memId");
+			
+			int no = (Integer)sqlMap.queryForObject("getno", email);
+			sqlMap.insert("total_price", no);
 			sqlMap.update("detailinput", dtDto);
 			
 			mv.addObject("setting", setting);

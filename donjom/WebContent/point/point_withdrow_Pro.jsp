@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
+<script type="text/javascript">
 
-alert("충전완료되었습니다.");
-window.location.href="point_deposit.dj";
+alert("환급되셨습니다.");
+window.location="point_withdrow.dj";
+
 </script>
+
 </body>
 </html>

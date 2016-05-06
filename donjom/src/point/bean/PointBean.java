@@ -24,14 +24,20 @@ public class PointBean {
 		String email = (String)session.getAttribute("memId");
 		
 		int no = (Integer)sqlMap.queryForObject("getno", email);
+		int ch_point = (Integer)sqlMap.queryForObject("getchar", no);
+		int re_point = (Integer)sqlMap.queryForObject("getre", no);
+		
+		int total = ch_point - re_point;
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		
 		
+		mv.addObject("total", total);
 		mv.addObject("dto", dto);
 		mv.setViewName("/point/point_deposit.jsp");
 		return mv;
 	}
+	
 	
 	@RequestMapping("/point_withdrow.dj")
 	public ModelAndView pointWithdrow(SettingDto dto,HttpSession session){
@@ -42,7 +48,14 @@ public class PointBean {
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		
+		int ch_point = (Integer)sqlMap.queryForObject("getchar", no);
+		int re_point = (Integer)sqlMap.queryForObject("getre", no);
 		
+		
+		
+		int total = ch_point - re_point;
+		
+		mv.addObject("total",total);
 		mv.addObject("dto", dto);
 		mv.setViewName("/point/point_withdrow.jsp");
 		return mv;

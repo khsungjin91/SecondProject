@@ -25,7 +25,7 @@
  환급 최소 금액 : 1 원					<br/>
  환급 최대 금액 (1일 기준) : 무제한		<br/>
  환급 시각 : 신청 후 약 20분 이내에 계좌이체 (단, 서버 작업이 진행중일 때에는 반영금액이 지체될 수 있습니다.)		<br/>
- 환급 신청시 고객님의 휴대폰으로 수신된 환급 요청 동의번호를 확인 후, 해당 번호를 0000 형식으로 답변하면 환급이 완료됩니다.	<br/>
+ 환급 신청시 고객님의 휴대폰으로 수신된 환급 요청 동의번호를 확인 후, 해당 번호를 0000 형식으로 답변하면 환급이 완료됩니다.	<br/><br/>
 
 <c:if test="${dto.socialnum == null}">
 
@@ -39,17 +39,17 @@
 
 <c:if test="${dto.socialnum != null}">
 
-<form action="point_withdrowPro.dj" method="post">
-환급가능액 0원													<br/>
+<form action="point_refunds.dj" method="post">
+환급가능액  ${total}원											<br/>
 1일 환급한도 여분액 무제한											<br/>
-환급액 <input type="text" value="0" name="refunds"/>원		<br/>
+환급액 <input type="text" value="0" name="re_price"/>원			<br/>
 은행명 ${dto.bankcode}											<br/>
 환급계좌번호 ${dto.bankaccnum}									<br/>		
 예금주 ${dto.name}												<br/>	
-
-<input type="button" value="환급알아보기" onclick="">			
 <input type="submit" value="환급하기">							
 </form>
+
+<input type="button" value="환급알아보기" onclick="">			
 </c:if>
 
 

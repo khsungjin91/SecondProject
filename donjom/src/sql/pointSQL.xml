@@ -9,12 +9,24 @@
 select name from memberinfo where no=#no#
 </select>
 
+<select id="getchar" resultClass="int" parameterClass="int">
+	select sum(ch_price) from charging where no=#no#
+</select>
+
+<select id="getre" resultClass="int" parameterClass="int">
+	select sum(re_price) from refunds where no=#no#
+</select>
+
 <insert id="ch_noinput" parameterClass="pointDto">
 	insert into charging values(#no#,#ch_price#,sysdate)
 </insert>
 
-<insert id="re_noinput" parameterClass="int">
+<insert id="re_noinput" parameterClass="pointDto">
 	insert into refunds values(#no#,#re_price#,sysdate)
+</insert>
+
+<insert id="total_price" parameterClass="int">
+	insert into memprice values(#no#,0,0)
 </insert>
 
 </sqlMap>
