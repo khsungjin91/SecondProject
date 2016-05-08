@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,7 +61,7 @@ function open_win_noresizable (url, name) {
 <body>
 
 
-${dto.profile}		<br/>
+<img src="/donjom/save/${dto.profile}" width="150">		<br/>
 ${dto.nickname}		<br/>
 ${dto.email}		<br/>
 가입일 ${dto.join}			<br/>	
@@ -97,8 +98,9 @@ ${dto.email}		<br/>
 </c:if>
 <c:if test="${dto.profile != null}">	
 <input type="hidden" value="${dto.profile}" name="profile">	
-<img src="/save/${dto.profile}">				<br/>
+<img src="/donjom/save/${dto.profile}" width="150">				<br/>
 </c:if> 
+
 추천인이메일 <input type="text" name="goodemail">	<br/>
 
 비밀번호변경 										<br/>

@@ -19,16 +19,19 @@ public class PointBean {
 	private ModelAndView mv;
 	
 	@RequestMapping("/point_deposit.dj")
-	public ModelAndView pointDeposit(SettingDto dto,HttpSession session){
-		
+	public ModelAndView pointDeposit(PointDto pdto,SettingDto dto,HttpSession session){
+		int total = 0;
 		String email = (String)session.getAttribute("memId");
 		
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
-		
-		int total = (Integer)sqlMap.queryForObject("get_total", no);
-		
+	
+		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
+			
+		total = pdto.getTotal_ch() - pdto.getTotal_re();
+			
+	
 		mv.addObject("total",total);
 		mv.addObject("dto", dto);
 		mv.setViewName("/point/point_deposit.jsp");
@@ -37,17 +40,18 @@ public class PointBean {
 	
 	
 	@RequestMapping("/point_withdrow.dj")
-	public ModelAndView pointWithdrow(SettingDto dto,HttpSession session){
-		
+	public ModelAndView pointWithdrow(PointDto pdto,SettingDto dto,HttpSession session){
+		int total=0;
 		String email = (String)session.getAttribute("memId");
 		
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		
-		int total = (Integer)sqlMap.queryForObject("get_total", no);
-		
-		
+		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
+			
+		total = pdto.getTotal_ch() - pdto.getTotal_re();
+			
 		mv.addObject("total",total);
 		mv.addObject("dto", dto);
 		mv.setViewName("/point/point_withdrow.jsp");

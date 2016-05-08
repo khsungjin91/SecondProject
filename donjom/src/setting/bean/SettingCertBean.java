@@ -43,13 +43,51 @@ public class SettingCertBean {
 		@RequestMapping("/setting_cert_pro.dj")
 		public ModelAndView personCertPro(SettingDto certDto,HttpSession session){
 			int setting = 1;
+			String last = "";
 
 			String email = (String)session.getAttribute("memId");
 			
 			int no = (Integer)sqlMap.queryForObject("getno", email);
 			
-			sqlMap.insert("certinput", certDto);
+			switch (certDto.getBankcode()) {
+			case "신한은행":
+				last = "088"; 
+				break;
+			case "우리은행":
+				last = "020"; 
+				break;
+			case "농혐은행":
+				last = "011"; 
+				break;
+			case "기업은행":
+				last = "003"; 
+				break;
+			case "국민은행":
+				last = "004"; 
+				break;
+			case "하나은행":
+				last = "081"; 
+				break;
+
+			default:
+				break;
+			}
 			
+			int [] bankcode = {0,0,0,0,0,0,0,0,0,0,0};
+			
+			for(int i = 0; i<11 ; i++){		
+				bankcode[i] = (int)(Math.random()*10);		
+			}
+			
+			String randomcode = bankcode[0] +""+ bankcode[1] +""+ bankcode[2] +"-"+ bankcode[3] +""+ bankcode[4]
+					+""+ bankcode[5] +""+ bankcode[6] +""+ bankcode[7] +""+ bankcode[8] +"-"+ bankcode[9] 
+							+""+ bankcode[10] +"-"+last;
+			
+			System.out.println(randomcode);
+			
+			certDto.setRandomacc(randomcode);
+			
+			sqlMap.insert("certinput", certDto);
 			
 			mv.addObject("setting", setting);
 			mv.setViewName("/signup/signup_modifyPro.jsp");

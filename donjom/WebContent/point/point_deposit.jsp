@@ -40,7 +40,7 @@
 충전계좌정보	<br/>
 은행명  ${dto.bankcode}		<br/>
 예금주  ${dto.name}			<br/>
-<%--계좌번호  ${dto.randomacc}--%>	<br/>
+계좌번호  ${dto.randomacc}	<br/>
 입금자명  ${dto.name}		<br/>
 
 <form action="point_charging.dj" method="post">

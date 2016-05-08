@@ -44,6 +44,7 @@ public class SettingBean {
 		
 		String email = (String)session.getAttribute("memId");
 		String mempw = (String)sqlMap.queryForObject("findPw", email);
+		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		MultipartFile mf = request.getFile("save");
 		String orgName  = mf.getOriginalFilename();
@@ -51,10 +52,10 @@ public class SettingBean {
 		if(orgName.equals("")){
 			
 			}else{
-
-				File copy = new File("E:\\save\\" + orgName);
+			
+				File copy = new File("C:\\Users\\user\\git\\SecondProject\\donjom\\WebContent\\save\\"+no+orgName);
 				mf.transferTo(copy);
-				ModiDto.setProfile(orgName);
+				ModiDto.setProfile(no + orgName);
 			}
 	
 		int setting = 0;

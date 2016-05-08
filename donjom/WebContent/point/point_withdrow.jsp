@@ -8,6 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script>
+
+function checkprice(){
+	
+	var f1 = document.userinput;
+	var receive = f1.re_price.value;
+	var total = ${total}
+	
+	if(!f1.re_price.value){
+		
+		alert("환급액을 입력해주시기 바랍니다.");
+		f1.re_price.focus();
+		return false;
+	}
+	
+	if(total < receive){
+		
+		alert("환급금액이 초과되었습니다");
+		f1.re_price.focus();
+		return false;
+	}
+	
+}
+
+</script>
+
 
 <h2> 충전환급 </h2>
 
@@ -39,14 +65,14 @@
 
 <c:if test="${dto.socialnum != null}">
 
-<form action="point_refunds.dj" method="post">
+<form action="point_refunds.dj" method="post" name="userinput">
 환급가능액  ${total}원											<br/>
 1일 환급한도 여분액 무제한											<br/>
-환급액 <input type="text" value="0" name="re_price"/>원			<br/>
+환급액 <input type="text" name="re_price"/>원					 <br/>
 은행명 ${dto.bankcode}											<br/>
 환급계좌번호 ${dto.bankaccnum}									<br/>		
 예금주 ${dto.name}												<br/>	
-<input type="submit" value="환급하기">							
+<input type="submit" value="환급하기" onclick="return checkprice()">							
 </form>
 
 <input type="button" value="환급알아보기" onclick="">			

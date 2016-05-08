@@ -44,7 +44,7 @@
 </insert>
 
 <insert id="certinput" parameterClass="settingDto">
-	insert into memberinfo(no,name,birth,gender,mobilenum,bankcode,bankaccnum) values(#no#,#name#,#birth#,#gender#,#mobilenum#,#bankcode#,#bankaccnum#)
+	insert into memberinfo(no,name,birth,gender,mobilenum,bankcode,bankaccnum,randomacc) values(#no#,#name#,#birth#,#gender#,#mobilenum#,#bankcode#,#bankaccnum#,#randomacc#)
 </insert>
 
 <insert id="sessioninput" parameterClass="sessionDto">

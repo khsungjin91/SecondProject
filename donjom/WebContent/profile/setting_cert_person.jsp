@@ -136,6 +136,9 @@ $(document).ready(function(){
 <input type="button" value="인증하기" id="button">
 </div>	
 </c:if>
+<c:if test="${memdto.confirm == 1}">
+메일인증완료상태입니다.	
+</c:if>
 																		
 휴대폰번호	<input type="text" name="mobilenum">													<br/>
 은행명	<input type="text" name="bankcode">														<br/>

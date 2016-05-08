@@ -72,9 +72,9 @@
 	
 메인문구
 <ul>
-<li><a href="/profile/dashboard.dj" >대시보드</a></li>
-<li><a href="/profile/invest.history.dj" >투자내역</a></li>
-<li><a href="point_deposit.dj" >충전/환급</a></li>
+<li><a href="dashboard.dj" >대시보드</a></li>
+<li><a href="invest_history.dj" >투자내역</a></li>
+<li><a href="point_deposit.dj">충전/환급</a></li>
 <li><a href="press.dj" >언론기사</a></li>
 <li><a href="/guide/loan.dj" >대출안내</a></li>
 <li><a href="/guide/invest.dj" >투자안내</a></li>

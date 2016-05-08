@@ -13,8 +13,8 @@
 	select sum(re_price) from refunds where no=#no#
 </select>
 
-<select id="get_total" resultClass="int" parameterClass="int">
-	select (total_ch - total_re) total from memprice where no=#no#
+<select id="get_total" resultClass="pointDto" parameterClass="int">
+	select total_ch,total_re from memprice where no=#no#
 </select>
 
 <insert id="ch_noinput" parameterClass="pointDto">
