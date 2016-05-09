@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="../style/css/herb.css" rel="stylesheet">
-<link href="../bt/css/bootstrap.min.css" rel="stylesheet">
- <link href="../bt/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="style/css/herb.css" rel="stylesheet">
+	<link href="bt/css/bootstrap.min.css" rel="stylesheet">
+ 	<link href="bt/css/bootstrap-theme.min.css" rel="stylesheet">
 <title>main page</title>
 </head>
 <body>
@@ -28,23 +28,21 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="loan.dj" ><b>대출JOM</b></a></li>
+            <li><a href="loan_step1.dj" ><b>대출JOM</b></a></li>
 			<li><a href="/product/fund_list.dj" ><b>투자JOM</b></a></li>
 			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
 			<li><a href="/product/DJex.dj" ><b>연습JOM</b></a></li>
-			<li><a href="DJcalculator.dj" ><b>계산기JOM</b></a></li>
+			<li><a href="DJcalculator.dj" data-target="#mymodal"><b>계산기JOM</b></a></li>
         
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-           	
-		
+          <ul class="nav navbar-nav navbar-right">	
 			<c:if test="${sessionScope.memId == null}">
 			<li><a href="signUp.dj">회원가입</a></li>
 			<li><a href="signIn.dj">로그인</a></li>
 			</c:if>
 			<c:if test="${sessionScope.memId != null}">
 			<li>알림</li>
-			<li>예치금 0원</li>
+			<li>예치금 ${total}원</li>
 			<li>
 				<ul>
 				<li>내정보</li>	
@@ -96,28 +94,118 @@
 
  </div>
    </div>
+<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img src="image/main-bn.jpg" alt="...">
+						<div class="caption">
+							<h3>연습투자</h3>
 
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="../image/main-bn.jpg" alt="...">
-      <div class="caption">
-        <h3 >연습투자</h3>
-      
-        <p>'돈좀'연습 투자는 신규 가입자를 위한 체험형 투자 상품입니다. 대출기간, 연이율, 상환방식 설정을 통해</p>
-        
-        <div class="progress">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-    <span class="sr-only">40% Complete (success)</span>
-  </div>
-</div>
-        
-        
-      </div>
-    </div>
-  </div>
-</div>
+							<p>'돈좀'연습 투자는 신규 가입자를 위한 체험형 투자 상품입니다. 대출기간, 연이율, 상환방식 설정을 통해</p>
+						<p class="money">
+							목표 7,000
+							<span class="txt-sub">만원</span>
+							<span class="txt-point">연 12.80%</span>
+							<span class="txt-sub">수익률</span>
+						</p>
+						
+						
+						</div>
+							<div class="progress">
+								<div class="progress-bar progress-bar-success"
+									role="progressbar" aria-valuenow="40" aria-valuemin="0"
+									aria-valuemax="100" style="width: 40%">
+									<span class="sr-only">40% Complete (success)</span>
+								</div>
+								
+							</div>
+							<div class="progress-detail">
+						<p>
+						<span class="txt-point">50%</span>
+						진행
+						<span class="progress-invest-people">(34명)</span>
+						</p>
+						<p class="d-day">
+						<span class="txt-point">D-6일</span>
+						</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img src="image/main-bn.jpg" alt="...">
+						<div class="caption">
+							<h3>연습투자</h3>
 
+							<p>'돈좀'연습 투자는 신규 가입자를 위한 체험형 투자 상품입니다. 대출기간, 연이율, 상환방식 설정을 통해</p>
+						<p class="money">
+							목표 7,000
+							<span class="txt-sub">만원</span>
+							<span class="txt-point">연 12.80%</span>
+							<span class="txt-sub">수익률</span>
+						</p>
+						
+						
+						</div>
+							<div class="progress">
+								<div class="progress-bar progress-bar-success"
+									role="progressbar" aria-valuenow="40" aria-valuemin="0"
+									aria-valuemax="100" style="width: 40%">
+									<span class="sr-only">40% Complete (success)</span>
+								</div>
+								
+							</div>
+							<div class="progress-detail">
+						<p>
+						<span class="txt-point">50%</span>
+						진행
+						<span class="progress-invest-people">(34명)</span>
+						</p>
+						<p class="d-day">
+						<span class="txt-point">D-6일</span>
+						</p>
+						</div>
+					</div>
+				</div>
+		
+		
+		<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<img src="image/main-bn.jpg" alt="...">
+						<div class="caption">
+							<h3>연습투자</h3>
+
+							<p>'돈좀'연습 투자는 신규 가입자를 위한 체험형 투자 상품입니다. 대출기간, 연이율, 상환방식 설정을 통해</p>
+						<p class="money">
+							목표 7,000
+							<span class="txt-sub">만원</span>
+							<span class="txt-point">연 12.80%</span>
+							<span class="txt-sub">수익률</span>
+						</p>
+						
+						
+						</div>
+							<div class="progress">
+								<div class="progress-bar progress-bar-success"
+									role="progressbar" aria-valuenow="40" aria-valuemin="0"
+									aria-valuemax="100" style="width: 40%">
+									<span class="sr-only">40% Complete (success)</span>
+								</div>
+								
+							</div>
+							<div class="progress-detail">
+						<p>
+						<span class="txt-point">50%</span>
+						진행
+						<span class="progress-invest-people">(34명)</span>
+						</p>
+						<p class="d-day">
+						<span class="txt-point">D-6일</span>
+						</p>
+						</div>
+					</div>
+				</div>
+		
 
 
 <%-- 펀딩메뉴 --%>
@@ -173,8 +261,7 @@ DJ대표고객사들
 
 
 <%-- sns정보 및 사용가능한 sns --%>
-	</div>
-</div>
+
 
 
 

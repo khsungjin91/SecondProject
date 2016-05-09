@@ -5,9 +5,18 @@ public class memberDto {
 	
 
 	private String email,pw,nickname,terms,snsreceive,emailreceive,join,profile,confirm;
+	private int no;
 	
 	
 	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
 	public String getConfirm() {
 		return confirm;
 	}

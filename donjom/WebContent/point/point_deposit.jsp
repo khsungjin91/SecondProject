@@ -9,6 +9,15 @@
 </head>
 <body>
 
+<c:if test="${sessionScope.memId == null }">
+
+<script type="text/javascript">
+alert("로그인 후 사용가능합니다.");
+window.location="signIn.dj";
+</script>
+
+</c:if>
+
 <h2> 충전환급 </h2>
 
 <ul>

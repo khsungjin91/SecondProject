@@ -26,14 +26,15 @@ public class SettingCertBean {
 			
 			String email = (String)session.getAttribute("memId");
 			
+			if(session.getAttribute("memId") != null){
 			int no = (Integer)sqlMap.queryForObject("getno", email);
-			
 			dto = (SettingDto)sqlMap.queryForObject("getoneCert", no);
 			memdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
+			mv.addObject("no", no);
+			}
 			
 			mv.addObject("memdto", memdto);
 			mv.addObject("dto", dto);
-			mv.addObject("no", no);
 			mv.setViewName("/profile/setting_cert_person.jsp");
 			return mv;
 		}
@@ -114,11 +115,13 @@ public class SettingCertBean {
 		public ModelAndView sessionChaser(HttpSession session){
 			
 			String email = (String)session.getAttribute("memId");
-			int no = (Integer)sqlMap.queryForObject("getno", email);
 			
+			if(session.getAttribute("memId") != null){
+			int no = (Integer)sqlMap.queryForObject("getno", email);
 			List list = sqlMap.queryForList("getsession", no);
-		
 			mv.addObject("session", list);
+			}
+			
 			mv.setViewName("/profile/setting_session_history.jsp");
 			return mv;
 		}

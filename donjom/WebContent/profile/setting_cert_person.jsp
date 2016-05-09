@@ -79,6 +79,13 @@ $(document).ready(function(){
 </head>
 <body>
 
+<c:if test="${sessionScope.memId == null}">
+<script type="text/javascript">
+alert("로그인 후 사용가능합니다.");
+window.location="signIn.dj";
+</script>
+</c:if>
+
 
 <a href="setting.dj">기본정보 수정</a>	<br/><br/>
 
@@ -89,9 +96,7 @@ $(document).ready(function(){
 	<li><a href="laon_history.dj">대출내역</a></li>
 	<li><a href="point_deposit.dj">충전/환급</a></li>
 	<li><a href="notification.dj">알림메세지</a></li>
-	<li><a href="setting.dj">설정</a></li>
-	<li><a href="helf.dj">도움말</a></li>	
-	<li><a href="logout.dj">로그아웃</a></li>			
+	<li><a href="setting.dj">설정</a></li>		
 </ul>
 
 설정 		<br/>

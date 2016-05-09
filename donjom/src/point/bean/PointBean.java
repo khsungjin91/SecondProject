@@ -23,6 +23,7 @@ public class PointBean {
 		int total = 0;
 		String email = (String)session.getAttribute("memId");
 		
+		if(session.getAttribute("memId") != null){
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
@@ -30,7 +31,7 @@ public class PointBean {
 		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
 			
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
-			
+		}
 	
 		mv.addObject("total",total);
 		mv.addObject("dto", dto);
@@ -44,6 +45,8 @@ public class PointBean {
 		int total=0;
 		String email = (String)session.getAttribute("memId");
 		
+		
+		if(session.getAttribute("memId") != null){
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
@@ -51,7 +54,8 @@ public class PointBean {
 		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
 			
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
-			
+		}
+		
 		mv.addObject("total",total);
 		mv.addObject("dto", dto);
 		mv.setViewName("/point/point_withdrow.jsp");
@@ -62,7 +66,7 @@ public class PointBean {
 	
 	@RequestMapping("/point_history.dj")
 	public ModelAndView pointHistory(){
-		
+
 		mv.setViewName("/point/point_history.jsp");
 		return mv;
 	}
