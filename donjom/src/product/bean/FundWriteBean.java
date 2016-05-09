@@ -55,8 +55,10 @@ public class FundWriteBean {
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
+		int max_no =(Integer)sqlMap.queryForObject("maxno", no);
 		
 		borrowDto.setNo(no);
+		borrowDto.setMax_no(max_no);
 		
 		sqlMap.update("secondborrow", borrowDto);
 		

@@ -4,9 +4,15 @@ public class BorrowDto {
 
 	private String br_sum,br_way,br_term,br_category,br_work,br_job,br_employ
 	,br_ycomein,br_mavg,br_mrepay,br_mlockpay,br_object,br_hopeday,br_date;
-	private int no;
+	private int no,max_no;
 	
 	
+	public int getMax_no() {
+		return max_no;
+	}
+	public void setMax_no(int max_no) {
+		this.max_no = max_no;
+	}
 	public String getBr_sum() {
 		return br_sum;
 	}

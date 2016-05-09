@@ -50,7 +50,6 @@ public class SettingBean {
 		String orgName  = mf.getOriginalFilename();
 		String path = request.getServletContext().getRealPath("")+"\\save\\";
 		
-		System.out.println(path);
 		if(orgName.equals("")){
 			
 			}else{

@@ -5,8 +5,12 @@
 
 <typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
 
+<select id="maxno" resultClass="int" parameterClass="int">
+	select max(no) from borrow where memno=#no#
+</select>
+
 <insert id="basicborrow" parameterClass="borrowDto">
-	insert into borrow(no,br_sum,br_way,br_term) values(#no#,#br_sum#,#br_way#,#br_term#)
+	insert into borrow(no,memno,br_sum,br_way,br_term) values(BORROW_NO.NEXTVAL,#no#,#br_sum#,#br_way#,#br_term#)
 </insert>
 
 <update id="secondborrow" parameterClass="borrowDto">
@@ -21,7 +25,7 @@
 						br_object=#br_object#,
 						br_hopeday=#br_hopeday#,
 						br_date=sysdate
-				where no=#no#
+				where memno=#no# and no=#max_no#
 </update>
 
 
