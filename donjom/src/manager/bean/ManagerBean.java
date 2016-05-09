@@ -100,16 +100,18 @@ public class ManagerBean {
 	@RequestMapping("/manager_invest.dj")
 	public ModelAndView managerinvest(){
 		
-		mv.setViewName("/manager/manager_view");
+		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
 	}
 	//상세페이지 - 대출 
 	@RequestMapping("/manager_borrow.dj")
 	public ModelAndView managerborrow(){
+		System.out.println("borrow");
 		
-		mv.setViewName("/manager/manager_borrow");
+		mv.setViewName("/manager/manager_borrow.jsp");
 		return mv;
 	}
+	
 		
 	@RequestMapping("/manager_page.dj")
 	public ModelAndView managercategory(){
@@ -129,12 +131,5 @@ public class ManagerBean {
 		mv.setViewName("/manager/manager_repay.jsp");
 		return mv;
 	}
-	@RequestMapping("/manager_borrow.dj")
-	public ModelAndView refund(){
-		
-		mv.setViewName("/manager/manager_refund.jsp");
-		return mv;
-	    
-	}
-
+	
 }

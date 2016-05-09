@@ -38,7 +38,7 @@
 		<td>${list.gender}</td>
 		<td>${list.mobilenum}</td>
 		<td>${list.address}</td>
-		<td></td>
+		<td>${list.randomacc}</td>
 		<td>${list.bankcode}</td>
 		<td>${list.bankaccnum}</td>
 		<td>
@@ -56,7 +56,7 @@
 		<td>${list2.gender}</td>
 		<td>${list2.mobilenum}</td>
 		<td>${list2.address}</td>
-		<td>save</td>
+		<td>${list.randomacc}</td>
 		<td>${list2.bankcode}</td>
 		<td>${list2.bankaccnum}</td>
 		<td>

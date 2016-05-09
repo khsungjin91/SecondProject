@@ -20,7 +20,7 @@
 		<tr>
 			<td>닉네임</td>
 			<td>이메일</td>
-			<td>가입날짜 save</td>
+			<td>가입날짜</td>
 		</tr>
 		<c:if test="${setting == 1 }">
 			<c:forEach var="list" items="${list}">

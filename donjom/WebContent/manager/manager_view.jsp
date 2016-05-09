@@ -1,76 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>managerview save</title>
+<title>managerview</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script>
+	//대출버튼
 $(document).ready(function(){
-	$("#invest").click(function(){ // id가 invest인것을 눌렀을 때 함수실행
-		callAjax();
-	});
-});
+    $("#borrow_button").click(function(){
+        callAjax_b();
+    });
+  });
 
-function callAjax(){
-	$.ajax({
-		type: "post",
-		url	: "/donjom/manager_borrow.dj",
-		data: {
-			no : $('#no').val(), // no값을 no라는 이름으로 bean에 넘겨줌 
-		},
-		success: test,
-		error:whenError
-	});
-}
-	
-	
-	
-	
-}
+	function callAjax_b() {
+		$.ajax({
+			type : "post",
+			url : "/donjom/manager_borrow.dj",
+			success : test_b,
+			error : whenError
+		});
+	}
 
-
-
-
-
+	function test_b(aaa) {
+		$("#invest").html(aaa);
+		console.log(resdata);
+	}
+	function whenError() {
+		alert("Error");
+	}
 </script>
-
-
-
-
-
-
-
-
-
-
 </head>
 <body>
-<table border=1>
-	<tr>투자</tr>
-	<tr>
-	<td>상품이름</td>
-	<td>성공여부</td>
-	<td>투자기간</td>
-	<td>투자액 </td>
-	</tr>
-	<c:forEach var="list" items="${list}">
-	<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-	</tr>
-	</c:forEach>
-	<tr>총 투자액 : </tr>	
-</table>
-<table border=1> 
 
+	<input type="button" value="투자" id="invest_button" />
+	<input type="button" value="대출" id="borrow_button" />
 
+	<div id="invest">
+		<table>
 
-</table>
-
+			<tr>
+				<td>상품이름</td>
+				<td>성공여부</td>
+				<td>투자기간</td>
+				<td>투자액</td>
+			</tr>
+			<c:forEach var="list" items="${list}">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</c:forEach>
+			<tr>총 투자액 :
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
