@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+<typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
+
+<insert id="basicborrow" parameterClass="borrowDto">
+	insert into borrow(no,br_sum,br_way,br_term) values(#no#,#br_sum#,#br_way#,#br_term#)
+</insert>
+
+<update id="secondborrow" parameterClass="borrowDto">
+	update borrow set br_category=#br_category#,
+						br_work=#br_work#,
+						br_job=#br_job#,
+						br_employ=#br_employ#,
+						br_ycomein=#br_ycomein#,
+						br_mavg=#br_mavg#,
+						br_mrepay=#br_mrepay#,
+						br_mlockpay=#br_mlockpay#,
+						br_object=#br_object#,
+						br_hopeday=#br_hopeday#,
+						br_date=sysdate
+				where no=#no#
+</update>
+
+
+</sqlMap>

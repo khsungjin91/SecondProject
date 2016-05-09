@@ -15,7 +15,6 @@ import sign.bean.memberDto;
 @Controller
 public class SettingCertBean {
 
-	
 		@Autowired
 		SqlMapClientTemplate sqlMap;
 		@Autowired
@@ -83,8 +82,6 @@ public class SettingCertBean {
 			String randomcode = bankcode[0] +""+ bankcode[1] +""+ bankcode[2] +"-"+ bankcode[3] +""+ bankcode[4]
 					+""+ bankcode[5] +""+ bankcode[6] +""+ bankcode[7] +""+ bankcode[8] +"-"+ bankcode[9] 
 							+""+ bankcode[10] +"-"+last;
-			
-			System.out.println(randomcode);
 			
 			certDto.setRandomacc(randomcode);
 			

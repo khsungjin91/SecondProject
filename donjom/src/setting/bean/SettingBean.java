@@ -48,14 +48,16 @@ public class SettingBean {
 		
 		MultipartFile mf = request.getFile("save");
 		String orgName  = mf.getOriginalFilename();
+		String path = request.getServletContext().getRealPath("")+"\\save\\";
 		
+		System.out.println(path);
 		if(orgName.equals("")){
 			
 			}else{
-			
-				File copy = new File("C:\\Users\\user\\git\\SecondProject\\donjom\\WebContent\\save\\"+no+orgName);
-				mf.transferTo(copy);
 				ModiDto.setProfile(no + orgName);
+			
+				File copy = new File(path+ModiDto.getProfile());
+				mf.transferTo(copy);
 			}
 	
 		int setting = 0;

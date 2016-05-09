@@ -14,58 +14,58 @@
 <body>
 <h2>고객상세정보</h2>
 <div id="fund-form">
-<form action="loan_writPro.dj" method="post" class="form-horizontal">
+<form action="loan_writePro.dj" method="post" class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">대출 구분</label>
 			<div class="col-sm-7">
-				<select class="form-control" name="part">
-					<option>개인</option>
-					<option>사업자</option>
-					<option>부동산</option>
+				<select class="form-control" name="br_category">
+					<option value="개인">개인</option>
+					<option value="사업자">사업자</option>
+					<option value="부동산">부동산</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">직장 구분</label>
 			<div class="col-sm-7">
-				<select class="form-control" name="part">
+				<select class="form-control" name="br_work">
 					<option>직장 구분을 선택해 주세요.</option>
-					<option>사업자</option>
-					<option>중소기업</option>
-					<option>스타트업</option>
-					<option>기타</option>
+					<option value="사업자">사업자</option>
+					<option value="중소기업">중소기업</option>
+					<option value="스타트업">스타트업</option>
+					<option value="기타">기타</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 		<label class="col-sm-2 control-label">업종</label>
 		<div class="col-sm-7">
-			<select class="form-control" name="part">
+			<select class="form-control" name="br_job">
 				<option>업종을 선택해 주세요.</option>
-				<option>제조업</option>
-				<option>금융업</option>
-				<option>서비스업</option>
-				<option>소프트웨어</option>
-				<option>마케팅</option>
-				<option>건설업</option>
-				<option>외식업</option>
-				<option>유통업</option>
-				<option>의약산업</option>
-				<option>농림축산업</option>
-				<option>어업</option>
-				<option>기타</option>
+				<option value="제조업">제조업</option>
+				<option value="금융업">금융업</option>
+				<option value="서비스업">서비스업</option>
+				<option value="소프트웨어">소프트웨어</option>
+				<option value="마케팅">마케팅</option>
+				<option value="건설업">건설업</option>
+				<option value="외식업">외식업</option>
+				<option value="유통업">유통업</option>
+				<option value="의약산업">의약산업</option>
+				<option value="농림축산업">농림축산업</option>
+				<option value="어업">어업</option>
+				<option value="기타">기타</option>
 			</select>
 		</div>
 		</div>
 		<div class="form-group">
 		<label class="col-sm-2 control-label">고용 형태</label>
 		<div class="col-sm-7">
-			<select class="form-control" name="part">
+			<select class="form-control" name="br_employ">
 				<option>고용 형태를 선택해 주세요.</option>
-				<option>정규직</option>
-				<option>계약직(비정규직)</option>
-				<option>프리랜서</option>
-				<option>기타</option>
+				<option value="정규직">정규직</option>
+				<option value="계약직(비정규직)">계약직(비정규직)</option>
+				<option value="프리랜서">프리랜서</option>
+				<option value="기타">기타</option>
 			</select>
 		</div>
 		</div>
@@ -73,28 +73,28 @@
 		<div class="form-group">
 		<label class="col-sm-2 control-label">연소득(세전)</label>
 		<div class="col-sm-8">
-			<input type="text" name="loan" class="form-control" >만원
+			<input type="text" name="br_ycomein" class="form-control" >만원
 		</div>
 		</div>
 		
 		<div class="form-group">
 		<label class="col-sm-2 control-label">월 평균 소득</label>
 		<div class="col-sm-8">
-			<input type="text" name="loan" class="form-control" >만원
+			<input type="text" name="br_mavg" class="form-control" >만원
 		</div>
 		</div>
 		
 		<div class="form-group">
 		<label class="col-sm-2 control-label">월 부채 상환액</label>
 		<div class="col-sm-8">
-			<input type="text" name="loan" class="form-control" >만원
+			<input type="text" name="br_mrepay" class="form-control" >만원
 		</div>
 		</div>
 		
 		<div class="form-group">
 		<label class="col-sm-2 control-label">월 고정 비용</label>
 		<div class="col-sm-8">
-			<input type="text" name="loan" class="form-control" >만원
+			<input type="text" name="br_mlockpay" class="form-control" >만원
 		</div>
 		</div>
 		
@@ -102,7 +102,7 @@
 		<div class="form-group">
 		<label class="col-sm-2 control-label">대출목적</label>
 		<div class="col-sm-8">
-			<input type="text" name="loan" class="form-control" >
+			<input type="text" name="br_object" class="form-control" >
 		</div>
 		</div>
 		
@@ -110,7 +110,7 @@
 		<div class="form-group">
 		<label class="col-sm-2 control-label">희망 대출기간</label>
 		<div class="col-sm-10">
-			<input type="text" name="loan" class="form-control" >
+			<input type="text" name="br_hopeday" class="form-control" >
 		</div>
 	</div>
 

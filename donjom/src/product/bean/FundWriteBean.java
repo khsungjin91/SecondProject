@@ -36,14 +36,31 @@ public class FundWriteBean {
 	}
 	
 	@RequestMapping("/loan_step2.dj")
-	public ModelAndView write2(){
+	public ModelAndView write2(BorrowDto borrowDto,HttpSession session){
+		
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		borrowDto.setNo(no);
+		
+		sqlMap.insert("basicborrow", borrowDto);
+		
 		
 		mv.setViewName("/product/fund_writeForm2.jsp");
 		return mv;
 	}
 	
-	@RequestMapping("/loan_writPro.dj")
-	public ModelAndView writePro(){
+	@RequestMapping("/loan_writePro.dj")
+	public ModelAndView writePro(HttpSession session,BorrowDto borrowDto){
+		
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		borrowDto.setNo(no);
+		
+		sqlMap.update("secondborrow", borrowDto);
+		
+		
 		
 		mv.setViewName("/product/fund_writePro.jsp");
 		return mv;

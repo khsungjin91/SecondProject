@@ -50,24 +50,39 @@
 			<div class="form-group">
 		<label class="col-sm-2 control-label">희망 대출액</label>
 		<div class="col-sm-10">
-			<input type="text" name="loan" class="form-control" >
+			<input type="text" name="br_sum" class="form-control" >만원
 		</div>
 	</div>
 	
 		<div class="form-group">
 		<label class="col-sm-2 control-label">상환 방법</label>
 		<div class="col-sm-10">
-			<input type="text" name="loan" class="form-control" >
+			<select name="br_way" class="form-control">
+				<option value="원리금 균등 상환">원리금 균등 상환</option>
+				<option value="원금 만기 일시 상환">원금 만기 일시 상환</option>
+			</select>
 		</div>
 	</div>
 		<div class="form-group">
 		<label class="col-sm-2 control-label">희망 대출기간</label>
 		<div class="col-sm-10">
-			<input type="text" name="loan" class="form-control" >
+			<select name="br_term" class="form-control">
+				<option value="1개월">1개월</option>
+				<option value="2개월">2개월</option>
+				<option value="3개월">3개월</option>
+				<option value="4개월">4개월</option>
+				<option value="5개월">5개월</option>
+				<option value="6개월">6개월</option>
+				<option value="12개월">12개월</option>
+				<option value="18개월">18개월</option>
+				<option value="24개월">24개월</option>
+				<option value="36개월">36개월</option>
+			</select>
+			<input type="button" value="이자계산기" class="btn btn-success">
 		</div>
 	</div>
 
-<input type="button" value="이자계산기" class="btn btn-success">
+
 계속하시면 <a href="#">여신거래부속약관</a>에 동의하게 됩니다.
 <input type="submit" value="대출신청" class="btn btn-primary" name="loan-btn">
 </form>
