@@ -15,6 +15,11 @@
 <h2>고객상세정보</h2>
 <div id="fund-form">
 <form action="loan_writePro.dj" method="post" class="form-horizontal">
+
+<input type="hidden" value="${br_sum}" name="br_sum">
+<input type="hidden" value="${br_way}" name="br_way">
+<input type="hidden" value="${br_term}" name="br_term">
+
 		<div class="form-group">
 			<label class="col-sm-2 control-label">대출 구분</label>
 			<div class="col-sm-7">
@@ -102,15 +107,22 @@
 		<div class="form-group">
 		<label class="col-sm-2 control-label">대출목적</label>
 		<div class="col-sm-8">
-			<input type="text" name="br_object" class="form-control" >
+			<textarea name="br_object" class="form-control" cols="50" rows="10"></textarea>
 		</div>
 		</div>
 		
 
 		<div class="form-group">
-		<label class="col-sm-2 control-label">희망 대출기간</label>
+		<label class="col-sm-2 control-label">희망 상환기간</label>
 		<div class="col-sm-10">
-			<input type="text" name="br_hopeday" class="form-control" >
+			<select name="br_hopeday">
+			<option value="1day">매월 1일 상환</option>
+			<option value="5day">매월 5일 상환</option>
+			<option value="10day">매월 10일 상환</option>
+			<option value="15day">매월 15일 상환</option>
+			<option value="20day">매월 20일 상환</option>
+			<option value="25day">매월 25일 상환</option>		
+			</select>
 		</div>
 	</div>
 

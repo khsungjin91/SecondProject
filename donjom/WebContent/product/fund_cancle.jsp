@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-넘어왔다
+
+<script>
+
+window.location="main.dj";
+
+</script>
+
+
 </body>
 </html>

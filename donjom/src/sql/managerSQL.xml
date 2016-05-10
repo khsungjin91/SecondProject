@@ -4,6 +4,7 @@
 
 <typeAlias alias="mem" type="sign.bean.memberDto"/>
 <typeAlias alias="memInfo" type="setting.bean.SettingDto"/>
+<typeAlias alias="borrow" type="product.bean.BorrowDto"/>
 
 	<!-- 일반회원의 이름,메일,가입날짜 조회 -->
 	<select id ="m_member" resultClass="mem" >
@@ -32,10 +33,15 @@
 		and m.no=i.no
 	
 	</select>
+	<!-- 성진작품 -->
+	<select id="borrowlist" resultClass="borrow">
+	select * from borrow order by br_date desc
+	</select>
 	
 	<!-- 성진작품 -->
 	<update id="confirmUp" parameterClass="java.util.Map">
 		update member set confirm=#on# where email=#email# 
 	</update>
+	
 	
 </sqlMap>

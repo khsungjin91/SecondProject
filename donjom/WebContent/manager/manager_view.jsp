@@ -10,22 +10,22 @@
 
 <script>
 	//대출버튼
-	$(document).ready(function() {
-		$("#borrow_button").click(function() {
-			callAjax_b();
-		});
-	});
+$(document).ready(function(){
+    $("#borrow_button").click(function(){
+        callAjax_b();
+    });
+  });
 
 	function callAjax_b() {
 		$.ajax({
 			type : "post",
 			url : "/donjom/manager_borrow.dj",
-			success : test,
+			success : test_b,
 			error : whenError
 		});
 	}
 
-	function test(aaa) {
+	function test_b(aaa) {
 		$("#invest").html(aaa);
 		console.log(resdata);
 	}
@@ -35,11 +35,13 @@
 </script>
 </head>
 <body>
-	<div id="invest">
-		<input type="button" value="투자" id="invest_button" />
-		<input type="button" value="대출" id="borrow_button" />
 
+	<input type="button" value="투자" id="invest_button" />
+	<input type="button" value="대출" id="borrow_button" />
+
+	<div id="invest">
 		<table>
+
 			<tr>
 				<td>상품이름</td>
 				<td>성공여부</td>

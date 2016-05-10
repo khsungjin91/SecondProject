@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +13,12 @@
  	<title>대출신청</title>
 </head>
 <body>
+<c:if test="${sessionScope.memId == null }">
+<script type="text/javascript">
+window.location="signIn.dj";
+</script>
+</c:if>
+
 <h2>고객정보</h2>
 <div id="loan-btn-sm">
 	<img src="">

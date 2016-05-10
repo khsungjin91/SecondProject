@@ -6,27 +6,23 @@
 <typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
 
 <select id="maxno" resultClass="int" parameterClass="int">
-	select max(no) from borrow where memno=#no#
+	select max(no) from borrow where memno=#memno#
+</select>
+
+<select id="registerReady" resultClass="borrowDto" parameterClass="java.util.Map"> 
+	select * from borrow where no=#no# and br_object=#br_object#
 </select>
 
 <insert id="basicborrow" parameterClass="borrowDto">
-	insert into borrow(no,memno,br_sum,br_way,br_term) values(BORROW_NO.NEXTVAL,#no#,#br_sum#,#br_way#,#br_term#)
+	insert into borrow values(BORROW_NO.NEXTVAL,#memno#,#br_sum#,#br_way#,#br_term#,
+								#br_category#,#br_work#,#br_job#,#br_employ#,#br_ycomein#,
+								#br_mavg#,#br_mrepay#,#br_mlockpay#,#br_object#,#br_hopeday#,
+								sysdate,'none')
 </insert>
 
-<update id="secondborrow" parameterClass="borrowDto">
-	update borrow set br_category=#br_category#,
-						br_work=#br_work#,
-						br_job=#br_job#,
-						br_employ=#br_employ#,
-						br_ycomein=#br_ycomein#,
-						br_mavg=#br_mavg#,
-						br_mrepay=#br_mrepay#,
-						br_mlockpay=#br_mlockpay#,
-						br_object=#br_object#,
-						br_hopeday=#br_hopeday#,
-						br_date=sysdate
-				where memno=#no# and no=#max_no#
-</update>
+<delete id="cancleborrow" parameterClass="java.util.Map">
+	delete from borrow where no=#no# and memno=#memno#
+</delete>
 
 
 </sqlMap>

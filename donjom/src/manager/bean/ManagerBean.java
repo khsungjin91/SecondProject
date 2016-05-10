@@ -112,10 +112,36 @@ public class ManagerBean {
 		return mv;
 	}
 	
-	@RequestMapping("/manager_borrow_accept")
-	public ModelAndView managerborrowaccept(){
+	//성진이가 한것입니다.
+	@RequestMapping("/manager_borrowlist.dj")
+	public ModelAndView managerborrowlist(){
 		
-		mv.setViewName("/manager/manager_borrow_accept.jsp");
+		List list = sqlMap.queryForList("borrowlist", null);
+		
+		mv.addObject("list", list);
+		mv.setViewName("/manager/manager_borrowlist.jsp");
 		return mv;
 	}
+	
+	
+		
+	@RequestMapping("/manager_page.dj")
+	public ModelAndView managercategory(){
+		
+		mv.setViewName("/manager/manager_category.jsp");
+		return mv;
+	}
+	@RequestMapping("/manager_board.dj")
+	public ModelAndView evaluation(){
+		
+		mv.setViewName("/manager/manager_evaluation.jsp");
+		return mv;
+	}
+	@RequestMapping("/manager_repay.dj")
+	public ModelAndView repay(){
+		
+		mv.setViewName("/manager/manager_repay.jsp");
+		return mv;
+	}
+	
 }

@@ -1,5 +1,8 @@
 package product.bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ public class FundWriteBean {
 	public ModelAndView write1(SettingDto sedto,memberDto memdto,HttpSession session){
 		
 		String email=(String)session.getAttribute("memId");
+		if(session.getAttribute("memId") != null){
 		
 		memdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
 		
@@ -31,21 +35,18 @@ public class FundWriteBean {
 		
 		mv.addObject("memdto", memdto);
 		mv.addObject("sedto", sedto);
+		}
 		mv.setViewName("/product/fund_writeForm.jsp");
 		return mv;
 	}
 	
 	@RequestMapping("/loan_step2.dj")
-	public ModelAndView write2(BorrowDto borrowDto,HttpSession session){
+	public ModelAndView write2(BorrowDto dto){
+
 		
-		String email = (String)session.getAttribute("memId");
-		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
-		borrowDto.setNo(no);
-		
-		sqlMap.insert("basicborrow", borrowDto);
-		
-		
+		mv.addObject("br_sum", dto.getBr_sum());
+		mv.addObject("br_way", dto.getBr_way());
+		mv.addObject("br_term", dto.getBr_term());
 		mv.setViewName("/product/fund_writeForm2.jsp");
 		return mv;
 	}
@@ -55,16 +56,30 @@ public class FundWriteBean {
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		int max_no =(Integer)sqlMap.queryForObject("maxno", no);
 		
-		borrowDto.setNo(no);
-		borrowDto.setMax_no(max_no);
-		
-		sqlMap.update("secondborrow", borrowDto);
-		
-		
+		borrowDto.setMemno(no);
+	
+		sqlMap.update("basicborrow", borrowDto);
 		
 		mv.setViewName("/product/fund_writePro.jsp");
+		return mv;
+	}
+
+	
+	@RequestMapping("/fund_cancle.dj")
+	public ModelAndView cancleBorrow(HttpSession session){
+		Map map = new HashMap();
+		
+		String email=(String)session.getAttribute("memId");
+		int memno = (Integer)sqlMap.queryForObject("getno", email);
+		int no = (Integer)sqlMap.queryForObject("maxno", memno);
+		
+		map.put("memno", memno);
+		map.put("no", no);
+		
+		sqlMap.delete("cancleborrow", map);
+		
+		mv.setViewName("/product/fund_cancle.jsp");
 		return mv;
 	}
 	

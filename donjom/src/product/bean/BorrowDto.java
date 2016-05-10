@@ -4,14 +4,14 @@ public class BorrowDto {
 
 	private String br_sum,br_way,br_term,br_category,br_work,br_job,br_employ
 	,br_ycomein,br_mavg,br_mrepay,br_mlockpay,br_object,br_hopeday,br_date;
-	private int no,max_no;
+	private int memno,no;
 	
 	
-	public int getMax_no() {
-		return max_no;
+	public int getNo() {
+		return no;
 	}
-	public void setMax_no(int max_no) {
-		this.max_no = max_no;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getBr_sum() {
 		return br_sum;
@@ -97,11 +97,11 @@ public class BorrowDto {
 	public void setBr_date(String br_date) {
 		this.br_date = br_date;
 	}
-	public int getNo() {
-		return no;
+	public int getMemno() {
+		return memno;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setMemno(int memno) {
+		this.memno = memno;
 	}
 	
 	
