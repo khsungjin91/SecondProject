@@ -112,24 +112,10 @@ public class ManagerBean {
 		return mv;
 	}
 	
+	@RequestMapping("/manager_borrow_accept")
+	public ModelAndView managerborrowaccept(){
 		
-	@RequestMapping("/manager_page.dj")
-	public ModelAndView managercategory(){
-		
-		mv.setViewName("/manager/manager_category.jsp");
+		mv.setViewName("/manager/manager_borrow_accept.jsp");
 		return mv;
 	}
-	@RequestMapping("/manager_board.dj")
-	public ModelAndView evaluation(){
-		
-		mv.setViewName("/manager/manager_evaluation.jsp");
-		return mv;
-	}
-	@RequestMapping("/manager_repay.dj")
-	public ModelAndView repay(){
-		
-		mv.setViewName("/manager/manager_repay.jsp");
-		return mv;
-	}
-	
 }
