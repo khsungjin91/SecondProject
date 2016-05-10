@@ -4,6 +4,7 @@
 <sqlMap>
 
 <typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
+<typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
 
 <select id="maxno" resultClass="int" parameterClass="int">
 	select max(no) from borrow where memno=#memno#
@@ -12,6 +13,14 @@
 <select id="registerReady" resultClass="borrowDto" parameterClass="java.util.Map"> 
 	select * from borrow where no=#no# and br_object=#br_object#
 </select>
+
+<select id="countborrow" resultClass="String">
+	select count(*) from borrow
+</select>
+
+<insert id="inputcontent" parameterClass="registerDto">
+	insert into p_content values(content_seq.nextval,#p_code#,#p_content#,sysdate)
+</insert>
 
 <insert id="basicborrow" parameterClass="borrowDto">
 	insert into borrow values(BORROW_NO.NEXTVAL,#memno#,#br_sum#,#br_way#,#br_term#,

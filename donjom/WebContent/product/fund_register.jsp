@@ -19,6 +19,9 @@ $(document).ready(function(){
 		 	"<textarea rows='10' cols='80' name='content["+textindex+"]'></textarea> <a href='#this' name='delete'>삭제</a>" +
 		 	"</td></tr>" 
 		 );
+		 
+		$("#textindex").val(textindex);
+		 
 		 $("a[name='delete']").on("click",function(e){
 			 e.preventDefault();
 			 fn_deleteText($(this));
@@ -30,6 +33,7 @@ function fn_deleteText(obj){
 	
 	obj.parent().remove();
 }
+
 </script>
 
 
@@ -57,6 +61,10 @@ function fn_deleteText(obj){
 <table id="textarray" border="1">
 
 </table>
+<div id="index">
+<input type="hidden" name="indexno" value="0" id="textindex">
+<input type="hidden" name="br_category" value="${dto.br_category}" >
+</div>
 <input type="submit" value="펀딩시작">
 </form>
 </body>
