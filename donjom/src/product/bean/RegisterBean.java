@@ -44,7 +44,6 @@ public class RegisterBean {
 		String p_code = "";
 		String m_code = "";
 		String count = "";
-		String upcount = "";
 		String str ="";
 		String br_category = request.getParameter("br_category");
 		int indexno = Integer.parseInt(request.getParameter("indexno"));
@@ -73,23 +72,19 @@ public class RegisterBean {
 		count = (String)sqlMap.queryForObject("countborrow", null);
 		
 		if(count.length() == 1){	
-			str = upcount.replace(count, "0000"+count);
+			str = count.replace(count, "0000"+count);
 		}else if(count.length() == 2){
-			str = upcount.replace(count, "000"+count);
+			str = count.replace(count, "000"+count);
 		}else if(count.length() == 3){
-			str = upcount.replace(count, "00"+count);
+			str = count.replace(count, "00"+count);
 		}else if(count.length() == 4){
-			str = upcount.replace(count, "0"+count);
+			str = count.replace(count, "0"+count);
 		}else if(count.length() == 5){
 			str = count;
 		}
 		
-		System.out.println(str);
-		
 		p_code = date.format(day)+"-"+m_code+"-"+str;
 	
-		System.out.println(p_code);
-		
 		dto.setP_code(p_code);
 		
 		for(int i = 0 ; i<=indexno ; i++){
