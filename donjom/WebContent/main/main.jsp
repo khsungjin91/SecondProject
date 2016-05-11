@@ -29,7 +29,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="loan_step1.dj" ><b>대출JOM</b></a></li>
-			<li><a href="/product/fund_list.dj" ><b>투자JOM</b></a></li>
+			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
 			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
 			<li><a href="/product/DJex.dj" ><b>연습JOM</b></a></li>
 			<li><a href="DJcalculator.dj" data-target="#mymodal"><b>계산기JOM</b></a></li>
@@ -112,15 +112,15 @@
 						</div>
 							<div class="progress">
 								<div class="progress-bar progress-bar-success"
-									role="progressbar" aria-valuenow="40" aria-valuemin="0"
+									role="progressbar" aria-valuenow="80" aria-valuemin="0"
 									aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">40% Complete (success)</span>
+									<span class="sr-only">80% Complete (success)</span>
 								</div>
 								
 							</div>
 							<div class="progress-detail">
 						<p>
-						<span class="txt-point">50%</span>
+						<span class="txt-point">80%</span>
 						진행
 						<span class="progress-invest-people">(34명)</span>
 						</p>

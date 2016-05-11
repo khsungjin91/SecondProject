@@ -66,7 +66,7 @@ window.location="signIn.dj";
 		<div class="col-sm-10">
 			<select name="br_way" class="form-control">
 				<option value="원리금 균등 상환">원리금 균등 상환</option>
-				<option value="원금 만기 일시 상환">원금 만기 일시 상환</option>
+				<option value="원금만기 일시상환">원금 만기 일시 상환</option>
 			</select>
 		</div>
 	</div>

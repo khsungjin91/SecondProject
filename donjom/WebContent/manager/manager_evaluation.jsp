@@ -32,6 +32,5 @@
 			<td>${list.result}</td>
 	</c:forEach>
 	</table>
-	</form>
 </body>
 </html>

@@ -12,8 +12,6 @@
 		<table border="1">
 			<c:forEach var="list" items="${list}">
 				<a href =""><img src="\donjom\save\30rabbitring.jpg" width="200"height="350"></a>
-
-
 			</c:forEach>
 		</table>
 	</div>

@@ -18,6 +18,10 @@
 	select count(*) from borrow
 </select>
 
+<select id="productList" resultClass="registerDto">
+	select * from product
+</select>
+
 <insert id="inputcontent" parameterClass="registerDto">
 	insert into p_content values(content_seq.nextval,#p_code#,#p_content#,sysdate)
 </insert>

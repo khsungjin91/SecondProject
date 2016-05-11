@@ -56,14 +56,23 @@ function fn_deleteText(obj){
 
 function calculrator(userinput){
 		
+		var term = document.userinput.p_term.value;
 		var sum = document.userinput.p_price.value;
 		var rate = $("#rate").val();
 		
-	 var avg = sum*rate/100;
-	 
-	 var total = parseInt(avg)+parseInt(sum);
+	if(document.userinput.p_way.value == "원금만기 일시상환"){
+	 var total = parseFloat(sum)*(parseFloat(rate/12))/100;
 	 
 	 $("#p_avg").val(total);
+	 
+	}else if(document.userinput.p_way.value == "원리금 균등 상환"){
+	
+	var total = (parseFloat(sum)/parseFloat(term)) + (parseFloat(sum)*(parseFloat(rate/12))/100);
+		
+	$("#p_avg").val(total);
+	
+	}
+
 }		
 
 
@@ -91,8 +100,14 @@ function calculrator(userinput){
 <td><input type="text" value="${dto.br_term}" name="p_term">개월</td>
 <td>연<input type="text" name="p_rate" id="rate" onkeyup="calculrator(this.target)">%</td>
 <td><input type="text" value="${dto.br_sum}" name="p_price" id="p_price">만원</td>
-<td><input type="text" value="${dto.br_way}" name="p_way"></td>
-<td><input type="text" name="p_avg" id="p_avg"></td>
+<td>
+<select name="p_way">
+<option value="${dto.br_way}">${dto.br_way}(대출자희망)</option>
+<option value="원리금 균등 상환">원리금 균등 상환</option>
+<option value="원금만기 일시상환">원금만기 일시상환</option>
+</select>
+</td>
+<td><input type="text" name="p_avg" id="p_avg">만원</td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>

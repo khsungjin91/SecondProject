@@ -133,6 +133,10 @@ public class ManagerBean {
 		
 		List list = sqlMap.queryForList("borrowlist", null);
 		
+		int count = list.size();
+		
+		
+		mv.addObject("count", count);
 		mv.addObject("list", list);
 		mv.setViewName("/manager/manager_borrowlist.jsp");
 		return mv;

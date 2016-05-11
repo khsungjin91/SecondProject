@@ -37,7 +37,7 @@
 	
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
-	select * from borrow order by br_date desc
+	select * from borrow where success='success' order by br_date desc
 	</select>
 	
 	<!-- 성진작품 -->
