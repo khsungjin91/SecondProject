@@ -2,11 +2,36 @@ package product.bean;
 
 public class BorrowDto {
 
-	private String br_sum,br_way,br_term,br_category,br_work,br_job,br_employ
+	private String memname,membirth,mememail,memphone,br_sum,br_way,br_term,br_category,br_work,br_job,br_employ
 	,br_ycomein,br_mavg,br_mrepay,br_mlockpay,br_object,br_hopeday,br_date;
 	private int memno,no;
 	
 	
+	
+	public String getMemname() {
+		return memname;
+	}
+	public void setMemname(String memname) {
+		this.memname = memname;
+	}
+	public String getMembirth() {
+		return membirth;
+	}
+	public void setMembirth(String membirth) {
+		this.membirth = membirth;
+	}
+	public String getMememail() {
+		return mememail;
+	}
+	public void setMememail(String mememail) {
+		this.mememail = mememail;
+	}
+	public String getMemphone() {
+		return memphone;
+	}
+	public void setMemphone(String memphone) {
+		this.memphone = memphone;
+	}
 	public int getNo() {
 		return no;
 	}

@@ -44,6 +44,10 @@ public class FundWriteBean {
 	public ModelAndView write2(BorrowDto dto){
 
 		
+		mv.addObject("memname",dto.getMemname());
+		mv.addObject("membirth",dto.getMembirth());
+		mv.addObject("memphone",dto.getMemphone());
+		mv.addObject("mememail",dto.getMememail());
 		mv.addObject("br_sum", dto.getBr_sum());
 		mv.addObject("br_way", dto.getBr_way());
 		mv.addObject("br_term", dto.getBr_term());

@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+
 </head>
 <body>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
 $(document).ready(function(){
-	
 	$("#addText").click(function(){
 		 var textindex = $("#textarray tr").children().length;
 		 alert(textindex);
@@ -29,42 +29,103 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$("#filebutton").click(function(){
+		 var fileindex = $("#fileupload tr").children().length;
+		 alert(fileindex);
+		 $("#fileupload").append(
+			"<tr><td>" +
+		 	"<input type='file' name='upfile["+fileindex+"]'> <a href='#this' name='delete'>삭제</a>" +
+		 	"</td></tr>" 
+		 );
+		 
+		$("#fileindex").val(fileindex);
+		 
+		 $("a[name='delete']").on("click",function(e){
+			 e.preventDefault();
+			 fn_deleteText($(this));
+		 });
+	});
+});
+
 function fn_deleteText(obj){
 	
 	obj.parent().remove();
 }
 
+
+
 </script>
+<form action="registerPro.dj" method="post" enctype="multipart/form-data">
 
-
-<h2>상품이름</h2>
-
-<input type="button" value="내용추가" id="addText"> <br/>
+제목<input type="text" name="p_name"> <br/>
 
 대출신청내역<br/>
-<form action="registerPro.dj" method="post">
 <table border="1"> 
 <tr>
 <td>구분</td><td>만기</td><td>수익률</td><td>대출금액</td><td>상환방식</td><td>월상환액</td>
 </tr>
 <tr>
-<td>${dto.br_category}</td><td>${dto.br_term}</td><td><input type="text" name="percent">%</td><td>${dto.br_sum}</td><td>${dto.br_way}</td><td>calculate</td>
+<td>
+<select name="p_category">
+<option value="${dto.br_category}">${dto.br_category}(대출자희망)</option>
+<option value="사업자">사업자</option>
+<option value="개인">개인</option>
+<option value="부동산">부동산</option>
+<option value="대출담보">대출담보</option>
+</select>
+</td>
+<td><input type="text" value="${dto.br_term}" name="p_term">개월</td>
+<td>연<input type="text" name="p_rate">%</td>
+<td><input type="text" value="${dto.br_sum}" name="p_price">만원</td>
+<td><input type="text" value="${dto.br_way}" name="p_way"></td>
+<td><input type="text" name="m"></td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
 </tr>
 <tr>
-<td colspan="6">${dto.br_object}</td>
+<td colspan="6"><input type="text" value="${dto.br_object}" name="p_purpose"></td>
+</tr>
+<tr>
+<td colspan="6">DJ 평가 한마디</td>
+</tr>
+<tr>
+<td colspan="6"><input type="text" name="p_purpose"></td>
 </tr>
 </table>
 
-<table id="textarray" border="1">
 
+<input type="button" value="내용추가" id="addText"> <br/>
+
+
+<table id="textarray" border="1">
 </table>
-<div id="index">
+
+
+<input type="button" value="서류추가" id="filebutton">	<br/>
+
+
+<table id="fileupload">
+</table>
+
+
+<div>
 <input type="hidden" name="indexno" value="0" id="textindex">
-<input type="hidden" name="br_category" value="${dto.br_category}" >
+<input type="hidden" name="fileindex" value="0" id="fileindex">
 </div>
+<input type="hidden" name="br_category" value="${dto.br_category}" >
+
+상환일<select name="p_repayday">
+<option value="${dto.br_hopeday}">매월${dto.br_hopeday}일 상환(대출자희망)</option>
+<option value="1">매월 1일 상환</option>
+<option value="5">매월 5일 상환</option>
+<option value="10">매월 10일 상환</option>
+<option value="15">매월 15일 상환</option>
+<option value="20">매월 20일 상환</option>
+<option value="25">매월 25일 상환</option>		
+</select>
+<br/>
 <input type="submit" value="펀딩시작">
 </form>
 </body>

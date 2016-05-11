@@ -22,11 +22,21 @@
 	insert into p_content values(content_seq.nextval,#p_code#,#p_content#,sysdate)
 </insert>
 
+<insert id="inputfile" parameterClass="registerDto">
+	insert into p_file values(#p_code#,#p_file#,sysdate)
+</insert>
+
 <insert id="basicborrow" parameterClass="borrowDto">
-	insert into borrow values(BORROW_NO.NEXTVAL,#memno#,#br_sum#,#br_way#,#br_term#,
+	insert into borrow values(BORROW_NO.NEXTVAL,#memname#,#membirth#,#mememail#,#memphone#,#memno#,#br_sum#,#br_way#,#br_term#,
 								#br_category#,#br_work#,#br_job#,#br_employ#,#br_ycomein#,
 								#br_mavg#,#br_mrepay#,#br_mlockpay#,#br_object#,#br_hopeday#,
 								sysdate,'none')
+</insert>
+
+<insert id="productinput" parameterClass="registerDto">
+	insert into product values(PRODUCT_SEQ.nextval,#p_category#,#p_name#,#p_code#,#p_price#,
+								#p_content#,'test','0',#p_invest#,#p_purpose#,#p_way#,#p_rate#,
+								#p_term#,#p_funding#,#p_repayday#,#p_success#,#p_file#)
 </insert>
 
 <delete id="cancleborrow" parameterClass="java.util.Map">

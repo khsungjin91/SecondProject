@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-�Ѿ�Դ�
+넘어왔다.
 </body>
 </html>

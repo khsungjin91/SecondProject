@@ -27,13 +27,13 @@ window.location="signIn.dj";
 	<div class="form-group">
 		<label class="col-sm-2 control-label">이름</label>
 		<div class="col-sm-10">
-			<input type="text" name="name" value="${sedto.name}" class="form-control" >
+			<input type="text" name="memname" value="${sedto.name}" class="form-control" >
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 control-label">생년월일</label>
 		<div class="col-sm-10">
-			<input type="text" name="birth" value="${sedto.birth}" class="form-control"  >
+			<input type="text" name="membirth" value="${sedto.birth}" class="form-control"  >
 		</div>
 	</div>
 		<div class="form-group">
@@ -45,13 +45,13 @@ window.location="signIn.dj";
 		<div class="form-group">
 		<label class="col-sm-2 control-label">이메일 주소</label>
 		<div class="col-sm-10">
-			<input type="text" name="email" value="${memdto.email}" class="form-control" >
+			<input type="text" name="mememail" value="${memdto.email}" class="form-control" >
 		</div>
 	</div>
 		<div class="form-group">
 		<label class="col-sm-2 control-label">휴대폰 번호</label>
 		<div class="col-sm-10">
-			<input type="text" name="phone" value="${sedto.mobilenum}" class="form-control" >
+			<input type="text" name="memphone" value="${sedto.mobilenum}" class="form-control" >
 		</div>
 	</div>
 			<div class="form-group">
@@ -74,16 +74,16 @@ window.location="signIn.dj";
 		<label class="col-sm-2 control-label">희망 대출기간</label>
 		<div class="col-sm-10">
 			<select name="br_term" class="form-control">
-				<option value="1개월">1개월</option>
-				<option value="2개월">2개월</option>
-				<option value="3개월">3개월</option>
-				<option value="4개월">4개월</option>
-				<option value="5개월">5개월</option>
-				<option value="6개월">6개월</option>
-				<option value="12개월">12개월</option>
-				<option value="18개월">18개월</option>
-				<option value="24개월">24개월</option>
-				<option value="36개월">36개월</option>
+				<option value="1">1개월</option>
+				<option value="2">2개월</option>
+				<option value="3">3개월</option>
+				<option value="4">4개월</option>
+				<option value="5">5개월</option>
+				<option value="6">6개월</option>
+				<option value="12">12개월</option>
+				<option value="18">18개월</option>
+				<option value="24">24개월</option>
+				<option value="36">36개월</option>
 			</select>
 			<input type="button" value="이자계산기" class="btn btn-success">
 		</div>

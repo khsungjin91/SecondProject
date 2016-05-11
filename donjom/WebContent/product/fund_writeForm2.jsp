@@ -116,18 +116,25 @@
 		<label class="col-sm-2 control-label">희망 상환기간</label>
 		<div class="col-sm-10">
 			<select name="br_hopeday">
-			<option value="1day">매월 1일 상환</option>
-			<option value="5day">매월 5일 상환</option>
-			<option value="10day">매월 10일 상환</option>
-			<option value="15day">매월 15일 상환</option>
-			<option value="20day">매월 20일 상환</option>
-			<option value="25day">매월 25일 상환</option>		
+			<option value="1">매월 1일 상환</option>
+			<option value="5">매월 5일 상환</option>
+			<option value="10">매월 10일 상환</option>
+			<option value="15">매월 15일 상환</option>
+			<option value="20">매월 20일 상환</option>
+			<option value="25">매월 25일 상환</option>		
 			</select>
 		</div>
 	</div>
 
-<input type="button" value="이자계산기" class="btn btn-success">
+<input type="button" value="이자계산기" class="btn btn-success"><br/>
 계속하시면 <a href="#">여신거래부속약관</a>에 동의하게 됩니다.
+
+
+<input type="hidden" value="${memname}" name="memname" >
+<input type="hidden" value="${membirth}" name="membirth" >
+<input type="hidden" value="${mememail}" name="mememail" >
+<input type="hidden" value="${memphone}" name="memphone" >
+
 <input type="submit" value="대출신청" class="btn btn-primary" name="loan-btn">
 </form>
 </div>

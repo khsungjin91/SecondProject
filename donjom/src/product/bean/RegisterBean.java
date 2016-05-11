@@ -1,5 +1,6 @@
 package product.bean;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -39,7 +42,8 @@ public class RegisterBean {
 	
 	
 	@RequestMapping("/registerPro.dj")
-	public ModelAndView RegisterPro(HttpServletRequest request,String [] content,RegisterDto dto){
+	public ModelAndView RegisterPro(MultipartHttpServletRequest request,String [] content,
+			RegisterDto dto, String [] upfile)throws Exception{ 
 		String p_content = "";
 		String p_code = "";
 		String m_code = "";
@@ -47,6 +51,11 @@ public class RegisterBean {
 		String str ="";
 		String br_category = request.getParameter("br_category");
 		int indexno = Integer.parseInt(request.getParameter("indexno"));
+		int fileindex = Integer.parseInt(request.getParameter("fileindex"));
+		
+		String path = request.getServletContext().getRealPath("")+"\\file\\";
+		MultipartFile mf = null;;
+		String orgname = "";
 		
 		Date day = new Date();
 		SimpleDateFormat date = new SimpleDateFormat("yy");
@@ -92,6 +101,23 @@ public class RegisterBean {
 			dto.setP_content(p_content);
 			sqlMap.insert("inputcontent", dto);
 		}
+		
+		for(int i = 0; i <= fileindex ; i++){
+			mf = request.getFile("upfile["+i+"]");
+			orgname = mf.getOriginalFilename();
+			dto.setP_file(orgname);
+			
+			sqlMap.insert("inputfile",dto);
+			
+			File copy = new File(path+dto.getP_file());
+			mf.transferTo(copy);
+			
+		}
+		
+		dto.setP_file(p_code);
+		dto.setP_content(p_code);
+		
+		sqlMap.insert("productinput", dto);
 		
 		mv.setViewName("/product/fundManager.jsp");
 		return mv;
