@@ -54,9 +54,22 @@ function fn_deleteText(obj){
 }
 
 
+function calculrator(userinput){
+		
+		var sum = document.userinput.p_price.value;
+		var rate = $("#rate").val();
+		
+	 var avg = sum*rate/100;
+	 
+	 var total = parseInt(avg)+parseInt(sum);
+	 
+	 $("#p_avg").val(total);
+}		
+
+
 
 </script>
-<form action="registerPro.dj" method="post" enctype="multipart/form-data">
+<form action="registerPro.dj" method="post" enctype="multipart/form-data" name="userinput">
 
 제목<input type="text" name="p_name"> <br/>
 
@@ -76,10 +89,10 @@ function fn_deleteText(obj){
 </select>
 </td>
 <td><input type="text" value="${dto.br_term}" name="p_term">개월</td>
-<td>연<input type="text" name="p_rate">%</td>
-<td><input type="text" value="${dto.br_sum}" name="p_price">만원</td>
+<td>연<input type="text" name="p_rate" id="rate" onkeyup="calculrator(this.target)">%</td>
+<td><input type="text" value="${dto.br_sum}" name="p_price" id="p_price">만원</td>
 <td><input type="text" value="${dto.br_way}" name="p_way"></td>
-<td><input type="text" name="m"></td>
+<td><input type="text" name="p_avg" id="p_avg"></td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
@@ -91,7 +104,7 @@ function fn_deleteText(obj){
 <td colspan="6">DJ 평가 한마디</td>
 </tr>
 <tr>
-<td colspan="6"><input type="text" name="p_purpose"></td>
+<td colspan="6"><input type="text" name=""></td>
 </tr>
 </table>
 
