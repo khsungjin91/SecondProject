@@ -39,8 +39,8 @@
 
 <insert id="productinput" parameterClass="registerDto">
 	insert into product values(PRODUCT_SEQ.nextval,#p_category#,#p_name#,#p_code#,#p_price#,
-								#p_content#,'test','0',#p_invest#,#p_purpose#,#p_way#,#p_rate#,
-								#p_term#,#p_funding#,#p_repayday#,#p_success#,#p_file#)
+								#p_content#,'test','0','0',#p_purpose#,#p_way#,#p_rate#,
+								#p_term#,#p_funding#,#p_repayday#,doing,#p_file#)
 </insert>
 
 <delete id="cancleborrow" parameterClass="java.util.Map">
