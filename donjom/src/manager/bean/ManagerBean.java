@@ -111,6 +111,21 @@ public class ManagerBean {
 		mv.setViewName("/manager/manager_borrow.jsp");
 		return mv;
 	}
+	//투자
+	@RequestMapping("/manager_investmn.dj")
+	public ModelAndView managerinvestmn(){
+		mv.setViewName("/manager/manager_investmn.jsp");
+		return mv;
+	}
+	
+	//대출
+	@RequestMapping("/manager_borrowmn.dj")
+	public ModelAndView managerborrowmn(){
+		
+		
+		mv.setViewName("/manager/manager_borrowmn.jsp");
+		return mv;
+	}
 	
 	//성진이가 한것입니다.
 	@RequestMapping("/manager_borrowlist.dj")
@@ -123,25 +138,36 @@ public class ManagerBean {
 		return mv;
 	}
 	
-	
-		
-	@RequestMapping("/manager_page.dj")
-	public ModelAndView managercategory(){
-		
-		mv.setViewName("/manager/manager_category.jsp");
-		return mv;
-	}
-	@RequestMapping("/manager_board.dj")
-	public ModelAndView evaluation(){
+	//대출심사 
+	@RequestMapping("manager_evaluation.dj")
+	public ModelAndView managerevaluation(){
 		
 		mv.setViewName("/manager/manager_evaluation.jsp");
 		return mv;
 	}
-	@RequestMapping("/manager_repay.dj")
-	public ModelAndView repay(){
+	//심사-찾기 
+	@RequestMapping("manager_evaluation_search.dj")
+	public ModelAndView managerevaluationsearch(){
 		
-		mv.setViewName("/manager/manager_repay.jsp");
+		mv.setViewName("/manager/manager_evaluation.jsp");
 		return mv;
 	}
+	//심사평작성
+	@RequestMapping("manager_evaluation_write.dj")
+	public ModelAndView managerevaluationwrite(){
+		
+		mv.setViewName("/manager/manager_evaluation_write.jsp");
+		return mv;
+	}
+	//심사평 insert
+	@RequestMapping("manager_evaluation_writeinsert")
+	public ModelAndView managerevaluationwriteinsert(){
+		
+		mv.setViewName("");
+		return mv;
+	}
+	
+		
+
 	
 }

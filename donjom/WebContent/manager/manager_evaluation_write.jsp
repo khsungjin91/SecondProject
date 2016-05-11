@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>refund page</title>
+<title>evaluation write</title>
 </head>
 <body>
+<div>
+<center><b> 님의 대출 제안</b>
+
+
+
+</center>
+
+</div>
+
+
 
 </body>
 </html>

@@ -60,7 +60,7 @@
 		<td>${list2.bankcode}</td>
 		<td>${list2.bankaccnum}</td>
 		<td>
-		<input type ="button" value="상세보기"/>
+		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj'"/>
 		</td>
 	</c:forEach>	
 	</c:if>

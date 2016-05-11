@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,36 +8,29 @@
 <title>evaluation page</title>
 </head>
 <body>
-	<form method="post" action="manager_evaluation.dj">
-	<!-- 기본 서류  -->
-	신분증 사본 :  <input type="file" name="file"> <br/>
-	건강보험 자격득실 확인서 :  <input type="file" name="file"> <br/>
-	건강보헙 납부확인서 :  <input type="file" name="file"> <br/>
-	주민등록 원초본(발급기준 1주일이내 발급용) :  <input type="file" name="file"> <br/>
-	
-	<!-- 그외의 심사 내용 -->
-	사업체 존재유무 확인 : <input type="checkbox"> 사업체 확인 완료 
-						<input type="checkbox"> 확인 보류 <br/>
-	사업체 등기부등록 확인 : <input type="text"> <br/>
-	
-	<input type="submit" value="저장">
-	<br/><br/>
-	
-	<select> 
-		<option>회원아이디</option>
+<form action ="evaluation_search.dj" method="post">
+	<select name="evaluation"> 
+		<option value="id">회원아이디</option>
+		<option value="result">심사 결과</option>		
 	</select>
-	<input type="text">
-	<input type="button" value="검색"> <br/>
+	<input type="text" align="right" name="search"/>
+	<input type="submit" value="검색" align="right"/>
+	<input type="button" value="심사평작성" onclick="javascript:location.href='manager_evaluation_write.dj'">
 	
+</form>
 	<table border="1">
 		<tr>
 			<td> 회원아이디 </td>
+			<td> 대출 목적 </td>
 			<td> 서류 존재 여부</td>
-			<td> 심사완료 	</td>
-				<input type="button" value="심사완료"> <br/>
-			<td> 탈락사유 </td>
-				<input type="button" value="탈락 사유"> <br/>
-		</tr>				
+			<td> 심사 결과	</td>
+		</tr>	
+	<c:forEach var="list" items="${list}">
+		<tr>
+			<td>${list.id}</td>
+			<td>${list.document}</td>
+			<td>${list.result}</td>
+	</c:forEach>
 	</table>
 	</form>
 </body>
