@@ -172,7 +172,4 @@ public class ManagerBean {
 		return mv;
 	}
 	
-		
-
-	
 }
