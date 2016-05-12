@@ -64,7 +64,7 @@
 <tr><td>투자기간</td></tr>
 <tr><td>${dto.p_term}</td></tr>
 <tr><td>펀딩기간 : 1주일</td></tr>
-<tr><td>상환일 : 매월${p_repayday}일 + 5일</td></tr>
+<tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
 <tr>
 <c:if test="${dto.p_success == 'success'}">
 <td><input type="button" value="펀딩성공"></td>
