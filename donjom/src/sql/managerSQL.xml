@@ -44,14 +44,19 @@
 	<update id="confirmUp" parameterClass="java.util.Map">
 		update member set confirm=#on# where email=#email# 
 	</update>
+	<!-- 대출관리-대출list -->
+	<select id="borrowmn" resultClass="borrow">
+		select * from borrow where success='none'order by br_date desc
+	</select>
+	
 	
 	<!-- 심사list -->
-	<select id="evaluation_list" resultClass="evaluation">
-		select * from evaluationlist  
+	<select id="evaluation" resultClass="evaluation">
+		select * from evaluation 
 	</select>
 	
 	<!-- 심사평 insert -->
-	<insert id="evaluation_write" parameterClass="evaluation">
+	<insert id="evaluation_writeinsert" parameterClass="evaluation">
 		insert into evaluation	(e_memid,
 								e_memname,
 								e_document,
@@ -63,6 +68,15 @@
 								#e_doccount#,
 								#e_result#)
 	</insert>
+	<!-- borrowDto에 sucess업뎃 -->
+	<update id="borrowup" parameterClass="borrow">
+		update borrow set success=#success# where no=#no#
+	</update>
+	<!-- no로 borrow 조회 -->
+	<select id="borrow" resultClass="borrow" parameterClass="int">
+	 	select *from borrow where no=#no#
+	</select>
+	
 	
 	
 </sqlMap>

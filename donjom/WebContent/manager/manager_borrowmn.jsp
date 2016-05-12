@@ -8,25 +8,34 @@
 <title>borrowmn</title>
 </head>
 <body>
-	<div>
-		<table border="1">
-			<c:forEach var="list" items="${list}">
-				<a href =""><img src="\donjom\save\30rabbitring.jpg" width="200"height="350"></a>
-			</c:forEach>
-		</table>
-	</div>
-	<div>
-		<table border="1">
+
+	<table border="1">
+		<tr>
+			<td>이름</td>
+			<td>메일</td>
+			<td>핸드폰번호</td>
+			<td>목적</td>
+			<td>대출신청날짜</td>
+			<td>심사하기</td>
+		</tr>
+
+	<c:forEach var="list" items="${list}">
 			<tr>
-				<td height="200" valign="middle" width="200" " align="right">
-					<b>평균이자율&nbsp;:&nbsp;5%</b><br /> <b>상환중인 대출&nbsp;:&nbsp;3건</b><br />
-					<b>상환 완료된 대출&nbsp;:&nbsp;5건</b><br />
+				<td>${list.memname}</td>
+				<td>${list.mememail}</td>
+				<td>${list.memphone}</td>
+				<td>${list.br_object}</td>
+				<td>${list.br_date}</td>
+				<td><input type="button" value="심사하기"
+					onclick="javascript:location.href='manager_evaluation_write.dj?mememail=${list.mememail}&no=${list.no}'">
 				</td>
 			</tr>
-			
+	</c:forEach>
 		</table>
-	</div>
-	
-		
+	</table>
+
+
+
+
 </body>
 </html>

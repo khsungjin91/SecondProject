@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import product.bean.BorrowDto;
 import sign.bean.memberDto;
 
 @Controller
@@ -25,17 +26,14 @@ public class ManagerBean {
 	
 	@RequestMapping("/manager_main.dj")
 	public ModelAndView managermain(){
-		
 		mv.setViewName("/manager/manager_main.jsp");
 		return mv;
 	}
 	//회원관리
 	@RequestMapping("/manager_member.dj")
 	public String managermember(){
-	
 		return "/manager/manager_member.jsp";
 	}
-
 	//인증회원
 	@RequestMapping("/manager_confirm.dj")
 	public ModelAndView managerconfirm(){
@@ -65,7 +63,6 @@ public class ManagerBean {
 	//인증회원 상세페이지
 	@RequestMapping("/manager_view.dj")
 	public ModelAndView managerview(){
-		
 		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
 	}
@@ -85,7 +82,6 @@ public class ManagerBean {
 	public ModelAndView noconfirm_search(String noconfirm,String search){
 		int setting = 2;
 		Map map = new HashMap();
-		
 		map.put("noconfirm", noconfirm);
 		//noconfirm을  받아서 noconfirm이름으로 map에 저장
 		map.put("search", search);
@@ -99,7 +95,7 @@ public class ManagerBean {
 	//상세페이지 - 투자
 	@RequestMapping("/manager_invest.dj")
 	public ModelAndView managerinvest(){
-		
+		System.out.println("invest");
 		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
 	}
@@ -107,7 +103,6 @@ public class ManagerBean {
 	@RequestMapping("/manager_borrow.dj")
 	public ModelAndView managerborrow(){
 		System.out.println("borrow");
-		
 		mv.setViewName("/manager/manager_borrow.jsp");
 		return mv;
 	}
@@ -121,8 +116,9 @@ public class ManagerBean {
 	//대출
 	@RequestMapping("/manager_borrowmn.dj")
 	public ModelAndView managerborrowmn(){
+		List list =sqlMap.queryForList("borrowmn", null);
 		
-		
+		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_borrowmn.jsp");
 		return mv;
 	}
@@ -130,12 +126,8 @@ public class ManagerBean {
 	//성진이가 한것입니다.
 	@RequestMapping("/manager_borrowlist.dj")
 	public ModelAndView managerborrowlist(){
-		
 		List list = sqlMap.queryForList("borrowlist", null);
-		
 		int count = list.size();
-		
-		
 		mv.addObject("count", count);
 		mv.addObject("list", list);
 		mv.setViewName("/manager/manager_borrowlist.jsp");
@@ -143,31 +135,40 @@ public class ManagerBean {
 	}
 	
 	//대출심사 
-	@RequestMapping("manager_evaluation.dj")
+	@RequestMapping("/manager_evaluation.dj")
 	public ModelAndView managerevaluation(){
+		List list= sqlMap.queryForList("evaluation", null);
+		int count = list.size();
 		
+		mv.addObject("count",count);
+		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_evaluation.jsp");
 		return mv;
 	}
 	//심사-찾기 
-	@RequestMapping("manager_evaluation_search.dj")
+	@RequestMapping("/manager_evaluation_search.dj")
 	public ModelAndView managerevaluationsearch(){
 		
 		mv.setViewName("/manager/manager_evaluation.jsp");
 		return mv;
 	}
 	//심사평작성
-	@RequestMapping("manager_evaluation_write.dj")
-	public ModelAndView managerevaluationwrite(){
-		
+	
+	@RequestMapping("/manager_evaluation_write.dj")
+	public ModelAndView managerevaluationwrite(BorrowDto dto,int no){
+		dto=(BorrowDto)sqlMap.queryForObject("borrow", no);
+	
+		mv.addObject("dto",dto);
 		mv.setViewName("/manager/manager_evaluation_write.jsp");
 		return mv;
 	}
 	//심사평 insert
-	@RequestMapping("manager_evaluation_writeinsert")
-	public ModelAndView managerevaluationwriteinsert(){
+	@RequestMapping("/manager_evaluation_writeinsert.dj")
+	public ModelAndView managerevaluationwriteinsert(evaluationDto dto,BorrowDto dto2){
+		sqlMap.insert("evaluation_writeinsert",dto);
+		sqlMap.update("borrowup",dto2);
 		
-		mv.setViewName("");
+		mv.setViewName("/manager/manager_evaluation_writesc.jsp");
 		return mv;
 	}
 	
