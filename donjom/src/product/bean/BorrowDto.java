@@ -3,7 +3,7 @@ package product.bean;
 public class BorrowDto {
 
 	private String memname,membirth,mememail,memphone,br_sum,br_way,br_term,br_category,br_work,br_job,br_employ
-	,br_ycomein,br_mavg,br_mrepay,br_mlockpay,br_object,br_hopeday,br_date,success;
+	,br_ycomein,br_mavg,br_mrepay,br_mlockpay,br_object,br_hopeday,br_date;
 	private int memno,no;
 	
 	
@@ -127,12 +127,6 @@ public class BorrowDto {
 	}
 	public void setMemno(int memno) {
 		this.memno = memno;
-	}
-	public String getSuccess() {
-		return success;
-	}
-	public void setSuccess(String success) {
-		this.success = success;
 	}
 	
 	

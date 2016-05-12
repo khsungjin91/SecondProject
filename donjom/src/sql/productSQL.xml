@@ -14,12 +14,24 @@
 	select * from borrow where no=#no# and br_object=#br_object#
 </select>
 
-<select id="countborrow" resultClass="String">
-	select count(*) from borrow
+<select id="productborrow" resultClass="String">
+	select count(*) from product
 </select>
 
 <select id="productList" resultClass="registerDto">
 	select * from product
+</select>
+
+<select id="productone" resultClass="registerDto" parameterClass="registerDto">
+	select * from product where p_code=#p_code#
+</select>
+
+<select id="contentlist" resultClass="registerDto" parameterClass="String">
+	select * from p_content where p_code=#p_code#
+</select>
+
+<select id="filelist" resultClass="registerDto" parameterClass="String">
+	select * from p_file where p_code=#p_code#
 </select>
 
 <insert id="inputcontent" parameterClass="registerDto">
@@ -40,7 +52,7 @@
 <insert id="productinput" parameterClass="registerDto">
 	insert into product values(PRODUCT_SEQ.nextval,#p_category#,#p_name#,#p_code#,#p_price#,
 								#p_content#,'test','0','0',#p_purpose#,#p_way#,#p_rate#,
-								#p_term#,#p_funding#,#p_repayday#,doing,#p_file#)
+								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#)
 </insert>
 
 <delete id="cancleborrow" parameterClass="java.util.Map">

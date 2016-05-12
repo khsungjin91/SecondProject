@@ -17,7 +17,7 @@
 
 <div>
 <c:forEach var="list" items="${list}">
-<a href="">
+<a href="fundView.dj?p_code=${list.p_code}">
 <div style="float: left;">
 	<div>
 		<img src="">
@@ -25,7 +25,7 @@
 	<div>
 		<ul>
 			<li>목표${list.p_price}만원  연${list.p_rate}%수익률</li>
-			<li>${list.p_category} | ${list.p_term}</li>
+			<li>${list.p_category} | 만기${list.p_term}개월</li>
 			<li>%진행 ${list.p_people} ${list.p_success}</li>
 		</ul>
 	</div>

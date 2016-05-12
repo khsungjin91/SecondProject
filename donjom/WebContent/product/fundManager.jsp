@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-넘어왔다.
+<script>
+window.location="manager_borrowlist.dj"
+</script>
 </body>
 </html>

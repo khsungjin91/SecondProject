@@ -26,11 +26,17 @@ public class RegistedBean {
 		return mv;
 	}
 	
-	@RequestMapping()
-	public ModelAndView productview(){
+	@RequestMapping("/fundView.dj")
+	public ModelAndView productview(String p_code,RegisterDto dto){
+		
+		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
+		List contentlist = sqlMap.queryForList("contentlist", p_code);
+		List filelist = sqlMap.queryForList("filelist", p_code);
 		
 		
-		
+		mv.addObject("dto",dto);
+		mv.addObject("contentlist",contentlist);
+		mv.addObject("filelist",filelist);
 		mv.setViewName("/product/fund_view.jsp");
 		return mv;
 	}

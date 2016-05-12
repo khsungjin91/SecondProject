@@ -75,7 +75,7 @@ public class RegisterBean {
 			break;
 		}
 		
-		count = (String)sqlMap.queryForObject("countborrow", null);
+		count = (String)sqlMap.queryForObject("productborrow", null);
 		
 		if(count.length() == 1){	
 			str = count.replace(count, "0000"+count);
