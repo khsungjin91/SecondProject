@@ -1,8 +1,28 @@
 package manager.bean;
 
 public class evaluationDto {
-	private String e_memid,e_memname,e_document,e_result;
+	private String e_memid,e_memname,e_document,e_result,e_content,e_cphave,e_cpfile;
 	private int e_doccount;
+	
+	public String getE_content() {
+		return e_content;
+	}
+	public void setE_content(String e_content) {
+		this.e_content = e_content;
+	}
+	public String getE_cphave() {
+		return e_cphave;
+	}
+	public void setE_cphave(String e_cphave) {
+		this.e_cphave = e_cphave;
+	}
+	public String getE_cpfile() {
+		return e_cpfile;
+	}
+	public void setE_cpfile(String e_cpfile) {
+		this.e_cpfile = e_cpfile;
+	}
+
 	
 	public String getE_memid() {return e_memid;	}
 	public void setE_memid(String e_memid) {this.e_memid = e_memid;	}

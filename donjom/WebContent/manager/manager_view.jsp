@@ -23,6 +23,7 @@
 			error : whenError
 		});
 	}
+
 	function test(aaa) {
 		$("#invest").html(aaa);
 		console.log(resdata);

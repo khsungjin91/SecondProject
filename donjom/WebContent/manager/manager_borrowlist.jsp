@@ -28,7 +28,7 @@
 <td>${list.memname}</td>
 <td>${list.br_object}</td>
 <td>${list.br_date}</td>
-<td><a href="product_register.dj?no=${list.no}">상품올리기</a></td>
+<td><a href="product_register.dj?no=${list.no}&br_object=${list.br_object}">상품올리기</a></td>
 </tr>
 </c:forEach>
 </c:if>
