@@ -49,24 +49,27 @@
 		select * from borrow where success='none'order by br_date desc
 	</select>
 	
-	
 	<!-- 심사list -->
 	<select id="evaluation" resultClass="evaluation">
 		select * from evaluation 
 	</select>
+
+	<!-- 심사list검색 -->
+	<select id="evaluation_search" resultClass="evaluation" parameterClass="java.util.Map">
+		select * from evaluation
+		where $evaluation$ like '%'|| #search# ||'%'
+	</select>
 	
 	<!-- 심사평 insert -->
 	<insert id="evaluation_writeinsert" parameterClass="evaluation">
-		insert into evaluation	(e_memid,
-								e_memname,
-								e_document,
-								e_doccount,
-								e_result)
-							values(#e_memid#,
+		insert into evaluation values(#e_memid#,
 								#e_memname#,
 								#e_document#,
 								#e_doccount#,
-								#e_result#)
+								#e_result#,
+								#e_content#,
+								#e_cphave#,
+								#e_cpfile#)
 	</insert>
 	<!-- borrowDto에 sucess업뎃 -->
 	<update id="borrowup" parameterClass="borrow">
