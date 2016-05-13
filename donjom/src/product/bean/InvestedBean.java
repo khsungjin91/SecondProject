@@ -26,7 +26,7 @@ public class InvestedBean {
 		
 		
 		
-		mv.setViewName("");
+		mv.setViewName("/product/fund_view.jsp");
 		return mv;
 	}
 	
