@@ -11,7 +11,7 @@
 </select>
 
 <select id="registerReady" resultClass="borrowDto" parameterClass="java.util.Map"> 
-	select * from borrow where no=#no# and br_object=#br_object#
+	select * from borrow where no=#no#
 </select>
 
 <select id="productborrow" resultClass="String">

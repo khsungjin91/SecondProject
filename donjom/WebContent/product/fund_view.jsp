@@ -9,8 +9,10 @@
 </head>
 <body>
 
+
 <h2>${dto.p_name}</h2>
 
+<form action="fund_ready.dj" method="post">
 <div style="float: left;">
 <table border="1">
 <tr>
@@ -21,6 +23,7 @@
 </tr>
 </table>
 
+<input type="hidden" value="${dto.p_code}" name="p_code">
 
 대출신청내역
 <table border="1">
@@ -63,6 +66,12 @@
 <tr><td>${dto.p_rate}</td></tr>
 <tr><td>투자기간</td></tr>
 <tr><td>${dto.p_term}</td></tr>
+<tr><td>투자금액</td></tr>
+<tr>
+<td>
+<input type="text" name="amount">
+</td>
+</tr>
 <tr><td>펀딩기간 : 1주일</td></tr>
 <tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
 <tr>
@@ -70,7 +79,7 @@
 <td><input type="button" value="펀딩성공"></td>
 </c:if>
 <c:if test="${dto.p_success == 'doing'}">
-<td><input type="button" value="투자미리보기" onclick="javascript:window.location='fund_ready.dj?p_code=${dto.p_code}'"></td>
+<td><input type="submit" value="투자미리보기"></td>
 </c:if>
 <c:if test="${dto.p_success == 'fail'}">
 <td><input type="button" value="펀딩실패"></td>
@@ -79,6 +88,7 @@
 
 </table>
 </div>
+</form>
 
 
 </body>

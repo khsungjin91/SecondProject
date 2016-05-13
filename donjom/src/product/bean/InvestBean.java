@@ -1,8 +1,5 @@
 package product.bean;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -25,26 +22,31 @@ public class InvestBean {
 	
 	
 	@RequestMapping("/fund_ready.dj")
-	public ModelAndView investReview(RegisterDto dto){
+	public ModelAndView calculator(RegisterDto dto,String amount){
 	
 		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
 		
 		int term = Integer.parseInt(dto.getP_term());
+		//납입원금총액
+		int borrowmoney = Integer.parseInt(amount+"0000");
 		
-
 		int [] p_price = new int[term];
 		int [] interested = new int[term];
 		int [] refunds = new int[term];
 		int [] taxed = new int [term];
-		int [] realtotaled = new int [term];	
-		
+		int [] realtotaled = new int[term];	
+		int [] count = new int[term];
+
+		int supertotal = 0;
 		int totaltotal = 0;
+		int totalto = 0;
 		int taxtotal = 0;
 		int interesttotal = 0;
+		int balance = 0;
 		
-		if(dto.getP_way().equals("원리금 균등 상환")){
+		if(dto.getP_way().equals("원금만기 일시상환")){
 			
-			total = (int)(Float.parseFloat(dto.getP_price()+"0000") * (Float.parseFloat(dto.getP_rate())/12)) / 100;
+			total = (int)(Float.parseFloat(amount+"0000") * (Float.parseFloat(dto.getP_rate())/12)) / 100;
 			
 			tax = (int)(total*27.5/100);
 			
@@ -52,21 +54,63 @@ public class InvestBean {
 			
 			for(int i = 0; i < term ; i++){
 				
+				count[i] = i+1;
+					
 				refunds[i] = total;
 				p_price[i] = 0;
+				interested[i] = total;
 				taxed[i] = tax;
 				realtotaled[i] = realtotal;
 				
-				totaltotal += refunds[i];
+				//원금만기에서만 작동 나눠진 원금의 합
+				totalto += refunds[i];
+				
+				// 원금만기에서만 작동하는 상환금 합계
+				totaltotal = totalto+(int)(Float.parseFloat(amount+"0000"));
+				
+				//세금 합계
 				taxtotal += taxed[i];
+				
+				//이자 합계
+				interesttotal += interested[i];
 			}
 			
-			p_price[term-1] = (int)(Float.parseFloat(dto.getP_price()+"0000"));
-			refunds[term-1] = (int) (total + (Float.parseFloat(dto.getP_price()+"0000")));
-			realtotaled[term-1] = (int)(Float.parseFloat(dto.getP_price()+"0000")+realtotal);
+			supertotal = totaltotal - taxtotal;
+			p_price[term-1] = (int)(Float.parseFloat(amount+"0000"));
+			refunds[term-1] = (int) (total + (Float.parseFloat(amount+"0000")));
+			realtotaled[term-1] = (int)(Float.parseFloat(amount+"0000")+realtotal);
 			
-		}else if(dto.getP_way().equals("")){
+		}else if(dto.getP_way().equals("원리금 균등 상환")){
 			
+			total = (int)((Float.parseFloat(amount+"0000"))/term+
+					(int)(Float.parseFloat(amount+"0000") * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
+			
+			balance = borrowmoney;
+			
+			for(int i = 0 ; i <term; i++){
+				
+					count[i] = i+1;
+			
+				refunds[i] = total;
+				
+				interested[i] = (int)((balance * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
+				
+				balance = balance - total;
+				
+				p_price[i]  = total - interested[i];
+				
+				taxed[i] = (int)(interested[i]*27.5/100);
+				
+				realtotaled[i] = refunds[i] - taxed[i];
+						
+				
+				totaltotal += refunds[i];
+				taxtotal += taxed[i]; 
+				interesttotal += interested[i];
+				supertotal += realtotaled[i];
+				
+			}
+			/* 
 			total = (int)((Float.parseFloat(dto.getP_price()+"0000"))/term+
 					(int)(Float.parseFloat(dto.getP_price()+"0000") * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
 			
@@ -85,8 +129,13 @@ public class InvestBean {
 				taxed[i] = tax;
 				realtotaled[i]=realtotal;
 			}
+			*/
 		}
-		
+			
+		mv.addObject("count", count);
+		mv.addObject("supertotal", supertotal);
+		mv.addObject("borrowmoney", borrowmoney);
+		mv.addObject("interesttotal", interesttotal);
 		mv.addObject("totaltotal",totaltotal);
 		mv.addObject("taxtotal",taxtotal);
 		mv.addObject("realtotaled", realtotaled);
@@ -94,6 +143,7 @@ public class InvestBean {
 		mv.addObject("interested", interested);
 		mv.addObject("refunds",refunds);
 		mv.addObject("p_price",p_price);
+		mv.addObject("dto", dto);
 		mv.setViewName("/product/fund_invest.jsp");
 		return mv;
 	}

@@ -10,61 +10,114 @@
 </head>
 <body>
 
+
+<h2>투자 미리보기</h2>
+
 <div>
-
-<div style="float: left; margin-left: 20px">
-<div>회차</div>
-<c:forEach var="refunds" items="${refunds}">
-<div>1</div>
+<table border="1">
+<tr>
+<td>회차</td><td>상환금</td><td>납입원금</td><td>이자</td><td>수수료</td><td>세금</td><td>실수령액</td>
+</tr>
+<tr>
+<td>
+<table>
+<c:forEach var="count" items="${count}">
+<tr>
+<td>${count}</td>
+</tr>
 </c:forEach>
-</div>
-
-<div style="float: left; margin-left: 20px">
-<div>상환금</div>
+</table>
+</td>
+<td>
+<table>
 <c:forEach var="refunds" items="${refunds}">
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${refunds}" />원</div>
+<tr>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${refunds}" />원</td>
+</tr>
 </c:forEach>
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${totaltotal}" />원</div>
-</div>
-
-<div style="float: left; margin-left: 20px">
-<div>납입원금</div>
+</table>
+</td>
+<td>
+<table>
 <c:forEach var="p_price" items="${p_price}">
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${p_price}" />원</div>
+<tr>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${p_price}" />원</td>
+</tr>
 </c:forEach>
-</div>
-
-<div style="float: left; margin-left: 20px">
-<div>이자</div>
+</table>
+</td>
+<td>
+<table>
 <c:forEach var="interested" items="${interested}">
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${interested}" />원</div>
+<tr>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${interested}" />원</td>
+</tr>
 </c:forEach>
-</div>
-
-<div style="float: left; margin-left: 20px">
-<div>수수료</div>
-<c:forEach var="refunds" items="${refunds}">
-<div>0원</div>
-</c:forEach>
-</div>
-
-<div style="float: left; margin-left: 20px">
-<div>세금</div>
+</table>
+</td>
+<td>
+<table>
 <c:forEach var="taxed" items="${taxed}">
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${taxed}" />원</div>
+<tr>
+<td>0원</td>
+</tr>
 </c:forEach>
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${taxtotal}" />원</div>
-</div>
-
-<div style="float: left; margin-left: 20px">
-<div>실수령액</div>
+</table>
+</td>
+<td>
+<table>
+<c:forEach var="taxed" items="${taxed}">
+<tr>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${taxed}" />원</td>
+</tr>
+</c:forEach>
+</table>
+</td>
+<td>
+<table>
 <c:forEach var="realtotaled" items="${realtotaled}">
-<div><fmt:formatNumber type="number" maxFractionDigits="3" value="${realtotaled}" />원</div>
+<tr>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${realtotaled}" />원</td>
+</tr>
 </c:forEach>
-</div>
+</table>
+</td>
+</tr>
+<tr>
+<td>합계</td>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${totaltotal}" />원</td>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${borrowmoney}" />원</td>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${interesttotal}" />원</td>
+<td>0원</td>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${taxtotal}" />원</td>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${supertotal}" />원</td>
+</tr>
+</table>
 
 </div>
+<br/>
+<br/>
+<div>
+※ 안내사항 <br/>
+1. 세금 : 세법에 의거하여 이자소득에 대해 25%(이자소득세) + 2.5%(주민세) = 총 27.5% 의 세금을 납부합니다.  <br/>
+2. 수수료 : 0% (베타기간 수수료 무료)  <br/>
+3. 여신업체 : (주)DJ소셜대부 <br/>
+※ 투자 위험 안내 <br/>
+당사는 원금 및 수익을 보장하지 않습니다. 다만, 채권 추심에 도의적 책임을 다합니다.  <br/>
+연체 시 연체이율 안내, 연체 시 불이익 안내에 최선을 다하며 장기 연체시 채권 추심(매각 등)후 투자자에게 배분합니다. <br/><br/>
+</div>
 
+${dto.p_repayday}개월 ${dto.p_way}, 연${dto.p_rate}수익률의 원리금수취권에 ${dto.p_price}을/를 참가합니다. <br/>
+<form action="invest_start.dj" method="post">
+
+<input type="hidden" value="${borrowmoney}" name="amount">
+
+<input type="checkbox" name="" value=""> 투자이용약관 
+<a href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br/><br/>
+
+<input type="submit" value="투자하기">
+
+</form>
 
 </body>
 </html>
