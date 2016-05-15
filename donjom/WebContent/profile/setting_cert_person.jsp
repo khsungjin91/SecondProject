@@ -129,7 +129,7 @@ window.location="signIn.dj";
 
 <c:if test="${dto.name == null}">
 <form action="setting_cert_pro.dj" method="post" name="userinput">	
-<input type="hidden" name="no" value="${no}">	
+
 이름		<input type="text" name="name">															<br/>
 생년월일	<input type="text" name="birth">														<br/>
 성별		남자<input type="radio" name="gender" value="men">
@@ -164,7 +164,6 @@ window.location="signIn.dj";
 
 <c:if test="${dto.socialnum == null}">
 <form action="setting_detail_pro.dj" method="post">
-<input type="hidden" name="no" value="${no}">	
 주민등록번호<input type="text" name="socialnum">													<br/>
 주소		<input type="text" name="address">														<br/>
 <input type="submit" value="입력완료">																<br/>

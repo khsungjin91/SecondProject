@@ -34,7 +34,7 @@ window.location="signIn.dj";
 23:00 ~ 00:30분 사이에는 <b>은행망 점검 시간</b>으로 이체가 불가할 수 있습니다.	<br/>
 
 
-<c:if test="${dto.socialnum == null}">
+<c:if test="${dto.socialnum == null && dto.bankaccnum == null}">
 
 -가상계좌를 할당받으려면 회원인증이 필요합니다.	<br/>
 -원천징수 정보까지 입력하셔야 최종인증이 완료됩니다.	<br/>
@@ -45,7 +45,7 @@ window.location="signIn.dj";
 </c:if>
 
 
-<c:if test="${dto.socialnum != null}">
+<c:if test="${dto.socialnum != null && dto.bankaccnum != null}">
 충전계좌정보	<br/>
 은행명  ${dto.bankcode}		<br/>
 예금주  ${dto.name}			<br/>

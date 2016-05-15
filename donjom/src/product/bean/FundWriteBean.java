@@ -72,7 +72,7 @@ public class FundWriteBean {
 	
 	@RequestMapping("/fund_cancle.dj")
 	public ModelAndView cancleBorrow(HttpSession session){
-		Map map = new HashMap();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		
 		String email=(String)session.getAttribute("memId");
 		int memno = (Integer)sqlMap.queryForObject("getno", email);

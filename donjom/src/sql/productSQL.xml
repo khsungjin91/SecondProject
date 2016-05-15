@@ -5,6 +5,7 @@
 
 <typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
+<typeAlias alias="investDto" type="product.bean.InvestDto"/>
 
 <select id="maxno" resultClass="int" parameterClass="int">
 	select max(no) from borrow where memno=#memno#
@@ -42,6 +43,11 @@
 	insert into p_file values(#p_code#,#p_file#,sysdate)
 </insert>
 
+<insert id="investstart" parameterClass="investDto">	
+	insert into invest values(invest_seq.nextval,#i_memname#,#i_memnum#,#i_pname#,#i_pcode#,#i_repayday#,
+								#i_times#,#i_profit#,#i_invest#,#i_way#,sysdate,'doing')
+</insert>
+
 <insert id="basicborrow" parameterClass="borrowDto">
 	insert into borrow values(BORROW_NO.NEXTVAL,#memname#,#membirth#,#mememail#,#memphone#,#memno#,#br_sum#,#br_way#,#br_term#,
 								#br_category#,#br_work#,#br_job#,#br_employ#,#br_ycomein#,
@@ -52,7 +58,7 @@
 <insert id="productinput" parameterClass="registerDto">
 	insert into product values(PRODUCT_SEQ.nextval,#p_category#,#p_name#,#p_code#,#p_price#,
 								#p_content#,'test','0','0',#p_purpose#,#p_way#,#p_rate#,
-								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#)
+								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#,#p_memno#,#p_mrepay#)
 </insert>
 
 <delete id="cancleborrow" parameterClass="java.util.Map">

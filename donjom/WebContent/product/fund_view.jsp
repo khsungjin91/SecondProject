@@ -31,7 +31,7 @@
 <td>구분</td><td>만기</td><td>수익률</td><td>대출금액</td><td>상환방식</td><td>월상환액</td>
 </tr>
 <tr>
-<td>${dto.p_category}</td><td>${dto.p_term}</td><td>${dto.p_rate}</td><td>${dto.p_price}</td><td>${dto.p_way}</td><td>상환액</td>
+<td>${dto.p_category}</td><td>${dto.p_term}</td><td>${dto.p_rate}</td><td>${dto.p_price}</td><td>${dto.p_way}</td><td>${dto.p_mrepay}</td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
@@ -66,12 +66,14 @@
 <tr><td>${dto.p_rate}</td></tr>
 <tr><td>투자기간</td></tr>
 <tr><td>${dto.p_term}</td></tr>
+<c:if test = "${dto.p_success == 'doing'}">
 <tr><td>투자금액</td></tr>
 <tr>
 <td>
 <input type="text" name="amount">
 </td>
 </tr>
+</c:if>
 <tr><td>펀딩기간 : 1주일</td></tr>
 <tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
 <tr>

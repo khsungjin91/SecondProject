@@ -62,7 +62,7 @@ window.location="signIn.dj";
  환급 시각 : 신청 후 약 20분 이내에 계좌이체 (단, 서버 작업이 진행중일 때에는 반영금액이 지체될 수 있습니다.)		<br/>
  환급 신청시 고객님의 휴대폰으로 수신된 환급 요청 동의번호를 확인 후, 해당 번호를 0000 형식으로 답변하면 환급이 완료됩니다.	<br/><br/>
 
-<c:if test="${dto.socialnum == null}">
+<c:if test="${dto.socialnum == null && dto.bankaccnum == null}">
 
 -환급을 진행하시려면 회원인증이 필요합니다.			<br/>
 -원천징수 정보까지 입력하셔야 최종인증이 완료됩니다.		<br/>
@@ -72,7 +72,7 @@ window.location="signIn.dj";
 
 </c:if>
 
-<c:if test="${dto.socialnum != null}">
+<c:if test="${dto.socialnum != null && dto.bankaccnum != null}">
 
 <form action="point_refunds.dj" method="post" name="userinput">
 환급가능액  ${total}원											<br/>

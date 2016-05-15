@@ -56,18 +56,18 @@ function fn_deleteText(obj){
 
 function calculrator(userinput){
 		
-		var term = document.userinput.p_term.value;
+		var term = document.userinput.p_term.value; 
 		var sum = document.userinput.p_price.value;
 		var rate = $("#rate").val();
 		
 	if(document.userinput.p_way.value == "원금만기 일시상환"){
-	 var total = parseFloat(sum)*(parseFloat(rate/12))/100;
+	 var total = parseInt(parseFloat(sum)*(parseFloat(rate/12))/100);
 	 
 	 $("#p_avg").val(total);
 	 
 	}else if(document.userinput.p_way.value == "원리금 균등 상환"){
 	
-	var total = (parseFloat(sum)/parseFloat(term)) + (parseFloat(sum)*(parseFloat(rate/12))/100);
+	var total = parseInt(parseFloat(sum)/parseFloat(term)) + parseInt(parseFloat(sum)*(parseFloat(rate/12))/100);
 		
 	$("#p_avg").val(total);
 	
@@ -107,7 +107,7 @@ function calculrator(userinput){
 <option value="원금만기 일시상환">원금만기 일시상환</option>
 </select>
 </td>
-<td><input type="text" name="p_avg" id="p_avg">만원</td>
+<td><input type="text" name="p_mrepay" id="p_avg">만원</td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
@@ -154,6 +154,7 @@ function calculrator(userinput){
 <option value="25">매월 25일 상환</option>		
 </select>
 <br/>
+<input type="hidden" value="${dto.memno}" name="p_memno">
 <input type="submit" value="펀딩시작">
 </form>
 </body>

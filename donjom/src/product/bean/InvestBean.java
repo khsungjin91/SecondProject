@@ -15,11 +15,8 @@ public class InvestBean {
 	private ModelAndView mv;
 	
 	private int total = 0;
-	private int interest = 0;
 	private int tax = 0;
 	private int realtotal = 0;
-	private int lastterm = 0;
-	
 	
 	@RequestMapping("/fund_ready.dj")
 	public ModelAndView calculator(RegisterDto dto,String amount){
@@ -28,7 +25,7 @@ public class InvestBean {
 		
 		int term = Integer.parseInt(dto.getP_term());
 		//³³ÀÔ¿ø±ÝÃÑ¾×
-		int borrowmoney = Integer.parseInt(amount+"0000");
+		int investmoney = Integer.parseInt(amount+"0000");
 		
 		int [] p_price = new int[term];
 		int [] interested = new int[term];
@@ -85,7 +82,7 @@ public class InvestBean {
 			total = (int)((Float.parseFloat(amount+"0000"))/term+
 					(int)(Float.parseFloat(amount+"0000") * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
 			
-			balance = borrowmoney;
+			balance = investmoney;
 			
 			for(int i = 0 ; i <term; i++){
 				
@@ -110,31 +107,12 @@ public class InvestBean {
 				supertotal += realtotaled[i];
 				
 			}
-			/* 
-			total = (int)((Float.parseFloat(dto.getP_price()+"0000"))/term+
-					(int)(Float.parseFloat(dto.getP_price()+"0000") * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
-			
-			int price = (int)((Float.parseFloat(dto.getP_price()+"0000"))/term);
-			
-			interest = (int)(Float.parseFloat(dto.getP_price()+"0000") * (Float.parseFloat(dto.getP_rate())/12)) / 100;
-			
-			tax = (int)(interest*27.5/100);
-			
-			realtotal = total-tax;
-			
-			for(int i = 0; i < term ; i++){
-				refunds[i] = total;
-				p_price[i] = price;
-				interested[i] = interest;
-				taxed[i] = tax;
-				realtotaled[i]=realtotal;
-			}
-			*/
 		}
-			
+		
+		mv.addObject("amount", amount);
 		mv.addObject("count", count);
 		mv.addObject("supertotal", supertotal);
-		mv.addObject("borrowmoney", borrowmoney);
+		mv.addObject("investmoney", investmoney);
 		mv.addObject("interesttotal", interesttotal);
 		mv.addObject("totaltotal",totaltotal);
 		mv.addObject("taxtotal",taxtotal);

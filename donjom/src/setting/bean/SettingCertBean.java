@@ -82,7 +82,7 @@ public class SettingCertBean {
 			String randomcode = bankcode[0] +""+ bankcode[1] +""+ bankcode[2] +"-"+ bankcode[3] +""+ bankcode[4]
 					+""+ bankcode[5] +""+ bankcode[6] +""+ bankcode[7] +""+ bankcode[8] +"-"+ bankcode[9] 
 							+""+ bankcode[10] +"-"+last;
-			
+			certDto.setNo(no);
 			certDto.setRandomacc(randomcode);
 			
 			sqlMap.insert("certinput", certDto);
@@ -98,9 +98,10 @@ public class SettingCertBean {
 			int setting = 1;
 			
 			String email = (String)session.getAttribute("memId");
-			
 			int no = (Integer)sqlMap.queryForObject("getno", email);
-	
+			
+			dtDto.setNo(no);
+			
 			sqlMap.update("detailinput", dtDto);
 			
 			mv.addObject("setting", setting);
