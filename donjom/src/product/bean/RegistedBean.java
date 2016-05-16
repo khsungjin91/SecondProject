@@ -42,4 +42,13 @@ public class RegistedBean {
 		return mv;
 	}
 	
+	@RequestMapping("/laon_history.dj")
+	public ModelAndView investhistory(){
+		
+		
+		
+		mv.setViewName("/profile/laon_history.jsp");
+		return mv;
+	}
+	
 }

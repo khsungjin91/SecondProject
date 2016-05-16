@@ -56,10 +56,10 @@ public class InvestedBean {
 		return mv;
 	}
 	
-	@RequestMapping("")
+	@RequestMapping("/invest_history.dj")
 	public ModelAndView investhistory(){
 		
-		mv.setViewName("");
+		mv.setViewName("/profile/invest_history.jsp");
 		return mv;
 	}
 	
