@@ -6,6 +6,8 @@
 <typeAlias alias="memInfo" type="setting.bean.SettingDto"/>
 <typeAlias alias="borrow" type="product.bean.BorrowDto"/>
 <typeAlias alias="evaluation" type="manager.bean.evaluationDto"/>
+<typeAlias alias="product" type="product.bean.RegisterDto"/>
+
 
 	<!-- 일반회원의 이름,메일,가입날짜 조회 -->
 	<select id ="m_member" resultClass="mem" >
@@ -48,6 +50,16 @@
 	<select id="borrowmn" resultClass="borrow">
 		select * from borrow where success='none'order by br_date desc
 	</select>
+	<!-- 대출관리-카테고리별 chart -->
+	<!-- 전체 대출 건수 -->
+	<select id="count-no" resultClass="product">
+		select count(no) from product	
+	</select>
+	<!-- 카테고리별 대출 건수  -->
+	<select id="count_category" resultClass="product">
+	select count(no) from product where p_category = #p_category#	
+	</select>
+	
 	
 	<!-- 심사list -->
 	<select id="evaluation" resultClass="evaluation">

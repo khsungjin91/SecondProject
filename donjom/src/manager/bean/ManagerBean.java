@@ -121,10 +121,15 @@ public class ManagerBean {
 	public ModelAndView managerborrowmn(){
 		List list =sqlMap.queryForList("borrowmn", null);
 		
+		
+		
 		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_borrowmn.jsp");
 		return mv;
 	}
+	
+	
+	
 	
 	//성진이가 한것입니다.
 	@RequestMapping("/manager_borrowlist.dj")
@@ -221,6 +226,6 @@ public class ManagerBean {
 		return mv;
 	}
 		
-
+	
 	
 }
