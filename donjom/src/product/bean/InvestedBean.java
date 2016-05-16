@@ -1,5 +1,7 @@
 package product.bean;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +59,15 @@ public class InvestedBean {
 	}
 	
 	@RequestMapping("/invest_history.dj")
-	public ModelAndView investhistory(){
+	public ModelAndView investhistory(HttpSession session){
 		
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		List list = sqlMap.queryForList("result.in_history", no);
+		
+		
+		mv.addObject("list",list);
 		mv.setViewName("/profile/invest_history.jsp");
 		return mv;
 	}

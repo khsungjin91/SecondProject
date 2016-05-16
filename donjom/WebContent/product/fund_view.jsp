@@ -8,11 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script>
+function check(email){
+var user = document.userinput;
 
+if(!user.amount.value){
+	alert("투자금액을 입력해 주세요");
+	user.amount.focus();
+	return false;
+}
+if(!email){
+	
+	alert("로그인 후 투자가능합니다.");
+	return false;
+}}
+
+</script>
 
 <h2>${dto.p_name}</h2>
 
-<form action="fund_ready.dj" method="post">
+<form action="fund_ready.dj" method="post" name="userinput">
 <div style="float: left;">
 <table border="1">
 <tr>
@@ -67,7 +82,7 @@
 <tr><td>${dto.p_rate}%</td></tr>
 <tr><td>투자기간</td></tr>
 <tr><td>${dto.p_term}개월</td></tr>
-<c:if test = "${dto.p_success == 'doing'}">
+<c:if test = "${dto.p_success == 'doing' &&  check == 0}">
 <tr><td>투자금액</td></tr>
 <tr>
 <td>
@@ -81,8 +96,11 @@
 <c:if test="${dto.p_success == 'success'}">
 <td><input type="button" value="펀딩성공"></td>
 </c:if>
-<c:if test="${dto.p_success == 'doing'}">
-<td><input type="submit" value="투자미리보기"></td>
+<c:if test="${dto.p_success == 'doing' && check == 0}">
+<td><input type="submit" value="투자미리보기" onclick="return check(${sessionScope.memId})"></td>
+</c:if>
+<c:if test="${dto.p_success == 'doing' && check != 0}">
+<td><input type="button" value="투자완료"></td>
 </c:if>
 <c:if test="${dto.p_success == 'fail'}">
 <td><input type="button" value="펀딩실패"></td>

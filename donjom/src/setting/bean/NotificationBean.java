@@ -27,7 +27,7 @@ public class NotificationBean {
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
-		List list = sqlMap.queryForList("getmessage", no);
+		List list = sqlMap.queryForList("result.getmessage", no);
 		
 		System.out.println(list.size());
 		
