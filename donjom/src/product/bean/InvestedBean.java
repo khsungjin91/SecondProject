@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import result.bean.MessageBean;
+import result.bean.MessageDto;
 import setting.bean.SettingDto;
 
 @Controller
@@ -19,7 +21,10 @@ public class InvestedBean {
 	private ModelAndView mv;
 	
 	@RequestMapping("/invest_start.dj")
-	public ModelAndView invested(HttpSession session,SettingDto meminfodto,InvestDto investdto,RegisterDto registerDto){
+	public ModelAndView invested(HttpSession session,SettingDto meminfodto,InvestDto investdto,
+			RegisterDto registerDto,MessageDto dto){
+		
+		MessageBean msm = new MessageBean();
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
@@ -37,10 +42,24 @@ public class InvestedBean {
 		investdto.setI_times(registerDto.getP_term());
 		investdto.setI_profit(registerDto.getP_rate());
 		investdto.setI_repayday(registerDto.getP_repayday());
-	
+		
+		msm.investMessageGo(investdto,dto,sqlMap);
+		
 		sqlMap.insert("investstart", investdto);
+		sqlMap.update("updateinvest", investdto);
+		//무조건 맨밑에 있어야함
+		investdto.setI_invest(investdto.getI_invest()+"0000");
+		sqlMap.update("input_invest", investdto);
+		//
 		
 		mv.setViewName("/product/fund_view.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("")
+	public ModelAndView investhistory(){
+		
+		mv.setViewName("");
 		return mv;
 	}
 	

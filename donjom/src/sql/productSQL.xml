@@ -6,6 +6,7 @@
 <typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
 <typeAlias alias="investDto" type="product.bean.InvestDto"/>
+<typeAlias alias="messageDto" type="result.bean.MessageDto"/>
 
 <select id="maxno" resultClass="int" parameterClass="int">
 	select max(no) from borrow where memno=#memno#
@@ -56,10 +57,18 @@
 </insert>
 
 <insert id="productinput" parameterClass="registerDto">
-	insert into product values(PRODUCT_SEQ.nextval,#p_category#,#p_name#,#p_code#,#p_price#,
+	insert into product values(PRODUCT_SEQ.NEXTVAL,#p_category#,#p_name#,#p_code#,#p_price#,
 								#p_content#,'test','0','0',#p_purpose#,#p_way#,#p_rate#,
 								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#,#p_memno#,#p_mrepay#)
 </insert>
+
+<insert id="messageIn" parameterClass="messageDto">
+	insert into message values(message_seq.nextval,#m_pcode#,#m_memno#,#m_content#,sysdate,#m_where#,#m_check#)
+</insert>
+
+<update id="updateinvest" parameterClass="investDto">
+	update product set p_people = p_people + 1,p_invest=p_invest+#i_invest# where p_code=#i_pcode#
+</update>
 
 <delete id="cancleborrow" parameterClass="java.util.Map">
 	delete from borrow where no=#no# and memno=#memno#

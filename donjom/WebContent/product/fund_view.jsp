@@ -58,19 +58,20 @@
 
 <div style="float: left;">
 <table border="1">
-<tr><td>투자된금액/${dto.p_price}</td></tr>
+<tr><td>${dto.p_invest}만원/${dto.p_price}만원</td></tr>
 <tr><td>투자자 인원수</td></tr>
+<tr><td>${dto.p_people}명</td></tr>
 <tr><td>상환방식</td></tr>
 <tr><td>${dto.p_way}</td></tr>
 <tr><td>수익률</td></tr>
-<tr><td>${dto.p_rate}</td></tr>
+<tr><td>${dto.p_rate}%</td></tr>
 <tr><td>투자기간</td></tr>
-<tr><td>${dto.p_term}</td></tr>
+<tr><td>${dto.p_term}개월</td></tr>
 <c:if test = "${dto.p_success == 'doing'}">
 <tr><td>투자금액</td></tr>
 <tr>
 <td>
-<input type="text" name="amount">
+<input type="text" name="amount">만원
 </td>
 </tr>
 </c:if>
@@ -91,7 +92,6 @@
 </table>
 </div>
 </form>
-
 
 </body>
 </html>

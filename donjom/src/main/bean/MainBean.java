@@ -28,7 +28,7 @@ public class MainBean {
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
 		
-		int total = pdto.getTotal_ch() - pdto.getTotal_re();
+		long total = pdto.getTotal_ch() - pdto.getTotal_re();
 		mv.addObject("total", total);
 		}
 		

@@ -4,14 +4,7 @@
 <sqlMap>
 
 <typeAlias alias="pointDto" type="point.bean.PointDto"/>
-
-<select id="getchar" resultClass="int" parameterClass="int">
-	select sum(ch_price) from charging where no=#no#
-</select>
-
-<select id="getre" resultClass="int" parameterClass="int">
-	select sum(re_price) from refunds where no=#no#
-</select>
+<typeAlias alias="investDto" type="product.bean.InvestDto"/>
 
 <select id="get_total" resultClass="pointDto" parameterClass="int">
 	select total_ch,total_re from memprice where no=#no#
@@ -30,12 +23,17 @@
 </insert>
 
 <update id="input_total_ch" parameterClass="pointDto">
-	update memprice set total_ch=#total_ch# where no=#no#
+	update memprice set total_ch=total_ch + #total_ch# where no=#no#
 </update>
 
 <update id="input_total_re" parameterClass="pointDto">
-	update memprice set total_re=#total_re# where no=#no#
+	update memprice set total_re=total_re + #total_re# where no=#no#
 </update>
+
+<update id="input_invest" parameterClass="investDto">
+	update memprice set total_ch= total_ch - #i_invest# where no = #i_memnum#
+</update>
+
 
 
 </sqlMap>

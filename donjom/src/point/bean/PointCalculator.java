@@ -1,6 +1,5 @@
 package point.bean;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,8 @@ public class PointCalculator {
 		dto.setCh_price(ch_price);
 		
 		sqlMap.insert("ch_noinput", dto);
-		int ch_point = (Integer)sqlMap.queryForObject("getchar", no);
 		
-		dto.setTotal_ch(ch_point);
+		dto.setTotal_ch(ch_price);
 		
 		sqlMap.update("input_total_ch", dto);
 		
@@ -51,9 +49,8 @@ public class PointCalculator {
 		dto.setRe_price(re_price);
 		
 		sqlMap.insert("re_noinput", dto);
-		int re_point = (Integer)sqlMap.queryForObject("getre", no);
 		
-		dto.setTotal_re(re_point);
+		dto.setTotal_re(re_price);
 		
 		sqlMap.update("input_total_re", dto);
 		

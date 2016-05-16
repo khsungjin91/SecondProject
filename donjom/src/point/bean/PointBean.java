@@ -20,14 +20,13 @@ public class PointBean {
 	
 	@RequestMapping("/point_deposit.dj")
 	public ModelAndView pointDeposit(PointDto pdto,SettingDto dto,HttpSession session){
-		int total = 0;
+		long total = 0;
 		String email = (String)session.getAttribute("memId");
 		
 		if(session.getAttribute("memId") != null){
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
-	
 		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
 			
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
@@ -42,7 +41,7 @@ public class PointBean {
 	
 	@RequestMapping("/point_withdrow.dj")
 	public ModelAndView pointWithdrow(PointDto pdto,SettingDto dto,HttpSession session){
-		int total=0;
+		long total=0;
 		String email = (String)session.getAttribute("memId");
 		
 		
@@ -50,8 +49,8 @@ public class PointBean {
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
-		
 		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
+
 			
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
 		}

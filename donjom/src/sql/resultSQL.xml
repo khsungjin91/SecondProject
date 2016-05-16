@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+<typeAlias alias="messageDto" type="result.bean.MessageDto"/>
+
+<select id="getmessage" resultClass="messageDto" parameterClass="int">
+	select * from message where m_memno=#no# order by m_time desc
+</select>
+
+</sqlMap>
