@@ -2,6 +2,7 @@ package setting.bean;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import setting.bean.pagingAction;
 import result.bean.PagingBean;
 import sign.bean.memberDto;
 
@@ -109,9 +111,13 @@ public class SettingCertBean {
 		}
 		
 		@RequestMapping("/setting_session_history.dj")
-		public ModelAndView sessionChaser(HttpSession session,PagingBean page){
+		public ModelAndView sessionChaser(HttpSession session,PagingBean page,HttpServletRequest request){
 			String email = (String)session.getAttribute("memId");
 			
+			String pagecurrent = request.getParameter("currentPage");
+			
+			List list = null;
+			pagingAction input = null;
 			String pagingHtml;
 			int totalCount = 0;
 			int currentPage = 0;
@@ -119,15 +125,24 @@ public class SettingCertBean {
 			int blockPage = 10;
 			int lastCount = 0;
 			
+			if(pagecurrent != null){
+				
+				currentPage = Integer.parseInt(pagecurrent);
+			}else{
+				
+				currentPage = 1;
+			}
+	
 			if(session.getAttribute("memId") != null){
 			int no = (Integer)sqlMap.queryForObject("getno", email);
-			List list = sqlMap.queryForList("getsession", no);
-			mv.addObject("session", list);
+			list = sqlMap.queryForList("getsession", no);
 			totalCount = list.size();
 			}
-			pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage);
+			pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, list);
+			list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list);
 			
-			
+			mv.addObject("session", list);
+			mv.addObject("list", list);
 			mv.addObject("pagingHtml", pagingHtml);
 			mv.setViewName("/profile/setting_session_history.jsp");
 			return mv;
