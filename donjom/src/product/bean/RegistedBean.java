@@ -64,6 +64,7 @@ public class RegistedBean {
 		
 		
 		
+		
 		mv.setViewName("/profile/laon_history.jsp");
 		return mv;
 	}

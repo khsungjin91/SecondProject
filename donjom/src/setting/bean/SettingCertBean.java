@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import result.bean.PagingBean;
 import sign.bean.memberDto;
 
 @Controller
@@ -37,8 +38,6 @@ public class SettingCertBean {
 			mv.setViewName("/profile/setting_cert_person.jsp");
 			return mv;
 		}
-		
-		
 		
 		@RequestMapping("/setting_cert_pro.dj")
 		public ModelAndView personCertPro(SettingDto certDto,HttpSession session){
@@ -110,16 +109,26 @@ public class SettingCertBean {
 		}
 		
 		@RequestMapping("/setting_session_history.dj")
-		public ModelAndView sessionChaser(HttpSession session){
-			
+		public ModelAndView sessionChaser(HttpSession session,PagingBean page){
 			String email = (String)session.getAttribute("memId");
+			
+			String pagingHtml;
+			int totalCount = 0;
+			int currentPage = 0;
+			int blockCount = 10;
+			int blockPage = 10;
+			int lastCount = 0;
 			
 			if(session.getAttribute("memId") != null){
 			int no = (Integer)sqlMap.queryForObject("getno", email);
 			List list = sqlMap.queryForList("getsession", no);
 			mv.addObject("session", list);
+			totalCount = list.size();
 			}
+			pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage);
 			
+			
+			mv.addObject("pagingHtml", pagingHtml);
 			mv.setViewName("/profile/setting_session_history.jsp");
 			return mv;
 		}

@@ -52,5 +52,8 @@ window.location="signIn.dj";
 </tr>
 </c:forEach>
 </table>
+
+<div>${pagingHtml}</div>
+
 </body>
 </html>
