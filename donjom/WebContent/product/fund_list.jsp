@@ -26,7 +26,18 @@
 		<ul>
 			<li>목표${list.p_price}만원  연${list.p_rate}%수익률</li>
 			<li>${list.p_category} | 만기${list.p_term}개월</li>
-			<li>%진행 ${list.p_people} ${list.p_success}</li>
+			<li>%진행 ${list.p_people} 
+			<c:if test = "${list.p_success == 'doing'}">
+			/ 펀딩진행중
+			</c:if>
+			<c:if test = "${list.p_success == 'success'}">
+			/ 펀딩성공
+			</c:if>
+			<c:if test = "${list.p_success == 'fail'}">
+			/ 펀딩실패
+			</c:if>
+			
+			</li>
 		</ul>
 	</div>
 </div>

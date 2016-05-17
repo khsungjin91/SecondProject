@@ -31,7 +31,7 @@
             <li><a href="loan_step1.dj" ><b>대출JOM</b></a></li>
 			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
 			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
-			<li><a href="/product/DJex.dj" ><b>연습JOM</b></a></li>
+			<li><a href="ex.dj" ><b>연습JOM</b></a></li>
 			<li><a href="DJcalculator.dj" data-target="#mymodal"><b>계산기JOM</b></a></li>
         
           </ul>

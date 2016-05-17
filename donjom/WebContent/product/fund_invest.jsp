@@ -7,6 +7,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script>
+
+function session(id){
+	
+	var checkbox = document.userinput;
+	
+	if(!checkbox.confirm.checked){
+		alert("약관에 동의를 하셔야 합니다.");
+		return false;
+	}
+	
+	if(!id){
+		alert("로그인 후 투자가능합니다.");
+		return false;
+	}
+}
+
+</script>
 </head>
 <body>
 
@@ -108,16 +126,16 @@
 </div>
 
 ${dto.p_repayday}개월 ${dto.p_way}, 연${dto.p_rate}수익률의 원리금수취권에 ${dto.p_price}을/를 참가합니다. <br/>
-<form action="invest_start.dj" method="post">
+<form action="invest_start.dj" method="post" name="userinput">
 
 <input type="hidden" value="${amount}" name="i_invest">
 <input type="hidden" value="${dto.p_code}" name="i_pcode">
 <input type="hidden" value="${dto.p_name}" name="i_pname">
 
-<input type="checkbox" name="" value=""> 투자이용약관 
+<input type="checkbox" name="confirm" value=""> 투자이용약관 
 <a href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br/><br/>
 
-<input type="submit" value="투자하기">
+<input type="submit" value="투자하기" onclick="return session(${sessionScope.memId})">
 
 </form>
 

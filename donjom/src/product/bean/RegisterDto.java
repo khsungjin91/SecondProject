@@ -8,8 +8,6 @@ public class RegisterDto {
 	
 	
 	
-	
-
 
 	public String getP_mrepay() {
 		return p_mrepay;

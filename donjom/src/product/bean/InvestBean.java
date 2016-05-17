@@ -1,10 +1,14 @@
 package product.bean;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import point.bean.PointDto;
 
 @Controller
 public class InvestBean {
@@ -19,8 +23,12 @@ public class InvestBean {
 	private int realtotal = 0;
 	
 	@RequestMapping("/fund_ready.dj")
-	public ModelAndView calculator(RegisterDto dto,String amount){
-	
+	public ModelAndView calculator(RegisterDto dto,String amount,HttpSession session,PointDto pointdto){
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		pointdto = (PointDto)sqlMap.queryForObject("get_total", no);
+		
 		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
 		
 		int term = Integer.parseInt(dto.getP_term());

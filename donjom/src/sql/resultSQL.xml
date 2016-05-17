@@ -4,6 +4,7 @@
 
 <typeAlias alias="investDto" type="product.bean.InvestDto"/>
 <typeAlias alias="messageDto" type="result.bean.MessageDto"/>
+<typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
 
 <select id="getmessage" resultClass="messageDto" parameterClass="int">
 	select * from message where m_memno=#no# order by m_time desc
@@ -16,5 +17,9 @@
 <select id="investcheck" resultClass="int" parameterClass="java.util.Map">
 	select count(*) from invest where i_memnum=#no# and i_pcode=#p_code#
 </select>
+
+<update id="completefund" parameterClass="registerDto">
+	update product set p_success=#p_success# where p_code=#p_code#
+</update>
 
 </sqlMap>

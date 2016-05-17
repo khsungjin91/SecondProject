@@ -49,12 +49,23 @@ public class InvestedBean {
 		
 		sqlMap.insert("investstart", investdto);
 		sqlMap.update("updateinvest", investdto);
+		
+		registerDto.setP_code(investdto.getI_pcode());
+		registerDto = (RegisterDto)sqlMap.queryForObject("productone", registerDto);
+		
+		if(Integer.parseInt(registerDto.getP_price()) == 
+				Integer.parseInt(registerDto.getP_invest())){
+			
+			registerDto.setP_success("success");
+			
+			sqlMap.update("result.completefund", registerDto);
+		}
 		//무조건 맨밑에 있어야함
 		investdto.setI_invest(investdto.getI_invest()+"0000");
 		sqlMap.update("input_invest", investdto);
 		//
 		
-		mv.setViewName("/product/fund_view.jsp");
+		mv.setViewName("/product/fund_investPro.jsp");
 		return mv;
 	}
 	
@@ -65,7 +76,6 @@ public class InvestedBean {
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		List list = sqlMap.queryForList("result.in_history", no);
-		
 		
 		mv.addObject("list",list);
 		mv.setViewName("/profile/invest_history.jsp");

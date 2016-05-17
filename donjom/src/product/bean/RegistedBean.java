@@ -35,7 +35,9 @@ public class RegistedBean {
 		Map map = new HashMap();
 		String email = (String)session.getAttribute("memId");
 		int check = 0;
-
+		int limit = 0;
+		int limit2= 0;
+		
 		if(session.getAttribute("memId") != null){
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
@@ -48,9 +50,16 @@ public class RegistedBean {
 		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
 		List contentlist = sqlMap.queryForList("contentlist", p_code);
 		List filelist = sqlMap.queryForList("filelist", p_code);
-
 		
+		limit = Integer.parseInt(dto.getP_price())/5;
 		
+		limit2 = Integer.parseInt(dto.getP_price()) - Integer.parseInt(dto.getP_invest());
+		
+		if(limit > limit2){
+			limit = limit2;
+		}
+		
+		mv.addObject("limit", limit);
 		mv.addObject("check", check);
 		mv.addObject("dto",dto);
 		mv.addObject("contentlist",contentlist);
@@ -58,6 +67,7 @@ public class RegistedBean {
 		mv.setViewName("/product/fund_view.jsp");
 		return mv;
 	}
+	
 	
 	@RequestMapping("/laon_history.dj")
 	public ModelAndView investhistory(){

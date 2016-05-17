@@ -6,24 +6,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-</head>
-<body>
 <script>
-function check(email){
+function check(){
+	
 var user = document.userinput;
+var price = ${dto.p_price};
+var invest = ${dto.p_invest};
+var mi = price - invest;
+var limit = ${limit};
 
 if(!user.amount.value){
 	alert("투자금액을 입력해 주세요");
 	user.amount.focus();
 	return false;
 }
-if(!email){
-	
-	alert("로그인 후 투자가능합니다.");
+if(user.amount.value == '0'){
+	alert("투자금액은 0이 될 수 없습니다.");
+	user.amount.focus();
 	return false;
-}}
+}
+if(user.amount.value > limit){
+	alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
+	user.amount.focus();
+	return false;
+}
+if(user.amount.value > mi){
+	alert("대출가능금액을 초과합니다 \n\n더 낮은 금액으로 투자해주세요.");
+	user.amount.focus();
+	return false;
+}
 
+}
 </script>
+</head>
+<body>
 
 <h2>${dto.p_name}</h2>
 
@@ -91,13 +107,17 @@ if(!email){
 </tr>
 </c:if>
 <tr><td>펀딩기간 : 1주일</td></tr>
+<c:if test="${dto.p_success == 'doing' && check == 0}">
+<tr><td>최대투자가능금액</td></tr>
+<tr><td>${limit}만원</td></tr>
 <tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
+</c:if>
 <tr>
 <c:if test="${dto.p_success == 'success'}">
 <td><input type="button" value="펀딩성공"></td>
 </c:if>
 <c:if test="${dto.p_success == 'doing' && check == 0}">
-<td><input type="submit" value="투자미리보기" onclick="return check(${sessionScope.memId})"></td>
+<td><input type="submit" value="투자미리보기" onclick="return check()"></td>
 </c:if>
 <c:if test="${dto.p_success == 'doing' && check != 0}">
 <td><input type="button" value="투자완료"></td>
