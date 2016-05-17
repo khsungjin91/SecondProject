@@ -50,15 +50,24 @@
 	<select id="borrowmn" resultClass="borrow">
 		select * from borrow where success='none'order by br_date desc
 	</select>
+	
 	<!-- 대출관리-카테고리별 chart -->
-	<!-- 전체 대출 건수 -->
-	<select id="count-no" resultClass="product">
-		select count(no) from product	
+	<!-- 카테고리 코드 -->
+	<select id="size" resultClass="int">
+		select count(*) from category	
 	</select>
+	
+	<select id="c_code" resultClass="String">
+		select c_code from category
+	</select>
+	
 	<!-- 카테고리별 대출 건수  -->
-	<select id="count_category" resultClass="product">
-	select count(no) from product where p_category = #p_category#	
+	<select id="count_category" resultClass="int" parameterClass="String">
+	select count(*) from product where p_category = #p_category#	
 	</select>
+	
+	
+	
 	
 	
 	<!-- 심사list -->

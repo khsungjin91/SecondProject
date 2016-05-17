@@ -36,6 +36,11 @@
 <title>CanvasJS Example</title>
 </head>
 <body>
+<c:forEach var="avg" items="${avg}">
+
+<div>${avg}</div>
+
+</c:forEach>
 
 	<div id="category_chart" style="height: 400px; width: 100%;"></div>
 	

@@ -29,6 +29,8 @@ public class ManagerBean {
 	
 	@RequestMapping("/manager_main.dj")
 	public ModelAndView managermain(){
+		
+		
 		mv.setViewName("/manager/manager_main.jsp");
 		return mv;
 	}
@@ -116,13 +118,36 @@ public class ManagerBean {
 		return mv;
 	}
 	
-	//대출신청list
+	//대출신청list,차트 
 	@RequestMapping("/manager_borrowmn.dj")
 	public ModelAndView managerborrowmn(){
-		List list =sqlMap.queryForList("borrowmn", null);
+	
+		List list = sqlMap.queryForList("borrowmn", null);
+		
+		int size = (int)sqlMap.queryForObject("size", null);
+		
+		List c_code = sqlMap.queryForList("c_code", null);
+		
+		int []count=new int[c_code.size()];
+		float[] avg = new float[c_code.size()];
+		int total=0;
+				
+		for(int i =0; i<c_code.size();i++){
+			count[i] = (int)sqlMap.queryForObject("count_category", c_code.get(i));		
+			total += count[i];	
+		}
 		
 		
+		for(int i=0;i<c_code.size();i++){
+			
+			avg[i]=(count[i]/total) * 100;
+			
+		System.out.println("avg"+i+""+avg[i]);
+		}
+		System.out.println("total"+total);
 		
+		
+		mv.addObject("avg",avg);
 		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_borrowmn.jsp");
 		return mv;
