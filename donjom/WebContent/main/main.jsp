@@ -11,6 +11,17 @@
 	<link href="bt/css/bootstrap.min.css" rel="stylesheet">
  	<link href="bt/css/bootstrap-theme.min.css" rel="stylesheet">
 <title>main page</title>
+<script>
+
+function page(){
+	
+	var url = "/donjom/calculator.dj";
+	
+	window.open(url, "width=200, height=300, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	
+}
+
+</script>
 </head>
 <body>
 
@@ -32,7 +43,7 @@
 			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
 			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
 			<li><a href="ex.dj" ><b>연습JOM</b></a></li>
-			<li><a href="DJcalculator.dj" data-target="#mymodal"><b>계산기JOM</b></a></li>
+			<li><a href="#" data-target="#mymodal" onclick="return page()"><b>계산기JOM</b></a></li>
         
           </ul>
           <ul class="nav navbar-nav navbar-right">	
