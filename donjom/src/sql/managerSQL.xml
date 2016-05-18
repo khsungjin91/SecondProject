@@ -7,7 +7,7 @@
 <typeAlias alias="borrow" type="product.bean.BorrowDto"/>
 <typeAlias alias="evaluation" type="manager.bean.evaluationDto"/>
 <typeAlias alias="product" type="product.bean.RegisterDto"/>
-
+<typeAlias alias="invest" type="product.bean.InvestDto"/>
 
 	<!-- 일반회원의 이름,메일,가입날짜 조회 -->
 	<select id ="m_member" resultClass="mem" >
@@ -37,6 +37,12 @@
 		and m.no=i.no
 	</select>
 	
+	<!-- 인증회원-상세-투자 -->
+	<select id="invest" resultClass="invest">
+		select * from invest order by i_pcode asc
+	</select>
+	
+	
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
 	select * from borrow where success='success' order by br_date desc
@@ -59,6 +65,10 @@
 	
 	<select id="c_code" resultClass="String">
 		select c_code from category
+	</select>
+	
+	<select id="c_name" resultClass="String" parameterClass="String">
+		select c_name from category	where c_code = #c_code#
 	</select>
 	
 	<!-- 카테고리별 대출 건수  -->

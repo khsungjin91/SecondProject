@@ -28,7 +28,10 @@
 			<td>가상계좌</td>
 			<td>거래은행</td>
 			<td>계좌번호</td>
+			<td>이메일</td>
+			<td>가입날짜</td>
 			<td>진행상황</td>
+			
 		</tr>
 	<c:if test="${setting == 1}">
 	<c:forEach var="list" items="${list}">
@@ -41,8 +44,10 @@
 		<td>${list.randomacc}</td>
 		<td>${list.bankcode}</td>
 		<td>${list.bankaccnum}</td>
+		<td>${list.email}</td>
+		<td>${list.join}</td>
 		<td>
-		<input type="button" value="상세보기" onclick="javascript:location.href='manager_view.dj'"/>		
+		<input type="button" value="상세보기" onclick="javascript:location.href='manager_view.dj?email=${list.email}'"/>		
 		</td>
 		</tr>
 	</c:forEach>
@@ -59,6 +64,8 @@
 		<td>${list.randomacc}</td>
 		<td>${list2.bankcode}</td>
 		<td>${list2.bankaccnum}</td>
+		<td>${list.email}</td>
+		<td>${list.join}</td>
 		<td>
 		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj'"/>
 		</td>

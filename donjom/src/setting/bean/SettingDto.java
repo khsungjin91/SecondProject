@@ -3,7 +3,7 @@ package setting.bean;
 public class SettingDto {
 
 	
-		private String name,birth,gender,mobilenum,bankcode,bankaccnum,socialnum,address,randomacc;
+		private String name,birth,gender,mobilenum,bankcode,bankaccnum,socialnum,address,randomacc,email,join;
 		private int no;
 		
 		
@@ -11,6 +11,22 @@ public class SettingDto {
 		
 		public String getRandomacc() {
 			return randomacc;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public String getJoin() {
+			return join;
+		}
+
+		public void setJoin(String join) {
+			this.join = join;
 		}
 
 		public void setRandomacc(String randomacc) {

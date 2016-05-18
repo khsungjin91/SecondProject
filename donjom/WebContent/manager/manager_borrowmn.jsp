@@ -15,11 +15,11 @@
 			data : [ {
 				type : "pie",
 				dataPoints : [ {
-					y : 8.16,
+					y : 83.24,
 					legendText : "사업자",
 					label : "사업자"
 				}, {
-					y : 83.24,
+					y : 8.16,
 					legendText : "개인신용",
 					label : "개인신용"
 				}, {
@@ -32,18 +32,23 @@
 		chart.render();
 	}
 </script>
+
 <script src="assets/source/canvasjs.min.js"></script>
+
 <title>CanvasJS Example</title>
 </head>
 <body>
-<c:forEach var="avg" items="${avg}">
 
-<div>${avg}</div>
 
-</c:forEach>
+	<c:forEach var="avg" items="${avg}">
+
+		<div>${avg}</div>
+
+	</c:forEach>
+
 
 	<div id="category_chart" style="height: 400px; width: 100%;"></div>
-	
+
 	<div id="br_requestList">
 		<table border="1">
 			<tr>

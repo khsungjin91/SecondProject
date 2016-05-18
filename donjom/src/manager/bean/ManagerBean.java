@@ -100,7 +100,10 @@ public class ManagerBean {
 	//상세페이지 - 투자
 	@RequestMapping("/manager_invest.dj")
 	public ModelAndView managerinvest(){
+		List list=sqlMap.queryForList("invest", null);
+		
 		System.out.println("invest");
+		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
 	}
@@ -123,30 +126,34 @@ public class ManagerBean {
 	public ModelAndView managerborrowmn(){
 	
 		List list = sqlMap.queryForList("borrowmn", null);
-		
 		int size = (int)sqlMap.queryForObject("size", null);
-		
 		List c_code = sqlMap.queryForList("c_code", null);
 		
 		int []count=new int[c_code.size()];
+		String [] c_name = new String[c_code.size()];
 		float[] avg = new float[c_code.size()];
-		int total=0;
+		float total=0;
 				
 		for(int i =0; i<c_code.size();i++){
 			count[i] = (int)sqlMap.queryForObject("count_category", c_code.get(i));		
-			total += count[i];	
+			c_name[i] = (String)sqlMap.queryForObject("c_name", c_code.get(i));
+			total +=count[i];	
 		}
 		
 		
 		for(int i=0;i<c_code.size();i++){
 			
-			avg[i]=(count[i]/total) * 100;
+			avg[i]=((float)(count[i]/total)) * 100;
 			
-		System.out.println("avg"+i+""+avg[i]);
+		System.out.println("avg"+i+""+avg[i]+"=="+avg.length);
 		}
 		System.out.println("total"+total);
+		System.out.println("인텍스"+c_name[0]);
+		System.out.println(c_name);
 		
 		
+		mv.addObject("c_name",c_name);
+		mv.addObject("c_code",c_code);
 		mv.addObject("avg",avg);
 		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_borrowmn.jsp");
