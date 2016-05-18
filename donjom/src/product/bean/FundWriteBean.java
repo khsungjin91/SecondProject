@@ -23,20 +23,26 @@ public class FundWriteBean {
 	private ModelAndView mv;
 	
 	@RequestMapping("/loan_step1.dj")
-	public ModelAndView write1(SettingDto sedto,memberDto memdto,HttpSession session){
+	public ModelAndView write1(SettingDto settingdto,memberDto memdto,HttpSession session){
 		
 		String email=(String)session.getAttribute("memId");
 		if(session.getAttribute("memId") != null){
 		
 		memdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
 		
-		sedto = (SettingDto)sqlMap.queryForObject("getmemberInfo", memdto.getNo());
-		
+		settingdto = (SettingDto)sqlMap.queryForObject("getmemberInfo", memdto.getNo());
 		
 		mv.addObject("memdto", memdto);
-		mv.addObject("sedto", sedto);
+		mv.addObject("sedto", settingdto);
 		}
+	int borrowcount  = (Integer)sqlMap.queryForObject("onlyoneborrow", memdto.getNo());
+		
+	if(borrowcount == 1){
+		mv.addObject("borrowcount", borrowcount);
+		mv.setViewName("/product/fund_already.jsp");
+	}else{
 		mv.setViewName("/product/fund_writeForm.jsp");
+	}
 		return mv;
 	}
 	
@@ -56,7 +62,7 @@ public class FundWriteBean {
 	}
 	
 	@RequestMapping("/loan_writePro.dj")
-	public ModelAndView writePro(HttpSession session,BorrowDto borrowDto){
+	public ModelAndView writePro(HttpSession session,BorrowDto borrowDto,SettingDto dto){
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
@@ -65,6 +71,9 @@ public class FundWriteBean {
 	
 		sqlMap.update("basicborrow", borrowDto);
 		
+		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo",no);
+		
+		mv.addObject("dto", dto);
 		mv.setViewName("/product/fund_writePro.jsp");
 		return mv;
 	}

@@ -36,6 +36,10 @@
 	select * from p_file where p_code=#p_code#
 </select>
 
+<select id="onlyoneborrow" resultClass="int" parameterClass="int">
+	select count(*) from borrow where memno=#no# and success='none'
+</select>
+
 <insert id="inputcontent" parameterClass="registerDto">
 	insert into p_content values(content_seq.nextval,#p_code#,#p_content#,sysdate)
 </insert>

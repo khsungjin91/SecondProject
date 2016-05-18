@@ -25,7 +25,17 @@ public class InvestBean {
 	@RequestMapping("/fund_ready.dj")
 	public ModelAndView calculator(RegisterDto dto,String amount,HttpSession session,PointDto pointdto){
 		String email = (String)session.getAttribute("memId");
+		
+		
+		if(email == null){
+			mv.setViewName("/user/signIn.jsp");
+		}else{
+		
 		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		pointdto = (PointDto)sqlMap.queryForObject("get_total", no);
+		
+		long mypoint = pointdto.getTotal_ch() - pointdto.getTotal_re(); 
 		
 		pointdto = (PointDto)sqlMap.queryForObject("get_total", no);
 		
@@ -116,7 +126,8 @@ public class InvestBean {
 				
 			}
 		}
-		
+			
+		mv.addObject("mypoint", mypoint);
 		mv.addObject("amount", amount);
 		mv.addObject("count", count);
 		mv.addObject("supertotal", supertotal);
@@ -131,6 +142,7 @@ public class InvestBean {
 		mv.addObject("p_price",p_price);
 		mv.addObject("dto", dto);
 		mv.setViewName("/product/fund_invest.jsp");
+		}
 		return mv;
 	}
 	

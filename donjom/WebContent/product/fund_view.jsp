@@ -44,6 +44,7 @@ if(user.amount.value > mi){
 <h2>${dto.p_name}</h2>
 
 <form action="fund_ready.dj" method="post" name="userinput">
+<input type="hidden" name="email" value="${email}">
 <div style="float: left;">
 <table border="1">
 <tr>
@@ -62,7 +63,7 @@ if(user.amount.value > mi){
 <td>구분</td><td>만기</td><td>수익률</td><td>대출금액</td><td>상환방식</td><td>월상환액</td>
 </tr>
 <tr>
-<td>${dto.p_category}</td><td>${dto.p_term}</td><td>${dto.p_rate}</td><td>${dto.p_price}</td><td>${dto.p_way}</td><td>${dto.p_mrepay}</td>
+<td>${dto.p_category}</td><td>${dto.p_term}개월</td><td>${dto.p_rate}%</td><td>${dto.p_price}만원</td><td>${dto.p_way}</td><td>${dto.p_mrepay}만원</td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
@@ -110,8 +111,8 @@ if(user.amount.value > mi){
 <c:if test="${dto.p_success == 'doing' && check == 0}">
 <tr><td>최대투자가능금액</td></tr>
 <tr><td>${limit}만원</td></tr>
-<tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
 </c:if>
+<tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
 <tr>
 <c:if test="${dto.p_success == 'success'}">
 <td><input type="button" value="펀딩성공"></td>

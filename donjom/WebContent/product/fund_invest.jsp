@@ -9,19 +9,22 @@
 <title>Insert title here</title>
 <script>
 
-function session(id){
+function session(){
 	
+	var mypoint = ${mypoint};
 	var checkbox = document.userinput;
+	var amount = checkbox.i_invest.value + '0000';
 	
 	if(!checkbox.confirm.checked){
+
 		alert("약관에 동의를 하셔야 합니다.");
 		return false;
 	}
-	
-	if(!id){
-		alert("로그인 후 투자가능합니다.");
+	if(mypoint < amount){
+		alert("투자금이 보유금액을 초과합니다. 충전해주세요");
 		return false;
 	}
+
 }
 
 </script>
@@ -135,7 +138,7 @@ ${dto.p_repayday}개월 ${dto.p_way}, 연${dto.p_rate}수익률의 원리금수취권에 ${dto
 <input type="checkbox" name="confirm" value=""> 투자이용약관 
 <a href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br/><br/>
 
-<input type="submit" value="투자하기" onclick="return session(${sessionScope.memId})">
+<input type="submit" value="투자하기" onclick="return session()">
 
 </form>
 

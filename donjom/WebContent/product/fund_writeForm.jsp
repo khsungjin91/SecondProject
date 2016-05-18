@@ -19,6 +19,7 @@ window.location="signIn.dj";
 </script>
 </c:if>
 
+
 <h2>고객정보</h2>
 <div id="loan-btn-sm">
 	<img src="">
@@ -93,7 +94,6 @@ window.location="signIn.dj";
 계속하시면 <a href="#">여신거래부속약관</a>에 동의하게 됩니다.
 <input type="submit" value="대출신청" class="btn btn-primary" name="loan-btn">
 </form>
-
 
 
 
