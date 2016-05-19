@@ -45,10 +45,17 @@ public class InterastCalculator {
 		int taxtotal = 0;
 		int interesttotal = 0;
 		int balance = 0;
+		double d = 0.0; 
+		double interast = 0.0;
+		
 		
 		if(way.equals("원금만기 일시상환")){
 			
-			total = (int)(Float.parseFloat(investmoney+"0000") * (Float.parseFloat(rate)/12)) / 100;
+			interast = (Double.parseDouble(rate)/12);
+			
+			d = Double.parseDouble(String.format("%.3f", interast));
+					
+			total = (int)(Double.parseDouble(investmoney+"0000") * d) / 100;
 			
 			tax = (int)(total*27.5/100);
 			
@@ -84,8 +91,12 @@ public class InterastCalculator {
 			
 		}else if(way.equals("원리금 균등 상환")){
 			
+			interast = (Double.parseDouble(rate)/12);
+			
+			d = Double.parseDouble(String.format("%.3f", interast));
+			
 			total = (int)((Float.parseFloat(investmoney+"0000"))/term+
-					(int)(Float.parseFloat(investmoney+"0000") * ((Float.parseFloat(rate)/12) / 100)));
+					(int)(Float.parseFloat(investmoney+"0000") * d)/ 100);
 			
 			balance = investmoney2;
 			
@@ -95,7 +106,7 @@ public class InterastCalculator {
 			
 				refunds[i] = total;
 				
-				interested[i] = (int)((balance * ((Float.parseFloat(rate)/12) / 100)));
+				interested[i] = (int)(balance * d / 100);
 				
 				balance = balance - total;
 				

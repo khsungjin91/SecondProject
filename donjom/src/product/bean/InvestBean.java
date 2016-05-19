@@ -58,10 +58,17 @@ public class InvestBean {
 		int taxtotal = 0;
 		int interesttotal = 0;
 		int balance = 0;
+		double d = 0.0; 
+		double interast = 0.0;
 		
 		if(dto.getP_way().equals("원금만기 일시상환")){
 			
-			total = (int)(Float.parseFloat(amount+"0000") * (Float.parseFloat(dto.getP_rate())/12)) / 100;
+			interast = (Double.parseDouble(dto.getP_rate())/12);
+			
+			d = Double.parseDouble(String.format("%.3f", interast));
+					
+			
+			total = (int)(Float.parseFloat(amount+"0000") * d ) / 100;
 			
 			tax = (int)(total*27.5/100);
 			
@@ -97,8 +104,12 @@ public class InvestBean {
 			
 		}else if(dto.getP_way().equals("원리금 균등 상환")){
 			
+			interast = (Double.parseDouble(dto.getP_rate())/12);
+			
+			d = Double.parseDouble(String.format("%.3f", interast));
+			
 			total = (int)((Float.parseFloat(amount+"0000"))/term+
-					(int)(Float.parseFloat(amount+"0000") * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
+					(int)(Float.parseFloat(amount+"0000") * d) / 100);
 			
 			balance = investmoney;
 			
@@ -108,7 +119,7 @@ public class InvestBean {
 			
 				refunds[i] = total;
 				
-				interested[i] = (int)((balance * ((Float.parseFloat(dto.getP_rate())/12) / 100)));
+				interested[i] = (int)((balance * (d / 100)));
 				
 				balance = balance - total;
 				

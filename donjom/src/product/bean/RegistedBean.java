@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import time.bean.TimeFormat;
+
 @Controller
 public class RegistedBean {
 
@@ -32,6 +34,7 @@ public class RegistedBean {
 	
 	@RequestMapping("/fundView.dj")
 	public ModelAndView productview(String p_code,RegisterDto dto, HttpSession session){
+		TimeFormat time = new TimeFormat();
 		Map map = new HashMap();
 		String email = (String)session.getAttribute("memId");
 		int check = 0;
@@ -59,7 +62,9 @@ public class RegistedBean {
 			limit = limit2;
 		}
 		
-
+		Map When = time.Time();
+		
+		mv.addObject("When",When);
 		mv.addObject("limit", limit);
 		mv.addObject("check", check);
 		mv.addObject("dto",dto);

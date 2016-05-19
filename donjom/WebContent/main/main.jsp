@@ -41,7 +41,7 @@ function page(){
           <ul class="nav navbar-nav">
             <li><a href="loan_step1.dj" ><b>대출JOM</b></a></li>
 			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
-			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
+			<li><a href="time.dj" ><b>상태JOM</b></a></li>
 			<li><a href="ex.dj" ><b>연습JOM</b></a></li>
 			<li><a href="#" data-target="#mymodal" onclick="return page()"><b>계산기JOM</b></a></li>
         

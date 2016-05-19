@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 function check(){
 	
@@ -99,7 +100,7 @@ if(user.amount.value > mi){
 <tr><td>${dto.p_rate}%</td></tr>
 <tr><td>투자기간</td></tr>
 <tr><td>${dto.p_term}개월</td></tr>
-<c:if test = "${dto.p_success == 'doing' &&  check == 0}">
+<c:if test = "${dto.p_success == 'doing' &&  check == 0 && When.When == 1}">
 <tr><td>투자금액</td></tr>
 <tr>
 <td>
@@ -108,24 +109,63 @@ if(user.amount.value > mi){
 </tr>
 </c:if>
 <tr><td>펀딩기간 : 1주일</td></tr>
-<c:if test="${dto.p_success == 'doing' && check == 0}">
+<c:if test="${dto.p_success == 'doing' && check == 0 && When.When == 1}">
 <tr><td>최대투자가능금액</td></tr>
 <tr><td>${limit}만원</td></tr>
 </c:if>
 <tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
 <tr>
-<c:if test="${dto.p_success == 'success'}">
-<td><input type="button" value="펀딩성공"></td>
+<c:if test="${dto.p_success == 'doing' && When.When == 0}">
+	<c:if test="${dto.p_success == 'doing' && When.WhenTUS == 2}">
+		 <script type="text/javascript">
+		    $(document).ready(function(){
+		    	window.setInterval('callAjax()', 1000); //3초마다한번씩 함수를 실행한다..!! 
+		    });
+		    function callAjax(){
+		    	 $.ajax({
+		 	        type: "post",
+		 	        url : "/donjom/timemelee.dj",
+		 	        success: test,	// 페이지요청 성공시 실행 함수
+		 	        error: whenError	//페이지요청 실패시 실행함수
+		      	});
+		    }
+		    function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+		        $("#time").html(aaa);
+		    }
+		    function whenError(){
+		        alert("Error");
+		    }
+		  </script>
+
+	</c:if>
+
+<td>
+	<div id="time">펀딩개시는 수요일입니다.</div>
+</td>
+
 </c:if>
+
+
+<c:if test="${When.When == 1}">
+
 <c:if test="${dto.p_success == 'doing' && check == 0}">
 <td><input type="submit" value="투자미리보기" onclick="return check()"></td>
 </c:if>
+
 <c:if test="${dto.p_success == 'doing' && check != 0}">
 <td><input type="button" value="투자완료"></td>
 </c:if>
+
+</c:if>
+
+<c:if test="${dto.p_success == 'success'}">
+<td><input type="button" value="펀딩성공"></td>
+</c:if>
+
 <c:if test="${dto.p_success == 'fail'}">
 <td><input type="button" value="펀딩실패"></td>
 </c:if>
+
 </tr>
 
 </table>
