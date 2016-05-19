@@ -56,7 +56,7 @@ if(user.amount.value > mi){
 </tr>
 </table>
 
-<input type="hidden" value="${dto.p_code}" name="p_code">
+<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
 
 대출신청내역
 <table border="1">
@@ -125,6 +125,9 @@ if(user.amount.value > mi){
 		    	 $.ajax({
 		 	        type: "post",
 		 	        url : "/donjom/timemelee.dj",
+		 	       data: {	
+			        	p_code : $('#p_code').val(),
+			        },
 		 	        success: test,	// 페이지요청 성공시 실행 함수
 		 	        error: whenError	//페이지요청 실패시 실행함수
 		      	});
