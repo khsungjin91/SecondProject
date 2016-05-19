@@ -25,11 +25,24 @@ public class TimeFormat {
 		Map map = new HashMap();
 		int When = 0;
 		int WhenTUS = 0;
+		int a=0;
 		Calendar today = Calendar.getInstance();
-	if(today.get(Calendar.DAY_OF_WEEK) == 5 && today.get(Calendar.HOUR_OF_DAY) == 13){
-		WhenTUS = 2;
+
+		
+		
+	if(today.get(Calendar.DAY_OF_WEEK) >= 5  && today.get(Calendar.HOUR_OF_DAY) >= 13){
+		System.out.println("1");
+		if(today.get(Calendar.DAY_OF_WEEK) >= 5 && today.get(Calendar.HOUR_OF_DAY) < 23 ){
+			System.out.println("2");
+			if(today.get(Calendar.DAY_OF_WEEK) <= 6 && today.get(Calendar.HOUR_OF_DAY) > 0){
+				System.out.println("3");
+			WhenTUS = 2;
+			}
+		}
 	}
+	
 	if(today.get(Calendar.DAY_OF_WEEK) == 6 && today.get(Calendar.HOUR_OF_DAY) == 13){
+		System.out.println("4");
 		When = 1;
 	}
 	
