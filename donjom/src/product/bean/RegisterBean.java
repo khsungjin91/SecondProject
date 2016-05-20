@@ -22,6 +22,7 @@ public class RegisterBean {
 	@Autowired
 	private ModelAndView mv;
 	
+	//메니저-펀딩등록관리 
 	@RequestMapping("/product_register.dj")
 	public ModelAndView RegisterWrite(int no, String br_object,BorrowDto dto){
 		Map map = new HashMap();
@@ -31,6 +32,7 @@ public class RegisterBean {
 		
 		dto = (BorrowDto)sqlMap.queryForObject("registerReady", map);
 		
+		mv.addObject("no",no);
 		mv.addObject("dto", dto);
 		mv.setViewName("/product/fund_register.jsp");
 		return mv;

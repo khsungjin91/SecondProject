@@ -4,10 +4,18 @@ public class RegisterDto {
 	
 	private String p_content,p_code,p_name,p_price,p_img,p_people,p_invest,p_purpose,
 				p_way,p_rate,p_term,p_funding,p_repayday,p_success,p_file,p_category,p_mrepay;
-	private int no,p_memno;
+	private int no,p_memno,p_brno;
 	
 	
 	
+
+	public int getP_brno() {
+		return p_brno;
+	}
+
+	public void setP_brno(int p_brno) {
+		this.p_brno = p_brno;
+	}
 
 	public String getP_mrepay() {
 		return p_mrepay;

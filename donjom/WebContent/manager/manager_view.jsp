@@ -17,8 +17,11 @@
 	});
 	function callAjax() {
 		$.ajax({
-			type : "get",
-			url : "/donjom/manager_borrow.dj?email=${email}",
+			type : "post",
+			url : "/donjom/manager_borrow.dj",
+			data : {
+				email : $("#email").val()
+			},
 			success : test,
 			error : whenError
 		});
@@ -29,30 +32,38 @@
 		console.log(resdata);
 	}
 	function whenError() {
-		alert("Error");
+		alert("Error1");
 	}
 </script>
 </head>
 <body>
+	<input type="hidden" id="email" value="${email}" />
+
 	<div id="invest">
 		<input type="button" value="투자" id="invest_button" /> <input
 			type="button" value="대출" id="borrow_button" />
-		<table>
+		<table  border="1">
 			<tr>
 				<td>상품이름</td>
-				<td>성공여부</td>
 				<td>투자기간</td>
 				<td>투자액</td>
+				<td>만기날짜</td>
+				<td>이자율</td>
+				<td>상환방법</td>
+				<td>성공여부</td>
 			</tr>
 			<c:forEach var="list" items="${list}">
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>${list.i_pname}</td>
+					<td>${list.i_times}개월</td>
+					<td>${list.i_invest}만원</td>
+					<td>${list.i_repayday}일</td>
+					<td>${list.i_profit}%</td>
+					<td>${list.i_way}</td>
+					<td>${list.i_success}</td>
 				</tr>
 			</c:forEach>
-			<tr>총 투자액 :
+			<tr>총 투자액 : ${sum}만원
 			</tr>
 		</table>
 	</div>

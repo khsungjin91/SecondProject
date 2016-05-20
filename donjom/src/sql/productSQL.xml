@@ -63,7 +63,7 @@
 <insert id="productinput" parameterClass="registerDto">
 	insert into product values(PRODUCT_SEQ.NEXTVAL,#p_category#,#p_name#,#p_code#,#p_price#,
 								#p_content#,'test','0','0',#p_purpose#,#p_way#,#p_rate#,
-								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#,#p_memno#,#p_mrepay#)
+								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#,#p_memno#,#p_mrepay#,#p_brno#)
 </insert>
 
 <insert id="messageIn" parameterClass="messageDto">

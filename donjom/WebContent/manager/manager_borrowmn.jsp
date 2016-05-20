@@ -6,48 +6,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
-<script type="text/javascript">
-	window.onload = function() {
-		var chart = new CanvasJS.Chart("category_chart", {
-			title : {
-				text : "Pie Chart"
-			},
-			data : [ {
-				type : "pie",
-				dataPoints : [ {
-					y : 83.24,
-					legendText : "사업자",
-					label : "사업자"
-				}, {
-					y : 8.16,
-					legendText : "개인신용",
-					label : "개인신용"
-				}, {
-					y : 4.67,
-					legendText : "부동산",
-					label : "부동산"
-				} ]
-			} ]
-		});
-		chart.render();
-	}
-</script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+    	var user = document.userinput;
+    	var p = parseInt(user.p.value);
+    	var b = parseInt(user.b.value);
+    	var c = parseInt(user.c.value);
+    	var m = parseInt(user.m.value);
+   
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['p 개인신용',  p],
+          ['b 부동산',  b],
+          ['c 사업자',  c],
+          ['m 매출담보', m]          
+        ]);
 
-<script src="assets/source/canvasjs.min.js"></script>
+        var options = {
+          title: '카테고리별 대출현황',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+ 
+
 
 <title>CanvasJS Example</title>
 </head>
 <body>
 
-
-	<c:forEach var="avg" items="${avg}">
-
-		<div>${avg}</div>
-
-	</c:forEach>
-
-
-	<div id="category_chart" style="height: 400px; width: 100%;"></div>
+<form action="#" name="userinput">
+<input type="hidden" value="${p}" id="p" name="p"/>
+<input type="hidden" value="${b}" id="b" name="b"/>
+<input type="hidden" value="${c}" id="c" name="c"/>
+<input type="hidden" value="${m}" id="m" name="m"/>
+</form>
+	  <div id="piechart_3d" style="width: 600px; height: 350px;"></div>
 
 	<div id="br_requestList">
 		<table border="1">

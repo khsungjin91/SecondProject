@@ -79,7 +79,7 @@ function calculrator(userinput){
 
 </script>
 <form action="registerPro.dj" method="post" enctype="multipart/form-data" name="userinput">
-
+<input type ="hidden" value="${no}" name="p_brno"/>
 力格<input type="text" name="p_name"> <br/>
 
 措免脚没郴开<br/>

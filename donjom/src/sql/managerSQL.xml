@@ -40,24 +40,35 @@
 	
 	<!-- 이메일에따른 투자현황 -->
 	<select id="invest_email" resultClass="invest" parameterClass="int">
-		select *from invest where i_memnum=#no# 
+		select *from invest where i_memnum=#no# order by no desc
 	</select>
 	<!-- 이메일에따른 대출현황 -->
 	<select id="borrow_email" resultClass="borrow" parameterClass="int">
-		select *from borrow where memno=#no# 
+		select * from borrow where memno=#no# order by no desc
+	</select>
+	<!-- 총 투자액 -->
+	<select id="invest_sum" resultClass="int" parameterClass="int">
+		select sum(i_invest) from invest where i_memnum=#no#
+	</select>
+	<!-- 총 대출액 -->
+	<select id="borrow_sum" resultClass="int" parameterClass="int">
+		select sum(br_sum) from borrow where memno=#no#
 	</select>
 	
 	
-	
+
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
-	select * from borrow where success='success' order by br_date desc
+		select * from borrow b, product p where b.no!=p.p_brno and b.success='success' order by b.br_date desc
+
 	</select>
 	
 	<!-- 성진작품 -->
 	<update id="confirmUp" parameterClass="java.util.Map">
 		update member set confirm=#on# where email=#email# 
 	</update>
+	
+	
 	<!-- 대출관리-대출list -->
 	<select id="borrowmn" resultClass="borrow">
 		select * from borrow where success='none'order by br_date desc

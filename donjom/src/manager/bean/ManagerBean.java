@@ -68,12 +68,12 @@ public class ManagerBean {
 	// 인증회원 상세페이지- 투자
 	@RequestMapping("/manager_view.dj")
 	public ModelAndView managerview(String email){
-		System.out.println(email);
 		int no=(Integer)sqlMap.queryForObject("getno",email);
-		email=(String)sqlMap.queryForObject("invest_email",no);
+		int sum=(Integer)sqlMap.queryForObject("invest_sum", no);		
+		List list=sqlMap.queryForList("invest_email",no);
 		
-		
-		System.out.println("invest");
+		mv.addObject("sum",sum);
+		mv.addObject("list",list);
 		mv.addObject("email",email);
 		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
@@ -81,11 +81,13 @@ public class ManagerBean {
 	// 인증회원 상세페이지 - 대출 
 		@RequestMapping("/manager_borrow.dj")
 		public ModelAndView managerborrow(String email){
+			System.out.println("borrow"+email);
 			int no=(Integer)sqlMap.queryForObject("getno", email);
-			System.out.println(email);
-			email=(String)sqlMap.queryForObject("borrow_email",no);
-			
-			System.out.println("borrow");
+			int sum=(Integer)sqlMap.queryForObject("borrow_sum", no);			
+			List list=sqlMap.queryForList("borrow_email",no);
+		
+			mv.addObject("sum",sum);
+			mv.addObject("list",list);
 			mv.addObject("email",email);
 			mv.setViewName("/manager/manager_borrow.jsp");
 			return mv;
@@ -127,37 +129,19 @@ public class ManagerBean {
 	//대출신청list,차트 
 	@RequestMapping("/manager_borrowmn.dj")
 	public ModelAndView managerborrowmn(){
-	
+		String [] ctg={"p","b","c","m"};
 		List list = sqlMap.queryForList("borrowmn", null);
-		int size = (int)sqlMap.queryForObject("size", null);
-		List c_code = sqlMap.queryForList("c_code", null);
 		
-		int []count=new int[c_code.size()];
-		String [] c_name = new String[c_code.size()];
-		float[] avg = new float[c_code.size()];
-		float total=0;
-				
-		for(int i =0; i<c_code.size();i++){
-			count[i] = (int)sqlMap.queryForObject("count_category", c_code.get(i));		
-			c_name[i] = (String)sqlMap.queryForObject("c_name", c_code.get(i));
-			total +=count[i];	
+		int []count=new int[ctg.length];
+		
+		for(int i =0; i<ctg.length;i++){
+			count[i] = (int)sqlMap.queryForObject("count_category", ctg[i]);		
 		}
 		
-		
-		for(int i=0;i<c_code.size();i++){
-			
-			avg[i]=((float)(count[i]/total)) * 100;
-			
-		System.out.println("avg"+i+""+avg[i]+"=="+avg.length);
-		}
-		System.out.println("total"+total);
-		System.out.println("인텍스"+c_name[0]);
-		System.out.println(c_name);
-		
-		
-		mv.addObject("c_name",c_name);
-		mv.addObject("c_code",c_code);
-		mv.addObject("avg",avg);
+		mv.addObject("p",count[0]);
+		mv.addObject("b",count[1]);
+		mv.addObject("c",count[2]);
+		mv.addObject("m",count[3]);
 		mv.addObject("list",list);
 		mv.setViewName("/manager/manager_borrowmn.jsp");
 		return mv;
