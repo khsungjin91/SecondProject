@@ -10,10 +10,10 @@
 <body>
 
  <a href="fundList_total.dj">전체</a>
- <a href="">사업자</a>
- <a href="">개인신용</a>
- <a href="">부동산</a>
- <a href="">담보대출</a>
+ <a href="fundList_total.dj">사업자</a>
+ <a href="fundList_total.dj">개인신용</a>
+ <a href="fundList_total.dj">부동산</a>
+ <a href="fundList_total.dj">담보대출</a>
 
 <div>
 <c:forEach var="list" items="${list}">

@@ -112,6 +112,7 @@ public class SettingCertBean {
 		
 		@RequestMapping("/setting_session_history.dj")
 		public ModelAndView sessionChaser(HttpSession session,PagingBean page,HttpServletRequest request){
+			int paging = 0;
 			String email = (String)session.getAttribute("memId");
 			
 			String pagecurrent = request.getParameter("currentPage");
@@ -123,7 +124,6 @@ public class SettingCertBean {
 			int currentPage = 0;
 			int blockCount = 10;
 			int blockPage = 10;
-			int lastCount = 0;
 			
 			if(pagecurrent != null){
 				
@@ -138,11 +138,11 @@ public class SettingCertBean {
 			list = sqlMap.queryForList("getsession", no);
 			totalCount = list.size();
 			}
-			pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, list);
-			list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list);
+			
+			pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input,paging);
+			list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list,paging);
 			
 			mv.addObject("session", list);
-			mv.addObject("list", list);
 			mv.addObject("pagingHtml", pagingHtml);
 			mv.setViewName("/profile/setting_session_history.jsp");
 			return mv;

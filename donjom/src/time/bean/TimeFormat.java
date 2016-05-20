@@ -25,11 +25,10 @@ public class TimeFormat {
 		Map map = new HashMap();
 		int When = 0;
 		int WhenTUS = 0;
-		int a=0;
 		Calendar today = Calendar.getInstance();
 
 		
-	if(today.get(Calendar.DAY_OF_WEEK) >= 3  && today.get(Calendar.HOUR_OF_DAY) >= 13){
+	if(today.get(Calendar.DAY_OF_WEEK) >= 3  && today.get(Calendar.HOUR_OF_DAY) >= 0){
 		System.out.println("1");
 		if(today.get(Calendar.DAY_OF_WEEK) >= 3 && today.get(Calendar.HOUR_OF_DAY) <= 23 ){
 			System.out.println("2");
@@ -54,6 +53,9 @@ public class TimeFormat {
 	
 	@RequestMapping("/timemelee.dj")
 	public ModelAndView Timeformat(String p_code)throws Exception{
+		Calendar today = Calendar.getInstance();
+		int H = 0,M = 0,S = 0;
+		
 		
 		SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss");
 
@@ -63,9 +65,17 @@ public class TimeFormat {
 		
 		String [] split = format.split(":");
 		
-	    int H = (36-Integer.parseInt(split[0]));
-	    int M = (59-Integer.parseInt(split[1]));
-	    int S = (59-Integer.parseInt(split[2]));    
+		if(today.get(Calendar.DAY_OF_WEEK) == 3  && today.get(Calendar.HOUR_OF_DAY) >= 13){
+		H = (36-Integer.parseInt(split[0]));
+		M = (59-Integer.parseInt(split[1]));
+		S = (59-Integer.parseInt(split[2]));
+		}
+	
+		if(today.get(Calendar.DAY_OF_WEEK) == 4 && today.get(Calendar.HOUR_OF_DAY) >= 0){
+	    H = (13-Integer.parseInt(split[0]));
+	    M = (59-Integer.parseInt(split[1]));
+	    S = (59-Integer.parseInt(split[2]));
+		}
 	    
 	    String time = H +":"+ M + ":" + S ;
 

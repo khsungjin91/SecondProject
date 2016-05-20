@@ -49,7 +49,6 @@ public class FundWriteBean {
 	@RequestMapping("/loan_step2.dj")
 	public ModelAndView write2(BorrowDto dto){
 
-		
 		mv.addObject("memname",dto.getMemname());
 		mv.addObject("membirth",dto.getMembirth());
 		mv.addObject("memphone",dto.getMemphone());

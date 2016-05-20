@@ -11,11 +11,11 @@ import setting.bean.pagingAction;
 public class PagingBean {
 	
 	public String getPage(int currentPage,int totalCount,int blockCount,
-			int blockPage,pagingAction input,List list){
+			int blockPage,pagingAction input,int paging){
 		
 		String pagingHtml = null;
 	
-		input = new pagingAction(currentPage, totalCount, blockCount, blockPage);
+		input = new pagingAction(currentPage, totalCount, blockCount, blockPage,paging);
 		
 		pagingHtml = input.getPagingHtml().toString();
 	
@@ -23,10 +23,10 @@ public class PagingBean {
 	}
 	
 	public List getList(int currentPage,int totalCount,int blockCount,
-			int blockPage,pagingAction input,List list){
+			int blockPage,pagingAction input,List list, int paging){
 		
-		
-		input = new pagingAction(currentPage, totalCount, blockCount, blockPage);
+		System.out.println("??"+paging);
+		input = new pagingAction(currentPage, totalCount, blockCount, blockPage, paging);
 		
 		int lastCount = totalCount;
 		

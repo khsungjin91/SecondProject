@@ -22,15 +22,6 @@ public class RegistedBean {
 	@Autowired
 	ModelAndView mv;
 	
-	@RequestMapping("/fundList_total.dj")
-	public ModelAndView productList(){
-		
-		List list = sqlMap.queryForList("productList", null);
-		
-		mv.addObject("list", list);
-		mv.setViewName("/product/fund_list.jsp");
-		return mv;
-	}
 	
 	@RequestMapping("/fundView.dj")
 	public ModelAndView productview(String p_code,RegisterDto dto, HttpSession session){
