@@ -17,8 +17,8 @@
 	});
 	function callAjax() {
 		$.ajax({
-			type : "post",
-			url : "/donjom/manager_borrow.dj",
+			type : "get",
+			url : "/donjom/manager_borrow.dj?email=${email}",
 			success : test,
 			error : whenError
 		});

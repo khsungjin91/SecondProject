@@ -67,7 +67,7 @@
 		<td>${list.email}</td>
 		<td>${list.join}</td>
 		<td>
-		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj'"/>
+		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj?email=${list.email}'"/>
 		</td>
 	</c:forEach>	
 	</c:if>

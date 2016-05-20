@@ -30,10 +30,10 @@ public class ManagerBean {
 	@RequestMapping("/manager_main.dj")
 	public ModelAndView managermain(){
 		
-		
 		mv.setViewName("/manager/manager_main.jsp");
 		return mv;
 	}
+	
 	//회원관리
 	@RequestMapping("/manager_member.dj")
 	public String managermember(){
@@ -65,13 +65,32 @@ public class ManagerBean {
 		return mv;
 	}
 	
-	//인증회원 상세페이지
+	// 인증회원 상세페이지- 투자
 	@RequestMapping("/manager_view.dj")
-	public ModelAndView managerview(){
+	public ModelAndView managerview(String email){
+		System.out.println(email);
+		int no=(Integer)sqlMap.queryForObject("getno",email);
+		email=(String)sqlMap.queryForObject("invest_email",no);
+		
+		
+		System.out.println("invest");
+		mv.addObject("email",email);
 		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
 	}
-	
+	// 인증회원 상세페이지 - 대출 
+		@RequestMapping("/manager_borrow.dj")
+		public ModelAndView managerborrow(String email){
+			int no=(Integer)sqlMap.queryForObject("getno", email);
+			System.out.println(email);
+			email=(String)sqlMap.queryForObject("borrow_email",no);
+			
+			System.out.println("borrow");
+			mv.addObject("email",email);
+			mv.setViewName("/manager/manager_borrow.jsp");
+			return mv;
+		}
+		
 	//일반회원
 	@RequestMapping("/manager_noconfirm.dj")
 	public ModelAndView managernoconfirm(){
@@ -97,27 +116,11 @@ public class ManagerBean {
 		mv.setViewName("/manager/manager_noconfirm.jsp");
 		return mv;
 	}
-	//상세페이지 - 투자
-	@RequestMapping("/manager_invest.dj")
-	public ModelAndView managerinvest(){
-		List list=sqlMap.queryForList("invest", null);
-		
-		System.out.println("invest");
-		mv.addObject("list",list);
-		mv.setViewName("/manager/manager_view.jsp");
-		return mv;
-	}
-	//상세페이지 - 대출 
-	@RequestMapping("/manager_borrow.dj")
-	public ModelAndView managerborrow(){
-		System.out.println("borrow");
-		mv.setViewName("/manager/manager_borrow.jsp");
-		return mv;
-	}
 	//투자
 	@RequestMapping("/manager_investmn.dj")
 	public ModelAndView managerinvestmn(){
 		mv.setViewName("/manager/manager_investmn.jsp");
+		
 		return mv;
 	}
 	

@@ -18,7 +18,7 @@
 	function callAjax() {
 		$.ajax({
 			type : "post",
-			url : "/donjom/manager_invest.dj",
+			url : "/donjom/manager_view.dj?email='${email}'",
 			success : test,
 			error : whenError
 		});

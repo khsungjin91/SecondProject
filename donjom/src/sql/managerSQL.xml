@@ -37,10 +37,16 @@
 		and m.no=i.no
 	</select>
 	
-	<!-- 인증회원-상세-투자 -->
-	<select id="invest" resultClass="invest">
-		select * from invest order by i_pcode asc
+	
+	<!-- 이메일에따른 투자현황 -->
+	<select id="invest_email" resultClass="invest" parameterClass="int">
+		select *from invest where i_memnum=#no# 
 	</select>
+	<!-- 이메일에따른 대출현황 -->
+	<select id="borrow_email" resultClass="borrow" parameterClass="int">
+		select *from borrow where memno=#no# 
+	</select>
+	
 	
 	
 	<!-- 성진작품 -->
