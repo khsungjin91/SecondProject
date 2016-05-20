@@ -55,8 +55,6 @@
 		select sum(br_sum) from borrow where memno=#no#
 	</select>
 	
-	
-
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
 		select * from borrow b, product p where b.no!=p.p_brno and b.success='success' order by b.br_date desc
@@ -92,11 +90,7 @@
 	<select id="count_category" resultClass="int" parameterClass="String">
 	select count(*) from product where p_category = #p_category#	
 	</select>
-	
-	
-	
-	
-	
+
 	<!-- 심사list -->
 	<select id="evaluation" resultClass="evaluation">
 		select * from evaluation 

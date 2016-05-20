@@ -39,6 +39,8 @@ public class ManagerBean {
 	public String managermember(){
 		return "/manager/manager_member.jsp";
 	}
+	
+	
 	//인증회원
 	@RequestMapping("/manager_confirm.dj")
 	public ModelAndView managerconfirm(){
@@ -49,6 +51,9 @@ public class ManagerBean {
 		mv.setViewName("/manager/manager_confirm.jsp");
 		return mv;
 	}
+	
+
+	//인증회원 검색
 	@RequestMapping("/confirm_search.dj")
 	public ModelAndView confirm_search(String confirm,String search){
 		int setting=2;
@@ -68,6 +73,8 @@ public class ManagerBean {
 	// 인증회원 상세페이지- 투자
 	@RequestMapping("/manager_view.dj")
 	public ModelAndView managerview(String email){
+		
+		System.out.println(email);
 		int no=(Integer)sqlMap.queryForObject("getno",email);
 		int sum=(Integer)sqlMap.queryForObject("invest_sum", no);		
 		List list=sqlMap.queryForList("invest_email",no);
@@ -78,10 +85,12 @@ public class ManagerBean {
 		mv.setViewName("/manager/manager_view.jsp");
 		return mv;
 	}
+	
+	
 	// 인증회원 상세페이지 - 대출 
 		@RequestMapping("/manager_borrow.dj")
 		public ModelAndView managerborrow(String email){
-			System.out.println("borrow"+email);
+		
 			int no=(Integer)sqlMap.queryForObject("getno", email);
 			int sum=(Integer)sqlMap.queryForObject("borrow_sum", no);			
 			List list=sqlMap.queryForList("borrow_email",no);
@@ -104,6 +113,7 @@ public class ManagerBean {
 		return mv;
 	}
 	
+	
 	@RequestMapping("/noconfirm_search.dj")
 	public ModelAndView noconfirm_search(String noconfirm,String search){
 		int setting = 2;
@@ -118,7 +128,8 @@ public class ManagerBean {
 		mv.setViewName("/manager/manager_noconfirm.jsp");
 		return mv;
 	}
-	//투자
+	
+	//투자자list,차트 (성진이가 할것)
 	@RequestMapping("/manager_investmn.dj")
 	public ModelAndView managerinvestmn(){
 		mv.setViewName("/manager/manager_investmn.jsp");
@@ -147,104 +158,18 @@ public class ManagerBean {
 		return mv;
 	}
 	
-	
-	
-	
-	//성진이가 한것입니다.
+	//성진이가 한것입니다. 대출 리스트
 	@RequestMapping("/manager_borrowlist.dj")
 	public ModelAndView managerborrowlist(){
 		List list = sqlMap.queryForList("borrowlist", null);
 		int count = list.size();
+		
+		System.out.println(count);
+		
 		mv.addObject("count", count);
 		mv.addObject("list", list);
 		mv.setViewName("/manager/manager_borrowlist.jsp");
 		return mv;
 	}
-	//심사평작성
-	@RequestMapping("/manager_evaluation_write.dj")
-	public ModelAndView managerevaluationwrite(BorrowDto dto){
-		dto=(BorrowDto)sqlMap.queryForObject("borrow", dto.getNo());
-	
-		mv.addObject("dto",dto);
-		mv.setViewName("/manager/manager_evaluation_write.jsp");
-		return mv;
-	}
-	
-	//심사평 insert
-	@RequestMapping("/manager_evaluation_writeinsert.dj")
-	public ModelAndView managerevaluationwriteinsert(evaluationDto dto,BorrowDto dto2, MultipartHttpServletRequest request)throws Exception{
-
 		
-		MultipartFile cpmf=request.getFile("cpfile");
-		MultipartFile docmf=request.getFile("document");
-		
-		String cpOrgName = cpmf.getOriginalFilename();
-		String docOrgName = docmf.getOriginalFilename();
-		
-		System.out.println(cpOrgName);
-		System.out.println(docOrgName);
-		
-		
-		String path= request.getServletContext().getRealPath("")+"\\file\\";
-		
-		System.out.println(path);
-		
-		if(cpOrgName.equals("")){
-			// cporgName이 없을경우
-		}else{
-			dto.setE_cpfile(cpOrgName);
-						
-			File copy = new File(path+dto.getE_cpfile());
-						
-			cpmf.transferTo(copy);
-		}
-	
-		if(docOrgName.equals("")){
-			// docorgName이 없을경우
-		}else{
-			dto.setE_document(docOrgName);
-			
-			File copy2 = new File(path+dto.getE_document());
-
-			docmf.transferTo(copy2);
-		}
-		dto2.setSuccess(dto.getE_result());
-		sqlMap.insert("evaluation_writeinsert",dto);
-		sqlMap.update("borrowup",dto2);
-		
-		mv.setViewName("/manager/manager_evaluation_writesc.jsp");
-		return mv;
-	}
-	//대출완료list
-	@RequestMapping("/manager_evaluation.dj")
-	public ModelAndView managerevaluation(){
-		List list= sqlMap.queryForList("evaluation", null);
-		int count = list.size();
-		int setting=1;
-		
-		mv.addObject("setting",setting);
-		mv.addObject("count",count);
-		mv.addObject("list",list);
-		mv.setViewName("/manager/manager_evaluation.jsp");
-
-		return mv;
-	}
-	//심사-찾기 
-	@RequestMapping("/manager_evaluation_search.dj")
-	public ModelAndView managerevaluationsearch(String evaluation,String search){
-
-		int setting=2;
-		Map map=new HashMap();
-		map.put("evaluation",evaluation);
-		map.put("search", search);
-		List list = sqlMap.queryForList("evaluation_search", map);
-		
-		mv.addObject("setting",setting);
-		mv.addObject("list",list);
-		mv.setViewName("/manager/manager_evaluation.jsp");
-		return mv;
-	}
-		
-	
-	
 }

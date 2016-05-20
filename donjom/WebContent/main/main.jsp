@@ -13,6 +13,16 @@
 
 <title>welcome to DonJom</title>
 
+<script>
+function page(){
+	
+	var url = "/donjom/calculator.dj";
+	
+	window.open(url, "width=200, height=300, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	
+}
+</script>
+
 </head>
 <body>
 
@@ -30,11 +40,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="loan.dj" >대출JOM</a></li>
-			<li><a href="fundList_total.dj" >투자JOM</a></li>
-			<li><a href="DJlive.dj" >상태JOM</a></li>
-			<li><a href="DJex.dj" class="hidden-sm" >연습JOM</a></li>
-			<li><a href="DJcalculator.dj" class="hidden-sm" data-target="#mymodal">이자계산기</a></li>
+            <li><a href="loan_step1.dj" ><b>대출JOM</b></a></li>
+			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
+			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
+			<li><a href="ex.dj" ><b>연습JOM</b></a></li>
+			<li><a href="#" data-target="#mymodal" onclick="return page()"><b>계산기JOM</b></a></li>
         
           </ul>
            <c:if test="${sessionScope.memId == null}">
@@ -54,12 +64,12 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
           ${memId}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="dashboard.dj">대시보드</a></li>
-            <li><a href="">대출내역</a></li>
-            <li><a href="#">투자내역</a></li>
-            <li><a href="point_deposit.dj">충전/환급</a></li>
-            <li><a href="#">알림메세지</a></li>
-            <li><a href="setting.dj">설정</a></li>
+          		<li><a href="dashboard.dj">대시보드</a></li>
+				<li><a href="invest_history.dj">투자내역</a></li>
+				<li><a href="laon_history.dj">대출내역</a></li>
+				<li><a href="point_deposit.dj">충전/환급</a></li>
+				<li><a href="notification.dj">알림메세지</a></li>
+				<li><a href="setting.dj">설정</a></li>
             
             <li class="divider"></li>
             <li><a href="#">도움말</a></li>
