@@ -107,7 +107,7 @@ function session(){
 <tr>
 <td>합계</td>
 <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${totaltotal}" />원</td>
-<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${borrowmoney}" />원</td>
+<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${orgprice}" />원</td>
 <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${interesttotal}" />원</td>
 <td>0원</td>
 <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${taxtotal}" />원</td>

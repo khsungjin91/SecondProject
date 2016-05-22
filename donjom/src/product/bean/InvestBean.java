@@ -52,6 +52,7 @@ public class InvestBean {
 		int [] realtotaled = new int[term];	
 		int [] count = new int[term];
 
+		int orgprice = 0;
 		int supertotal = 0;
 		int totaltotal = 0;
 		int totalto = 0;
@@ -60,12 +61,14 @@ public class InvestBean {
 		int balance = 0;
 		double d = 0.0; 
 		double interast = 0.0;
+		double x = 0;
+		double y = 0;
 		
 		if(dto.getP_way().equals("원금만기 일시상환")){
 			
 			interast = (Double.parseDouble(dto.getP_rate())/12);
 			
-			d = Double.parseDouble(String.format("%.3f", interast));
+			d = Double.parseDouble(String.format("%.7f", interast));
 					
 			
 			total = (int)(Float.parseFloat(amount+"0000") * d ) / 100;
@@ -101,43 +104,54 @@ public class InvestBean {
 			p_price[term-1] = (int)(Float.parseFloat(amount+"0000"));
 			refunds[term-1] = (int) (total + (Float.parseFloat(amount+"0000")));
 			realtotaled[term-1] = (int)(Float.parseFloat(amount+"0000")+realtotal);
+			orgprice= p_price[term-1];
 			
 		}else if(dto.getP_way().equals("원리금 균등 상환")){
 			
-			interast = (Double.parseDouble(dto.getP_rate())/12);
+			//월이자 
+			interast = (Double.parseDouble(dto.getP_rate())/12/100);
 			
-			d = Double.parseDouble(String.format("%.3f", interast));
+			//저당상수 구하기
+			x = 1+interast;
+			y = x;
+			for(int j = 0 ; j < term-1 ; j++){
+				y *= x;
+			}
+			d = (interast*y) / (y-1); 
 			
-			total = (int)((Float.parseFloat(amount+"0000"))/term+
-					(int)(Float.parseFloat(amount+"0000") * d) / 100);
+			//저당상수 소숫점 7번째자리수 까지만 자르기
+			d = Double.parseDouble(String.format("%.7f", d));
+
+			//월 상환액  
+			total = (int)(investmoney*d);  
 			
 			balance = investmoney;
 			
 			for(int i = 0 ; i <term; i++){
-				
-					count[i] = i+1;
 			
-				refunds[i] = total;
+				count[i] = i+1;   //회차 구하기
 				
-				interested[i] = (int)((balance * (d / 100)));
+				refunds[i] = total;  //월상환액 균등하다
 				
-				balance = balance - total;
+				interested[i] = (int)(balance * interast);  // 월 이자 월마다 다르다
+			
+				p_price[i]  = total - interested[i]; //원금  월마다 다르다
 				
-				p_price[i]  = total - interested[i];
-				
-				taxed[i] = (int)(interested[i]*27.5/100);
+				taxed[i] = (int)(interested[i]*27.5/100); //이자에따른 세금
 				
 				realtotaled[i] = refunds[i] - taxed[i];
 						
+				balance = balance-p_price[i];
 				
+				orgprice += p_price[i];
 				totaltotal += refunds[i];
 				taxtotal += taxed[i]; 
 				interesttotal += interested[i];
 				supertotal += realtotaled[i];
-				
 			}
 		}
-			
+			System.out.println(orgprice);
+		mv.addObject("orgprice", orgprice);	
 		mv.addObject("mypoint", mypoint);
 		mv.addObject("amount", amount);
 		mv.addObject("count", count);

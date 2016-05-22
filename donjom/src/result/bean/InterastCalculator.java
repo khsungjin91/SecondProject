@@ -46,8 +46,9 @@ public class InterastCalculator {
 		int interesttotal = 0;
 		int balance = 0;
 		double d = 0.0; 
-		double interast = 0.0;
-		
+		double interast = 0;
+		double x = 0;
+		double y = 0;
 		
 		if(way.equals("원금만기 일시상환")){
 			
@@ -91,31 +92,42 @@ public class InterastCalculator {
 			
 		}else if(way.equals("원리금 균등 상환")){
 			
-			interast = (Double.parseDouble(rate)/12);
+			//이자율
+			interast = (Double.parseDouble(rate)/12/100);
 			
-			d = Double.parseDouble(String.format("%.3f", interast));
+			//저당상수 구하기
+			x = 1+interast;
+			y = x;
+			for(int j = 0 ; j < term-1 ; j++){
+				y *= x;
+			}
+			d = (interast*y) / (y-1); 
 			
-			total = (int)((Float.parseFloat(investmoney+"0000"))/term+
-					(int)(Float.parseFloat(investmoney+"0000") * d)/ 100);
+			//저당상수 소숫점 7번째자리수 까지만 자르기
+			d = Double.parseDouble(String.format("%.7f", d));
 			
+			//월 상환액  
+			total = (int)((Float.parseFloat(investmoney+"0000")*d));  
+			
+			//총투자금액 
 			balance = investmoney2;
 			
+			//만기 개월 수 만큼 for문 돌리기
 			for(int i = 0 ; i <term; i++){
 				
-					count[i] = i+1;
+				count[i] = i+1;   //회차 구하기
+					
+				refunds[i] = total;  //월상환액 균등하다
+				
+				interested[i] = (int)(balance * interast);  // 월 이자 월마다 다르다
 			
-				refunds[i] = total;
+				p_price[i]  = total - interested[i]; //원금  월마다 다르다
 				
-				interested[i] = (int)(balance * d / 100);
-				
-				balance = balance - total;
-				
-				p_price[i]  = total - interested[i];
-				
-				taxed[i] = (int)(interested[i]*27.5/100);
+				taxed[i] = (int)(interested[i]*27.5/100); //이자에따른 세금
 				
 				realtotaled[i] = refunds[i] - taxed[i];
 						
+				balance = balance-p_price[i];
 				
 				totaltotal += refunds[i];
 				taxtotal += taxed[i]; 
