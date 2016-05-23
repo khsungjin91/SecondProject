@@ -11,7 +11,7 @@
 	<input type="button" value="회원 정보관리" onclick="javascript:location.href='manager_member.dj'">
 	<input type="button" value="페이지 관리" onclick="javascript:location.href='manager_page.dj'">
 	<input type="button" value="게시물 관리" onclick="javascript:location.href='manager_board.dj'">
-	<input type="button" value="투자 관리" onclick="javascript:location.href='manager_repaymn.dj'">
+	<input type="button" value="투자 관리" onclick="javascript:location.href='manager_investmn2.dj'">
 	<input type="button" value="대출 관리" onclick="javascript:location.href='manager_borrowmn.dj'">
 	<input type="button" value="펀딩 등록 관리" onclick="javascript:location.href='manager_borrowlist.dj'">
 	<input type="button" value="대출심사" onclick="javascript:location.href='manager_evaluation.dj'">

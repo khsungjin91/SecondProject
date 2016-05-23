@@ -18,6 +18,16 @@
 	select count(*) from invest where i_memnum=#no# and i_pcode=#p_code#
 </select>
 
+<!-- manager로 옮기기 -->
+<select id="investcount" resultClass="int">
+	select count(*) from invest
+</select>
+
+<select id="investmanager" resultClass="String">
+	select i_pcode from invest
+</select>
+
+
 <update id="completefund" parameterClass="registerDto">
 	update product set p_success=#p_success# where p_code=#p_code#
 </update>

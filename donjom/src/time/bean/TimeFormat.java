@@ -23,19 +23,19 @@ public class TimeFormat {
 	
 	public Map Time(){
 		Map map = new HashMap();
-		int When = 1;
+		int When = 0;
 		int WhenTUS = 0;
 		Calendar today = Calendar.getInstance();
 
-	/*	
-	if(today.get(Calendar.DAY_OF_WEEK) >= 3  && today.get(Calendar.HOUR_OF_DAY) >= 0){
+	
+	if(today.get(Calendar.DAY_OF_WEEK) >= 1  && today.get(Calendar.HOUR_OF_DAY) >= 0){
 		System.out.println("1");
-		if(today.get(Calendar.DAY_OF_WEEK) >= 3 && today.get(Calendar.HOUR_OF_DAY) <= 23 ){
+		if(today.get(Calendar.DAY_OF_WEEK) >= 1 && today.get(Calendar.HOUR_OF_DAY) <= 23 ){
 			System.out.println("2");
-			if(today.get(Calendar.DAY_OF_WEEK) <= 4 && today.get(Calendar.HOUR_OF_DAY) > 0){
+			if(today.get(Calendar.DAY_OF_WEEK) <= 2 && today.get(Calendar.HOUR_OF_DAY) > 0){
 				System.out.println("3");
 			WhenTUS = 2;
-			if(today.get(Calendar.DAY_OF_WEEK) == 4 && today.get(Calendar.HOUR_OF_DAY) == 13){
+			if(today.get(Calendar.DAY_OF_WEEK) == 2 && today.get(Calendar.HOUR_OF_DAY) == 13){
 				System.out.println("4");
 				WhenTUS = 0;
 				When = 1;
@@ -43,7 +43,11 @@ public class TimeFormat {
 			}
 		}
 	}
-	*/
+	
+	System.out.println(WhenTUS);
+	System.out.println(When);
+	
+	
 	map.put("When", When);
 	map.put("WhenTUS", WhenTUS);
 		return map;
@@ -65,13 +69,13 @@ public class TimeFormat {
 		
 		String [] split = format.split(":");
 		
-		if(today.get(Calendar.DAY_OF_WEEK) == 3  && today.get(Calendar.HOUR_OF_DAY) >= 13){
+		if(today.get(Calendar.DAY_OF_WEEK) == 1  && today.get(Calendar.HOUR_OF_DAY) >= 13){
 		H = (36-Integer.parseInt(split[0]));
 		M = (59-Integer.parseInt(split[1]));
 		S = (59-Integer.parseInt(split[2]));
 		}
 	
-		if(today.get(Calendar.DAY_OF_WEEK) == 4 && today.get(Calendar.HOUR_OF_DAY) >= 0){
+		if(today.get(Calendar.DAY_OF_WEEK) == 2 && today.get(Calendar.HOUR_OF_DAY) >= 0){
 	    H = (13-Integer.parseInt(split[0]));
 	    M = (59-Integer.parseInt(split[1]));
 	    S = (59-Integer.parseInt(split[2]));
