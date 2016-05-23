@@ -42,14 +42,26 @@
 	<select id="invest_email" resultClass="invest" parameterClass="int">
 		select *from invest where i_memnum=#no# order by no desc
 	</select>
+	<select id="invest_count" resultClass="int" parameterClass="int">
+		select count(*)from invest where i_memnum=#no# order by no desc
+	</select>
+	
+	
 	<!-- 이메일에따른 대출현황 -->
 	<select id="borrow_email" resultClass="borrow" parameterClass="int">
 		select * from borrow where memno=#no# order by no desc
 	</select>
+	<select id="borrow_count" resultClass="int" parameterClass="int">
+		select count(*) from borrow where memno=#no# order by no desc
+	</select>
+	
+	
+	
 	<!-- 총 투자액 -->
 	<select id="invest_sum" resultClass="int" parameterClass="int">
 		select sum(i_invest) from invest where i_memnum=#no#
 	</select>
+	
 	<!-- 총 대출액 -->
 	<select id="borrow_sum" resultClass="int" parameterClass="int">
 		select sum(br_sum) from borrow where memno=#no#

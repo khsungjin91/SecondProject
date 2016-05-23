@@ -73,12 +73,17 @@ public class ManagerBean {
 	// 인증회원 상세페이지- 투자
 	@RequestMapping("/manager_view.dj")
 	public ModelAndView managerview(String email){
-		
-		System.out.println(email);
+
 		int no=(Integer)sqlMap.queryForObject("getno",email);
-		int sum=(Integer)sqlMap.queryForObject("invest_sum", no);		
 		List list=sqlMap.queryForList("invest_email",no);
-		
+		int count=(Integer)sqlMap.queryForObject("invest_count", no);
+		int sum=0;
+		if(count!=0){
+			sum=(Integer)sqlMap.queryForObject("invest_sum", no);		
+		}else{
+			sum=0;
+		}
+		mv.addObject("count",count);
 		mv.addObject("sum",sum);
 		mv.addObject("list",list);
 		mv.addObject("email",email);
@@ -92,9 +97,16 @@ public class ManagerBean {
 		public ModelAndView managerborrow(String email){
 		
 			int no=(Integer)sqlMap.queryForObject("getno", email);
-			int sum=(Integer)sqlMap.queryForObject("borrow_sum", no);			
 			List list=sqlMap.queryForList("borrow_email",no);
-		
+			int count=(Integer)sqlMap.queryForObject("borrow_count", no);
+			int sum=0;
+			if(count!=0){
+				sum=(Integer)sqlMap.queryForObject("borrow_sum", no);			
+			}else{
+				sum=0;
+			}	
+			
+			mv.addObject("count",count);
 			mv.addObject("sum",sum);
 			mv.addObject("list",list);
 			mv.addObject("email",email);
