@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title> 언론 관리자 페이지 </title>
 </head>
 <body>
+<h2> 언론 </h2>
+	<form action="news_write.dj">
 	<table border="1">
 		<tr>
 			<td> ${list.image} </td>
@@ -23,8 +25,11 @@
 		<tr>
 			<td> ${list.site} </td>
 		</tr>
-		<tr> 저장되었습니다. </tr>
 	</table>
-	<input type="reset" value="목록으로" onclick="javascript:location.href='/news_manager.dj">
+	<input type="submit" value="뉴스 올리기">
+	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='/news_writePro.dj'">
+	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='/news_deletePro.dj'">
+	</form>
+
 </body>
 </html>

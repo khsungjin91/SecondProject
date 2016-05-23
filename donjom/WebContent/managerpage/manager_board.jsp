@@ -9,6 +9,6 @@
 <body>	
 	<input type="button" value="공지사항" onclick="javascript:location.href='manager_notice.dj'" >
 	<input type="button" value="도움말"  onclick="javascript:location.href='manager_help.dj'" >
-
+	<input type="button" value="뉴스" onclick="javascript:location.href='news_manager.dj'">
 </body>
 </html>

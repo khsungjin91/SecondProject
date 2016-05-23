@@ -60,6 +60,43 @@ public class CompanyBean {
 		return mv;
 	}
 	
+	// 메인에서 보여지는 뉴스페이지
+	@RequestMapping("/news_list.dj")
+	public ModelAndView newslist(){
+		mv.setViewName("/news/news_list.jsp");
+		return mv;
+	}
+	// 관리자 모드에서 보여지는 뉴스페이지
+	@RequestMapping("/news_manager.dj")
+	public ModelAndView newsmanager(){
+		//List list = sqlMap.queryForList("newsList", null);
+		//mv.addObject("list", list);
+		mv.setViewName("/news/news_manager.jsp");
+		return mv;
+	}
+	// 뉴스올리기
+	@RequestMapping("/news_write.dj")
+	public ModelAndView newswrite (){
+		mv.setViewName("/news/news_write.jsp");
+		return mv;
+	}
+	// 뉴스 수정
+	@RequestMapping("/news_writePro.dj")
+	public ModelAndView newswritePro(Manager_NewsDto news){
+		mv.setViewName("news");
+		sqlMap.insert("newsin", news);
+		List list = sqlMap.queryForList("newsList", null);
+		mv.addObject("list", list);
+		mv.setViewName("/news/news_writePro.jsp");
+		return mv;
+	}
+	// 뉴스 삭제
+	@RequestMapping("/news_deletePro.dj")
+	public ModelAndView newsdeletePro(){
+		mv.setViewName("/news/news_deletePro.jsp");
+		return mv;
+	}
+	
 	
 
 }

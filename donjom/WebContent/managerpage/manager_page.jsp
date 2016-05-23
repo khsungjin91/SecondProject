@@ -9,6 +9,5 @@
 <body>
 	<input type="button" value="회사 정보 변경" onclick="javascript:location.href='manager_companyinfo.dj'">
 	<input type="button" value="카테고리 추가/수정" onclick="javascript:location.href='manager_category.dj'">
-	<input type="button" value="뉴스" onclick="javascript:location.href='manager_newslist.dj'">
 </body>
 </html>

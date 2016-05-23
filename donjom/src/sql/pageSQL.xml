@@ -4,6 +4,7 @@
 
 	<typeAlias alias="category" type="manager.bean.ManagerCategoryDto"/>
 	<typeAlias alias="company" type="manager.bean.ManagerCompanyDto"/>
+	<typeAlias alias="news" type="manager.bean.Manager_NewsDto"/>
 
 	<!-- 회사정보  -->
 	<select id="companyList" parameterClass="company">
@@ -43,7 +44,26 @@
 	<!-- 카테고리 삭제 -->
 	<delete id="categorydel" parameterClass="category">
 		delete from category where c_name = #c_name#
-		
 	</delete>
+	
+	<!-- 뉴스  -->
+	<select id="newsList" parameterClass="news">
+		select * from news
+	</select>
+	<!-- 뉴스 저장 -->
+	<insert id="newsin" parameterClass="news">
+		insert into news (image, 
+						  sitename,
+						  title,
+						  content,
+						  site,
+						  reg) 
+				  values (#image#,
+				  		  #sitename#,
+				  		  #title#,
+				  		  #content#,
+				  		  #site#,
+				  		  sysdate)
+	</insert>
 	
 </sqlMap>
