@@ -7,7 +7,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Effort', 'Amount given'],
+          ['My all',   1000],
+        ]);
+
+        var options = {
+          colors : ['red','#000000'],
+          pieHole: 0.8,
+          pieSliceTextStyle: {
+            color: 'black',
+            fontSize : '20'
+          },
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        chart.draw(data, options);
+      }
+ 
 function check(){
 	
 var user = document.userinput;
@@ -39,6 +63,8 @@ if(user.amount.value > mi){
 
 }
 </script>
+
+
 </head>
 <body>
 
@@ -91,6 +117,7 @@ if(user.amount.value > mi){
 
 <div style="float: left;">
 <table border="1">
+<tr><td><div id="donut_single" style="width: 500px; height: 250px;"></div></td></tr>
 <tr><td>${dto.p_invest}만원/${dto.p_price}만원</td></tr>
 <tr><td>투자자 인원수</td></tr>
 <tr><td>${dto.p_people}명</td></tr>

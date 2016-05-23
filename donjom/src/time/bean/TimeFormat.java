@@ -35,7 +35,7 @@ public class TimeFormat {
 			if(today.get(Calendar.DAY_OF_WEEK) <= 2 && today.get(Calendar.HOUR_OF_DAY) > 0){
 				System.out.println("3");
 			WhenTUS = 2;
-			if(today.get(Calendar.DAY_OF_WEEK) == 2 && today.get(Calendar.HOUR_OF_DAY) == 13){
+			if(today.get(Calendar.DAY_OF_WEEK) == 2 && today.get(Calendar.HOUR_OF_DAY) > 13){
 				System.out.println("4");
 				WhenTUS = 0;
 				When = 1;

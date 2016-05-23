@@ -45,8 +45,7 @@ public class TestBean {
 			}
 			
 		}
-		System.out.println(b);
-		System.out.println(c);
+	
 		mv.addObject("y", y);
 		mv.addObject("p", p);
 		mv.addObject("b", b);
