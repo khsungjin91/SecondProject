@@ -5,6 +5,7 @@
 <typeAlias alias="investDto" type="product.bean.InvestDto"/>
 <typeAlias alias="messageDto" type="result.bean.MessageDto"/>
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
+<typeAlias alias="memberDto" type="sign.bean.memberDto"/>
 
 <select id="getmessage" resultClass="messageDto" parameterClass="int">
 	select * from message where m_memno=#no# order by m_time desc
@@ -30,6 +31,12 @@
 <select id="investway" resultClass="int" parameterClass="String">
 	select count(i_way) from invest where i_way=#i_way#
 </select>
+
+<select id="investage" resultClass="String">
+	select m.socialnum from memberinfo m, invest i where m.no = i.i_memnum
+</select>
+
+<!-- 여기까지 -->
 
 <select id="alarm" resultClass="int" parameterClass="int">
 	select count(m_check) from message where m_memno=#no# and m_check=1
