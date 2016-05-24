@@ -56,7 +56,11 @@ function page(){
          <c:if test="${sessionScope.memId != null}">
             
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="">
+             <li>
+             <c:if test="${count != 0}">
+             <!-- 석모형 알람이미지 --> <font color="red">New</font>	
+             </c:if>
+             <a href="notification.dj">
              <i class="fa fa-bell fa-lg" aria-hidden="true"></i></a>
            </li>
              <li><a href="#" class="hidden-sm">예치금 0원</a></li>

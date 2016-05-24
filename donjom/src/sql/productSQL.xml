@@ -50,7 +50,7 @@
 
 <insert id="investstart" parameterClass="investDto">	
 	insert into invest values(invest_seq.nextval,#i_memname#,#i_memnum#,#i_pname#,#i_pcode#,#i_repayday#,
-								#i_times#,#i_profit#,#i_invest#,#i_way#,sysdate,'doing')
+								#i_times#,#i_profit#,#i_invest#,sysdate,'doing',#i_way#)
 </insert>
 
 <insert id="basicborrow" parameterClass="borrowDto">

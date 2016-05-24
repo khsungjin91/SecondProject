@@ -50,7 +50,7 @@ public class InterastCalculator {
 		double x = 0;
 		double y = 0;
 		
-		if(way.equals("원금만기 일시상환")){
+		if(way.equals("1")){
 			
 			interast = (Double.parseDouble(rate)/12);
 			
@@ -90,7 +90,7 @@ public class InterastCalculator {
 			refunds[term-1] = (int) (total + (Float.parseFloat(investmoney+"0000")));
 			realtotaled[term-1] = (int)(Float.parseFloat(investmoney+"0000")+realtotal);
 			
-		}else if(way.equals("원리금 균등 상환")){
+		}else if(way.equals("0")){
 			
 			//이자율
 			interast = (Double.parseDouble(rate)/12/100);

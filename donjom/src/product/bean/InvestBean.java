@@ -64,7 +64,7 @@ public class InvestBean {
 		double x = 0;
 		double y = 0;
 		
-		if(dto.getP_way().equals("원금만기 일시상환")){
+		if(dto.getP_way().equals("1")){
 			
 			interast = (Double.parseDouble(dto.getP_rate())/12);
 			
@@ -106,7 +106,7 @@ public class InvestBean {
 			realtotaled[term-1] = (int)(Float.parseFloat(amount+"0000")+realtotal);
 			orgprice= p_price[term-1];
 			
-		}else if(dto.getP_way().equals("원리금 균등 상환")){
+		}else if(dto.getP_way().equals("0")){
 			
 			//월이자 
 			interast = (Double.parseDouble(dto.getP_rate())/12/100);

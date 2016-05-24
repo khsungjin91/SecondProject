@@ -23,11 +23,11 @@ public class TimeFormat {
 	
 	public Map Time(){
 		Map map = new HashMap();
-		int When = 0;
+		int When = 1;
 		int WhenTUS = 0;
 		Calendar today = Calendar.getInstance();
 
-	
+	/*
 	if(today.get(Calendar.DAY_OF_WEEK) >= 1  && today.get(Calendar.HOUR_OF_DAY) >= 0){
 		System.out.println("1");
 		if(today.get(Calendar.DAY_OF_WEEK) >= 1 && today.get(Calendar.HOUR_OF_DAY) <= 23 ){
@@ -43,6 +43,7 @@ public class TimeFormat {
 			}
 		}
 	}
+	*/
 	
 	System.out.println(WhenTUS);
 	System.out.println(When);

@@ -23,13 +23,26 @@
 	select count(*) from invest
 </select>
 
-<select id="investmanager" resultClass="String">
+<select id="investpcode" resultClass="String">
 	select i_pcode from invest
 </select>
 
+<select id="investway" resultClass="int" parameterClass="String">
+	select count(i_way) from invest where i_way=#i_way#
+</select>
+
+<select id="alarm" resultClass="int" parameterClass="int">
+	select count(m_check) from message where m_memno=#no# and m_check=1
+</select>
 
 <update id="completefund" parameterClass="registerDto">
 	update product set p_success=#p_success# where p_code=#p_code#
 </update>
+
+<update id="readed" parameterClass="int">
+	update message set m_check=0 where m_memno=#no#
+</update>
+
+
 
 </sqlMap>

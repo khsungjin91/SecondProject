@@ -122,7 +122,14 @@ if(user.amount.value > mi){
 <tr><td>투자자 인원수</td></tr>
 <tr><td>${dto.p_people}명</td></tr>
 <tr><td>상환방식</td></tr>
-<tr><td>${dto.p_way}</td></tr>
+<tr>
+<c:if test="${dto.p_way == 0}">
+<td>원리금 균등상환</td>
+</c:if>
+<c:if test="${dto.p_way == 1}">
+<td>원금만기 일시상환</td>
+</c:if>
+</tr>
 <tr><td>수익률</td></tr>
 <tr><td>${dto.p_rate}%</td></tr>
 <tr><td>투자기간</td></tr>

@@ -37,10 +37,12 @@ public class FundWriteBean {
 		}
 	int borrowcount  = (Integer)sqlMap.queryForObject("onlyoneborrow", memdto.getNo());
 		
-	if(borrowcount == 1){
+	if(borrowcount != 0){
+		System.out.println("00");
 		mv.addObject("borrowcount", borrowcount);
 		mv.setViewName("/product/fund_already.jsp");
 	}else{
+		System.out.println("11");
 		mv.setViewName("/product/fund_writeForm.jsp");
 	}
 		return mv;
@@ -67,8 +69,8 @@ public class FundWriteBean {
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		borrowDto.setMemno(no);
-	
-		sqlMap.update("basicborrow", borrowDto);
+
+		sqlMap.insert("basicborrow", borrowDto);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo",no);
 		
@@ -80,12 +82,12 @@ public class FundWriteBean {
 	
 	@RequestMapping("/fund_cancle.dj")
 	public ModelAndView cancleBorrow(HttpSession session){
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map map = new HashMap();
 		
 		String email=(String)session.getAttribute("memId");
 		int memno = (Integer)sqlMap.queryForObject("getno", email);
 		int no = (Integer)sqlMap.queryForObject("maxno", memno);
-		
+	
 		map.put("memno", memno);
 		map.put("no", no);
 		

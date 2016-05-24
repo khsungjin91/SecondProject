@@ -69,8 +69,8 @@ function check(){
 <form action="calculStart.dj" method="post" name="userinput">
 상환방법
 <select name="way" id="way">
-<option value="원리금 균등 상환">원리금 균등 상환</option>
-<option value="원금만기 일시상환">원금만기 일시상환</option>
+<option value="0">원리금 균등상환</option>
+<option value="1">원금만기 일시상환</option>
 </select>							<br/>
 대출금액<input type="text" name="investmoney" id="investmoney">만원		<br/>
 대출기간<input type="text" name="term" id="term">개월		<br/>

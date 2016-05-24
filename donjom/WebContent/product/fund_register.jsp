@@ -60,12 +60,12 @@ function calculrator(userinput){
 		var sum = document.userinput.p_price.value;
 		var rate = $("#rate").val();
 		
-	if(document.userinput.p_way.value == "원금만기 일시상환"){
+	if(document.userinput.p_way.value == "1"){
 	 var total = parseInt(parseFloat(sum)*(parseFloat(rate/12))/100);
 	 
 	 $("#p_avg").val(total);
 	 
-	}else if(document.userinput.p_way.value == "원리금 균등 상환"){
+	}else if(document.userinput.p_way.value == "0"){
 	
 	var total = parseInt(parseFloat(sum)/parseFloat(term)) + parseInt(parseFloat(sum)*(parseFloat(rate/12))/100);
 		
@@ -103,8 +103,8 @@ function calculrator(userinput){
 <td>
 <select name="p_way">
 <option value="${dto.br_way}">${dto.br_way}(대출자희망)</option>
-<option value="원리금 균등 상환">원리금 균등 상환</option>
-<option value="원금만기 일시상환">원금만기 일시상환</option>
+<option value="0">원리금 균등상환</option>
+<option value="1">원금만기 일시상환</option>
 </select>
 </td>
 <td><input type="text" name="p_mrepay" id="p_avg">만원</td>

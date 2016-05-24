@@ -25,7 +25,6 @@ public class InvestedBean {
 	@RequestMapping("/invest_start.dj")
 	public ModelAndView invested(HttpSession session,SettingDto meminfodto,InvestDto investdto,
 			RegisterDto registerDto,MessageDto dto){
-		
 		MessageBean msm = new MessageBean();
 		
 		String email = (String)session.getAttribute("memId");
@@ -55,7 +54,7 @@ public class InvestedBean {
 		
 		if(Integer.parseInt(registerDto.getP_price()) == 
 				Integer.parseInt(registerDto.getP_invest())){
-			
+			 
 			registerDto.setP_success("success");
 			
 			sqlMap.update("result.completefund", registerDto);
