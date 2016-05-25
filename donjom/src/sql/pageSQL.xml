@@ -4,11 +4,11 @@
 
 	<typeAlias alias="category" type="manager.bean.ManagerCategoryDto"/>
 	<typeAlias alias="company" type="manager.bean.ManagerCompanyDto"/>
-	<typeAlias alias="news" type="manager.bean.Manager_NewsDto"/>
+	<typeAlias alias="news" type="manager.bean.ManagerNewsDto"/>
 
 	<!-- 회사정보  -->
 	<select id="companyList" parameterClass="company">
-		select * from companyinfo
+		select company, ceo, licensee, address, companynum, fax, email, max, overdue from companyinfo
 	</select>
 	<!-- 회사정보 저장 -->
 	<insert id="companyin" parameterClass="company">
@@ -48,7 +48,7 @@
 	
 	<!-- 뉴스  -->
 	<select id="newsList" parameterClass="news">
-		select * from news
+		select image, sitename, title, content, site, reg from news
 	</select>
 	<!-- 뉴스 저장 -->
 	<insert id="newsin" parameterClass="news">
