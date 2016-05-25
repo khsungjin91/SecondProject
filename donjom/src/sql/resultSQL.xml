@@ -5,7 +5,7 @@
 <typeAlias alias="investDto" type="product.bean.InvestDto"/>
 <typeAlias alias="messageDto" type="result.bean.MessageDto"/>
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
-<typeAlias alias="memberDto" type="sign.bean.memberDto"/>
+<typeAlias alias="settingDto" type="setting.bean.SettingDto"/>
 
 <select id="getmessage" resultClass="messageDto" parameterClass="int">
 	select * from message where m_memno=#no# order by m_time desc
@@ -33,7 +33,11 @@
 </select>
 
 <select id="investage" resultClass="String">
-	select m.socialnum from memberinfo m, invest i where m.no = i.i_memnum
+	select m.birth from memberinfo m, invest i where m.no = i.i_memnum
+</select>
+
+<select id="investgender" resultClass="String">
+	select m.gender from memberinfo m, invest i where m.no = i.i_memnum
 </select>
 
 <!-- 여기까지 -->

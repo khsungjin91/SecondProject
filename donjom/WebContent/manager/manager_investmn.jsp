@@ -92,8 +92,10 @@
 
       
      //bar 그래프
-    google.charts.setOnLoadCallback(drawChartbar);
-    function drawChartbar() {
+  
+    google.charts.setOnLoadCallback(drawChart2);
+    function drawChart2() {
+    	
     	var user = document.userinput;
     	var twenty = parseInt(user.twenty.value);
     	var thirty = parseInt(user.thirty.value);
@@ -103,36 +105,38 @@
     	var seventy = parseInt(user.seventy.value);
     	var noadult = parseInt(user.noadult.value);
     	
-      var data_bar = google.visualization.arrayToDataTable([
-        ["Element", "인원수(명)", { role: "style" } ],
-        ["20대 미만", noadult, "#b4b4b4"],
-        ["20대", twenty, "#828282"],
-        ["30대", thirty, "#787878"],
-        ["40대", forty, "#646464"],
-        ["50대", fifty, "#505050"],
-        ["60대", sixty, "#323232"],
-        ["70대 이상", seventy, "black"]
+      var data = google.visualization.arrayToDataTable([                                                 
+		['나이', '남자', '여자'],
+		['80세이상', 40, 20],
+		['60-80', 0, 23.3],
+		['50-60', 10, 4.5],
+		['40-50', 10, 14.3],
+		['30-40', 10, 0.9],
+		['20-30', 20, 13.1],
+		['20세미만', 20, 13.1]
       ]);
- 
-      var view_bar = new google.visualization.DataView(data_bar);
-      view_bar.setColumns([0, 1,
+      
+      var view = new google.visualization.DataView(data);
+      
+      view.setColumns([0, 1,
                        { calc: "stringify",
-    					 sourceColumn: 1,
+                         sourceColumn: 1,
                          type: "string",
                          role: "annotation" },
                        2]);
-  
+      
       var options_bar = {
-        title: "연령대별 투자 현황",
-        width: 1000,
-        height: 400,
-        bar: {groupWidth: "55%"},
-        legend: { position: "none" },
-      };
-      var chart_bar = new google.visualization.BarChart(document.getElementById("barchart_values"));
-      chart_bar.draw(view_bar, options_bar);
-  }
+    	        title: "연령대별 투자 현황",
+    	        width: 1000,
+    	        height: 400,
+    	        bar: {groupWidth: "55%"},
+    	        legend: { position: "none" },
+    	      };
+      
+      var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
 
+      chart.draw(view, options_bar);
+    }
      
   </script>
   
@@ -164,7 +168,7 @@
 <div id="piechart_1" style="width: 600px; height: 200px;"></div>
 <div id="piechart_2" style="width: 650px; height: 200px;"></div>
 <div id="piechart_3" style="width: 600px; height: 200px;"></div>
-<div id="barchart_values" style="width: 1000px; height: 400px; border: 1px solid black;"></div>
+<div id="barchart_material" style="width: 1000px; height: 400px; border: 1px solid black;"></div>
 
 </body>
 </html>

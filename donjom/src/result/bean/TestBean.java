@@ -23,7 +23,7 @@ public class TestBean {
 	@RequestMapping("/manager_investmn2.dj")
 	public ModelAndView managerinvestmn(InvestDto dto){
 		//나이계산용
-		SimpleDateFormat format =  new SimpleDateFormat("yy");
+		SimpleDateFormat format =  new SimpleDateFormat("yyyy");
 		//투자 전체 count
 		int count  = (Integer)sqlMap.queryForObject("result.investcount", null);	
 		String [] category = new String[count];
@@ -37,8 +37,11 @@ public class TestBean {
 	
 		List code_list = sqlMap.queryForList("result.investpcode", null);
 		List age_list = sqlMap.queryForList("result.investage", null);
+		List gender_list = sqlMap.queryForList("result.investgender", null);
 		
-		String [] socialnum = new String[age_list.size()];
+		String [] birth = new String[age_list.size()];
+		String [] gender = new String[gender_list.size()];
+		String [] genderation = new String[gender_list.size()]; 
 		int [] age = new int[age_list.size()];
 		int noadult = 0;
 		int twenty = 0;
@@ -46,19 +49,17 @@ public class TestBean {
 		int forty = 0;
 		int fifty = 0;
 		int sixty = 0;
-		int seventy = 0;
+		int eighty = 0;
 		Date now = new Date();
 		String year = format.format(now);
-		
+	
 		//age
 		for(int i = 0; i<age_list.size(); i++){
-			socialnum[i] = (String) age_list.get(i);
-			String [] y = socialnum[i].split("");
-			String sum = y[0]+y[1];
-			age[i] = Integer.parseInt(year) - Integer.parseInt(sum) +101;
-			if(age[i] > 100){
-				age[i] = age[i] - 100;
-			}
+			birth[i] = (String) age_list.get(i);
+			String [] y = birth[i].split("");
+			String sum = y[0]+y[1]+y[2]+y[3];
+			age[i] = Integer.parseInt(year) - Integer.parseInt(sum)+1;
+			
 			
 			if(age[i] >= 0 && age[i] < 20){ noadult += 1 ;}
 			else if(age[i] >= 20 && age[i] < 30){ twenty += 1 ;}
@@ -66,7 +67,7 @@ public class TestBean {
 			else if(age[i] >= 40 && age[i] < 50){forty += 1;}
 			else if(age[i] >= 50 && age[i] < 60){fifty += 1;}
 			else if(age[i] >= 60 && age[i] < 70){sixty += 1;}
-			else if(age[i] >= 70){seventy += age[i];}
+			else if(age[i] >= 70){eighty += age[i];}
 		}
 		
 		//way
@@ -94,7 +95,7 @@ public class TestBean {
 		mv.addObject("forty",forty);
 		mv.addObject("fifty",fifty);
 		mv.addObject("sixty",sixty);
-		mv.addObject("seventy",seventy);
+		mv.addObject("seventy",eighty);
 		mv.addObject("wayfull", way_count[0]);
 		mv.addObject("waysplit", way_count[1]);
 		mv.addObject("p", p);
