@@ -1,4 +1,4 @@
-package result.bean;
+package main.bean;
 
 
 import java.util.Map;
@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import point.bean.PointDto;
 import product.bean.RegisterDto;
+import result.bean.CalculatorBean;
 
 @Controller
 public class InterastCalculator {
