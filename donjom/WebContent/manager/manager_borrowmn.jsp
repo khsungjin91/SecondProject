@@ -33,37 +33,39 @@
         var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
         chart.draw(data, options);
       }
-      
-      
-      alert("시작");
    
-      alert("0");
       google.charts.setOnLoadCallback(drawChart2);
-      function drawChart2(){
-          alert("1");
-        var data2 = google.visualization.arrayToDataTable([
-          ['age', 'Men', 'Woman'],
-          ['81-100', 50, 20],
-          ['61-80', 0, 23.3],
-          ['51-60', 10, 4.5],
-          ['41-50', 10, 14.3],
-          ['31-40', 10, 0.9],
-          ['20-30', 20, 13.1]
+      function drawChart2() {
+        var data = google.visualization.arrayToDataTable([                                                 
+		['age', 'Men', 'Woman'],
+		['81-100', 40, 20],
+		['61-80', 0, 23.3],
+		['51-60', 10, 4.5],
+		['41-50', 10, 14.3],
+		['31-40', 10, 0.9],
+		['20-30', 20, 13.1]
         ]);
-        alert("2");
-        var options2 = {
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                         { calc: "stringify",
+                           sourceColumn: 1,
+                           type: "string",
+                           role: "annotation" },
+                         2]);
+
+        var options = {
           chart: {
-            title: '성별,나이에 따른 대출현황',
+            title: 'Company Performance'
           },
           bars: 'horizontal' // Required for Material Bar Charts.
         };
-        alert("3");
-        var chart2 = new google.charts.Bar(document.getElementById('barchart_material'));
-        alert("4");
-        chart2.draw(data2, options2);
+
+        var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
+
+        chart.draw(view, options);
       }
     </script>
-
 
 <title></title>
 </head>
@@ -77,9 +79,9 @@
 <input type="hidden" value="${m}" id="m" name="m"/>
 </form>
 	
+	<div id="barchart_material" style="width: 600px; height: 350px;"></div>
 	
 	<div id="piechart_3d" style="width: 600px; height: 350px;"></div>
-	 <div id="barchart_material" style="width: 600px; height: 350px;"></div>
 
 	<div id="br_requestList">
 		<table border="1">
