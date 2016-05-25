@@ -27,10 +27,11 @@
 
         var options = {
           title: '카테고리별 대출현황',
-          is3D: true,
+          is3D: true
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'))
+        ;
         chart.draw(data, options);
       }
    
@@ -38,12 +39,13 @@
       function drawChart2() {
         var data = google.visualization.arrayToDataTable([                                                 
 		['age', 'Men', 'Woman'],
-		['81-100', 40, 20],
-		['61-80', 0, 23.3],
-		['51-60', 10, 4.5],
-		['41-50', 10, 14.3],
-		['31-40', 10, 0.9],
-		['20-30', 20, 13.1]
+		['80세이상', 10, 20],
+		['60-80', 5, 23.3],
+		['50-60', 10, 4.5],
+		['40-50', 24, 14.3],
+		['30-40', 10, 0.9],
+		['20-30', 20, 13.1],
+		['20미만',0,0]
         ]);
         
         var view = new google.visualization.DataView(data);
@@ -55,9 +57,9 @@
                          2]);
 
         var options = {
-          chart: {
-            title: 'Company Performance'
-          },
+         
+            title: '나이,성별에 따른 대출현황',
+         
           bars: 'horizontal' // Required for Material Bar Charts.
         };
 

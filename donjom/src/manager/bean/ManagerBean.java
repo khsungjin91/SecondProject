@@ -1,7 +1,9 @@
 package manager.bean;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -151,7 +153,7 @@ public class ManagerBean {
 	
 	//대출신청list,차트 
 	@RequestMapping("/manager_borrowmn.dj")
-	public ModelAndView managerborrowmn(){
+	public ModelAndView managerborrowmn(Bar_ChartDto chardto){
 		String [] ctg={"p","b","c","m"};
 		List list = sqlMap.queryForList("borrowmn", null);
 		
@@ -160,6 +162,43 @@ public class ManagerBean {
 		for(int i =0; i<ctg.length;i++){
 			count[i] = (int)sqlMap.queryForObject("count_category", ctg[i]);		
 		}
+		List l_gender = sqlMap.queryForList("gender",null);
+		List l_birth = sqlMap.queryForList("birth",null);
+		
+		SimpleDateFormat spf= new SimpleDateFormat("yyyy");
+		Date date =new Date();
+		System.out.println(date);
+		String now = spf.format(date);
+		int noadult=0;
+		int twenty=0;
+		int thirty=0;
+		int forty=0;
+		int fifty=0;
+		int sixty=0;
+		int eighty=0;
+		
+		for(int i =0;i<list.size();i++){
+			String[] birth=((String) l_birth.get(i)).split("");
+			String year=birth[0]+birth[1]+birth[2]+birth[3];
+			int age= Integer.parseInt(now)-Integer.parseInt(year) +1; 
+		
+			if(l_gender.get(i).equals("men")){			
+			if(age>=0 && age<20){noadult +=1; }
+			else if(age>=20 && age<30){twenty +=1;}
+			else if(age>=30 && age<40){thirty +=1;}
+			else if(age>=40 && age<50){forty +=1;}
+			else if(age>=50 && age<60){fifty +=1;}
+			else if(age>=60 && age<80){sixty +=1;}
+			else if(age>=80){eighty +=1;}
+			}		
+			
+			
+			
+			
+		}
+		
+		
+		
 		
 		mv.addObject("p",count[0]);
 		mv.addObject("b",count[1]);
