@@ -154,7 +154,7 @@ function calculrator(userinput){
 <option value="25">매월 25일 상환</option>		
 </select>
 <br/>
-<input type="hidden" value="${dto.memno}" name="p_memno">
+<input type="hidden" value="${dto.memno}" name="p_memeno">
 <input type="submit" value="펀딩시작">
 </form>
 </body>

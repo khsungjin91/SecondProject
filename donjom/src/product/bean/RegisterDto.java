@@ -3,11 +3,19 @@ package product.bean;
 public class RegisterDto {
 	
 	private String p_content,p_code,p_name,p_price,p_img,p_people,p_invest,p_purpose,
-				p_way,p_rate,p_term,p_funding,p_repayday,p_success,p_file,p_category,p_mrepay;
-	private int no,p_memno,p_brno;
+				p_way,p_rate,p_term,p_funding,p_repayday,p_success,p_file,p_category,p_mrepay,name;
+	private int no,p_memeno,p_brno;
 	
 	
 	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getP_brno() {
 		return p_brno;
@@ -24,13 +32,12 @@ public class RegisterDto {
 	public void setP_mrepay(String p_mrepay) {
 		this.p_mrepay = p_mrepay;
 	}
-
-	public int getP_memno() {
-		return p_memno;
+	public int getP_memeno() {
+		return p_memeno;
 	}
 
-	public void setP_memno(int p_memno) {
-		this.p_memno = p_memno;
+	public void setP_memeno(int p_memeno) {
+		this.p_memeno = p_memeno;
 	}
 
 	public String getP_category() {

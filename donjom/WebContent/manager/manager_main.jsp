@@ -15,6 +15,8 @@
 	<input type="button" value="대출 관리" onclick="javascript:location.href='manager_borrowmn.dj'">
 	<input type="button" value="펀딩 등록 관리" onclick="javascript:location.href='manager_borrowlist.dj'">
 	<input type="button" value="대출심사" onclick="javascript:location.href='manager_evaluation.dj'">
+	<input type="button" value="송금/환급" onclick="javascript:location.href='manager_remittance.dj'">
+	
 
 </body>
 </html>

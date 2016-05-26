@@ -58,6 +58,8 @@ public class ManagerBean {
 	//인증회원 검색
 	@RequestMapping("/confirm_search.dj")
 	public ModelAndView confirm_search(String confirm,String search){
+		System.out.println(confirm);
+		System.out.println(search);
 		int setting=2;
 		Map map = new HashMap();
 		map.put("confirm", confirm);

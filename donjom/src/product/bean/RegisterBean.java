@@ -116,7 +116,7 @@ public class RegisterBean {
 		dto.setP_file(p_code);
 		dto.setP_content(p_code);
 		
-		System.out.println(dto.getP_memno());
+		System.out.println(dto.getP_memeno());
 		System.out.println(dto.getP_mrepay());
 		
 		

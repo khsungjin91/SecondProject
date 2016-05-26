@@ -51,9 +51,15 @@ if(user.amount.value == '0'){
 	return false;
 }
 if(user.amount.value > limit){
-	alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
-	user.amount.focus();
-	return false;
+	if(limit > mi){
+		alert("최대 투자 가능 금액은"+mi+"만원 입니다.");
+		user.amount.focus();
+		return false;
+	}else{
+		alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
+		user.amount.focus();
+		return false;
+	}
 }
 if(user.amount.value > mi){
 	alert("대출가능금액을 초과합니다 \n\n더 낮은 금액으로 투자해주세요.");

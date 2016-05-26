@@ -7,6 +7,7 @@
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
 <typeAlias alias="settingDto" type="setting.bean.SettingDto"/>
 
+
 <select id="getmessage" resultClass="messageDto" parameterClass="int">
 	select * from message where m_memno=#no# order by m_time desc
 </select>
@@ -17,6 +18,10 @@
 
 <select id="investcheck" resultClass="int" parameterClass="java.util.Map">
 	select count(*) from invest where i_memnum=#no# and i_pcode=#p_code#
+</select>
+
+<select id="manager_p" resultClass="registerDto">
+	select * from product p,memberinfo m where p.p_memeno = m.no order by p.no desc
 </select>
 
 <!-- manager로 옮기기 -->
@@ -45,6 +50,10 @@
 <select id="alarm" resultClass="int" parameterClass="int">
 	select count(m_check) from message where m_memno=#no# and m_check=1
 </select>
+
+<update id="completeinvest" parameterClass="registerDto">
+	update invest set i_success=#p_success# where i_pcode=#p_code#
+</update>
 
 <update id="completefund" parameterClass="registerDto">
 	update product set p_success=#p_success# where p_code=#p_code#
