@@ -61,13 +61,13 @@
 		<td>${list2.gender}</td>
 		<td>${list2.mobilenum}</td>
 		<td>${list2.address}</td>
-		<td>${list.randomacc}</td>
+		<td>${list2.randomacc}</td>
 		<td>${list2.bankcode}</td>
 		<td>${list2.bankaccnum}</td>
-		<td>${list.email}</td>
-		<td>${list.join}</td>
+		<td>${list2.email}</td>
+		<td>${list2.join}</td>
 		<td>
-		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj?email=${list.email}'"/>
+		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj?email=${list2.email}'"/>
 		</td>
 	</c:forEach>	
 	</c:if>

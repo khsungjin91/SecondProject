@@ -37,15 +37,30 @@
    
       google.charts.setOnLoadCallback(drawChart2);
       function drawChart2() {
+    		var m_noadult=${dto.m_noadult}; 
+    		var m_twenty=${dto.m_twenty};
+    		var m_thirty=${dto.m_thirty};
+    		var m_forty=${dto.m_forty};
+    		var m_fifty=${dto.m_fifty};
+    		var m_sixty=${dto.m_sixty};
+    		var m_eighty=${dto.m_eighty};
+    		var w_noadult=${dto.w_noadult}; 
+    		var w_twenty=${dto.w_twenty};
+    		var w_thirty=${dto.w_thirty};
+    		var w_forty=${dto.w_forty};
+    		var w_fifty=${dto.w_fifty};
+    		var w_sixty=${dto.w_sixty};
+    		var w_eighty=${dto.w_eighty};
+    	  
         var data = google.visualization.arrayToDataTable([                                                 
 		['age', 'Men', 'Woman'],
-		['80세이상', 10, 20],
-		['60-80', 5, 23.3],
-		['50-60', 10, 4.5],
-		['40-50', 24, 14.3],
-		['30-40', 10, 0.9],
-		['20-30', 20, 13.1],
-		['20미만',0,0]
+		['80세이상',m_eighty,w_eighty],
+		['60-80',m_sixty,w_sixty],
+		['50-60',m_fifty,w_fifty],
+		['40-50',m_forty,w_forty],
+		['30-40',m_thirty,w_thirty],
+		['20-30',m_twenty,w_twenty],
+		['20미만',m_noadult,w_noadult]
         ]);
         
         var view = new google.visualization.DataView(data);
