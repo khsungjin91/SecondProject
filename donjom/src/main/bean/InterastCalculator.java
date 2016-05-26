@@ -31,17 +31,14 @@ public class InterastCalculator {
 	
 	@RequestMapping("/calculStart.dj")
 	public ModelAndView calculator(String investmoney,int term,String way,String rate){
-		
 		CalculatorBean calculator = new CalculatorBean();
 		
 		Map map = calculator.Calculator(investmoney, term, way, rate);
-		
+
 		mv.addObject("map",map);
 		mv.setViewName("/calculator/calculatorresult.jsp");
 
 		return mv;
 	}
 	
-	
-
 }

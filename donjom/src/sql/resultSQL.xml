@@ -12,7 +12,7 @@
 </select>
 
 <select id="in_history" resultClass="investDto" parameterClass="int">
-	select * from invest where i_memnum = #no#
+	select * from invest where i_memnum = #no# order by i_date desc
 </select> 
 
 <select id="investcheck" resultClass="int" parameterClass="java.util.Map">

@@ -4,9 +4,25 @@ public class InvestDto {
 	
 	private String i_memname,i_pname,i_pcode,i_repayday,i_times,i_profit,i_invest,i_way,i_date,i_success;
 	 
-	private int i_memnum;
+	private int i_memnum,no;
 	
 	
+
+	public int getI_memnum() {
+		return i_memnum;
+	}
+
+	public void setI_memnum(int i_memnum) {
+		this.i_memnum = i_memnum;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
 
 	public String getI_memname() {
 		return i_memname;

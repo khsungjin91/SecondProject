@@ -10,6 +10,7 @@
 
    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+
       google.charts.load("current", {packages:["corechart"]});
       //1
       google.charts.setOnLoadCallback(drawChart_category);

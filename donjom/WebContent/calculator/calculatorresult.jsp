@@ -90,7 +90,6 @@
 <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.supertotal}" />¿ø</td>
 </tr>
 </table>
-
 </div>
 </body>
 </html>
