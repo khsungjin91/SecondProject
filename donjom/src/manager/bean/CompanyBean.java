@@ -75,7 +75,9 @@ public class CompanyBean {
 	// 관리자 모드에서 보여지는 뉴스페이지
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/news_manager.dj")
-	public ModelAndView newsmanager(ManagerPageingDto dto){
+	public ModelAndView newsmanager(ManagerPageingDto dto, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		// 현재페이지
+		int currentPage = Integer.parseInt(pagingHtml);
 		@SuppressWarnings("unused")
 		List<ManagerNewsDto> list = sqlMap.queryForList("newsList", dto);
 		

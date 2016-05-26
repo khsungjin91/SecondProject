@@ -47,8 +47,13 @@
 	</delete>
 	
 	<!-- 뉴스  -->
+	<!-- 뉴스 테이블 목록 전체 -->
 	<select id="newsList" parameterClass="news">
 		select image, sitename, title, content, site, reg from news
+	</select>
+	<!-- 뉴스 전체 글수  -->
+	<select id="allcount" parameterClass="news">
+		select count(*) from news
 	</select>
 	<!-- 뉴스 저장 -->
 	<insert id="newsin" parameterClass="news">

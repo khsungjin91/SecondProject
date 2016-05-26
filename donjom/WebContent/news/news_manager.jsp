@@ -9,8 +9,19 @@
 </head>
 <body>
 <h2> 언론 </h2>
+<script type="text/javascript">
+	function delCheck(value){
+		if(value == "newsDel"
+				)
+		
+	}
+
+</script>
 	<form action="news_write.dj">
 	<table border="1">
+	<c:param name="currentPage">
+	</c:param>
+	
 		<tr>
 			<td> ${list.image} </td>
 		</tr>
@@ -26,6 +37,10 @@
 		<tr>
 			<td> ${list.site} </td>
 		</tr>
+		<c:if test="list.size() <= 0">
+			<tr>
+				<td> 등록된 게시물이 없습니다.</td>
+		</c:if>
 		
 	</table>
 	<input type="button" value="뉴스 올리기" onclick="javascript:location.href='?currentPage= value="currentPage"/>';">

@@ -31,7 +31,7 @@ public class ManagerPageingDto {
 			currentPage = totalPage;
 		}
 		
-		// 편재 페이지의 처음과 마지막 글의 번호 번호 가져오기
+		// 현재 페이지의 처음과 마지막 글의 번호 번호 가져오기
 		startCount = (currentPage - 1) * blockCount;
 		endCount = startCount + blockCount - 1;
 		
