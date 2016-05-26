@@ -23,7 +23,7 @@
 <td>${list.p_success}</td>
 <td>
 <c:if test="${list.p_success eq 'success'}">
-<input type="button" value="송금하기">
+<input type="button" value="송금미리보기">
 </c:if>
 <c:if test="${list.p_success eq 'fail' || list.p_success eq 'doing'}">
 송금불가
