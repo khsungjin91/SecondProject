@@ -3,9 +3,12 @@
 <html>
 <head>
 <title>welcome to DonJom</title>
+
+
+
+</head>
+<body>
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-
-
 
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">

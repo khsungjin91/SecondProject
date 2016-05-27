@@ -87,13 +87,12 @@
         		url: "/donjom/main.dj",
         		async:true,
         		success: function(){
-        		
+        			
         		},
         		error: function(){
         			
         		},
         		complete: function(){
-        			
         			location.replace("/donjom/signPro.dj?userId="+userId+"&userName="+userName+"&fbId="+fbId+"&userBirth="+userBirth+"&facebooklogin="+facebooklogin);
         		}
         	});  //ajax "sendPost" end
