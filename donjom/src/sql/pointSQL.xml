@@ -10,6 +10,14 @@
 	select total_ch,total_re from memprice where no=#no#
 </select>
 
+<select id="money_check" resultClass="investDto" parameterClass="String">
+	select * from invest i,member m,memberinfo f where i.i_pcode = #p_code# and i.i_memnum = m.no and i.i_memnum = f.no order by i_date desc
+</select>
+
+<select id="refunds_price" resultClass="String" parameterClass="String">
+	select i_invest from invest where i_pcode = #p_code# order by i_date desc
+</select>
+
 <insert id="ch_noinput" parameterClass="pointDto">
 	insert into charging values(#no#,#ch_price#,sysdate)
 </insert>
@@ -32,6 +40,14 @@
 
 <update id="input_invest" parameterClass="investDto">
 	update memprice set total_ch= total_ch - #i_invest# where no = #i_memnum#
+</update>
+
+<update id="send_refunds_i" parameterClass="String">
+	update invest set i_success = 'refunds' where i_pcode = #p_code#
+</update>
+
+<update id="send_refunds_p" parameterClass="String">
+	update product set p_success = 'refunds' where p_code = #p_code#
 </update>
 
 

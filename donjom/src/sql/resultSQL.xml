@@ -21,7 +21,15 @@
 </select>
 
 <select id="manager_p" resultClass="registerDto">
-	select * from product p,memberinfo m where p.p_memeno = m.no order by p.no desc
+	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success != 'refunds' order by p.no desc
+</select>
+
+<select id="manager_rt" resultClass="registerDto">
+	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success = 'refunds' order by p.no desc
+</select>
+
+<select id="matchday" resultClass="String">
+	select p_repayday from product where p_success = 'refunds' order by no desc
 </select>
 
 <!-- manager로 옮기기 -->

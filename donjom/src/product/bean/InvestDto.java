@@ -2,11 +2,35 @@ package product.bean;
 
 public class InvestDto {
 	
-	private String i_memname,i_pname,i_pcode,i_repayday,i_times,i_profit,i_invest,i_way,i_date,i_success;
+	private String i_memname,i_pname,i_pcode,i_repayday,i_times,i_profit,i_invest,i_way,i_date,i_success
+	,nickname,email,randomacc;
 	 
 	private int i_memnum,no;
 	
 	
+	public String getRandomacc() {
+		return randomacc;
+	}
+
+	public void setRandomacc(String randomacc) {
+		this.randomacc = randomacc;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public int getI_memnum() {
 		return i_memnum;

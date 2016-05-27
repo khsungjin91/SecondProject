@@ -96,7 +96,11 @@ if(user.amount.value > mi){
 <td>구분</td><td>만기</td><td>수익률</td><td>대출금액</td><td>상환방식</td><td>월상환액</td>
 </tr>
 <tr>
-<td>${dto.p_category}</td><td>${dto.p_term}개월</td><td>${dto.p_rate}%</td><td>${dto.p_price}만원</td><td>${dto.p_way}</td><td>${dto.p_mrepay}만원</td>
+<td>${dto.p_category}</td><td>${dto.p_term}개월</td><td>${dto.p_rate}%</td><td>${dto.p_price}만원</td>
+<td>
+<c:if test="${dto.p_way == 0}">원리금 균등상환</c:if>
+<c:if test="${dto.p_way == 1}">원금만기 일시상환</c:if>
+</td><td>${dto.p_mrepay}만원</td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
@@ -201,7 +205,7 @@ if(user.amount.value > mi){
 
 </c:if>
 
-<c:if test="${dto.p_success == 'success'}">
+<c:if test="${dto.p_success == 'success' || dto.p_success == 'refunds'}">
 <td><input type="button" value="펀딩성공"></td>
 </c:if>
 
