@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -66,26 +64,59 @@ function check(){
 
 </script>
 
-<form action="calculStart.dj" method="post" name="userinput">
-상환방법
-<select name="way" id="way">
-<option value="0">원리금 균등상환</option>
-<option value="1">원금만기 일시상환</option>
-</select>							<br/>
-대출금액<input type="text" name="investmoney" id="investmoney">만원		<br/>
-대출기간<input type="text" name="term" id="term">개월		<br/>
-대출금리<input type="text" name="rate" id="rate">%		<br/>
+<form action="calculStart.dj" method="post" name="userinput" class="form-horizontal">
 
-<input type="button" value="계산하기" id="calculator" onclick="return check()"> <br/>
+	 <div class="form-group">
+			<label class="col-sm-2 control-label">상환방법</label>
+			<div class="col-sm-10">
+				<div class="input-group">
+					<select name="way" id="way" class="form-control">
+						<option value="0">원리금 균등상환</option>
+						<option value="1">원금만기 일시상환</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">대출금액</label>
+			<div class="col-sm-10">
+				<div class="input-group">
+					<input type="text" class="form-control" name="investmoney" id="investmoney" placeholder="대출금을 만원 단위로 입력해주세요">
+					<div class="input-group-addon">만원</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">대출기간</label>
+			<div class="col-sm-10">
+				<div class="input-group">
+				<input type="text" class="form-control"  name="term" id="term" placeholder="대출기간을 입력해주세요">
+				<div class="input-group-addon">개월</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label class="col-sm-2 control-label">대출금리</label>
+			<div class="col-sm-10">
+				<div class="input-group">
+				<div class="input-group-addon">연</div>
+				<input type="text" class="form-control"  name="rate" id="rate">
+				<div class="input-group-addon">%</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="text-center">
+		<input type="button" value="계산하기" id="calculator" class="btn  btn-success btn-lg" onclick="return check()"> <br/>
+	</div>
+
 
 </form>
-
-<input type="button" value="닫기" onclick="javascript:self.close()">
-
-
-<div id="resultBack">
-
-
-</div>
+<hr>
+	<div id="resultBack"></div>
 </body>
 </html>

@@ -18,7 +18,7 @@
 	<input type="text" align="right" name="search"/>
 	<input type="submit" value="검색" align="right"/>
 </form>
-	<table border=1>
+	<table class="table table-condensed">
 		<tr>
 			<td>회원이름 </td>
 			<td>생년월일</td>
@@ -47,7 +47,7 @@
 		<td>${list.email}</td>
 		<td>${list.join}</td>
 		<td>
-		<input type="button" value="상세보기" onclick="javascript:location.href='manager_view.dj?email=${list.email}'"/>		
+		<input type="button" class="btn btn-block btn-success btn-xs" value="상세보기" onclick="javascript:location.href='manager_view.dj?email=${list.email}'"/>		
 		</td>
 		</tr>
 	</c:forEach>
@@ -67,7 +67,7 @@
 		<td>${list2.email}</td>
 		<td>${list2.join}</td>
 		<td>
-		<input type ="button" value="상세보기"onclick="javascript:location.href='manager_view.dj?email=${list2.email}'"/>
+		<input type ="button" class="btn btn-block btn-success btn-xs" value="상세보기" onclick="javascript:location.href='manager_view.dj?email=${list2.email}'"/>
 		</td>
 	</c:forEach>	
 	</c:if>

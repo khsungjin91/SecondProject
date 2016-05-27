@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap> 
+
+<typeAlias alias="helpDto" type="help.bean.helpDTO"/>
+
+	<insert id="helpWrite" parameterClass="helpDto">
+	INSERT INTO HELP (h_no,h_subject,h_content,h_category,h_reg) 
+	VALUES (HELP_SEQ.NEXTVAL,#h_subject#,#h_content#,#h_category#,sysdate)
+	</insert>
+
+	<select id="faqList" resultClass="helpDto">
+		select * from HELP
+	</select>
+	
+
+	
+	<select id="faq_total" parameterClass="String" resultClass="helpDto">
+		select * from help where h_category = #h_category#
+	</select>
+	</sqlMap>

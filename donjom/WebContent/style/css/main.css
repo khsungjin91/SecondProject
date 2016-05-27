@@ -21,3 +21,7 @@
 #product{padding-left: 20px; padding-right:20px;  margin:0 auto; }
 .backimg{background-image: url('../image/main-bn.jpg'); no-repeat;}
 .line{border-bottom:1px solid #c0c0c0; padding-top:10px;}
+
+#alram-icon{position:absolute; color:red; padding:0 0 0 15px; z-index:1;}
+#icon-padding{letter-spacing:8px; }
+#text-padding li{margin:0 0 20px 35px;}

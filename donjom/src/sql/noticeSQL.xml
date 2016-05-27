@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap> 
+
+<typeAlias alias="notice" type="board.bean.noticeDTO"/>
+
+	<!-- notice 게시판 -->
+	
+	<insert id="writePro" parameterClass="notice">
+		 insert into notice(n_num,n_subject,n_content,n_reg) values(NOTICE_NO.NEXTVAL,#n_subject#,#n_content#,sysdate)
+
+	</insert>
+	
+	<select id="noticelist" resultClass="notice">
+	select*from notice 
+	</select>
+	
+	<select id="noticeview" parameterClass="int" resultClass="notice">
+	select*from notice where n_num = #n_num#
+	</select>
+	
+	<update id="noticeupdate" parameterClass="notice">
+	update notice set n_subject = #n_subject#,
+					  n_content= #n_content#
+					  where n_num = #n_num#
+	</update>
+	
+	<delete id="deleteNotice">
+		delete from notice where n_num = #n_num#
+	</delete>
+	</sqlMap>

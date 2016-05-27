@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 <c:if test="${sessionScope.memId == null}">
 <script>
 alert("로그인 후 사용가능합니다.");
@@ -18,18 +18,22 @@ window.location="signIn.dj";
 
 <h2>알림메세지</h2>
 
-<table>
-<tr>
-<td>메세지</td><td>시간</td>
-</tr>
-<c:forEach var="list" items="${list}">
-<tr>
-<td>${list.m_content}</td>
-<td>${list.m_time}</td>
-</tr>
-</c:forEach>
-</table>
-${pagingHtml}
+	<table class="table table-condensed">
+		<tr>
+			<td>메세지</td>
+			<td>시간</td>
+		</tr>
+		<c:forEach var="list" items="${list}">
+			<tr>
+				<td>${list.m_content}</td>
+				<td>${list.m_time}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	${pagingHtml}
+
+
+
 
 
 </body>

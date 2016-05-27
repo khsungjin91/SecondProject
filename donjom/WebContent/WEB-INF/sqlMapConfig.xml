@@ -12,6 +12,8 @@
 	<sqlMap resource="/sql/resultSQL.xml"/>
 	<sqlMap resource="/sql/timeSQL.xml"/>
 	<sqlMap resource="/sql/pageSQL.xml"/>
+	<sqlMap resource="/sql/noticeSQL.xml"/>
+	<sqlMap resource="/sql/helpSQL.xml"/>
 	
 	
 	

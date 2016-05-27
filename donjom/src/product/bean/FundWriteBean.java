@@ -42,7 +42,7 @@ public class FundWriteBean {
 		mv.addObject("borrowcount", borrowcount);
 		mv.setViewName("/product/fund_already.jsp");
 	}else{
-		System.out.println("11");
+	
 		mv.setViewName("/product/fund_writeForm.jsp");
 	}
 		return mv;
