@@ -21,10 +21,11 @@
             <li><a href="manager_member.dj" type="button">회원 정보 관리 </a></li>
 			<li><a href="manager_page.dj" type="button">페이지관리</a></li>
 			<li><a href="manager_board.dj" type="button" >게시물관리</a></li>
-			<li><a href="manager_repaymn.dj" type="button">투자 관리</a></li>
+			<li><a href="manager_investmn2.dj" type="button">투자 관리</a></li>
 			<li><a href="manager_borrowmn.dj" type="button">대출 관리</a></li>
 			<li><a href="manager_borrowlist.dj" type="button">펀딩 등록 관리</a></li>
 			<li><a href="manager_evaluation.dj" type="button">대출심사</a></li>
+			<li><a href="manager_remittance.dj" type="button">충전/환급</a></li>
 		</ul>
         </div>
         <!-- /#sidebar-wrapper -->
