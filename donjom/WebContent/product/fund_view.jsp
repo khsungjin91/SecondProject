@@ -51,9 +51,15 @@ if(user.amount.value == '0'){
 	return false;
 }
 if(user.amount.value > limit){
-	alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
-	user.amount.focus();
-	return false;
+	if(limit > mi){
+		alert("최대 투자 가능 금액은"+mi+"만원 입니다.");
+		user.amount.focus();
+		return false;
+	}else{
+		alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
+		user.amount.focus();
+		return false;
+	}
 }
 if(user.amount.value > mi){
 	alert("대출가능금액을 초과합니다 \n\n더 낮은 금액으로 투자해주세요.");
@@ -90,7 +96,11 @@ if(user.amount.value > mi){
 <td>구분</td><td>만기</td><td>수익률</td><td>대출금액</td><td>상환방식</td><td>월상환액</td>
 </tr>
 <tr>
-<td>${dto.p_category}</td><td>${dto.p_term}개월</td><td>${dto.p_rate}%</td><td>${dto.p_price}만원</td><td>${dto.p_way}</td><td>${dto.p_mrepay}만원</td>
+<td>${dto.p_category}</td><td>${dto.p_term}개월</td><td>${dto.p_rate}%</td><td>${dto.p_price}만원</td>
+<td>
+<c:if test="${dto.p_way == 0}">원리금 균등상환</c:if>
+<c:if test="${dto.p_way == 1}">원금만기 일시상환</c:if>
+</td><td>${dto.p_mrepay}만원</td>
 </tr>
 <tr>
 <td colspan="6">대출목적</td>
@@ -122,7 +132,14 @@ if(user.amount.value > mi){
 <tr><td>투자자 인원수</td></tr>
 <tr><td>${dto.p_people}명</td></tr>
 <tr><td>상환방식</td></tr>
-<tr><td>${dto.p_way}</td></tr>
+<tr>
+<c:if test="${dto.p_way == 0}">
+<td>원리금 균등상환</td>
+</c:if>
+<c:if test="${dto.p_way == 1}">
+<td>원금만기 일시상환</td>
+</c:if>
+</tr>
 <tr><td>수익률</td></tr>
 <tr><td>${dto.p_rate}%</td></tr>
 <tr><td>투자기간</td></tr>
@@ -188,7 +205,7 @@ if(user.amount.value > mi){
 
 </c:if>
 
-<c:if test="${dto.p_success == 'success'}">
+<c:if test="${dto.p_success == 'success' || dto.p_success == 'refunds'}">
 <td><input type="button" value="펀딩성공"></td>
 </c:if>
 

@@ -22,6 +22,8 @@
 	<context:component-scan base-package="product.bean"/>	
 	<context:component-scan base-package="result.bean"/>	
 	<context:component-scan base-package="time.bean"/>	
+	<context:component-scan base-package="help.bean"/>	
+	<context:component-scan base-package="board.bean"/>
 	
 
 	<bean id="ModelAndView" class="org.springframework.web.servlet.ModelAndView"/>

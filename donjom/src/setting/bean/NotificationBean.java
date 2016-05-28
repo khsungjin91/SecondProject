@@ -30,6 +30,8 @@ public class NotificationBean {
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
+		sqlMap.update("result.readed", no);
+		
 		int paging = 1;
 		pagingAction input = null;
 		String pagingHtml;
@@ -40,13 +42,9 @@ public class NotificationBean {
 	
 		List list = sqlMap.queryForList("result.getmessage", no);
 		
-		System.out.println("up"+list.size());
-		
 		if(pagecurrent != null){
-			
 			currentPage = Integer.parseInt(pagecurrent);
 		}else{
-			
 			currentPage = 1;
 		}
 		
@@ -54,9 +52,7 @@ public class NotificationBean {
 		
 		pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 		list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
-		
-		System.out.println("down"+list.size());
-		
+
 		mv.addObject("list", list);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.setViewName("/profile/notification.jsp");

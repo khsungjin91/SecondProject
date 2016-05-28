@@ -55,6 +55,16 @@
 		select count(*) from borrow where memno=#no# order by no desc
 	</select>
 	
+	<select id="gender" resultClass="String" >
+		select m.gender,b.membirth
+		from borrow b,memberinfo m where b.memno=m.no
+	</select>
+	<select id="birth" resultClass="String">
+		select b.membirth
+		from borrow b,memberinfo m where b.memno=m.no
+	</select>	
+
+	<select id=""></select>
 	
 	
 	<!-- 총 투자액 -->

@@ -1,5 +1,8 @@
 package main.bean;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +23,21 @@ public class MainBean {
 	
 	
 	@RequestMapping("/main.dj")
-	public ModelAndView main(PointDto pdto, HttpSession session){
-		
+	public ModelAndView main(PointDto pdto, HttpSession session,HttpServletRequest request){
+	
 		
 		if(session.getAttribute("memId") != null){
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
+		int count = (Integer)sqlMap.queryForObject("result.alarm", no);
 		
 		long total = pdto.getTotal_ch() - pdto.getTotal_re();
 		mv.addObject("total", total);
+		
+		
+		List list = sqlMap.queryForList("productList", null);
+		mv.addObject("list",list);
+		mv.addObject("count", count);
 		}
 		
 		mv.setViewName("/main/main.jsp");

@@ -11,7 +11,7 @@
 
 	<form action="manager_companyPro.dj" method="post">
 	
-	회사 명  : <input type="text" name="company" value="${company.company}"> <br />
+	회사 명  : <input type="text" name="company" value="${company.getCompany}"> <br />
 	대표이사 : <input type="text" name="ceo" value="${company.ceo}"> <br />
 	사업자등록번호 : <input type="text" name="licensee"value="${company.licensee}"> <br />
 	주소 :	<input type="text" name="address"value="${company.address}"> <br />

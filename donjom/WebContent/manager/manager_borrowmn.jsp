@@ -27,42 +27,131 @@
 
         var options = {
           title: '카테고리별 대출현황',
-          is3D: true,
+          is3D: true
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'))
+        ;
         chart.draw(data, options);
       }
-      
-      
-      alert("시작");
-   
-      alert("0");
+   //bar차트
       google.charts.setOnLoadCallback(drawChart2);
-      function drawChart2(){
-          alert("1");
-        var data2 = google.visualization.arrayToDataTable([
-          ['age', 'Men', 'Woman'],
-          ['81-100', 50, 20],
-          ['61-80', 0, 23.3],
-          ['51-60', 10, 4.5],
-          ['41-50', 10, 14.3],
-          ['31-40', 10, 0.9],
-          ['20-30', 20, 13.1]
+      function drawChart2() {
+    		var m_noadult=${dto.m_noadult}; 
+    		var m_twenty=${dto.m_twenty};
+    		var m_thirty=${dto.m_thirty};
+    		var m_forty=${dto.m_forty};
+    		var m_fifty=${dto.m_fifty};
+    		var m_sixty=${dto.m_sixty};
+    		var m_eighty=${dto.m_eighty};
+    		var w_noadult=${dto.w_noadult}; 
+    		var w_twenty=${dto.w_twenty};
+    		var w_thirty=${dto.w_thirty};
+    		var w_forty=${dto.w_forty};
+    		var w_fifty=${dto.w_fifty};
+    		var w_sixty=${dto.w_sixty};
+    		var w_eighty=${dto.w_eighty};
+    	  
+        var data = google.visualization.arrayToDataTable([                                                 
+		['age', 'Men', 'Woman'],
+		['80세이상',m_eighty,w_eighty],
+		['60-80',m_sixty,w_sixty],
+		['50-60',m_fifty,w_fifty],
+		['40-50',m_forty,w_forty],
+		['30-40',m_thirty,w_thirty],
+		['20-30',m_twenty,w_twenty],
+		['20미만',m_noadult,w_noadult]
         ]);
-        alert("2");
-        var options2 = {
-          chart: {
-            title: '성별,나이에 따른 대출현황',
-          },
+        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                         { calc: "stringify",
+                           sourceColumn: 1,
+                           type: "string",
+                           role: "annotation" },
+                         2]);
+
+        var options = {
+         
+            title: '나이,성별에 따른 대출현황',
+         
           bars: 'horizontal' // Required for Material Bar Charts.
         };
-        alert("3");
-        var chart2 = new google.charts.Bar(document.getElementById('barchart_material'));
-        alert("4");
-        chart2.draw(data2, options2);
+
+        var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
+
+        chart.draw(view, options);
       }
-    </script>
+      
+	//line차트
+       google.charts.setOnLoadCallback(lineChart);
+
+     function lineChart() {
+ 	
+ 	var today = new Date();
+ 	
+ 	alert(today);
+    	 
+       var chartDiv = document.getElementById('chart_div');
+
+       var data = new google.visualization.DataTable();
+       data.addColumn('date', 'Month');
+       data.addColumn('number', "Average ");
+     
+
+       data.addRows([
+         [new Date(2014, 0),  5 ],
+         [new Date(2014, 1),  4],
+         [new Date(2014, 2),  5 ],
+         [new Date(2014, 3),  2.9],
+         [new Date(2014, 4),  6.3],
+         [new Date(2014, 5),    9],
+         [new Date(2014, 6), 10.6],
+         [new Date(2014, 7), 10.3],
+         [new Date(2014, 8),  7.4],
+         [new Date(2014, 9),  4.4],
+         [new Date(2014, 10), 1.1],
+         [new Date(2014, 11), 2]
+       ]);
+
+       var classicOptions = {
+         title: '최근 1년간 월별 평균 대출액',
+         width: 900,
+         height: 500,
+         // Gives each series an axis that matches the vAxes number below.
+         series: {
+           0: {targetAxisIndex: 0},
+           1: {targetAxisIndex: 1}
+         },
+         vAxes: {
+           // Adds titles to each axis.
+           0: {title: ''},
+           1: {title: ''}
+         },
+         hAxis: {
+           ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
+                   new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
+                   new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
+                  ]
+         },
+         vAxis: {
+           viewWindow: {
+             max: 30
+           }
+         }
+       };
+
+       function drawClassicChart() {
+         var classicChart = new google.visualization.LineChart(chartDiv);
+         classicChart.draw(data, classicOptions);
+        
+       }
+
+       drawClassicChart();
+
+     }
+     </script>
+      
 
 
 <title></title>
@@ -76,10 +165,11 @@
 <input type="hidden" value="${c}" id="c" name="c"/>
 <input type="hidden" value="${m}" id="m" name="m"/>
 </form>
+	 <div id="chart_div"></div>
 	
+	<div id="barchart_material" style="width: 600px; height: 350px;"></div>
 	
 	<div id="piechart_3d" style="width: 600px; height: 350px;"></div>
-	 <div id="barchart_material" style="width: 600px; height: 350px;"></div>
 
 	<div id="br_requestList">
 		<table border="1">

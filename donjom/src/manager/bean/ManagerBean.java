@@ -1,7 +1,9 @@
 package manager.bean;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,12 +58,13 @@ public class ManagerBean {
 	//인증회원 검색
 	@RequestMapping("/confirm_search.dj")
 	public ModelAndView confirm_search(String confirm,String search){
+		
 		int setting=2;
 		Map map = new HashMap();
 		map.put("confirm", confirm);
 		map.put("search", search);
 		List list=sqlMap.queryForList("confirm_search",map);
-		System.out.println(list.size()+"save");
+
 		int x=list.size();
 		mv.addObject("x" ,x);
 		mv.addObject("setting",setting);
@@ -151,7 +154,7 @@ public class ManagerBean {
 	
 	//대출신청list,차트 
 	@RequestMapping("/manager_borrowmn.dj")
-	public ModelAndView managerborrowmn(){
+	public ModelAndView managerborrowmn(Bar_ChartDto chartdto){
 		String [] ctg={"p","b","c","m"};
 		List list = sqlMap.queryForList("borrowmn", null);
 		
@@ -160,7 +163,54 @@ public class ManagerBean {
 		for(int i =0; i<ctg.length;i++){
 			count[i] = (int)sqlMap.queryForObject("count_category", ctg[i]);		
 		}
+		List l_gender = sqlMap.queryForList("gender",null);
+		List l_birth = sqlMap.queryForList("birth",null);
 		
+		SimpleDateFormat spf= new SimpleDateFormat("yyyy");
+		Date date =new Date();
+		System.out.println(date);
+		String now = spf.format(date);
+		
+		int m_noadult=0; 
+		int m_twenty=0;
+		int m_thirty=0;
+		int m_forty=0;
+		int m_fifty=0;
+		int m_sixty=0;
+		int m_eighty=0;
+		int w_noadult=0; 
+		int w_twenty=0;
+		int w_thirty=0;
+		int w_forty=0;
+		int w_fifty=0;
+		int w_sixty=0;
+		int w_eighty=0;
+		
+		for(int i =0;i<l_birth.size();i++){
+			String[] birth=((String) l_birth.get(i)).split("");
+			String year=birth[0]+birth[1]+birth[2]+birth[3];
+			int age= Integer.parseInt(now) - Integer.parseInt(year) +1; 
+		
+			if(l_gender.get(i).equals("men")){	
+				if(age>=0 && age<20){m_noadult +=1; chartdto.setM_noadult(m_noadult);}
+				else if(age>=20 && age<30){m_twenty +=1; chartdto.setM_twenty(m_twenty);}
+				else if(age>=30 && age<40){m_thirty +=1; chartdto.setM_thirty(m_thirty);}
+				else if(age>=40 && age<50){m_forty +=1; chartdto.setM_forty(m_forty);}
+				else if(age>=50 && age<60){m_fifty +=1; chartdto.setM_fifty(m_fifty);}
+				else if(age>=60 && age<80){m_sixty +=1; chartdto.setM_sixty(m_sixty);}
+				else if(age>=80){m_eighty +=1; chartdto.setM_eighty(m_eighty);}
+			}else{
+				if(age>=0 && age<20){w_noadult +=1; chartdto.setW_noadult(w_noadult);}
+				else if(age>=20 && age<30){w_twenty +=1; chartdto.setW_twenty(w_twenty);}
+				else if(age>=30 && age<40){w_thirty +=1; chartdto.setW_thirty(w_thirty);}
+				else if(age>=40 && age<50){w_forty +=1; chartdto.setW_forty(w_forty);}
+				else if(age>=50 && age<60){w_fifty +=1; chartdto.setW_fifty(w_fifty);}
+				else if(age>=60 && age<80){w_sixty +=1; chartdto.setW_sixty(w_sixty);}
+				else if(age>=80){w_eighty +=1; chartdto.setW_eighty(w_eighty);}			
+			}
+		}
+		
+		mv.addObject("dto",chartdto);
 		mv.addObject("p",count[0]);
 		mv.addObject("b",count[1]);
 		mv.addObject("c",count[2]);

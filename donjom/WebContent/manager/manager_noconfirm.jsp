@@ -16,7 +16,7 @@
 		<input type="text" align="right" name="search"/> 
 		<input type="submit" value="검색" align="right"/>
 	</form>
-	<table border=1>
+	<table class="table table-condensed">
 		<tr>
 			<td>닉네임</td>
 			<td>이메일</td>

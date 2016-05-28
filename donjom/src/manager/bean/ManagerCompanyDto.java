@@ -1,5 +1,7 @@
 package manager.bean;
 
+import java.util.List;
+
 public class ManagerCompanyDto {
 	
 	 private String company;
@@ -67,7 +69,6 @@ public class ManagerCompanyDto {
 	public void setOverdue(String overdue) {
 		this.overdue = overdue;
 	}
-     
-     
+	
    
 }

@@ -1,8 +1,9 @@
 package manager.bean;
 
+import java.io.File;
 import java.util.Date;
 
-public class Manager_NewsDto {
+public class ManagerNewsDto {
 	private String image;
 	private String sitename;
 	private String title;

@@ -50,7 +50,7 @@
 
 <insert id="investstart" parameterClass="investDto">	
 	insert into invest values(invest_seq.nextval,#i_memname#,#i_memnum#,#i_pname#,#i_pcode#,#i_repayday#,
-								#i_times#,#i_profit#,#i_invest#,#i_way#,sysdate,'doing')
+								#i_times#,#i_profit#,#i_invest#,sysdate,'doing',#i_way#)
 </insert>
 
 <insert id="basicborrow" parameterClass="borrowDto">
@@ -63,7 +63,7 @@
 <insert id="productinput" parameterClass="registerDto">
 	insert into product values(PRODUCT_SEQ.NEXTVAL,#p_category#,#p_name#,#p_code#,#p_price#,
 								#p_content#,'test','0','0',#p_purpose#,#p_way#,#p_rate#,
-								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#,#p_memno#,#p_mrepay#,#p_brno#)
+								#p_term#,#p_funding#,#p_repayday#,'doing',#p_file#,#p_memeno#,#p_mrepay#,#p_brno#)
 </insert>
 
 <insert id="messageIn" parameterClass="messageDto">

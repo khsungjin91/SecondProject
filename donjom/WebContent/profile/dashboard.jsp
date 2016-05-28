@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="../style/css/herb.css" rel="stylesheet">
-	<link href="../bt/css/bootstrap.min.css" rel="stylesheet">
- 	<link href="../bt/css/bootstrap-theme.min.css" rel="stylesheet">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
+<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
  	<title>대시보드</title>
 </head>
 <body>
@@ -16,16 +15,16 @@
 	<div class="container profile-wrap">
 		<div class="col-sm-3 mobile-profile-nav">
 			<div class="user-info text-center radius">						
-				<img src="../image/default.png" class="radius-circle" width="75"  >
-				<p class="name txt-cut-line user-nick">User Name</p>
-				<p class="email txt-cut-line">user@donjom.net</p>
-				<p class="date">가입일 16.04.20</p>
+				<img src="/donjom/save/${dto.profile}" class="img-circle" width="150"  >
+				<p class="name txt-cut-line user-nick">${dto.nickname}	</p>
+				<p class="email txt-cut-line">${dto.email}</p>
+				<p class="date">가입일  ${dto.join}</p>
 				<div class="btn-profile-edit hidden-xs">
-					<button type="button" class="btn" onclick="location.href='/profile/setting'"><i class="fa fa-cog"></i> 기본정보 수정</button>
+					<button type="button" class="btn btn-success" onclick="location.href='setting.dj'"><i class="fa fa-cog"></i> 기본정보 수정</button>
 				</div>
 			</div>
 			<ul class="menu menu-dashboard radius">
-				<li class="dashboard"><a href="dashboard.dj" class="active"><span class="glyphicon glyphicon-dashboard"></span> 대시보드</a></li>
+				<li class="dashboard"><a href ="dashboard.dj" class="active"><span class="glyphicon glyphicon-dashboard"></span> 대시보드</a></li>
 				<li class="invest"><a href="invest_history.dj" class=""> 투자내역</a></li>
 				<li class="lend"><a href="laon_history.dj" class=""> 대출내역</a></li>
 				<li class="moeny"><a href="point_deposit.dj" class=""> 충전/환급</a></li>
@@ -33,6 +32,7 @@
 				<li class="setting"><a href="setting.dj" class="">설정</a></li>
 			</ul>
 		</div>
+		
 		<div class="col-xs-12 col-sm-9 contents-warp right">
 			
 			
@@ -45,7 +45,7 @@
 					</div>
 					<div class="panel-body">
 						<ul class="col-xs-6">
-							<li>
+							<li> 
 								<p class="title-edge">누적 투자금</p>
 							    <p class="title-other">0원</p>
 							</li>
@@ -157,13 +157,5 @@
 		</div>
 </div>		
 </section>
-
-
-	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="../bt/js/bootstrap.min.js"></script>
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../bt/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
