@@ -69,7 +69,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">이메일 주소</label>
 						<div class="col-sm-8">
-							<input type="text" name="mememail" value="${memdto.email}"
+							<input type="text" name="mememail" value="${dto.email}"
 								class="form-control">
 						</div>
 					</div>

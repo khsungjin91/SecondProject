@@ -25,7 +25,7 @@
 			<li><a href="manager_borrowmn.dj" type="button">대출 관리</a></li>
 			<li><a href="manager_borrowlist.dj" type="button">펀딩 등록 관리</a></li>
 			<li><a href="manager_evaluation.dj" type="button">대출심사</a></li>
-			<li><a href="manager_remittance.dj" type="button">충전/환급</a></li>
+			<li><a href="manager_remittance.dj" type="button">송금/환급</a></li>
 		</ul>
         </div>
         <!-- /#sidebar-wrapper -->

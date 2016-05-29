@@ -50,7 +50,7 @@
              </c:if>
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            </li>
-             <li><a href="#" class="hidden-sm">예치금 0원</a></li>
+             <li><a href="#" class="hidden-sm">예치금 ${total}원</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
           <img src="/donjom/save/${dto.profile}" class="user-image" width="25"  >
