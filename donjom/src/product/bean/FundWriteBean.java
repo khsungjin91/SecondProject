@@ -28,11 +28,8 @@ public class FundWriteBean {
 		String email=(String)session.getAttribute("memId");
 		if(session.getAttribute("memId") != null){
 		
-			dto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
-		
 		settingdto = (SettingDto)sqlMap.queryForObject("getmemberInfo", dto.getNo());
 		
-		mv.addObject("dto", dto);
 		mv.addObject("sedto", settingdto);
 		}
 	int borrowcount  = (Integer)sqlMap.queryForObject("onlyoneborrow", dto.getNo());
@@ -50,14 +47,9 @@ public class FundWriteBean {
 	
 	
 	@RequestMapping("/loan_step2.dj")
-	public ModelAndView write2(BorrowDto dto,memberDto memdto,HttpSession session){
-		String email=(String)session.getAttribute("memId");
-		if(session.getAttribute("memId") != null){
-		
-		memdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
-		
-		}
-		mv.addObject("dto",memdto);
+	public ModelAndView write2(BorrowDto dto){
+
+	
 		mv.addObject("memname",dto.getMemname());
 		mv.addObject("membirth",dto.getMembirth());
 		mv.addObject("memphone",dto.getMemphone());

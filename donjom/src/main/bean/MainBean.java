@@ -31,22 +31,10 @@ public class MainBean {
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		int count = (Integer)sqlMap.queryForObject("result.alarm", no);
-		
-		
-		//프로필 사진 가져오기
-		dto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
-		
-		
-		//예치금 가져오기
-		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
-		long total = pdto.getTotal_ch() - pdto.getTotal_re();
-		
+
 		//상품리스트 
 		List list = sqlMap.queryForList("productList", null);
-		
-		
-		mv.addObject("dto",dto);
-		mv.addObject("total", total);
+	
 		mv.addObject("list",list);
 		mv.addObject("count", count);
 		}

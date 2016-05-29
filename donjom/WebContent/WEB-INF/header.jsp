@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "java.sql.DriverManager"%>
+<%@ page import = "java.sql.Connection"%>
+<%@ page import = "java.sql.PreparedStatement"%>
+<%@ page import = "java.sql.ResultSet"%>
+<%@ page import = "point.bean.PointDto" %>
+
 <html>
 <head>
 <title>welcome to DonJom</title>
@@ -11,6 +17,53 @@
 
 </head>
 <body>
+
+<%
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+
+    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@masterkh.iptime.org:7000:orcl","donjom","donjom");
+ 
+    PreparedStatement pstmt = null;
+    
+    ResultSet rs = null;
+    												
+ 	String email = (String)session.getAttribute("memId");
+ 	String profile = "";
+ 	long total = 0;
+ 	int no = 0;
+ 	PointDto dto = new PointDto();
+ 	
+	if(session.getAttribute("memId") != null){
+		
+		pstmt = conn.prepareStatement("select no from member where email=?");
+		pstmt.setString(1, email);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+			no = rs.getInt("no");
+		}
+		
+		pstmt = conn.prepareStatement("select profile from member where email=?");
+		pstmt.setString(1, email);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+		profile = rs.getString("profile");		
+		}
+		
+		pstmt = conn.prepareStatement("select total_ch,total_re from memprice where no=?");
+		pstmt.setInt(1, no);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+			
+			long total_ch = rs.getLong("total_ch");
+			long total_re = rs.getLong("total_re");
+			
+			total = total_ch - total_re;
+		}
+	}
+%>
 <div class="warpper">
 	 <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -50,10 +103,10 @@
              </c:if>
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            </li>
-             <li><a href="#" class="hidden-sm">예치금 ${total}원</a></li>
+             <li><a href="#" class="hidden-sm">예치금 <%=total %>원</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          <img src="/donjom/save/${dto.profile}" class="user-image" width="25"  >
+          <img src="/donjom/save/<%=profile %>" class="user-image" width="25"  >
           ${memId}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
           		<li><a href="dashboard.dj">대시보드</a></li>
