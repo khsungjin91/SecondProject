@@ -17,6 +17,7 @@ body {
 
 .img-portfolio {
     margin-bottom: 30px;
+    
 }
 
 .img-hover:hover {
@@ -73,6 +74,15 @@ header.carousel .fill {
 }
 
 /* Footer Styles */
+
+.backcolor {
+	
+    color:#000000;
+    border-top:1px solid #e9e9e9 ;
+    border-bottom:1px solid #e9e9e9;
+    padding:25px 0 25px 0;
+    
+}
 
 footer {
 	padding:30px 0 30px 0;

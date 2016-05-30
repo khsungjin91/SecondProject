@@ -103,6 +103,7 @@
 
 </head>
 <body class="hold-transition register-page">
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
@@ -220,7 +221,7 @@ function checkPwd(){
 			onclick="facebookRegist();"><i class="fa fa-facebook"></i>페이스북으로 1초만에 가입</button>
 	</div>
   </div>
-
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 
 
 </body>

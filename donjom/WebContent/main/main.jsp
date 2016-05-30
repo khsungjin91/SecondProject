@@ -79,82 +79,98 @@
     <div class="container">
 		
         <!-- Marketing Icons Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                   투자상품
-                </h1>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading-img" style="background-image:url('image/conimg-2.jpg')">
-                        <a href="#"  type="button" class="btn btn-block btn-lg">자세히 보기</a>
-                    </div>
-                   
-                    <div class="panel-body">
-                        <h3>운영자금</h3>
-                        <p>본 대출자는 40대 남성으로 등산용, 캠핑용 베낭을 판매하고 (사업기간 :1년 6개월) 있으며, 
-                        월 평균 수억원의 이익을 보지는 못하는 걸로 봐서 우리에게 돈을 빌릴 것이고 어쩌구 </p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading-img">
-                        <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading-img">
-                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-        
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">투자상품</h1>
+			</div>
+			<!-- card section part -->
+			<c:forEach var="list" items="${list }">
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading-img img-hover"
+							style="background-image: url('image/conimg-2.jpg')">
+							<a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-block btn-lg">${list.p_name}</a>
+						</div>
+						<div class="panel-body">
+							<strong>${list.p_name}</strong><br> ${list.p_purpose}
+							<hr>
+							<p class="money">
+								목표 ${list.p_price}<span>만원</span> 연 ${list.p_rate}%<span>수익률</span>
+							</p>
+							<p class="rate">
+								<span class="txt-point purpose"> ${list.p_category}</span> <span
+									class="day">만기</span> <span class="txt-point">${list.p_term}개월</span>
+								<span class="level">등급 <span class="txt-point">D1</span></span>
+							</p>
+						</div>
+						<div class="progress progress-sm">
+							<div class="progress-bar progress-bar-warning" role="progressbar"
+								style="width:${list.p_invest/list.p_price*100}%"></div>
+						</div>
+						<div class="progress-detail">
+							<ul class="list-inline">
+								<li>${list.p_invest/list.p_price*100}%진행</li>
+								<li>(${list.p_people}명)</li>
+								<li><c:if test="${list.p_success == 'doing'}">
+										<strong>펀딩진행중</strong>
+									</c:if> <c:if test="${list.p_success == 'success'}">
+										<strong>펀딩성공</strong>
+									</c:if> <c:if test="${list.p_success == 'fail'}">
+										<strong>펀딩실패</strong>
+									</c:if></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+
+		<!-- /.row -->
+      </div><!-- /.container -->  
 
         <!-- Portfolio Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Portfolio Heading</h2>
+        <div class="container-fluid backcolor ">
+          <div class="container">
+			<div class="row">
+        	<div class="col-sm-12">
+            <div class="col-md-3 col-sm-6 ">
+            <img class="img-responsive img-portfolio" src="image/main-img-8.png" alt="" >
+            	<div class=" text-center">
+            	 <h4><strong>중금리 직거래</strong></h4>
+               	  <p>기존 금융기관의 지점 운영비, 인건비, 광고비 등의 비용을 온라인 중금리 직거래를 통해 획기적으로 낮췄습니다. 이제 가장 합리적인 대출 이자와 투자 수익을 경험하세요.</p>
+            	</div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
+            <div class="col-md-3 col-sm-6 ">
+            <img class="img-responsive img-portfolio" src="image/main-img-1.png" alt="" >
+            	<div class=" text-center">
+            	 <h4><strong>기술기반 신용평가</strong></h4>
+               	  <p>기존 금융기관의 신용평가 방식은 때론 합리적이지 못할 때가 있습니다. 기술과 금융이 결합된 돈좀의 혁신적인 신용평가 시스템을 통해 나의 신용을 재평가 받으세요.</p>
+            	</div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
+            <div class="col-md-3 col-sm-6 ">
+            <img class="img-responsive img-portfolio" src="image/main-img-7.png" alt="" >
+            	<div class=" text-center">
+            	 <h4><strong>다양한 투자 포트폴리오</strong></h4>
+               	  <p>한가지 카테고리만의 투자가 좀 불안 하시다고요? 돈좀에서는 개인 및 사업자 채권뿐만 아니라 부동산 담보, 매출담보 등의 다양한 카테고리의 채권에 분산투자 가능하지요.</p>
+            	</div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
+            <div class="col-md-3 col-sm-6 ">
+            <img class="img-responsive img-portfolio " src="image/main-img-3.png" alt="" >
+            	<div class=" text-center">
+            	 <h4><strong>블록체인 기반 송금</strong></h4>
+               	  <p>공인인증서, 엑티브엑스 등의 복잡한고, 어려운 보안툴은 좀!! 비트코인 송금시 사용되는 블록체인 보안기술을 돈좀 투자시스템에 적용하진 못했지만, 실제 돈이 아니니 안전한 투자환경을 즐기세요!!</p>
+            	</div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
+          
             </div>
-            
+           </div>
+       	 </div> 
         </div>
+        
         <!-- /.row -->
 
         <!-- Features Section -->
+        <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Modern Business Features</h2>
@@ -177,7 +193,7 @@
             </div>
         </div>
         <!-- /.row -->
-
+</div>
         <hr>
 
         <!-- Call to Action Section -->
@@ -192,26 +208,17 @@
             </div>
         </div>
 
-        <hr>
-</div>
-        <!-- Footer -->
-        <footer >
-       	
+       <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
+       
 
- <div class="container">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-	 </footer>
 
-	 
 
- <!-- Script to Activate the Carousel -->
+	<!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+					$('.carousel').carousel({
+						interval : 5000
+					//changes the speed
+					})
+				</script>
 </body>
 </html>

@@ -103,6 +103,7 @@
 
  <title>LOGIN</title> 
  </head> 
+ <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
  <body class="hold-transition login-page" > 
  <div class="login-box">
  	<div class="login-logo">
@@ -148,6 +149,6 @@
 		</ul> 
  		</div> <!-- /login box -->
  	</div> 
- 
+ <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body> 
 </html> 
