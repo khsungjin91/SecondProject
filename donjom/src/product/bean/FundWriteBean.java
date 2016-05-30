@@ -26,19 +26,23 @@ public class FundWriteBean {
 	public ModelAndView write1(SettingDto settingdto,memberDto dto,HttpSession session){
 		
 		String email=(String)session.getAttribute("memId");
-		if(session.getAttribute("memId") != null){
+		int no = 0;
 		
-		settingdto = (SettingDto)sqlMap.queryForObject("getmemberInfo", dto.getNo());
+		System.out.println(email);
+		if(session.getAttribute("memId") != null){
+			no = (Integer)sqlMap.queryForObject("getno", email);
+		settingdto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		
 		mv.addObject("sedto", settingdto);
 		}
-	int borrowcount  = (Integer)sqlMap.queryForObject("onlyoneborrow", dto.getNo());
+	int borrowcount  = (Integer)sqlMap.queryForObject("onlyoneborrow", no);
 		
 	if(borrowcount != 0){
 		mv.addObject("borrowcount", borrowcount);
 		mv.setViewName("/product/fund_already.jsp");
 	}else{
 	
+		mv.addObject("email", email);
 		mv.setViewName("/product/fund_writeForm.jsp");
 	}
 		return mv;

@@ -57,7 +57,7 @@ public class SettingCertBean {
 			case "快府篮青":
 				last = "020"; 
 				break;
-			case "丑区篮青":
+			case "丑蛆篮青":
 				last = "011"; 
 				break;
 			case "扁诀篮青":
