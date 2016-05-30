@@ -99,8 +99,7 @@
 	
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
-		select * from borrow b, product p where b.no!=p.p_brno and b.success='success' order by b.br_date desc
-
+		select * from borrow where no not in(select b.no from borrow b,product p where b.no = p.p_brno) and success = 'success' order by br_date desc
 	</select>
 	
 	<!-- 성진작품 -->
