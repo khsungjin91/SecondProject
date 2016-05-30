@@ -19,9 +19,6 @@
 </script>
 	<form action="news_write.dj">
 	<table border="1">
-	<c:param name="currentPage">
-	</c:param>
-	
 		<tr>
 			<td> ${list.image} </td>
 		</tr>
@@ -41,7 +38,6 @@
 			<tr>
 				<td> 등록된 게시물이 없습니다.</td>
 		</c:if>
-		
 	</table>
 	<input type="button" value="뉴스 올리기" onclick="javascript:location.href='?currentPage= value="currentPage"/>';">
 	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='/news_writePro.dj'">

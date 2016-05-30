@@ -19,21 +19,10 @@ public class CompanyBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
-	@SuppressWarnings("unused")
-	private int currentPage = 1; //현재페이지
-	@SuppressWarnings("unused")
-	private int totalCount;		 // 총 게시물의 수
-	@SuppressWarnings("unused")
-	private int blockCount = 10; // 한 페이지의 게시물의 수
-	@SuppressWarnings("unused")
-	private int blockPage = 5;	 // 한 화면에 보여줄 페이지의 수
-	@SuppressWarnings("unused")
-	private String pagingHtml;	 // 페이징을 구현한 HTML
-	
 	
 	// 회사정보 변경폼
 	@RequestMapping("/manager_companyinfo.dj")
-	public ModelAndView companyinfo(ManagerCompanyDto company){
+	public ModelAndView companyinfo(ManagerCompanyDto company, HttpServletRequest request){
 		List list = sqlMap.queryForList("companyList", company);
 		mv.addObject("list", list);
 		mv.setViewName("/managerpage/manager_companyinfo.jsp");
@@ -53,8 +42,8 @@ public class CompanyBean {
 	}
 	// 회사정보 수정
 	@RequestMapping("/manager_companyModify.dj")
-	public ModelAndView companyModify(HttpServletRequest request, HttpServletResponse response, ManagerCompanyDto company){
-		// 저장된 dto불러옴
+	public ModelAndView companyModify(HttpServletRequest request, ManagerCompanyDto company){
+		// 저장된 db를 input text에 불러와야 함
 		List list = sqlMap.queryForList("companyList", company);
 		mv.setViewName("company");
 		// 수정된 내용 db 저장
@@ -69,55 +58,51 @@ public class CompanyBean {
 	// 메인에서 보여지는 뉴스페이지
 	@RequestMapping("/news_list.dj")
 	public ModelAndView newslist(){
+		List list = sqlMap.queryForList("newsList", null);
+		mv.addObject("list", list);
 		mv.setViewName("/news/news_list.jsp");
 		return mv;
+		
 	}
 	// 관리자 모드에서 보여지는 뉴스페이지
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/news_manager.dj")
-	public ModelAndView newsmanager(ManagerPageingDto dto, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		// 현재페이지
-		int currentPage = Integer.parseInt(pagingHtml);
-		@SuppressWarnings("unused")
-		List<ManagerNewsDto> list = sqlMap.queryForList("newsList", dto);
-		
-		totalCount = list.size(); // 전체 글 갯수
-		dto = new ManagerPageingDto(currentPage, totalCount, blockCount, blockPage, totalCount);
-		pagingHtml = dto.getPagingHtml().toString();
-		int lastCount = totalCount;
-		
-		if(dto.getEndCount() < totalCount)
-			lastCount = dto.getEndCount() + 1;
-		
-		list = list.subList(dto.getStartCount(), lastCount);
-		
+	public ModelAndView newsmanager(ManagerPageingDto dto,ManagerPageingDto pagedto){
 		mv.setViewName("/news/news_manager.jsp");
-		
 		return mv;
 	}
 	// 뉴스올리기
 	@RequestMapping("/news_write.dj")
-	public ModelAndView newswrite (){
+	public ModelAndView newswrite (ManagerNewsDto news){
+		// input txet에 입력
+		mv.setViewName("news");
+		// db에  저장
+		sqlMap.insert("newsin", news);
+		
+		mv.addObject("news", news);
 		mv.setViewName("/news/news_write.jsp");
 		return mv;
 	}
 	// 뉴스 수정
 	@RequestMapping("/news_writePro.dj")
 	public ModelAndView newswritePro(ManagerNewsDto news){
-		mv.setViewName("news");
-		sqlMap.insert("newsin", news);
+		// input text에 DB 불러오기
 		List list = sqlMap.queryForList("newsList", null);
+		mv.addObject("list", list);
+		// input text에 수정할 내용입력
+		mv.setViewName("news");
+		// db에 업데이트로 수정하기
+		sqlMap.update("newsmodify", news);
 		mv.addObject("list", list);
 		mv.setViewName("/news/news_writePro.jsp");
 		return mv;
 	}
 	// 뉴스 삭제
 	@RequestMapping("/news_deletePro.dj")
-	public ModelAndView newsdeletePro(){
+	public ModelAndView newsdeletePro(ManagerNewsDto news){
+		// db에서 삭제
+		sqlMap.delete("newsDel", news);
+		mv.addObject("news", news);
 		mv.setViewName("/news/news_deletePro.jsp");
 		return mv;
 	}
-	
-	
-
 }

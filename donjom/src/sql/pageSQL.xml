@@ -48,7 +48,7 @@
 	
 	<!-- 뉴스  -->
 	<!-- 뉴스 테이블 목록 전체 -->
-	<select id="newsList" parameterClass="news">
+	<select id="newsList" resultClass="news" parameterClass="String">
 		select image, sitename, title, content, site, reg from news
 	</select>
 	<!-- 뉴스 전체 글수  -->
@@ -70,5 +70,17 @@
 				  		  #site#,
 				  		  sysdate)
 	</insert>
-	
+	<!-- 뉴스 수정 -->
+	<update id="newsmodify" parameterClass="news">
+		update news set (image = #image#,
+						 sitename = #sitename#,
+						 title = #title#,
+						 content = #content#,
+						 site = #site#,
+						 reg = sysdate) 
+	</update>
+	<!-- 뉴스 삭제 -->
+	<delete id="newsDel" parameterClass="news">
+		delete from news where title = #title#
+	</delete>
 </sqlMap>

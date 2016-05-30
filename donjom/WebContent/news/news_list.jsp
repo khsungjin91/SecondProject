@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,19 +9,24 @@
 </head>
 <body>
 <table>
+	<c:forEach var="list" items="${list}">
 		<tr>
-			<td></td>
+			<td>${list.image}</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>${list.sitename}</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>${list.title}</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>${list.content}</td>
 		</tr>
-	</table>
+		<tr>
+			<td> ${list.site} </td>
+		</tr>
+	</c:forEach>
+</table>
 
 </body>
 </html>
