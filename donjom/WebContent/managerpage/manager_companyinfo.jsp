@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -9,9 +8,13 @@
 </head>
 <body>
 
-	<form action="manager_companyPro.dj" method="post">
+<div class="col-sm-12">
 	
-	회사 명  : <input type="text" name="company" value="${company.getCompany}"> <br />
+	<form action="manager_companyPro.dj" method="post" class="form-horizontal">
+	<div class="form-group">
+	<label class="col-sm-2 control-label">회사 명  :</label> 
+	<input type="text" name="company" value="${company.getCompany}"> 
+	</div>
 	대표이사 : <input type="text" name="ceo" value="${company.ceo}"> <br />
 	사업자등록번호 : <input type="text" name="licensee"value="${company.licensee}"> <br />
 	주소 :	<input type="text" name="address"value="${company.address}"> <br />
@@ -32,6 +35,6 @@
 	<input type="reset" value="취소" onclick="javascript:location.href='manager_page.dj'"> 
 
 	</form>
-
+</div>
 	</body>
 </html>

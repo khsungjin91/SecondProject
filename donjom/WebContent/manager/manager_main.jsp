@@ -12,23 +12,9 @@
 <title>manager page</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/header.jsp" />
 	 <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-          <ul class="sidebar-nav">
-            <li class="sidebar-brand"><a href="#">DONJOM ADMIN</a></li>
-            <li><a href="manager_member.dj" type="button">회원 정보 관리 </a></li>
-			<li><a href="manager_page.dj" type="button">페이지관리</a></li>
-			<li><a href="manager_board.dj" type="button" >게시물관리</a></li>
-			<li><a href="manager_investmn2.dj" type="button">투자 관리</a></li>
-			<li><a href="manager_borrowmn.dj" type="button">대출 관리</a></li>
-			<li><a href="manager_borrowlist.dj" type="button">펀딩 등록 관리</a></li>
-			<li><a href="manager_evaluation.dj" type="button">대출심사</a></li>
-			<li><a href="manager_remittance.dj" type="button">송금/환급</a></li>
-		</ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+<jsp:include page="/WEB-INF/admin-slider.jsp" />
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -37,7 +23,7 @@
                     <div class="col-lg-12">
                         <h1>DONJOM ADMIN</h1>
                        
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">메뉴 가리기/열기</a>
+                        <a href="#sidemenu" class="btn btn-default" id="sidemenu">메뉴 가리기/열기</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +36,7 @@
 
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
+    $("#sidemenu").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });

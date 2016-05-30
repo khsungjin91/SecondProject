@@ -26,7 +26,10 @@ body {
 /* Home Page Carousel */
 
 header.carousel {
-    height: 50%;
+    height: 45%;
+}
+
+	
 }
 
 header.carousel .item,
@@ -40,6 +43,8 @@ header.carousel .fill {
     height: 100%;
     background-position: center;
     background-size: cover;
+    color:#fff;
+    padding-top:25px;
 }
 
 /* 404 Page Styles */
@@ -70,10 +75,31 @@ header.carousel .fill {
 /* Footer Styles */
 
 footer {
-    margin: 50px 0;
+	padding:30px 0 30px 0;
+	margin-bottom:0;
+    background-color:#000000;
+    color:#808080;
+    
 }
 
 /* Responsive Styles */
+.panel-heading-img{
+	padding:30px;
+	border-bottom: 2px solid transparent;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px
+	
+
+	
+}
+
+.absolute{
+	
+	position:absolute;
+	padding:50px 0 0 530px;
+	z-index:1;
+	
+}
 
 @media(max-width:991px) {
     .customer-img,

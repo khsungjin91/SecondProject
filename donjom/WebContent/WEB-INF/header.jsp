@@ -5,7 +5,6 @@
 <%@ page import = "java.sql.PreparedStatement"%>
 <%@ page import = "java.sql.ResultSet"%>
 <%@ page import = "point.bean.PointDto" %>
-
 <html>
 <head>
 <title>welcome to DonJom</title>
@@ -17,10 +16,15 @@
 
 </head>
 <body>
+<script type="text/javascript">
+
+$('#loan-cal').on('shown.bs.modal', function () {
+	  $('#myInput').focus()
+	})
+</script>
 
 <%
     Class.forName("oracle.jdbc.driver.OracleDriver");
-
     Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@masterkh.iptime.org:7000:orcl","donjom","donjom");
  
     PreparedStatement pstmt = null;
@@ -64,6 +68,7 @@
 		}
 	}
 %>
+
 <div class="warpper">
 	 <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -80,9 +85,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="loan_step1.dj" ><b>대출JOM</b></a></li>
+            <li><a href="loan_step1.dj" class="navbar-link"><b>대출JOM</b></a></li>
 			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
-			<li><a href="DJlive.dj" class="hidden-sm"><b>상태JOM</b></a></li>
+			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
 			<li><a href="ex.dj" class="hidden-sm"><b>연습JOM</b></a></li>
 			<li><a href="#" data-target="#loan-cal"  data-toggle="modal" class="hidden-sm"><b>계산기JOM</b></a></li>
         
@@ -104,17 +109,27 @@
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            </li>
              <li><a href="#" class="hidden-sm">예치금 <%=total %>원</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          <img src="/donjom/save/<%=profile %>" class="user-image" width="25"  >
-          ${memId}<span class="caret"></span></a>
+           
+       <li class="dropdown user user-menu">
+              <!-- Menu Toggle Button -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                <!-- The user image in the navbar-->
+                <img src="/donjom/save/<%=profile %>" class="user-image" >
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                <span >${memId}</span>
+              </a>
           <ul class="dropdown-menu" role="menu">
-          		<li><a href="dashboard.dj">대시보드</a></li>
-				<li><a href="invest_history.dj">투자내역</a></li>
-				<li><a href="laon_history.dj">대출내역</a></li>
-				<li><a href="point_deposit.dj">충전/환급</a></li>
-				<li><a href="notification.dj">알림메세지</a></li>
-				<li><a href="setting.dj">설정</a></li>
+          	<li ><a href="dashboard.dj">
+          		<i class="fa fa-fw fa-tachometer fa-lg"></i>대시보드</a></li>
+				<li><a href="invest_history.dj"><i class="fa fa-fw fa-bar-chart fa-lg"></i>투자내역</a></li>
+				<li><a href="laon_history.dj">
+				<i class="fa fa-fw fa-tasks fa-lg"></i>대출내역</a></li>
+				<li><a href="point_deposit.dj">
+				<i class="fa fa-fw fa-money fa-lg"></i>충전/환급</a></li>
+				<li><a href="notification.dj">
+				<i class="fa fa-fw fa-bullhorn fa-lg"></i>알림메세지</a></li>
+				<li><a href="setting.dj">
+				<i class="fa fa-fw fa-gear fa-lg"></i>설정</a></li>
             
             <li class="divider"></li>
             <li><a href="#">도움말</a></li>

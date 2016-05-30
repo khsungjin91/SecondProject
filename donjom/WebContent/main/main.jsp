@@ -3,13 +3,16 @@
 <html>
 <head>
 <title>welcome to DonJom</title>
-
-
-
 </head>
 <body>
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+<!-- <div class="absolute hidden">
+<div class="panel panel-default">
+<img src="image/brand.png">
+</div>
+			
+		</div> -->
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -21,10 +24,31 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
+        
             <div class="item active">
-                <div class="fill" style="background-image:url('image/conimg-1.jpg');">테스트</div>
-                <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                <div class="fill" style="background-image:url('image/conimg-1.jpg'); ">
+	                <div class="col-sm-12">
+	               		<div class="row">
+	                    <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-2">
+							  <h2>Mother of 금융권</h2><p>
+	                    		 <h2>돈좀 빌려줘본 DONJOM</h2>
+	                      <p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br>
+	                      돈좀 빌려달라고 해보세요~!!</p>
+	                      <br>
+	                      <p><input type="button" class="btn btn-default" value="투자안내보기"></p>
+						</div>
+  					<div class="col-xs-8 col-md-4 hidden-sm" >
+						  <h2>Mother of 금융권</h2><p>
+	                    		 <h2>돈좀 빌려줘본 DONJOM</h2>
+	                      <p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br>
+	                      돈좀 빌려달라고 해보세요~!!</p>
+	                      <br>
+	                      <p><input type="button" class="btn btn-default" value="투자안내보기"></p>
+
+					</div>
+	             </div>
+	        </div>
+	                
                 </div>
             </div>
             <div class="item">
@@ -50,30 +74,34 @@
         </a>
     </header>
 
+	                     
     <!-- Page Content -->
     <div class="container">
-
+		
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Welcome to Modern Business
+                   투자상품
                 </h1>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>
+                    <div class="panel-heading-img" style="background-image:url('image/conimg-2.jpg')">
+                        <a href="#"  type="button" class="btn btn-block btn-lg">자세히 보기</a>
                     </div>
+                   
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <h3>운영자금</h3>
+                        <p>본 대출자는 40대 남성으로 등산용, 캠핑용 베낭을 판매하고 (사업기간 :1년 6개월) 있으며, 
+                        월 평균 수억원의 이익을 보지는 못하는 걸로 봐서 우리에게 돈을 빌릴 것이고 어쩌구 </p>
                         <a href="#" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading-img">
                         <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
                     </div>
                     <div class="panel-body">
@@ -84,7 +112,7 @@
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading-img">
                         <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
                     </div>
                     <div class="panel-body">
@@ -95,6 +123,7 @@
             </div>
         </div>
         <!-- /.row -->
+        
 
         <!-- Portfolio Section -->
         <div class="row">
@@ -121,16 +150,7 @@
                     <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
                 </a>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
+            
         </div>
         <!-- /.row -->
 
@@ -173,18 +193,20 @@
         </div>
 
         <hr>
-
+</div>
         <!-- Footer -->
-        <footer>
-            <div class="row">
+        <footer >
+       	
+
+ <div class="container">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
-        </footer>
-</div>
+	 </footer>
+
 	 
-</div>
+
  <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
