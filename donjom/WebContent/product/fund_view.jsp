@@ -73,151 +73,194 @@ if(user.amount.value > mi){
 
 </head>
 <body>
+ <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<div class="container">
+		<h2>${dto.p_name}</h2>
+		
+		<form action="fund_ready.dj" method="post" name="userinput">
+			<input type="hidden" name="email" value="${email}">
+			<div class="col-sm-12">
+				<div class="col-sm-8">
+				<table class="table">
+					<tr>
+						<td>상품코드</td>
+						<td>대출목적</td>
+						<td>남은시간</td>
+					</tr>
+					<tr>
+						<td>${dto.p_code}</td>
+						<td>${dto.p_category}</td>
+						<td>Time</td>
+					</tr>
+				</table>
+			</div>
+			<div class="row">
+			<div class="col-sm-12 col-sm-6 contents-warp left">
+				<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
+		<div class="row">
+				대출신청내역
+				<table border="1">
+					<tr>
+						<td>구분</td>
+						<td>만기</td>
+						<td>수익률</td>
+						<td>대출금액</td>
+						<td>상환방식</td>
+						<td>월상환액</td>
+					</tr>
+					<tr>
+						<td>${dto.p_category}</td>
+						<td>${dto.p_term}개월</td>
+						<td>${dto.p_rate}%</td>
+						<td>${dto.p_price}만원</td>
+						<td><c:if test="${dto.p_way == 0}">원리금 균등상환</c:if> <c:if
+								test="${dto.p_way == 1}">원금만기 일시상환</c:if></td>
+						<td>${dto.p_mrepay}만원</td>
+					</tr>
+					<tr>
+						<td colspan="6">대출목적</td>
+					</tr>
+					<tr>
+						<td colspan="6">${dto.p_purpose}</td>
+					</tr>
+					<c:forEach var="conlist" items="${contentlist}">
+						<tr>
+							<td colspan="6">${conlist.p_content}</td>
+						</tr>
+					</c:forEach>
+					<tr>
+						<td colspan="6"><c:forEach var="filelist" items="${filelist}">
+								<a href="/donjom/file/${filelist.p_file}">${filelist.p_file}/</a>
+							</c:forEach></td>
+					</tr>
 
-<h2>${dto.p_name}</h2>
-
-<form action="fund_ready.dj" method="post" name="userinput">
-<input type="hidden" name="email" value="${email}">
-<div style="float: left;">
-<table border="1">
-<tr>
-<td>상품코드</td><td>대출목적</td><td>남은시간</td>
-</tr>
-<tr>
-<td>${dto.p_code}</td><td>${dto.p_category}</td><td>Time</td>
-</tr>
-</table>
-
-<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
-
-대출신청내역
-<table border="1">
-<tr>
-<td>구분</td><td>만기</td><td>수익률</td><td>대출금액</td><td>상환방식</td><td>월상환액</td>
-</tr>
-<tr>
-<td>${dto.p_category}</td><td>${dto.p_term}개월</td><td>${dto.p_rate}%</td><td>${dto.p_price}만원</td>
-<td>
-<c:if test="${dto.p_way == 0}">원리금 균등상환</c:if>
-<c:if test="${dto.p_way == 1}">원금만기 일시상환</c:if>
-</td><td>${dto.p_mrepay}만원</td>
-</tr>
-<tr>
-<td colspan="6">대출목적</td>
-</tr>
-<tr>
-<td colspan="6">${dto.p_purpose}</td>
-</tr>
-<c:forEach var="conlist" items="${contentlist}">
-<tr>
-<td colspan="6">${conlist.p_content}</td>
-</tr>
-</c:forEach>
-<tr>
-<td colspan="6">
-<c:forEach var="filelist" items="${filelist}">
-<a href="/donjom/file/${filelist.p_file}">${filelist.p_file}/</a>
-</c:forEach>
-</td>
-</tr>
-
-</table>
+				</table>
+				</div>
+			</div>
+			</div>
 </div>
 
+			<div class="col-sm-6 contents-aside">
+				<ul class="list-unstyled">
+					<li>
+					<div id="donut_single" style="width: 500px; height: 250px;"></div>
+					</li>
+					<li>${dto.p_invest}만원/${dto.p_price}만원</li>
+					<li>
+					<label>투자자 인원수</label>
+					<div>${dto.p_people}명</div>
+					</li>
+					<li>
+					<label>상환방식</label>
+					<div>
+						<c:if test="${dto.p_way == 0}">
+							<td>원리금 균등상환</td>
+						</c:if>
+						<c:if test="${dto.p_way == 1}">
+							<td>원금만기 일시상환</td>
+						</c:if>
+						</div>
+					</li>
+					<tr>
+						<td>수익률</td>
+					</tr>
+					<tr>
+						<td>${dto.p_rate}%</td>
+					</tr>
+					<tr>
+						<td>투자기간</td>
+					</tr>
+					<tr>
+						<td>${dto.p_term}개월</td>
+					</tr>
+					<c:if
+						test="${dto.p_success == 'doing' &&  check == 0 && When.When == 1}">
+						<tr>
+							<td>투자금액</td>
+						</tr>
+						<tr>
+							<td><input type="text" name="amount">만원</td>
+						</tr>
+					</c:if>
+					<tr>
+						<td>펀딩기간 : 1주일</td>
+					</tr>
+					<c:if
+						test="${dto.p_success == 'doing' && check == 0 && When.When == 1}">
+						<tr>
+							<td>최대투자가능금액</td>
+						</tr>
+						<tr>
+							<td>${limit}만원</td>
+						</tr>
+					</c:if>
+					<tr>
+						<td>상환일 : 매월${dto.p_repayday}일 + 5일</td>
+					</tr>
+					<tr>
+						<c:if test="${dto.p_success == 'doing' && When.When == 0}">
+							<c:if test="${dto.p_success == 'doing' && When.WhenTUS == 2}">
+								<script type="text/javascript">
+									$(document).ready(function() {
+										window.setInterval('callAjax()', 1000); //3초마다한번씩 함수를 실행한다..!! 
+									});
+									function callAjax() {
+										$.ajax({
+											type : "post",
+											url : "/donjom/timemelee.dj",
+											data : {
+												p_code : $('#p_code').val(),
+											},
+											success : test, // 페이지요청 성공시 실행 함수
+											error : whenError
+										//페이지요청 실패시 실행함수
+										});
+									}
+									function test(aaa) { // 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+										$("#time").html(aaa);
+									}
+									function whenError() {
+										alert("Error");
+									}
+								</script>
 
-<div style="float: left;">
-<table border="1">
-<tr><td><div id="donut_single" style="width: 500px; height: 250px;"></div></td></tr>
-<tr><td>${dto.p_invest}만원/${dto.p_price}만원</td></tr>
-<tr><td>투자자 인원수</td></tr>
-<tr><td>${dto.p_people}명</td></tr>
-<tr><td>상환방식</td></tr>
-<tr>
-<c:if test="${dto.p_way == 0}">
-<td>원리금 균등상환</td>
-</c:if>
-<c:if test="${dto.p_way == 1}">
-<td>원금만기 일시상환</td>
-</c:if>
-</tr>
-<tr><td>수익률</td></tr>
-<tr><td>${dto.p_rate}%</td></tr>
-<tr><td>투자기간</td></tr>
-<tr><td>${dto.p_term}개월</td></tr>
-<c:if test = "${dto.p_success == 'doing' &&  check == 0 && When.When == 1}">
-<tr><td>투자금액</td></tr>
-<tr>
-<td>
-<input type="text" name="amount">만원
-</td>
-</tr>
-</c:if>
-<tr><td>펀딩기간 : 1주일</td></tr>
-<c:if test="${dto.p_success == 'doing' && check == 0 && When.When == 1}">
-<tr><td>최대투자가능금액</td></tr>
-<tr><td>${limit}만원</td></tr>
-</c:if>
-<tr><td>상환일 : 매월${dto.p_repayday}일 + 5일</td></tr>
-<tr>
-<c:if test="${dto.p_success == 'doing' && When.When == 0}">
-	<c:if test="${dto.p_success == 'doing' && When.WhenTUS == 2}">
-		 <script type="text/javascript">
-		    $(document).ready(function(){
-		    	window.setInterval('callAjax()', 1000); //3초마다한번씩 함수를 실행한다..!! 
-		    });
-		    function callAjax(){
-		    	 $.ajax({
-		 	        type: "post",
-		 	        url : "/donjom/timemelee.dj",
-		 	       data: {	
-			        	p_code : $('#p_code').val(),
-			        },
-		 	        success: test,	// 페이지요청 성공시 실행 함수
-		 	        error: whenError	//페이지요청 실패시 실행함수
-		      	});
-		    }
-		    function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
-		        $("#time").html(aaa);
-		    }
-		    function whenError(){
-		        alert("Error");
-		    }
-		  </script>
+							</c:if>
 
-	</c:if>
+							<td>
+								<div id="time">펀딩개시는 수요일입니다.</div>
+							</td>
 
-<td>
-	<div id="time">펀딩개시는 수요일입니다.</div>
-</td>
-
-</c:if>
+						</c:if>
 
 
-<c:if test="${When.When == 1}">
+						<c:if test="${When.When == 1}">
 
-<c:if test="${dto.p_success == 'doing' && check == 0}">
-<td><input type="submit" value="투자미리보기" onclick="return check()"></td>
-</c:if>
+							<c:if test="${dto.p_success == 'doing' && check == 0}">
+								<td><input type="submit" value="투자미리보기"
+									onclick="return check()"></td>
+							</c:if>
 
-<c:if test="${dto.p_success == 'doing' && check != 0}">
-<td><input type="button" value="투자완료"></td>
-</c:if>
+							<c:if test="${dto.p_success == 'doing' && check != 0}">
+								<td><input type="button" value="투자완료"></td>
+							</c:if>
 
-</c:if>
+						</c:if>
 
-<c:if test="${dto.p_success == 'success' || dto.p_success == 'refunds'}">
-<td><input type="button" value="펀딩성공"></td>
-</c:if>
+						<c:if
+							test="${dto.p_success == 'success' || dto.p_success == 'refunds'}">
+							<td><input type="button" value="펀딩성공"></td>
+						</c:if>
 
-<c:if test="${dto.p_success == 'fail'}">
-<td><input type="button" value="펀딩실패"></td>
-</c:if>
+						<c:if test="${dto.p_success == 'fail'}">
+							<td><input type="button" value="펀딩실패"></td>
+						</c:if>
 
-</tr>
+					</tr>
 
-</table>
-</div>
-</form>
-
+				</ul>
+			</div>
+		</form>
+	</div>
+	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body>
 </html>
