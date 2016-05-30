@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="bt/plugins/iCheck/square/blue.css">
 <title>회원가입</title>
 <!-- FaceBook Login Start -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
  <script language="javascript">
         // 페이스북 SDK 초기화
         window.fbAsyncInit = function () {
@@ -100,11 +101,6 @@
         }
         
   </script>
-
-</head>
-<body class="hold-transition register-page">
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
 function checkEmail(){
@@ -126,52 +122,45 @@ function checkEmail(){
 <script>
 
 function checkIt(){
-	var pw = document.userinput.pw.value;
-	var pwch = document.userinput.pwch.value;
 	
-	if(!document.userinput.nickname.value){
+	var pw = $("#pw").val();
+	var pwch = $("#pwch").val();
+	
+	if(!$("#nickname").val()){
 		alert("닉네임을 입력해주세요");
-		document.userinput.nickname.focus();
 		return false;
 	}
 	
-	if(!document.userinput.email.value){
+	if(!$("#email").val()){
 		alert("이메일을 입력해주세요");
-		document.userinput.email.focus();
 		return false;
 	}
 	
-	if(!document.userinput.pw.value){
+	if(!$("#pw").val()){
 		alert("비밀번호를 입력해주세요");
-		document.userinput.pw.focus();
 		return false;
 	}
 	
-	if(!document.userinput.pwch.value){
+	if(!$("#pwch").val()){
 		alert("비밀번호를 확인해주세요");
-		document.userinput.pwch.focus();
 		return false;
 	}
 
-	if(!document.userinput.terms.checked){
+	if($("#terms").checked == null){
 		alert("약관의 동의를 하셔야합니다.");
-		document.userinput.terms.focus();
 		return false;
 	}
 	
 	if(pw != pwch){
 		alert("비밀번호가 서로 맞지 않습니다.");
-		document.userinput.pwch.focus();
 		return false;
 	}
 }
 
 function checkPwd(){
 	
-	var f1 = document.forms[0];
-	
-	var pw1 = f1.pw.value;
-	var pw2 = f1.pwch.value;
+	var pw1 = $("#pw").val();
+	var pw2 = $("#pwch").val();
 	
 	if(pw1 != pw2){
 		document.getElementById("checkPwd").innerHTML = "<font color=red>비밀번호를 확인해주세요.</font>";		
@@ -181,6 +170,11 @@ function checkPwd(){
 	
 }
 </script>
+
+</head>
+<body class="hold-transition register-page">
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+
 <div class="register-box">
  <div class="register-logo">
   <a href="main.dj"><b>회원가입</b></a>
@@ -190,7 +184,7 @@ function checkPwd(){
 	
 	<form action="signUpPro.dj" method="post" name="userinput">
 			<div class="form-group has-feedback">
-			<input type="text" name="nickname" placeholder="닉네임" class="form-control">
+			<input type="text" name="nickname" id="nickname" placeholder="닉네임" class="form-control">
 			<span class="glyphicon glyphicon-user form-control-feedback"></span>
 			</div>
 			<div class="form-group has-feedback">
@@ -199,11 +193,11 @@ function checkPwd(){
 			 <div id="checkEmail"></div>
 			</div>
 			<div class="form-group has-feedback">
-			<input type="password" name="pw" class="form-control" placeholder="비밀번호">
+			<input type="password" name="pw" id="pw" class="form-control" placeholder="비밀번호">
 			 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 			</div>
 			<div class="form-group has-feedback">
-				<input type="password" name="pwch" onkeyup="checkPwd()" placeholder="비밀번호 확인"
+				<input type="password" name="pwch" id="pwch" onkeyup="checkPwd()" placeholder="비밀번호 확인"
 					class="form-control">
 					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 			</div>
@@ -211,8 +205,8 @@ function checkPwd(){
 
 			<div id="checkPwd">비밀번호를 확인해주세요.</div>
 
-			이용약관 동의 <input type="checkbox" name="terms"> <br /> 
-			<input type="submit" class="btn btn-block bg-orange" value="이메일로 10초만에 가입하기" onclick="return checkIt()">
+			이용약관 동의 <input type="checkbox" name="terms" id="terms"> <br /> 
+			<input type="submit" class="btn btn-block bg-orange" value="이메일로 10초만에 가입하기" onClick="return checkIt()">
 			
 		</form>
 	<hr>

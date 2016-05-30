@@ -137,7 +137,7 @@ window.location="signIn.dj";
 </div>	
 </c:if>
 <c:if test="${memdto.confirm == 1}">
-메일인증완료상태입니다.	
+메일인증완료상태입니다.																					<br/>
 </c:if>
 																		
 휴대폰번호	<input type="text" name="mobilenum">													<br/>
@@ -160,7 +160,7 @@ window.location="signIn.dj";
 투자자 원천징수 정보																					<br/>
 ※ 투자를 하시려면 아래 정보를 입력하시기 바랍니다.																<br/>
 <c:if test="${dto.socialnum != null}">
-주민등록번호<input type="text" name="socialnum" value="${dto.socialnum}" disabled="disabled">		<br/>
+주민등록번호<input type="text" name="socialnum" value="${socialnum}" disabled="disabled">		<br/>
 주소		<input type="text" name="address" value="${dto.address}" disabled="disabled">			<br/>
 </c:if>
 

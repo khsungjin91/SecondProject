@@ -13,25 +13,23 @@
 
 function success(userinput){
 	
-	var callback = callAjax();
 	var confirmNo = $("#confirm").val();
 	var mailSendNo = $("#mailSend").val();
 
-	if(confirmNo == mailSendNo){
-		
-		alert("인증완료");
-		
-		parent.document.userinput.$("#mailback").val(callback);
-		
-	}else{
+	if(confirmNo != mailSendNo){
 		
 		alert("인증번호를 다시 확인해주세요.");
+		return false;
+
+	}else{
 		
+		var callback = callAjax();
+		alert("인증완료");
+		parent.document.userinput.$("#mailback").val(callback);
 	}
 }
 
 function callAjax(){
-	
 	
 	var confirmNo = $("#confirm").val();
 	var mailSendNo = $("#mailSend").val();

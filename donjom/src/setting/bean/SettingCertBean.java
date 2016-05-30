@@ -27,11 +27,20 @@ public class SettingCertBean {
 		public ModelAndView personCertView(HttpSession session,SettingDto dto,memberDto memdto){
 			
 			String email = (String)session.getAttribute("memId");
-			
+			String socialnum = "";
+		
 			if(session.getAttribute("memId") != null){
 			int no = (Integer)sqlMap.queryForObject("getno", email);
 			dto = (SettingDto)sqlMap.queryForObject("getoneCert", no);
 			memdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
+			String x = dto.getSocialnum();
+		
+			if(x == null){
+				
+			}else{
+				socialnum =dto.getSocialnum().substring(0,6)+"*******";
+				mv.addObject("socialnum",socialnum);		
+			}
 			mv.addObject("no", no);
 			}
 			
