@@ -14,6 +14,10 @@
 	select * from invest i,member m,memberinfo f where i.i_pcode = #p_code# and i.i_memnum = m.no and i.i_memnum = f.no order by i_date desc
 </select>
 
+<select id="get_invest_email" resultClass="String" parameterClass="String">
+	select m.email from invest i,member m,memberinfo f where i.i_pcode = #p_code# and i.i_memnum = m.no and i.i_memnum = f.no order by i_date desc
+</select>
+
 <select id="refunds_price" resultClass="String" parameterClass="String">
 	select i_invest from invest where i_pcode = #p_code# order by i_date desc
 </select>
@@ -48,6 +52,10 @@
 
 <update id="send_refunds_p" parameterClass="String">
 	update product set p_success = 'refunds' where p_code = #p_code#
+</update>
+
+<update id="refunds_start" parameterClass="java.util.Map">
+	update memprice set total_ch= total_ch + #refundmoney# where no=#no#
 </update>
 
 

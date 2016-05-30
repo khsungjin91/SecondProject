@@ -22,13 +22,15 @@
 </div>
 
 <div>투자자 정보</div>
+<form action="refunds_money.dj" method="post">
+<input type="hidden" name="p_code" value="${dto.p_code}">
 <table border="1" style="float: left">
 <tr>
 <td>이메일</td><td>성함</td><td>투자 금액</td><td>투자 시간</td><td>가상계좌</td>
 </tr>
-<c:forEach var="list" items="${list}">
+<c:forEach var="list" items="${list}" varStatus="i">
 <tr>
-<td>${list.email}</td>
+<td><input type="text" name="email${i.count-1}" value="${list.email}" disabled="disabled"></td>
 <td>${list.i_memname}</td>
 <td>${list.i_invest}만원</td>
 <td>${list.i_date}</td>
@@ -37,19 +39,19 @@
 </c:forEach>
 </table>
 
-<table border="1">
+<table border="1" >
 <tr>
 <td>환급금액</td>
 </tr>
-<c:forEach var="total" items="${total}">
+<c:forEach var="total" items="${total}" varStatus="i">
 <tr>
-<td>${total}원</td>
+<td><input type="text" name="total${i.count-1}" value="${total}" disabled="disabled" size="10">원 </td>
 </tr> 
 </c:forEach>
 </table>
 
-<input type="button" value="환급하기" onclick="javascript:window.location='send_loanmoney.dj?p_code=${dto.p_code}'">
-
+<input type="submit" value="환급하기">
+</form>
 
 </body>
 </html>

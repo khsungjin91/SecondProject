@@ -27,8 +27,7 @@ public class FundWriteBean {
 		
 		String email=(String)session.getAttribute("memId");
 		int no = 0;
-		
-		System.out.println(email);
+	
 		if(session.getAttribute("memId") != null){
 			no = (Integer)sqlMap.queryForObject("getno", email);
 		settingdto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);

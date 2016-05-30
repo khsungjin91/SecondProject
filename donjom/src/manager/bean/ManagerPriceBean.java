@@ -1,7 +1,11 @@
 package manager.bean;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -77,14 +81,12 @@ public class ManagerPriceBean {
 	//송금하기
 	@RequestMapping("/send_loanmoney.dj")
 	public ModelAndView SendMoney(String p_code){
-		
 		sqlMap.update("send_refunds_i", p_code);
 		sqlMap.update("send_refunds_p", p_code);
-		
 		mv.setViewName("/managerprice/send_loanmoney.jsp");
 		return mv;
 	}
-	
+
 	//환급미리보기
 	@RequestMapping("/Money_check_f.dj")
 	public ModelAndView MoneyCheck_f(String p_code,RegisterDto dto){		
@@ -104,7 +106,7 @@ public class ManagerPriceBean {
 		int [] investmoney = new int[price.size()];
 		int [] total = new int[price.size()];
 		
-		if(dto.getP_way().equals("1")){
+		if(dto.getP_way().equals("0")){
 			
 		for(int i = 0; i<price.size();i++){
 		
@@ -119,21 +121,15 @@ public class ManagerPriceBean {
 			
 			d = Double.parseDouble(String.format("%.7f", d));
 			total[i] = (int)((Float.parseFloat(price.get(i)+"0000")*d));
-			
-			System.out.println(total[i]);
-		}
-		}else if(dto.getP_way().equals("0")){
+			}
+		}else if(dto.getP_way().equals("1")){
 			
 		for(int i = 0; i<price.size();i++){
-			
 			interast = (Double.parseDouble(dto.getP_rate())/12/100);
 			d = Double.parseDouble(String.format("%.7f", interast));
 			total[i] = (int) (Double.parseDouble(price.get(i)+"0000") * d);
-			
-			System.out.println(total[i]);
+			}
 		}
-		}
-		
 		mv.addObject("total",total);
 		mv.addObject("dto", dto);
 		mv.addObject("list",list);
@@ -143,8 +139,63 @@ public class ManagerPriceBean {
 	
 	//환급하기
 	@RequestMapping("/refunds_money.dj")
-	public ModelAndView RefundsMoney(String p_code){
-	
+	public ModelAndView RefundsMoney(String p_code,RegisterDto dto){
+		Map map = new HashMap();
+		double interast = 0;
+		double d = 0.0; 
+		double x = 0;
+		double y = 0;
+		int no = 0;
+		
+		dto.setP_code(p_code);
+		
+		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
+		int term = Integer.parseInt(dto.getP_term()); 
+			
+		List email = sqlMap.queryForList("get_invest_email", p_code);
+		List price = sqlMap.queryForList("refunds_price", p_code);
+		
+		int [] investmoney = new int[price.size()];
+		int [] total = new int[price.size()];
+		
+		if(dto.getP_way().equals("0")){
+			
+		for(int i = 0; i<price.size();i++){
+			no = (Integer)sqlMap.queryForObject("getno", email.get(i));
+			
+			interast = (Double.parseDouble(dto.getP_rate())/12/100);
+			
+			x = 1+interast;
+			y = x;
+			for(int j = 0 ; j < term-1 ; j++){
+				y *= x;
+			}
+			d = (interast*y) / (y-1); 
+			
+			d = Double.parseDouble(String.format("%.7f", d));
+			total[i] = (int)((Float.parseFloat(price.get(i)+"0000")*d));
+			
+			map.put("no", no);
+			map.put("refundmoney", total[i]);
+			
+			sqlMap.update("refunds_start", map);
+		}
+		}else if(dto.getP_way().equals("1")){
+			
+		for(int i = 0; i<price.size();i++){
+			no = (Integer)sqlMap.queryForObject("getno", email.get(i));
+			
+			interast = (Double.parseDouble(dto.getP_rate())/12/100);
+			d = Double.parseDouble(String.format("%.7f", interast));
+			total[i] = (int) (Double.parseDouble(price.get(i)+"0000") * d);
+			
+			map.put("no", no);
+			map.put("refundmoney", total[i]);
+			
+			sqlMap.update("refunds_start", map);
+			}
+		}
+		
 		mv.setViewName("/managerprice/refunds_interastor.jsp");
 		return mv;
 	}

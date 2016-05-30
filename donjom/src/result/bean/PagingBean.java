@@ -25,7 +25,6 @@ public class PagingBean {
 	public List getList(int currentPage,int totalCount,int blockCount,
 			int blockPage,pagingAction input,List list, int paging){
 		
-		System.out.println("??"+paging);
 		input = new pagingAction(currentPage, totalCount, blockCount, blockPage, paging);
 		
 		int lastCount = totalCount;
