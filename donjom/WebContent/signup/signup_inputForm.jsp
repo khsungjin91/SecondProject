@@ -103,8 +103,27 @@
 
 </head>
 <body class="hold-transition register-page">
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
+
+function checkEmail(){
+
+	$.ajax({
+		type : "post",
+		url : "/donjom/check_Email.dj",
+		data :{
+			email : $("#email").val()
+		},
+		success : function test(a){ 
+			$("#checkEmail").html(a); 
+			},
+		error : function error(){ alert("error"); }
+	});
+	
+}
+</script>
+<script>
+
 function checkIt(){
 	var pw = document.userinput.pw.value;
 	var pwch = document.userinput.pwch.value;
@@ -140,7 +159,7 @@ function checkIt(){
 	}
 	
 	if(pw != pwch){
-		alert("새로운 비밀번호가 서로 맞지않습니다.");
+		alert("비밀번호가 서로 맞지 않습니다.");
 		document.userinput.pwch.focus();
 		return false;
 	}
@@ -160,7 +179,6 @@ function checkPwd(){
 	}
 	
 }
-	
 </script>
 <div class="register-box">
  <div class="register-logo">
@@ -175,8 +193,9 @@ function checkPwd(){
 			<span class="glyphicon glyphicon-user form-control-feedback"></span>
 			</div>
 			<div class="form-group has-feedback">
-			<input type="text" name="email" class="form-control" placeholder="이메일"> 
+			<input type="text" name="email" id="email" class="form-control" placeholder="이메일" onblur="checkEmail()"> 
 			 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			 <div id="checkEmail"></div>
 			</div>
 			<div class="form-group has-feedback">
 			<input type="password" name="pw" class="form-control" placeholder="비밀번호">

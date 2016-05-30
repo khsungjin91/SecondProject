@@ -65,6 +65,16 @@ public class SignUpBean {
 		return mv;
 	}
 	
+	//아이디 중복 체크
+	@RequestMapping("/check_Email.dj")
+	public ModelAndView Emailcheck(String email){
+		
+		int check = (Integer)sqlMap.queryForObject("idcheck", email);
+		
+		mv.addObject("check", check);
+		mv.setViewName("/signup/checkEmail.jsp");
+		return mv;
+	}
 	
 
 }	
