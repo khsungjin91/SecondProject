@@ -82,7 +82,7 @@ public class ManagerBean {
 		int count=(Integer)sqlMap.queryForObject("invest_count", no);
 		int sum=0;
 		if(count!=0){
-			sum=(Integer)sqlMap.queryForObject("invest_sum", no);		
+			sum=(Integer)sqlMap.queryForObject("invest_sum_no", no);		
 		}else{
 			sum=0;
 		}
@@ -104,7 +104,7 @@ public class ManagerBean {
 			int count=(Integer)sqlMap.queryForObject("borrow_count", no);
 			int sum=0;
 			if(count!=0){
-				sum=(Integer)sqlMap.queryForObject("borrow_sum", no);			
+				sum=(Integer)sqlMap.queryForObject("borrow_sum_no", no);			
 			}else{
 				sum=0;
 			}	
@@ -155,6 +155,7 @@ public class ManagerBean {
 	//대출신청list,차트 
 	@RequestMapping("/manager_borrowmn.dj")
 	public ModelAndView managerborrowmn(Bar_ChartDto chartdto){
+		//pie 차트
 		String [] ctg={"p","b","c","m"};
 		List list = sqlMap.queryForList("borrowmn", null);
 		
@@ -163,6 +164,7 @@ public class ManagerBean {
 		for(int i =0; i<ctg.length;i++){
 			count[i] = (int)sqlMap.queryForObject("count_category", ctg[i]);		
 		}
+		//bar 차트
 		List l_gender = sqlMap.queryForList("gender",null);
 		List l_birth = sqlMap.queryForList("birth",null);
 		
@@ -210,6 +212,25 @@ public class ManagerBean {
 			}
 		}
 		
+		//line 차트
+		int all_sum=0;	int all_count=0;	float all_avg=1; 
+		int sc_sum=0;	int sc_count=0;		float sc_avg=1; 
+		
+		
+		all_sum = (Integer)sqlMap.queryForObject("borrow_sumA", null);
+		all_count = (Integer)sqlMap.queryForObject("borrow_countA", null);
+		sc_sum = (Integer)sqlMap.queryForObject("borrow_sum_sc", null);
+		sc_count = (Integer)sqlMap.queryForObject("borrow_sum_sc", null);
+		
+		all_avg = (float)all_sum/(float)all_count;
+		sc_avg = (float)sc_sum/(float)sc_count;
+		System.out.println(all_avg);
+		System.out.println(sc_avg);
+		
+		
+		mv.addObject("all_avg",all_avg);
+		mv.addObject("sc_avg",sc_avg);
+		mv.addObject("now",now);
 		mv.addObject("dto",chartdto);
 		mv.addObject("p",count[0]);
 		mv.addObject("b",count[1]);
@@ -225,6 +246,8 @@ public class ManagerBean {
 	public ModelAndView managerborrowlist(){
 		List list = sqlMap.queryForList("borrowlist", null);
 		int count = list.size();
+		
+		System.out.println(count);
 		
 		mv.addObject("count", count);
 		mv.addObject("list", list);

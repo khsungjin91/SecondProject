@@ -34,7 +34,7 @@
         ;
         chart.draw(data, options);
       }
-   //bar차트
+   //===========================================================================================bar차트
       google.charts.setOnLoadCallback(drawChart2);
       function drawChart2() {
     		var m_noadult=${dto.m_noadult}; 
@@ -83,39 +83,38 @@
         chart.draw(view, options);
       }
       
-	//line차트
+	//================================================================================================line차트
        google.charts.setOnLoadCallback(lineChart);
 
      function lineChart() {
- 	
- 	var today = new Date();
- 	
- 	alert(today);
-    	 
-       var chartDiv = document.getElementById('chart_div');
 
-       var data = new google.visualization.DataTable();
-       data.addColumn('date', 'Month');
-       data.addColumn('number', "Average ");
+    	var now = ${now};
+ 		var today = new Date();
+    	 
+    	var chartDiv = document.getElementById('chart_div');
+
+  	    var data = new google.visualization.DataTable();
+  	    data.addColumn('date', 'Month');
+   	    data.addColumn('number', "Average ");
      
 
-       data.addRows([
-         [new Date(2014, 0),  5 ],
-         [new Date(2014, 1),  4],
-         [new Date(2014, 2),  5 ],
-         [new Date(2014, 3),  2.9],
-         [new Date(2014, 4),  6.3],
-         [new Date(2014, 5),    9],
-         [new Date(2014, 6), 10.6],
-         [new Date(2014, 7), 10.3],
-         [new Date(2014, 8),  7.4],
-         [new Date(2014, 9),  4.4],
-         [new Date(2014, 10), 1.1],
-         [new Date(2014, 11), 2]
+   	    data.addRows([
+         [new Date(now, 0),  5 ],
+         [new Date(now, 1),  4],
+         [new Date(now, 2),  5 ],
+         [new Date(now, 3),  2.9],
+         [new Date(now, 4),  6.3],
+         [new Date(now, 5),    9],
+         [new Date(now, 6), 10.6],
+         [new Date(now, 7), 10.3],
+         [new Date(now, 8),  7.4],
+         [new Date(now, 9),  4.4],
+         [new Date(now, 10), 1.1],
+         [new Date(now, 11), 2]
        ]);
 
        var classicOptions = {
-         title: '최근 1년간 월별 평균 대출액',
+         title: '올해 월별 평균 대출액',
          width: 900,
          height: 500,
          // Gives each series an axis that matches the vAxes number below.
@@ -129,9 +128,9 @@
            1: {title: ''}
          },
          hAxis: {
-           ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
-                   new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
-                   new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
+           ticks: [new Date(now, 0), new Date(now, 1), new Date(now, 2), new Date(now, 3),
+                   new Date(now, 4),  new Date(now, 5), new Date(now, 6), new Date(now, 7),
+                   new Date(now, 8), new Date(now, 9), new Date(now, 10), new Date(now, 11)
                   ]
          },
          vAxis: {
@@ -165,7 +164,8 @@
 <input type="hidden" value="${c}" id="c" name="c"/>
 <input type="hidden" value="${m}" id="m" name="m"/>
 </form>
-	 <div id="chart_div"></div>
+	
+	<div id="chart_div"></div>
 	
 	<div id="barchart_material" style="width: 600px; height: 350px;"></div>
 	

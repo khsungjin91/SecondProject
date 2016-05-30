@@ -63,23 +63,43 @@
 		select b.membirth
 		from borrow b,memberinfo m where b.memno=m.no
 	</select>	
-
-	<select id=""></select>
 	
+	<!-- 총 대출액 -->
+	<select id="borrow_sumA" resultClass="int">
+		select sum(br_sum) from borrow	
+	</select>
+	<!-- 총 대출수 -->
+	<select id="borrow_countA" resultClass="int">
+		select count(no) from borrow
+	</select>
+	<!-- 성공한 총 대출액 -->
+	<select id="borrow_sum_sc" resultClass="int">
+		select sum(br_sum) from borrow where success='success'
+	</select>
+	<!-- 성공한 총 대출수  -->
+	<select id="borrow_count_sc" resultClass="int">
+		select count(no) from borrow where success='success'
+	</select>
 	
-	<!-- 총 투자액 -->
-	<select id="invest_sum" resultClass="int" parameterClass="int">
+	<!-- 현재년도에 해당하는 대출건 -->
+	<select id="borrow_countYear" resultClass="int" parameterClass="int">
+		select sum(br_sum)from borrow where substr(br_date,1,2)=#now#
+		
+	</select>
+	
+	<!-- 개인의 총 투자액 -->
+	<select id="invest_sum_no" resultClass="int" parameterClass="int">
 		select sum(i_invest) from invest where i_memnum=#no#
 	</select>
 	
-	<!-- 총 대출액 -->
-	<select id="borrow_sum" resultClass="int" parameterClass="int">
+	<!-- 개인의 총 대출액 -->
+	<select id="borrow_sum_no" resultClass="int" parameterClass="int">
 		select sum(br_sum) from borrow where memno=#no#
 	</select>
 	
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
-		select * from borrow b,product p where b.no != p.p_brno and b.success='success' order by b.br_date desc
+		select * from borrow b, product p where b.no!=p.p_brno and b.success='success' order by b.br_date desc
 
 	</select>
 	
