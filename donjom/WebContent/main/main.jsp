@@ -85,7 +85,7 @@
 				<h1 class="page-header">투자상품</h1>
 			</div>
 			<!-- card section part -->
-			<c:forEach var="list" items="${list }">
+			<c:forEach var="list" items="${list}">
 				<div class="col-md-4">
 					<div class="panel panel-default">
 						<div class="panel-heading-img img-hover"

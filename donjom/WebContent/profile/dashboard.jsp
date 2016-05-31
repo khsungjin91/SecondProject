@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +10,14 @@
 <jsp:include page="/WEB-INF/fragment/common-css.jsp" />
 <jsp:include page="/WEB-INF/fragment/common-js.jsp" />
  	<title>대시보드</title>
+ 	<c:if test = "${sessionScope.memId == null}">
+ 	<script type="text/javascript">
+ 		window.location="signIn.dj";
+ 	</script>
+ 	</c:if>
 </head>
 <body>
+
 	<section class="profile-detail">
 	<div class="container profile-wrap">
 		<div class="col-sm-3 mobile-profile-nav">
@@ -137,7 +144,12 @@
 						<h3 class="panel-title">가상계좌 정보</h3>
 					</div>
 					<div class="panel-body body-margin-bank text-center">
-						<button class="btn deposit" onclick="location.href='../profile/point.jsp'">가상계좌 생성하기</button>							
+						<c:if test = "${infodto.randomacc == null}">
+						<button class="btn deposit" onclick="location.href='setting_cert_person.dj'">가상계좌 생성하기</button>							
+						</c:if>
+						<c:if test = "${infodto.randomacc != null}">
+						${infodto.randomacc}
+						</c:if>
 					</div>
 				</div>
 				<!-- //가상게좌정보 -->
@@ -145,10 +157,18 @@
                 <!-- 알림 메세지 -->
 				<div class="panel panel-default contents contents-right">
 					<div class="panel-heading">
-					<h3 class="panel-title">알림 메세지<a class="btn-box-more radius right" href="/profile/notification">더보기</a></h3>
+					<h3 class="panel-title">알림 메세지<a class="btn-box-more radius right" href="notification.dj">더보기</a></h3>
 					</div>
 					<div class="panel-body timeline timeline-off">
+					<c:if test="${count == 0 }">
 					    <div class="timeline-off-box"><span>메세지가 없습니다.</span></div>
+					</c:if>
+					<c:if test="${count != 0 }">
+						<c:forEach var="list" items="${list}">
+							<div>${list.m_content}</div>
+							<div>${list.m_time}</div>
+						</c:forEach>	
+					</c:if>
 					</div>
 					</div>
 				<!-- //알림 메세지 -->	

@@ -122,7 +122,7 @@ window.location="signIn.dj";
 				<div class="form-group">
 				 <label class="col-xs-2 control-label">닉네임</label>
 				 <div class="col-xs-5">
-				 <input type="text" name="nickname" value="${dto.nickname}" class="form-control" disabled>
+				 <input type="text" name="nickname" value="${dto.nickname}" class="form-control">
 				 </div>
 				</div>
 				<div class="form-group">
@@ -171,7 +171,7 @@ window.location="signIn.dj";
 				  <input type="password" name="pwch" onkeyup="pwcheck()"class="form-control">	
 				</div>
 				 </div>
-				 <div id="checkPwd" class="text-right">비밀번호를 확인해주세요</div>
+				 <div id="checkPwd" class="text-right">새 비밀번호를 확인해주세요</div>
 			
 			<div class="form-group">
 				 <label class="col-xs-2 control-label">현재 비밀번호 </label>
@@ -212,75 +212,6 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
 	</div>
   </div><!-- 설정부분 전체 상자 -->
 </div><!-- 전체 warp -->
-
-<img src="/donjom/save/${dto.profile}" width="150">		<br/>
-${dto.nickname}		<br/>
-${dto.email}		<br/>
-가입일 ${dto.join}			<br/>	
-
-<a href="setting.dj">기본정보 수정</a>	<br/><br/>
-
-<ul>
-	<li>내정보</li>	
-	<li><a href="dashboard.dj">대시보드</a></li>
-	<li><a href="invest_history.dj">투자내역</a></li>
-	<li><a href="laon_history.dj">대출내역</a></li>
-	<li><a href="point_deposit.dj">충전/환급</a></li>
-	<li><a href="notification.dj">알림메세지</a></li>
-	<li><a href="setting.dj">설정</a></li>	
-</ul>
-
-설정 
-
-
-
-
-<h2>회원정보</h2>
-
-<form action="signup_modifyPro.dj" method="post" enctype="multipart/form-data" name="userinput">
-닉네임 <input type="text" name="nickname" value="${dto.nickname}">		<br/>
-이메일 ${dto.email}								<br/>
-가입일 ${dto.join}									<br/>
-<c:if test="${dto.profile == null}">			
-프로필사진수정 <input type="file" name="save">		<br/>
-</c:if>
-<c:if test="${dto.profile != null}">	
-<input type="hidden" value="${dto.profile}" name="profile">	
-<img src="/donjom/save/${dto.profile}" width="150">				<br/>
-</c:if> 
-
-추천인이메일 <input type="text" name="goodemail">	<br/>
-
-비밀번호변경 										<br/>
-새비밀번호 <input type="password" name="newpw">			<br/>
-새비밀번호 확인 <input type="password" name="pwch" onkeyup="pwcheck()">	<br/>
-<div id="checkPwd">비밀번호를 확인해주세요</div>
-현재비밀번호 <input type="password" name="pw">		<br/>
-※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.			<br/>
-
-<input type="submit" value="수정" onclick="return checkIt()">				<br/><br/>
-</form>
-
-알림설정
-<form action="signup_modifyPro2.dj" method="post" enctype="multipart/form-data">
-<c:if test="${dto.snsreceive == 'on'}">
-SNS 수신동의<input type="checkbox" name="snsreceive" checked="checked">			<br/>
-</c:if>
-<c:if test="${dto.snsreceive != 'on'}">
-SNS 수신동의<input type="checkbox" name="snsreceive">			<br/>
-</c:if>
-<c:if test="${dto.emailreceive == 'on'}">
-EMAILL 수신동의<input type="checkbox" name="emailreceive" checked="checked">		<br/><br/>
-</c:if>
-<c:if test="${dto.emailreceive != 'on'}">
-EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
-</c:if>
-
-<input type="submit" value="확인">
-</form>
-
-* DJ서비스를 더이상 원하지 않을 경우
-<input type="button" value="삭제" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}')">
 
 </body>
 </html>
