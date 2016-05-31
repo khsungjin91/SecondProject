@@ -7,6 +7,7 @@
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
 <typeAlias alias="investDto" type="product.bean.InvestDto"/>
 <typeAlias alias="messageDto" type="result.bean.MessageDto"/>
+<typeAlias alias="tableDto" type="product.bean.TableDto"/>
 
 <select id="maxno" resultClass="int" parameterClass="int">
 	select max(no) from borrow where memno=#memno#
@@ -40,19 +41,26 @@
 	select count(*) from borrow where memno=#no# and success='none'
 </select>
 
-<insert id="createTable" parameterClass="String">
-	create table dj_$str$ (
-	
+<statement id="createTable"  parameterClass="tableDto">
+	create table dj_$str$(
 		no number(38) primary key,
+		memno number(38) not null,
 		code varchar2(100),
+		refunds varchar2(100),
 		price varchar2(100),
+		interest varchar2(100),
+		total varchar2(100),
+		tax varchar2(100),
 		term varchar2(100),
 		way varchar2(100),
-		tax varchar2(100),
 		rate varchar2(100),
-		total varchar2(100),
-		check varchar2(100)
+		repayday varchar2(100),
+		back number(10) default 0
 	);
+</statement>
+
+<insert id="planrepay" parameterClass="tableDto">
+	insert into dj_$str$ values(#no#,#memno#,#code#,#refunds#,#price#,#interest#,#total#,#tax#,#term#,#way#,#rate#,#repayday#)
 </insert>
 
 <insert id="inputcontent" parameterClass="registerDto">

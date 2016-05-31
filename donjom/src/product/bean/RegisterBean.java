@@ -60,20 +60,21 @@ public class RegisterBean {
 		Date day = new Date();
 		SimpleDateFormat date = new SimpleDateFormat("yy");
 		
-		switch (br_category) {
+		System.out.println(br_category);
+		
+		switch (br_category){
 		case "사업자":
 			m_code = "B";
 			break;
 		case "부동산":
 			m_code = "R";
 			break;
-		case "개인신용":
+		case "개인":
 			m_code = "P";
 			break;
 		case "매출담보":
 			m_code = "C";
 			break;
-			
 		default:
 			break;
 		}
