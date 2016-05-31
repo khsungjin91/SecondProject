@@ -172,6 +172,9 @@ public class ManagerBean {
 		Date date =new Date();
 		System.out.println(date);
 		String now = spf.format(date);
+		System.out.println(now);
+		
+		String yy=now.substring(2,4);
 		
 		int m_noadult=0; 
 		int m_twenty=0;
@@ -210,26 +213,90 @@ public class ManagerBean {
 				else if(age>=60 && age<80){w_sixty +=1; chartdto.setW_sixty(w_sixty);}
 				else if(age>=80){w_eighty +=1; chartdto.setW_eighty(w_eighty);}			
 			}
+			
+		}
+		//line 차트
+		List p_list= sqlMap.queryForList("borrow_priceYear", yy);
+		List m_list= sqlMap.queryForList("borrow_dateYear", yy);
+		
+		int all_sum=0;	int all_count=0;	float all_avg[] ={0,0,0,0,0,0,0,0,0,0,0,0}; 
+		
+		
+		
+		for(int i=0;i<p_list.size();i++){
+			m_list.get(i);
+			p_list.get(i);
+			
+			if(m_list.get(i).equals("01")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[0] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("02")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[1] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("03")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[2] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("04")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[3] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("05")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[4] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("06")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[5] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("07")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[6] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("08")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[7] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("09")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[8] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("10")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[9] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("11")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[10] = (float)all_sum/(float)all_count;
+			}else if(m_list.get(i).equals("12")){
+				p_list.get(i);
+				all_count +=1;
+				all_sum +=(Integer)p_list.get(i);
+				all_avg[11] = (float)all_sum/(float)all_count;
+			}
+			
+			System.out.println(all_avg[i]);
 		}
 		
-		//line 차트
-		int all_sum=0;	int all_count=0;	float all_avg=1; 
-		int sc_sum=0;	int sc_count=0;		float sc_avg=1; 
 		
+		for(int i =0; i<p_list.size();i++){
+			mv.addObject("all_avg"+(i+1),all_avg[i]);
+		}
 		
-		all_sum = (Integer)sqlMap.queryForObject("borrow_sumA", null);
-		all_count = (Integer)sqlMap.queryForObject("borrow_countA", null);
-		sc_sum = (Integer)sqlMap.queryForObject("borrow_sum_sc", null);
-		sc_count = (Integer)sqlMap.queryForObject("borrow_sum_sc", null);
-		
-		all_avg = (float)all_sum/(float)all_count;
-		sc_avg = (float)sc_sum/(float)sc_count;
-		System.out.println(all_avg);
-		System.out.println(sc_avg);
-		
-		
-		mv.addObject("all_avg",all_avg);
-		mv.addObject("sc_avg",sc_avg);
 		mv.addObject("now",now);
 		mv.addObject("dto",chartdto);
 		mv.addObject("p",count[0]);
