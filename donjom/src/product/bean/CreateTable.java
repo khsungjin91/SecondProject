@@ -1,6 +1,7 @@
 package product.bean;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,35 +12,38 @@ import result.bean.CalculatorBean;
 
 @Controller
 public class CreateTable {
-
+	
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 	
-	public void Makeit(String str,RegisterDto dto){
+	public void Makeit(String str,RegisterDto dto,SqlMapClientTemplate sqlMap){
 		CalculatorBean calculator = new CalculatorBean();
 		Map map = new HashMap();
 		TableDto table = new TableDto();
 		
+		List list = sqlMap.queryForList("productList", null);
+		
+		System.out.println(list.size());
+		
 		int term = Integer.parseInt(dto.getP_term());
 		
-		table.setStr(str);
 		
-		sqlMap.insert("createTable", table);
+		sqlMap.insert("createTable", str);
 		
-		map = calculator.Calculator(dto.getP_invest(), term , dto.getP_way(), dto.getP_rate());
+		map = calculator.Calculator(dto.getP_price(), term , dto.getP_way(), dto.getP_rate());
 		
-		String [] price = new String[term];
-		String [] interest = new String[term];
-		String [] tax = new String[term];
-		String [] refunds = new String[term];
-		String [] realtotal = new String[term];
+		int [] price = new int[term];
+		int [] interest = new int[term];
+		int [] tax = new int[term];
+		int [] refunds = new int[term];
+		int [] realtotal = new int[term];
 		int [] number = new int[term];		
 		
-		price = (String[])map.get("p_price");
-		tax = (String[]) map.get("taxed");
-		refunds =(String[])map.get("refunds");
-		interest = (String[])map.get("interested");
-		realtotal = (String[])map.get("realtotaled");
+		price = (int[])map.get("p_price");
+		tax = (int[]) map.get("taxed");
+		refunds =(int[])map.get("refunds");
+		interest = (int[])map.get("interested");
+		realtotal = (int[])map.get("realtotaled");
 		
 		table.setCode(dto.getP_code());
 		table.setTerm(term);
@@ -52,16 +56,16 @@ public class CreateTable {
 						
 			number[i] = i+1;
 			
-			table.setNo(number[i]);
+			System.out.println(price[i]);
+			
+		}
+		/*table.setNo(number[i]);
+		sqlMap.insert("planrepay", table);
 			table.setPrice(price[i]);
 			table.setTax(tax[i]);
 			table.setRefunds(refunds[i]);
 			table.setInterest(interest[i]);
-			table.setTotal(realtotal[i]);
-			
-			sqlMap.insert("planrepay", table);
-		}
-		
+			table.setTotal(realtotal[i]);*/
 		
 	}
 	

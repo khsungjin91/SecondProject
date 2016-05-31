@@ -41,7 +41,7 @@
 	select count(*) from borrow where memno=#no# and success='none'
 </select>
 
-<statement id="createTable"  parameterClass="tableDto">
+<statement id="createTable"  parameterClass="String">
 	create table dj_$str$(
 		no number(38) primary key,
 		memno number(38) not null,
@@ -56,7 +56,7 @@
 		rate varchar2(100),
 		repayday varchar2(100),
 		back number(10) default 0
-	);
+	)
 </statement>
 
 <insert id="planrepay" parameterClass="tableDto">

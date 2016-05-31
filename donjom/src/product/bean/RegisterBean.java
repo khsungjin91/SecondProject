@@ -118,7 +118,7 @@ public class RegisterBean {
 
 		sqlMap.insert("productinput", dto);
 		
-		table.Makeit(str,dto);
+		table.Makeit(str,dto,sqlMap);
 		
 		mv.setViewName("/product/fundManager.jsp");
 		return mv;
