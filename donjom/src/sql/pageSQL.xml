@@ -72,12 +72,12 @@
 	</insert>
 	<!-- 뉴스 수정 -->
 	<update id="newsmodify" parameterClass="news">
-		update news set (image = #image#,
-						 sitename = #sitename#,
-						 title = #title#,
-						 content = #content#,
-						 site = #site#,
-						 reg = sysdate) 
+		update news set image = #image#,
+						sitename = #sitename#,
+						title = #title#,
+						content = #content#,
+						site = #site#,
+						reg = sysdate 
 	</update>
 	<!-- 뉴스 삭제 -->
 	<delete id="newsDel" parameterClass="news">

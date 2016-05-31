@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,10 +8,11 @@
 <title> 언론 목록 </title>
 </head>
 <body>
-<table>
+<table border="1">
 	<c:forEach var="list" items="${list}">
 		<tr>
-			<td>${list.image}</td>
+			<td><img src="/donjom/image/${list.image}"/></td>
+			
 		</tr>
 		<tr>
 			<td>${list.sitename}</td>
@@ -26,6 +27,7 @@
 			<td> ${list.site} </td>
 		</tr>
 	</c:forEach>
+
 </table>
 
 </body>

@@ -8,11 +8,12 @@
 </head>
 <body>
 <h2> 언론 </h2>
-	<form action="news_writePro.dj" method="post" enctype="multipatr/form-data">
+	<form action="news_write.dj" method="post" enctype="multipatr/form-data">
 	<table border="1">
 		<tr>
 			<td> 뉴스이미지 </td>
 			<td> <input type="file" name="image" /> </td>
+
 		</tr>
 		<tr>
 			<td> 뉴스사이트명 </td>
@@ -32,6 +33,7 @@
 		</tr>
 	</table>
 	<input type="submit" value="뉴스 저장하기">
+	<input type="button" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
 	</form>
 
 </body>

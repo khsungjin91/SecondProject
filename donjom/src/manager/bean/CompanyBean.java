@@ -1,10 +1,8 @@
 package manager.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -21,9 +19,12 @@ public class CompanyBean {
 	private ModelAndView mv;
 	
 	// 회사정보 변경폼
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("/manager_companyinfo.dj")
 	public ModelAndView companyinfo(ManagerCompanyDto company, HttpServletRequest request){
 		List list = sqlMap.queryForList("companyList", company);
+		
+		request.getParameter("ceo");
 		mv.addObject("list", list);
 		mv.setViewName("/managerpage/manager_companyinfo.jsp");
 		return mv;
@@ -41,6 +42,7 @@ public class CompanyBean {
 		return mv;
 	}
 	// 회사정보 수정
+	@SuppressWarnings({ "rawtypes", "unused" })
 	@RequestMapping("/manager_companyModify.dj")
 	public ModelAndView companyModify(HttpServletRequest request, ManagerCompanyDto company){
 		// 저장된 db를 input text에 불러와야 함
@@ -57,7 +59,7 @@ public class CompanyBean {
 	
 	// 메인에서 보여지는 뉴스페이지
 	@RequestMapping("/news_list.dj")
-	public ModelAndView newslist(){
+	public ModelAndView newslist(HttpServletRequest request){
 		List list = sqlMap.queryForList("newsList", null);
 		mv.addObject("list", list);
 		mv.setViewName("/news/news_list.jsp");
@@ -65,8 +67,10 @@ public class CompanyBean {
 		
 	}
 	// 관리자 모드에서 보여지는 뉴스페이지
+	
 	@RequestMapping("/news_manager.dj")
-	public ModelAndView newsmanager(ManagerPageingDto dto,ManagerPageingDto pagedto){
+	public ModelAndView newsmanager(HttpServletRequest request){
+		List list = sqlMap.queryForList("newsList", null);
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;
 	}

@@ -25,6 +25,6 @@
 		</tr>
 		<tr> 저장되었습니다. </tr>
 	</table>
-	<input type="reset" value="목록으로" onclick="javascript:location.href='/news_manager.dj">
+	<input type="reset" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
 </body>
 </html>

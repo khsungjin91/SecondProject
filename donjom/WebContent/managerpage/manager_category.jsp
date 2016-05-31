@@ -23,10 +23,10 @@
 			<td>카테고리 코드</td>
 			<td>카테고리 이름</td>
 		</tr>
-	<c:forEach var="category" items="${category}">
+	<c:forEach var="list" items="${list}">
 		<tr>
-			<td>${category.c_code} </td>
-			<td>${category.c_name} </td>
+			<td>${list.c_code} </td>
+			<td>${list.c_name} </td>
 		</tr>
 	</c:forEach>
 	</table>

@@ -9,18 +9,12 @@
 </head>
 <body>
 <h2> 언론 </h2>
-<script type="text/javascript">
-	function delCheck(value){
-		if(value == "newsDel"
-				)
-		
-	}
-
-</script>
-	<form action="news_write.dj">
+	<form action="news_write.dj" method="post">
 	<table border="1">
+	<c:forEach var="list" items="${list}" >
 		<tr>
-			<td> ${list.image} </td>
+			<td><img src="/donjom/image/${list.image}"/> </td>
+			
 		</tr>
 		<tr>
 			<td> ${list.sitename} </td>
@@ -38,10 +32,11 @@
 			<tr>
 				<td> 등록된 게시물이 없습니다.</td>
 		</c:if>
+		</c:forEach>
 	</table>
-	<input type="button" value="뉴스 올리기" onclick="javascript:location.href='?currentPage= value="currentPage"/>';">
-	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='/news_writePro.dj'">
-	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='/news_deletePro.dj'">
+	<input type="submit" value="뉴스 올리기">
+	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_writePro.dj'">
+	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_deletePro.dj'">
 	</form>
 
 </body>

@@ -2,6 +2,8 @@ package manager.bean;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -16,13 +18,11 @@ public class CategoryBean {
 	@Autowired
 	private ModelAndView mv;
 	
-	// 카테고리 목록
+		// 카테고리 목록
 		@RequestMapping("/manager_category.dj")
-		public ModelAndView category(ManagerCategoryDto category){
-			ModelAndView mv = new ModelAndView();
+		public ModelAndView category(HttpServletRequest request){	
 			// 카테고리 목록 불러오기
-			List list = sqlMap.queryForList("cetegoryList", null);
-			
+			List list = sqlMap.queryForList("cetegoryList", null);	
 			mv.addObject("list", list);
 			mv.setViewName("/managerpage/manager_category.jsp");
 			return mv;
