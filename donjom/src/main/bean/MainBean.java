@@ -31,14 +31,12 @@ public class MainBean {
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		int count = (Integer)sqlMap.queryForObject("result.alarm", no);
-
-		//상품리스트 
-		List list = sqlMap.queryForList("productList", null);
-	
-		mv.addObject("list",list);
 		mv.addObject("count", count);
 		}
+		//상품리스트 
+		List list = sqlMap.queryForList("productList", null);
 		
+		mv.addObject("list",list);
 		mv.setViewName("/main/main.jsp");
 		return mv;
 	}
