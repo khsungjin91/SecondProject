@@ -16,7 +16,9 @@ body {
 }
 
 .img-portfolio {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding-left:20px;
+    
     
 }
 
@@ -102,6 +104,20 @@ footer {
 
 	
 }
+.bottom-font {
+	color:#fff;	
+	font-weight: bold;
+}
+
+.bottom-font a{
+	color:#fff;	
+	font-weight: bold;
+}
+.bottom-font a:hover{
+	color:#fff;	
+	font-weight: bold;
+}
+
 
 .absolute{
 	
@@ -121,6 +137,7 @@ footer {
 @media(max-width:767px) {
     .img-portfolio {
         margin-bottom: 15px;
+        
     }
 
     header.carousel .carousel {

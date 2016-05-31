@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+
 <title>welcome to DonJom</title>
 </head>
 <body>
@@ -134,7 +135,8 @@
 			<div class="row">
         	<div class="col-sm-12">
             <div class="col-md-3 col-sm-6 ">
-            <img class="img-responsive img-portfolio" src="image/main-img-8.png" alt="" >
+            <div class="img-responsive img-portfolio"></div> 
+            <img src="image/main-img-8.png" alt="" >
             	<div class=" text-center">
             	 <h4><strong>중금리 직거래</strong></h4>
                	  <p>기존 금융기관의 지점 운영비, 인건비, 광고비 등의 비용을 온라인 중금리 직거래를 통해 획기적으로 낮췄습니다. 이제 가장 합리적인 대출 이자와 투자 수익을 경험하세요.</p>
@@ -176,17 +178,8 @@
                 <h2 class="page-header">Modern Business Features</h2>
             </div>
             <div class="col-md-6">
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v3.2.0</strong>
-                    </li>
-                    <li>jQuery v1.11.0</li>
-                    <li>Font Awesome v4.1.0</li>
-                    <li>Working PHP contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                    <li>17 HTML pages</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+            	
+            
             </div>
             <div class="col-md-6">
                 <img class="img-responsive" src="http://placehold.it/700x450" alt="">
@@ -197,16 +190,24 @@
         <hr>
 
         <!-- Call to Action Section -->
-        <div class="well">
+        
             <div class="row">
-                <div class="col-md-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                <div class="col-md-12 ">
+                  <div class="col-md-8 col-md-offset-2">
+                    <ul class="list-inline">
+            		<li><img src="image/cooperate_escrow.png"></li>
+            		<li><img src="image/cooperate_linewalks.png"></li>
+            		<li><img src="image/cooperate_paygate.png"></li>
+            		<li><img src="image/cooperate_ssl.png"></li>
+            		<li><img src="image/top_logo.jpg"></li>
+            	</ul>
+            	 </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
-                </div>
+                </div> -->
             </div>
-        </div>
+     
 
        <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
        
@@ -219,6 +220,8 @@
 						interval : 5000
 					//changes the speed
 					})
-				</script>
+					</script>
+		
+
 </body>
 </html>
