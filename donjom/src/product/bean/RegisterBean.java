@@ -43,6 +43,7 @@ public class RegisterBean {
 	@RequestMapping("/registerPro.dj")
 	public ModelAndView RegisterPro(MultipartHttpServletRequest request,String [] content,
 			RegisterDto dto, String [] upfile)throws Exception{ 
+		CreateTable table = new CreateTable();
 		String p_content = "";
 		String p_code = "";
 		String m_code = "";
@@ -115,6 +116,8 @@ public class RegisterBean {
 		dto.setP_content(p_code);
 
 		sqlMap.insert("productinput", dto);
+		
+		table.Makeit(str,dto);
 		
 		mv.setViewName("/product/fundManager.jsp");
 		return mv;

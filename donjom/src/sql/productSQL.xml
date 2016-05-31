@@ -40,6 +40,21 @@
 	select count(*) from borrow where memno=#no# and success='none'
 </select>
 
+<insert id="createTable" parameterClass="String">
+	create table dj_$str$ (
+	
+		no number(38) primary key,
+		code varchar2(100),
+		price varchar2(100),
+		term varchar2(100),
+		way varchar2(100),
+		tax varchar2(100),
+		rate varchar2(100),
+		total varchar2(100),
+		check varchar2(100)
+	);
+</insert>
+
 <insert id="inputcontent" parameterClass="registerDto">
 	insert into p_content values(content_seq.nextval,#p_code#,#p_content#,sysdate)
 </insert>

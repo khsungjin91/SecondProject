@@ -48,13 +48,14 @@ public class ManagerPriceBean {
 		int [] possible = new int[repaydaylist.size()];
 		
 		for(int i = 0; i < repaydaylist.size(); i++ ){
-	
-		if(repayday.get(Calendar.DAY_OF_MONTH) >= Integer.parseInt((String) repaydaylist.get(i))
-				&& repayday.get(Calendar.DAY_OF_MONTH) <= Integer.parseInt((String) repaydaylist.get(i))+5){
+	//Integer.parseInt((String) repaydaylist.get(i)
+		if(repayday.get(Calendar.DAY_OF_MONTH) >= 30
+				|| repayday.get(Calendar.DAY_OF_MONTH) <= Integer.parseInt((String) repaydaylist.get(i))+5){
 			possible[i] = 1;
 		}else{
 			possible[i] = 0;
 		}
+		System.out.println(possible[i]);
 		}
 		mv.addObject("possible", possible);
 		mv.addObject("listrt", remittancelist);
@@ -109,16 +110,13 @@ public class ManagerPriceBean {
 		if(dto.getP_way().equals("0")){
 			
 		for(int i = 0; i<price.size();i++){
-		
 			interast = (Double.parseDouble(dto.getP_rate())/12/100);
-			
 			x = 1+interast;
 			y = x;
 			for(int j = 0 ; j < term-1 ; j++){
 				y *= x;
 			}
 			d = (interast*y) / (y-1); 
-			
 			d = Double.parseDouble(String.format("%.7f", d));
 			total[i] = (int)((Float.parseFloat(price.get(i)+"0000")*d));
 			}
@@ -195,7 +193,7 @@ public class ManagerPriceBean {
 			sqlMap.update("refunds_start", map);
 			}
 		}
-		
+	
 		mv.setViewName("/managerprice/refunds_interastor.jsp");
 		return mv;
 	}
