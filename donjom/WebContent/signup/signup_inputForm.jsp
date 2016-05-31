@@ -128,25 +128,29 @@ function checkIt(){
 	
 	if(!$("#nickname").val()){
 		alert("닉네임을 입력해주세요");
+		$("#nickname").focus();
 		return false;
 	}
 	
 	if(!$("#email").val()){
 		alert("이메일을 입력해주세요");
+		$("#email").focus();
 		return false;
 	}
 	
 	if(!$("#pw").val()){
 		alert("비밀번호를 입력해주세요");
+		$("#pw").focus();
 		return false;
 	}
 	
 	if(!$("#pwch").val()){
 		alert("비밀번호를 확인해주세요");
+		$("#pwch").focus();
 		return false;
 	}
 
-	if($("#terms").checked == null){
+	if(!$("#terms").is(":checked")){
 		alert("약관의 동의를 하셔야합니다.");
 		return false;
 	}

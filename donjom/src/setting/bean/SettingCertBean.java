@@ -95,7 +95,7 @@ public class SettingCertBean {
 			certDto.setNo(no);
 			certDto.setRandomacc(randomcode);
 			
-			sqlMap.insert("certinput", certDto);
+			sqlMap.update("certinput", certDto);
 			
 			mv.addObject("setting", setting);
 			mv.setViewName("/signup/signup_modifyPro.jsp");

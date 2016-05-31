@@ -39,6 +39,7 @@ public class RegistedBean {
 		map.put("p_code", p_code);
 		
 		check = (Integer)sqlMap.queryForObject("result.investcheck", map);
+		mv.addObject("no",no);
 		}	
 		
 		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
@@ -48,7 +49,7 @@ public class RegistedBean {
 		limit = Integer.parseInt(dto.getP_price())/5;
 		
 		limit2 = Integer.parseInt(dto.getP_price()) - Integer.parseInt(dto.getP_invest());
-		
+	
 		if(limit > limit2){
 			limit = limit2;
 		}

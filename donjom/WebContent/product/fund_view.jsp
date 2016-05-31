@@ -32,32 +32,36 @@
         chart.draw(data, options);
       }
  
-function check(){
+function Check(){
 	
-var user = document.userinput;
-var price = ${dto.p_price};
-var invest = ${dto.p_invest};
+var price = $("#p_price").val();
+var invest = $("#p_invest").val();
+var limit = $("#limit").val();
 var mi = price - invest;
-var limit = ${limit};
 
-if(!user.amount.value){
+if($("#no").val() == $("#p_memeno").val()){
+	alert("대출자는 해당상품에 투자 불가합니다.");
+	$("#amount").focus();
+	return false;
+}
+if(!$("#amount").val()){
 	alert("투자금액을 입력해 주세요");
-	user.amount.focus();
+	$("#amount").focus();
 	return false;
 }
-if(user.amount.value == '0'){
+if($("#amount").val() == '0'){
 	alert("투자금액은 0이 될 수 없습니다.");
-	user.amount.focus();
+	$("#amount").focus();
 	return false;
 }
-if(user.amount.value > limit){
+if($("#amount").val() > limit){
 	if(limit > mi){
 		alert("최대 투자 가능 금액은"+mi+"만원 입니다.");
-		user.amount.focus();
+		$("#amount").focus();
 		return false;
 	}else{
 		alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
-		user.amount.focus();
+		$("#amount").focus();
 		return false;
 	}
 }
@@ -97,6 +101,11 @@ if(user.amount.value > mi){
 			<div class="row">
 			<div class="col-sm-12 col-sm-6 contents-warp left">
 				<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
+				<input type="hidden" value="${dto.p_price}" name="p_price" id="p_price">
+				<input type="hidden" value="${dto.p_invest}" name="p_invest" id="p_invest">
+				<input type="hidden" value="${limit}" name="limit" id="limit">
+				<input type="hidden" value="${no}" name="no" id="no">
+				<input type="hidden" value="${dto.p_memeno}" name="p_memeno" id="p_memeno">
 		<div class="row">
 				대출신청내역
 				<table border="1">
@@ -179,7 +188,7 @@ if(user.amount.value > mi){
 							<td>투자금액</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="amount">만원</td>
+							<td><input type="text" name="amount" id="amount">만원</td>
 						</tr>
 					</c:if>
 					<tr>
@@ -237,7 +246,7 @@ if(user.amount.value > mi){
 
 							<c:if test="${dto.p_success == 'doing' && check == 0}">
 								<td><input type="submit" value="투자미리보기"
-									onclick="return check()"></td>
+									onclick="return Check()"></td>
 							</c:if>
 
 							<c:if test="${dto.p_success == 'doing' && check != 0}">

@@ -15,5 +15,11 @@
 <c:if test="${check == 0 }">
 <span style="color: green;">사용가능한 이메일 입니다.</span>
 </c:if>
+
+<c:if test="${check == -1 }">
+<span style="color: red;">이메일을 입력해주시기 바랍니다.</span>
+</c:if>
+
+
 </body>
 </html>

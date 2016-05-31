@@ -39,12 +39,12 @@
 	select count(*) from member where email=#email#
 </select>
 
-<insert id="signUp" parameterClass="signDto">
- insert into member(no,nickname,email,pw,terms,join) values(MEMBER_NO.NEXTVAL,#nickname#,#email#,#pw#,#terms#,sysdate)
+<insert id="createinfo" parameterClass="int">
+	insert into memberinfo(no) values(#no#)
 </insert>
 
-<insert id="certinput" parameterClass="settingDto">
-	insert into memberinfo(no,name,birth,gender,mobilenum,bankcode,bankaccnum,randomacc) values(#no#,#name#,#birth#,#gender#,#mobilenum#,#bankcode#,#bankaccnum#,#randomacc#)
+<insert id="signUp" parameterClass="signDto">
+ insert into member(no,nickname,email,pw,terms,join) values(MEMBER_NO.NEXTVAL,#nickname#,#email#,#pw#,#terms#,sysdate)
 </insert>
 
 <insert id="sessioninput" parameterClass="sessionDto">
@@ -59,8 +59,21 @@
 	update member set snsreceive=#snsreceive#,emailreceive=#emailreceive# where email=#email#
 </update>
 
+<update id="certinput" parameterClass="settingDto">
+	update memberinfo set name=#name#,
+						birth=#birth#,
+						gender=#gender#,
+						mobilenum=#mobilenum#,
+						bankcode=#bankcode#,
+						bankaccnum=#bankaccnum#,
+						randomacc=#randomacc# 
+						where no=#no#
+</update>
+
 <update id="detailinput" parameterClass="settingDto">
-	update memberinfo set socialnum=#socialnum#, address=#address# where no=#no#
+	update memberinfo set socialnum=#socialnum#,
+						  address=#address# 
+						  where no=#no#
 </update>
 
 <delete id="deleteEmail" parameterClass="signDto">

@@ -32,6 +32,7 @@ public class SignUpBean {
 		int no = (Integer)sqlMap.queryForObject("getno", dto.getEmail());
 		
 		sqlMap.insert("total_price", no);
+		sqlMap.insert("createinfo", no);
 		
 		mv.setViewName("/signup/signup_inputPro.jsp");
 		return mv;
@@ -68,9 +69,13 @@ public class SignUpBean {
 	//아이디 중복 체크
 	@RequestMapping("/check_Email.dj")
 	public ModelAndView Emailcheck(String email){
-		
-		int check = (Integer)sqlMap.queryForObject("idcheck", email);
-		
+		int check = -1;
+		System.out.println(email);
+		if(email.equals("")){
+			
+		}else{
+		check = (Integer)sqlMap.queryForObject("idcheck", email);
+		}
 		mv.addObject("check", check);
 		mv.setViewName("/signup/checkEmail.jsp");
 		return mv;

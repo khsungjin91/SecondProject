@@ -127,8 +127,6 @@
  	 <div class="row">
  	 	<div class="col-xs-8">
  	 	 <div class="checkbox icheck">
- 	 	 <label><input type="checkbox"><a href="#">이용약관 동의</a>
- 	 	 </label>
  	 	 </div>
  	 	</div>
  	 </div>
