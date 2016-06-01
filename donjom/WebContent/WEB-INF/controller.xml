@@ -24,8 +24,8 @@
 	<context:component-scan base-package="time.bean"/>	
 	<context:component-scan base-package="help.bean"/>	
 	<context:component-scan base-package="board.bean"/>
+	<context:component-scan base-package="chart.bean"/>
 	
-
 	<bean id="ModelAndView" class="org.springframework.web.servlet.ModelAndView"/>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -12,17 +12,17 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
     	var user = document.userinput;
-    	var p = parseInt(user.p.value);
-    	var b = parseInt(user.b.value);
-    	var c = parseInt(user.c.value);
-    	var m = parseInt(user.m.value);
+    	var b = ${b};
+    	var r = ${r};
+    	var p = ${p};
+    	var c = ${c};
    
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['p 개인신용',  p],
-          ['b 부동산',  b],
-          ['c 사업자',  c],
-          ['m 매출담보', m]          
+          ['b 사업자',	b],
+          ['r 부동산',  	r],
+          ['p 개인',    	p],
+          ['c 매출담보', 	c]          
         ]);
 
         var options = {
@@ -90,40 +90,42 @@
 
     	var now = ${now};
  		var today = new Date();
- 		var all_avg1 = ${all_avg1};
- 		var all_avg2 = ${all_avg2};
- 		var all_avg3 = ${all_avg3};
- 		var all_avg4 = ${all_avg4};
- 		var all_avg5 = ${all_avg5};
- 		var all_avg6=${all_avg6};
- 		var all_avg7=${all_avg7};
- 		var all_avg8=${all_avg8};
- 		var all_avg9=${all_avg9};
- 		var all_avg10=${all_avg10};
- 		var all_avg11=${all_avg11};
- 		var all_avg12=${all_avg12};
+ 		
+ 		var all_avg1 = ${all_avg1}; 	var sc_avg1= ${sc_avg1};
+ 		var all_avg2 = ${all_avg2};		var sc_avg2= ${sc_avg2};
+ 		var all_avg3 = ${all_avg3};		var sc_avg3= ${sc_avg3};
+ 		var all_avg4 = ${all_avg4};		var sc_avg4= ${sc_avg4};
+ 		var all_avg5 = ${all_avg5};		var sc_avg5= ${sc_avg5};
+ 		var all_avg6=${all_avg6};		var sc_avg6= ${sc_avg6};
+ 		var all_avg7=${all_avg7};		var sc_avg7= ${sc_avg7};
+ 		var all_avg8=${all_avg8};		var sc_avg8= ${sc_avg8};
+ 		var all_avg9=${all_avg9};		var sc_avg9= ${sc_avg9};
+ 		var all_avg10=${all_avg10};		var sc_avg10= ${sc_avg10};
+ 		var all_avg11=${all_avg11};		var sc_avg11= ${sc_avg11};
+ 		var all_avg12=${all_avg12};		var sc_avg12= ${sc_avg12};
  		
     	 
     	var chartDiv = document.getElementById('chart_div');
 
   	    var data = new google.visualization.DataTable();
   	    data.addColumn('date', 'Month');
-   	    data.addColumn('number', "Average ");
-     
+   	    data.addColumn('number', "all_Average ");
+   	   	data.addColumn('number', "success_Average");
+       
 
    	    data.addRows([
-         [new Date(now, 0), all_avg1],
-         [new Date(now, 1), all_avg2],
-         [new Date(now, 2), all_avg3],
-         [new Date(now, 3), all_avg4],
-         [new Date(now, 4), all_avg5],
-         [new Date(now, 5),  all_avg6],
-         [new Date(now, 6),  all_avg7],
-         [new Date(now, 7),  all_avg8],
-         [new Date(now, 8),  all_avg9],
-         [new Date(now, 9),  all_avg10],
-         [new Date(now, 10), all_avg11],
-         [new Date(now, 11), all_avg12]
+         [new Date(now, 0), all_avg1,	sc_avg1],
+         [new Date(now, 1), all_avg2,	sc_avg2],
+         [new Date(now, 2), all_avg3,	sc_avg3],
+         [new Date(now, 3), all_avg4,	sc_avg4],
+         [new Date(now, 4), all_avg5,	sc_avg5],
+         [new Date(now, 5),  all_avg6,	sc_avg6],
+         [new Date(now, 6),  all_avg7,	sc_avg7],
+         [new Date(now, 7),  all_avg8,	sc_avg8],
+         [new Date(now, 8),  all_avg9,	sc_avg9],
+         [new Date(now, 9),  all_avg10,	sc_avg10],
+         [new Date(now, 10), all_avg11,	sc_avg11],
+         [new Date(now, 11), all_avg12,	sc_avg12]
        ]);
 
        var classicOptions = {
@@ -148,7 +150,7 @@
          },
          vAxis: {
            viewWindow: {
-             max: 100000
+             max: 8000
            }
          }
        };
@@ -169,15 +171,7 @@
 <title></title>
 </head>
 <body>
-	
-${all_avg1}
-<form action="#" name="userinput">
-<input type="hidden" value="${p}" id="p" name="p"/>
-<input type="hidden" value="${b}" id="b" name="b"/>
-<input type="hidden" value="${c}" id="c" name="c"/>
-<input type="hidden" value="${m}" id="m" name="m"/>
-</form>
-	
+
 	<div id="chart_div"></div>
 	
 	<div id="barchart_material" style="width: 600px; height: 350px;"></div>
