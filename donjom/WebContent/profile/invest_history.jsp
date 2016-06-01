@@ -10,11 +10,10 @@
 <body>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
-</script>
-
-<script>
 
 var coun;
+var coun2;
+
   function callAjax(count){
 	  coun = count;
       $.ajax({
@@ -31,35 +30,53 @@ var coun;
    	});    
   }
   
-  function test(count){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+  function test(count){	
       $("#callback"+coun).html(count);
-      console.log(resdata);
   }
   
   function whenError(){
       alert("Error");
   }
+  
+  function test2(a)
+  {  $("#loanback"+coun2).html(a);}
+  
+  
+  function loanCall(count){
+	  coun2 = count;
+
+	  $.ajax({
+		  type : "post",
+		  url : "",
+		  data:{
+			  p_code:$("#code"+count).val()	  
+		  },
+		  success: test2,
+		  error: whenError
+	  });
+
+  }
+  
 </script>
-
-
 
 <c:forEach var="list" items="${list}" varStatus="i">
 <input type="hidden" id="money${i.count}" value="${list.i_invest}">
 <input type="hidden" id="way${i.count}" value="${list.i_way}">
 <input type="hidden" id="term${i.count}" value="${list.i_times}">
 <input type="hidden" id="rate${i.count}" value="${list.i_profit}">
+<input type="hidden" id="code${i.count}" value="${list.i_pcode}">
 <div style="width: 800px; height: 200px; border: 1px solid black;">
 <div>
 <div>상품코드 : ${list.i_pcode}</div>
 <div style="float: right;">상환기간 : 대출금 지급전</div>
 </div>
 <div>
-<div>${list.i_pname}</div>
-<div></div>
+<div>상품 이름 : <a href="fundView.dj?p_code=${list.i_pcode}">${list.i_pname}</a></div>
+<div>투자 일자 : ${list.i_date}</div>
 </div>
 <table border="1">
 <tr>
-<td>상환예정일</td><td>회차</td><td>수익률(연)</td><td>투자금액</td><td rowspan="1">펀딩진행중</td>
+<td>상환예정일</td><td>회차</td><td>수익률(연)</td><td>투자금액</td><td>펀딩진행상황</td>
 </tr>
 <tr>
 <td>매월${list.i_repayday}일</td><td>0회/${list.i_times}회</td><td>${list.i_profit}%</td><td>${list.i_invest}만원</td>
@@ -80,9 +97,10 @@ var coun;
 
 <input type="button" id="${list.no}" onclick="callAjax('${i.count}')" value="상환플랜 보기">
 
-<div><input type="button" id="refundHistory" value="상환내역 보기"></div>
+<div><input type="button" id="refundHistory" value="상환내역 보기" onclick="loanCall('${i.count}')"></div>
 
 </div>
+<div id="loanback${i.count}"></div>
 <div id="callback${i.count}"></div>
 </c:forEach>
 

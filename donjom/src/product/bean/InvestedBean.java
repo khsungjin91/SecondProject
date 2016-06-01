@@ -75,7 +75,6 @@ public class InvestedBean {
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
 		List list = sqlMap.queryForList("result.in_history", no);
 		
 		mv.addObject("list",list);

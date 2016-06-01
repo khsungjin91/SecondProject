@@ -35,18 +35,18 @@ function whenerror(){
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/admin-slider.jsp" />
+
 <div id="callback">
 <div>
 	<ul>
 		<li><input type="button" value="송금관련"></li>
-		<li><input type="button" value="환급관련" onclick="Refunds()"></li>
+		<li><input type="button" value="상환관련" onclick="Refunds()"></li>
 	</ul>
 </div>
 
 <div>송금상품</div>
 
-<table>
+<table border="1">
 <tr>
 <td>상품코드</td><td>상품제목</td><td>투자된금액</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td><td>성공여부</td><td>송금</td>
 </tr>
@@ -73,7 +73,7 @@ function whenerror(){
 
 <div style="margin-top: 100px">송금한 상픔</div>
 
-<table>
+<table border="1">
 <tr>
 <td>상품코드</td><td>상품제목</td><td>투자된금액</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td>
 </tr>

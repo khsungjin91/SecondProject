@@ -6,7 +6,8 @@
 <typeAlias alias="messageDto" type="result.bean.MessageDto"/>
 <typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
 <typeAlias alias="settingDto" type="setting.bean.SettingDto"/>
-
+<typeAlias alias="tableDto" type="product.bean.TableDto"/>
+<typeAlias alias="borrowDto" type="product.bean.BorrowDto"/>
 
 <select id="getmessage" resultClass="messageDto" parameterClass="int">
 	select * from message where m_memno=#no# order by m_time desc
@@ -31,6 +32,27 @@
 <select id="matchday" resultClass="String">
 	select p_repayday from product where p_success = 'refunds' order by no desc
 </select>
+
+<select id="getloan" resultClass="tableDto" parameterClass="String">
+	select * from dj_$str$ order by no asc
+</select>
+
+<select id="getoneloan" resultClass="tableDto" parameterClass="String">
+	select * from dj_$str$ where no=1
+</select>
+
+<select id="getborrow" resultClass="borrowDto" parameterClass="int">
+	select * from borrow where memno=#no#
+</select>
+
+<select id="product_check" resultClass="int" parameterClass="int">
+	select count(*) from product where p_brno = #br_no#
+</select>
+
+<select id="product_code" resultClass="String" parameterClass="int">
+	select p_code from product where p_brno = #br_no#
+</select>
+
 
 <!-- manager로 옮기기 -->
 <select id="investcount" resultClass="int">

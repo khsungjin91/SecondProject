@@ -65,16 +65,5 @@ public class RegistedBean {
 		mv.setViewName("/product/fund_view.jsp");
 		return mv;
 	}
-
-	
-	@RequestMapping("/laon_history.dj")
-	public ModelAndView investhistory(){
-		
-		
-		
-		
-		mv.setViewName("/profile/laon_history.jsp");
-		return mv;
-	}
 	
 }

@@ -32,14 +32,14 @@ function whenerror(){
 <div>
 	<ul>
 		<li><input type="button" value="송금관련" onclick="Remittance()"></li>
-		<li><input type="button" value="환급관련"></li>
+		<li><input type="button" value="상환관련"></li>
 	</ul>
 </div>
 
 <div>환급상품</div>
-<table style="float: left">
+<table style="float: left" border="1">
 <tr>
-<td>상품코드</td><td>상품제목</td><td>대출한금액</td><td>대출이자</td><td>대출회차</td><td>상환일</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td><td>이자환급</td>
+<td>상품코드</td><td>상품제목</td><td>대출한금액</td><td>대출이자</td><td>상환회차</td><td>상환일</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td><td>이자환급</td>
 </tr>
 <c:forEach var="listrt" items="${listrt}" varStatus="z">
 <tr>
@@ -47,18 +47,16 @@ function whenerror(){
 <td><a href="fundView.dj?p_code=${listrt.p_code}">${listrt.p_name}</a></td>
 <td>${listrt.p_price}만원</td>
 <td>${listrt.p_rate}%</td>
-<td>${listrt.p_term}회</td>
-<td>${listrt.p_repayday}일</td>
+<td>0회/${listrt.p_term}회</td>
+<td>매월${listrt.p_repayday}일</td>
 <td>${listrt.p_people}명</td>
 <td>${listrt.name}</td>
 <td><a href="confirm_search.dj?confirm=i.no&search=${listrt.p_memeno}">상세정보</a></td>
 <td><input type="button" value="이자환급" onclick="javascript:window.location='Money_check_f.dj?p_code=${listrt.p_code}'"></td>
 </c:forEach>
 </table>
-<table>
-<tr>
-<td>환급하는 날</td>
-</tr>
+<table border="1">
+<tr><td>&nbsp;</td></tr>
 <c:forEach var="possible" items="${possible}">
 <tr>
 <td>
@@ -68,7 +66,8 @@ function whenerror(){
 </tr>
 </c:forEach>
 </table>
-
+<br/>
+<br/>
 <div><hr color="black"></div>
 <div>환급완료상품</div>
 
