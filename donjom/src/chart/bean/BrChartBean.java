@@ -52,19 +52,13 @@ public class BrChartBean {
 			String now = spf.format(date);
 			System.out.println(now);
 			
-			int m_noadult=0; 
-			int m_twenty=0;
-			int m_thirty=0;
-			int m_forty=0;
-			int m_fifty=0;
-			int m_sixty=0;
-			int m_eighty=0;
-			int w_noadult=0; 
-			int w_twenty=0;
-			int w_thirty=0;
-			int w_forty=0;
-			int w_fifty=0;
-			int w_sixty=0;
+			int m_noadult=0;	int m_twenty=0;
+			int m_thirty=0;		int m_forty=0;
+			int m_fifty=0;		int m_sixty=0;
+			int m_eighty=0;	
+			int w_noadult=0;	int w_twenty=0;
+			int w_thirty=0;		int w_forty=0;
+			int w_fifty=0;		int w_sixty=0;
 			int w_eighty=0;
 			
 			for(int i =0;i<l_birth.size();i++){
