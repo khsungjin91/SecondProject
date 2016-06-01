@@ -138,9 +138,6 @@
 투자진행 상품 : <br/>
 투자종료 상품 : <br/>
 
-${dto.m_twenty}
-남자${gender_m}
-
 <div id="piechart_1" style="width: 600px; height: 200px;"></div>
 <div id="piechart_2" style="width: 650px; height: 200px;"></div>
 <div id="piechart_3" style="width: 600px; height: 200px;"></div>
