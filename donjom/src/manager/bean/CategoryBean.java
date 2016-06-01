@@ -45,7 +45,6 @@ public class CategoryBean {
 		// 카테고리 수정
 		@RequestMapping("/manager_categoryModify.dj")
 		public ModelAndView categoryModify(ManagerCategoryDto category){
-			
 			sqlMap.update("categorymodify", category);
 			mv.addObject("category", category);
 			mv.setViewName("/managerpage/manager_categoryModify.jsp");
@@ -55,7 +54,6 @@ public class CategoryBean {
 		// 카테고리 삭제
 		@RequestMapping("/manager_categoryDel.dj")
 		public ModelAndView categoryDel(ManagerCategoryDto category){
-			ModelAndView mv = new ModelAndView();
 			category = (ManagerCategoryDto) sqlMap.queryForObject("categoryList", category.getC_name());
 			
 			category.setC_name(category.getC_name());
