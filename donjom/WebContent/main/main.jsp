@@ -33,8 +33,8 @@
 	                    <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-2">
 							  <h2>Mother of 금융권</h2><p>
 	                    		 <h2>돈좀 빌려줘본 DONJOM</h2>
-	                      <p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br>
-	                      돈좀 빌려달라고 해보세요~!!</p>
+	                      		<p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br>
+	                      			돈좀 빌려달라고 해보세요~!!</p>
 	                      <br>
 	                      <p><input type="button" class="btn btn-default" value="투자안내보기"></p>
 						</div>
@@ -79,12 +79,12 @@
 			<!-- card section part -->
 			<c:forEach var="list" items="${list}">
 				<div class="col-md-4">
-					<div class="panel panel-default">
-						<div class="panel-heading-img img-hover"
-							style="background-image: url('image/conimg-2.jpg')">
+					<div class="box box-success">
+						<div class="box-header with-border">
 							<a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-block btn-lg">${list.p_name}</a>
 						</div>
-						<div class="panel-body">
+						<a href="fundView.dj?p_code=${list.p_code}" >
+						<div class="box-body" >
 							<strong>${list.p_name}</strong><br> ${list.p_purpose}
 							<hr>
 							<p class="money">
@@ -96,6 +96,7 @@
 								<span class="level">등급 <span class="txt-point">D1</span></span>
 							</p>
 						</div>
+						</a>
 						<div class="progress progress-sm">
 							<div class="progress-bar progress-bar-warning" role="progressbar"
 								style="width:${list.p_invest/list.p_price*100}%"></div>
