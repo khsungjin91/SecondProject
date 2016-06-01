@@ -1,49 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>투자하기</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
- <a href="fundList_total.dj">전체</a>
- <a href="fundList_total.dj">사업자</a>
- <a href="fundList_total.dj">개인신용</a>
- <a href="fundList_total.dj">부동산</a>
- <a href="fundList_total.dj">담보대출</a>
-
-<div>
-<c:forEach var="list" items="${list}">
-<a href="fundView.dj?p_code=${list.p_code}">
-<div style="float: left;">
-	<div>
-		<img src="">
-	</div>
-	<div>
-		<ul>
-			<li>목표${list.p_price}만원  연${list.p_rate}%수익률</li>
-			<li>${list.p_category} | 만기${list.p_term}개월</li>
-			<li>%진행 ${list.p_people} 
-			<c:if test = "${list.p_success == 'doing'}">
-			/ 펀딩진행중
-			</c:if>
-			<c:if test = "${list.p_success == 'success'}">
-			/ 펀딩성공
-			</c:if>
-			<c:if test = "${list.p_success == 'fail'}">
-			/ 펀딩실패
-			</c:if>
-			
-			</li>
-		</ul>
-	</div>
+<div class="warpper">
+	<div class="container">
+		 <section class="content-header">
+					 <a href="fundList_total.dj" type="button" class="btn btn-lg">전체</a>
+					 <a href="fundList_total.dj" type="button" class="btn btn-lg">사업자</a>
+					 <a href="fundList_total.dj" type="button" class="btn btn-lg">개인신용</a>
+					 <a href="fundList_total.dj" type="button" class="btn btn-lg">부동산</a>
+					 <a href="fundList_total.dj" type="button" class="btn btn-lg">담보대출</a>
+		</section>
+				<hr>
+				
+				<div class="content-body">
+					<c:forEach var="list" items="${list}">
+				<div class="col-md-4">
+					<div class="box box-success">
+						<div class="box-header with-border">
+							<a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-block btn-lg">${list.p_name}</a>
+						</div>
+						<a href="fundView.dj?p_code=${list.p_code}" >
+						<div class="box-body" >
+							<strong>${list.p_name}</strong><br> ${list.p_purpose}
+							<hr>
+							<p class="money">
+								목표 ${list.p_price}<span>만원</span> 연 ${list.p_rate}%<span>수익률</span>
+							</p>
+							<p class="rate">
+								<span class="txt-point purpose"> ${list.p_category}</span> <span
+									class="day">만기</span> <span class="txt-point">${list.p_term}개월</span>
+								<span class="level">등급 <span class="txt-point">D1</span></span>
+							</p>
+						</div>
+						</a>
+						<div class="progress progress-sm">
+							<div class="progress-bar progress-bar-warning" role="progressbar"
+								style="width:${list.p_invest/list.p_price*100}%"></div>
+						</div>
+						<div class="progress-detail">
+							<ul class="list-inline">
+								<li>${list.p_invest/list.p_price*100}%진행</li>
+								<li>(${list.p_people}명)</li>
+								<li><c:if test="${list.p_success == 'doing'}">
+										<strong>펀딩진행중</strong>
+									</c:if> <c:if test="${list.p_success == 'success'}">
+										<strong>펀딩성공</strong>
+									</c:if> <c:if test="${list.p_success == 'fail'}">
+										<strong>펀딩실패</strong>
+									</c:if></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+	
+				</div>
+		</div>
 </div>
-</a>
-</c:forEach>
-</div>
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 
 </body>
 </html>

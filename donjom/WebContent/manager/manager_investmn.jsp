@@ -131,6 +131,7 @@
   </script> 
  
 <body>
+<jsp:include page="/WEB-INF/admin-slider.jsp" />
 <h2> 투자 현황 상태</h2>
 
 총 투자 개수 : ${count} 투자 <br/>

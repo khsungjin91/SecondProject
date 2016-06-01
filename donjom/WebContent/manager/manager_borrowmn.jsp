@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -171,40 +172,50 @@
 <title></title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/admin-slider.jsp" />
 
-	<div id="chart_div"></div>
-	
-	<div id="barchart_material" style="width: 600px; height: 350px;"></div>
-	
-	<div id="piechart_3d" style="width: 600px; height: 350px;"></div>
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
 
-	<div id="br_requestList">
-		<table border="1">
-			<tr>
-				<td>이름</td>
-				<td>메일</td>
-				<td>핸드폰번호</td>
-				<td>목적</td>
-				<td>대출신청날짜</td>
-				<td>심사하기</td>
-			</tr>
+					<div id="chart_div"></div>
 
-			<c:forEach var="list" items="${list}">
-				<tr>
-					<td>${list.memname}</td>
-					<td>${list.mememail}</td>
-					<td>${list.memphone}</td>
-					<td>${list.br_object}</td>
-					<td>${list.br_date}</td>
-					<td><input type="button" value="심사하기"
-						onclick="javascript:location.href='manager_evaluation_write.dj?mememail=${list.mememail}&no=${list.no}'">
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-		</table>
+					<div id="barchart_material" style="width: 600px; height: 350px;"></div>
+
+					<div id="piechart_3d" style="width: 600px; height: 350px;"></div>
+
+					<div id="br_requestList">
+						<table class="table table-bordered">
+							<tr>
+								<td>이름</td>
+								<td>메일</td>
+								<td>핸드폰번호</td>
+								<td>목적</td>
+								<td>대출신청날짜</td>
+								<td>심사하기</td>
+							</tr>
+
+							<c:forEach var="list" items="${list}">
+								<tr>
+									<td>${list.memname}</td>
+									<td>${list.mememail}</td>
+									<td>${list.memphone}</td>
+									<td>${list.br_object}</td>
+									<td>${list.br_date}</td>
+									<td><input type="button" value="심사하기"
+										onclick="javascript:location.href='manager_evaluation_write.dj?mememail=${list.mememail}&no=${list.no}'">
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
 
 
 </body>

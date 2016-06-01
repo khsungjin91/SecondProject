@@ -35,6 +35,7 @@ function whenerror(){
 </script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/admin-slider.jsp" />
 <div id="callback">
 <div>
 	<ul>
