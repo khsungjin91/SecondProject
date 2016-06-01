@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,15 +14,12 @@
 $(document).ready(function(){
 	$("#addText").click(function(){
 		 var textindex = $("#textarray tr").children().length;
-		 alert(textindex);
 		 $("#textarray").append(
 			"<tr><td>" +
 		 	"<textarea rows='10' cols='80' name='content["+textindex+"]'></textarea> <a href='#this' name='delete'>삭제</a>" +
 		 	"</td></tr>" 
 		 );
-		 
 		$("#textindex").val(textindex);
-		 
 		 $("a[name='delete']").on("click",function(e){
 			 e.preventDefault();
 			 fn_deleteText($(this));
@@ -32,15 +30,12 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#filebutton").click(function(){
 		 var fileindex = $("#fileupload tr").children().length;
-		 alert(fileindex);
 		 $("#fileupload").append(
 			"<tr><td>" +
 		 	"<input type='file' name='upfile["+fileindex+"]'> <a href='#this' name='delete'>삭제</a>" +
 		 	"</td></tr>" 
 		 );
-		 
 		$("#fileindex").val(fileindex);
-		 
 		 $("a[name='delete']").on("click",function(e){
 			 e.preventDefault();
 			 fn_deleteText($(this));
@@ -74,9 +69,6 @@ function calculrator(userinput){
 	}
 
 }		
-
-
-
 </script>
 <form action="registerPro.dj" method="post" enctype="multipart/form-data" name="userinput">
 <input type ="hidden" value="${no}" name="p_brno"/>
@@ -91,10 +83,26 @@ function calculrator(userinput){
 <td>
 <select name="p_category">
 <option value="${dto.br_category}">${dto.br_category}(대출자희망)</option>
-<option value="사업자">사업자</option>
-<option value="개인">개인</option>
-<option value="부동산">부동산</option>
-<option value="대출담보">대출담보</option>
+<option value="b">
+<c:if test="${dto.br_category == 'b'}">
+사업자
+</c:if>
+</option>
+<option value="p">
+<c:if test="${dto.br_category == 'p'}">
+개인
+</c:if>
+</option>
+<option value="r">
+<c:if test="${dto.br_category == 'r'}">
+부동산
+</c:if>
+</option>
+<option value="c">
+<c:if test="${dto.br_category == 'c'}">
+대출담보
+</c:if>
+</option>
 </select>
 </td>
 <td><input type="text" value="${dto.br_term}" name="p_term">개월</td>

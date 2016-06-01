@@ -62,7 +62,18 @@ var coun;
 <td>상환예정일</td><td>회차</td><td>수익률(연)</td><td>투자금액</td><td rowspan="1">펀딩진행중</td>
 </tr>
 <tr>
-<td>day</td><td>0회/${list.i_times}회</td><td>${list.i_profit}%</td><td>${list.i_invest}만원</td><td></td>
+<td>매월${list.i_repayday}일</td><td>0회/${list.i_times}회</td><td>${list.i_profit}%</td><td>${list.i_invest}만원</td>
+<td>
+<c:if test="${list.i_success == 'success'}">
+펀딩성공!
+</c:if>
+<c:if test="${list.i_success == 'refunds'}">
+상환중...
+</c:if>
+<c:if test="${list.i_success == 'doing'}">
+펀딩진행중...
+</c:if>
+</td>
 </tr>
 </table>
 

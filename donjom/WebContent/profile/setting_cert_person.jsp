@@ -132,7 +132,7 @@ window.location="signIn.dj";
 <form action="setting_cert_pro.dj" method="post" name="userinput">	
 
 이름		<input type="text" name="name" id="name">															<br/>
-생년월일	<input type="text" name="birth" id="birth">														<br/>
+생년월일	<input type="text" name="birth" id="birth" maxlength="8">	&nbsp;	예) 20011203		<br/>
 성별		남자<input type="radio" name="gender"  id="gender" value="men">
 		여자<input type="radio" name="gender"  id="gender" value="woman">										<br/>
 
@@ -145,8 +145,8 @@ window.location="signIn.dj";
 <c:if test="${memdto.confirm == 1}">
 메일인증완료상태입니다.																					<br/>
 </c:if>														
-휴대폰번호	<input type="text" name="mobilenum" id="mobilenum">													<br/>
-은행명 <select name="bankcode" id="">
+휴대폰번호	<input type="text" name="mobilenum" id="mobilenum" maxlength="11">													<br/>
+은행명 <select name="bankcode" id="bankcode">
 	<option value="신한은행">신한은행</option>
 	<option value="우리은행">우리은행</option>
 	<option value="농협은행">농협은행</option>
@@ -174,8 +174,8 @@ window.location="signIn.dj";
 <!-- 입력안한 경우 -->
 <c:if test="${dto.socialnum == null}">
 <form action="setting_detail_pro.dj" method="post">
-주민등록번호<input type="text" name="socialnum">													<br/>
-주소		<input type="text" name="address">														<br/>
+주민등록번호<input type="text" name="socialnum" maxlength="13"> &nbsp; 예)8910121234567				<br/>
+주소		<input type="text" name="address">	&nbsp; 예) 서울시 강남구 역삼동	230-10					<br/>
 <input type="submit" value="입력완료">																<br/>
 </form>
 </c:if>

@@ -2,11 +2,41 @@ package product.bean;
 
 public class TableDto {
 	
-	private String code,refunds,price,interest,total,tax,way,rate,repayday,str;
-	private int no,memno,term,back;
+	private String code,way,rate,repayday,str;
+	private int no,memno,term,back,refunds,price,interest,total,tax;
 	
 	
 	
+	public int getRefunds() {
+		return refunds;
+	}
+	public void setRefunds(int refunds) {
+		this.refunds = refunds;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getInterest() {
+		return interest;
+	}
+	public void setInterest(int interest) {
+		this.interest = interest;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public int getTax() {
+		return tax;
+	}
+	public void setTax(int tax) {
+		this.tax = tax;
+	}
 	public String getStr() {
 		return str;
 	}
@@ -18,36 +48,6 @@ public class TableDto {
 	}
 	public void setCode(String code) {
 		this.code = code;
-	}
-	public String getRefunds() {
-		return refunds;
-	}
-	public void setRefunds(String refunds) {
-		this.refunds = refunds;
-	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	public String getInterest() {
-		return interest;
-	}
-	public void setInterest(String interest) {
-		this.interest = interest;
-	}
-	public String getTotal() {
-		return total;
-	}
-	public void setTotal(String total) {
-		this.total = total;
-	}
-	public String getTax() {
-		return tax;
-	}
-	public void setTax(String tax) {
-		this.tax = tax;
 	}
 	public String getWay() {
 		return way;

@@ -24,9 +24,10 @@
 			<label class="col-sm-2 control-label">대출 구분</label>
 			<div class="col-sm-7">
 				<select class="form-control" name="br_category">
-					<option value="개인">개인</option>
-					<option value="사업자">사업자</option>
-					<option value="부동산">부동산</option>
+					<option value="p">개인</option>
+					<option value="b">사업자</option>
+					<option value="r">부동산</option>
+					<option value="c">매출담보</option>
 				</select>
 			</div>
 		</div>
