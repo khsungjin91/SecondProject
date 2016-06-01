@@ -8,7 +8,11 @@
 </head>
 <body>
 <h2> 언론 </h2>
-	<form action="news_write.dj" method="post" enctype="multipatr/form-data">
+	
+	<input type="text" name="serch">
+	<input type="button" value="검색">
+	
+	<form action="news_writePro.dj" method="post" enctype="multipatr/form-data">
 	<table border="1">
 		<tr>
 			<td> 뉴스이미지 </td>
@@ -33,6 +37,7 @@
 		</tr>
 	</table>
 	<input type="submit" value="뉴스 저장하기">
+	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_modify.dj'">
 	<input type="button" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
 	</form>
 

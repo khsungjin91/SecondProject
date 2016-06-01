@@ -9,6 +9,10 @@
 </head>
 <body>
 <h2> 언론 </h2>
+
+	<input type="text" name="serch">
+	<input type="button" value="검색">
+	
 	<form action="news_write.dj" method="post">
 	<table border="1">
 	<c:forEach var="list" items="${list}" >
@@ -35,7 +39,6 @@
 		</c:forEach>
 	</table>
 	<input type="submit" value="뉴스 올리기">
-	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_writePro.dj'">
 	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_deletePro.dj'">
 	</form>
 

@@ -12,7 +12,6 @@
 	<c:forEach var="list" items="${list}">
 		<tr>
 			<td><img src="/donjom/image/${list.image}"/></td>
-			
 		</tr>
 		<tr>
 			<td>${list.sitename}</td>
@@ -27,8 +26,6 @@
 			<td> ${list.site} </td>
 		</tr>
 	</c:forEach>
-
 </table>
-
 </body>
 </html>

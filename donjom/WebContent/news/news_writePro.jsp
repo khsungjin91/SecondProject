@@ -25,9 +25,10 @@
 		<tr>
 			<td> ${list.site} </td>
 		</tr>
-		<tr> 저장되었습니다. </tr>
+
 	</table>
 	</c:forEach>
+	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_writePro.dj'">
 	<input type="reset" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
 </body>
 </html>

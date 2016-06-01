@@ -67,7 +67,6 @@ public class CompanyBean {
 		
 	}
 	// 관리자 모드에서 보여지는 뉴스페이지
-	
 	@RequestMapping("/news_manager.dj")
 	public ModelAndView newsmanager(HttpServletRequest request){
 		List list = sqlMap.queryForList("newsList", null);
