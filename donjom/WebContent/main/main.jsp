@@ -27,7 +27,7 @@
         <div class="carousel-inner">
         
             <div class="item active">
-                <div class="fill" style="background-image:url('image/conimg-1.jpg'); ">
+                <div class="fill" style="background-image:url('image/slider-1.jpg'); ">
 	                <div class="col-sm-12">
 	               		<div class="row">
 	                    <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-2">
@@ -38,28 +38,20 @@
 	                      <br>
 	                      <p><input type="button" class="btn btn-default" value="투자안내보기"></p>
 						</div>
-  					<div class="col-xs-8 col-md-4 hidden-sm" >
-						  <h2>Mother of 금융권</h2><p>
-	                    		 <h2>돈좀 빌려줘본 DONJOM</h2>
-	                      <p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br>
-	                      돈좀 빌려달라고 해보세요~!!</p>
-	                      <br>
-	                      <p><input type="button" class="btn btn-default" value="투자안내보기"></p>
-
-					</div>
+  				
 	             </div>
 	        </div>
 	                
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('image/conimg-2.jpg');">테스트 슬라이드</div>
+                <div class="fill" style="background-image:url('image/slider-5.jpg');">테스트 슬라이드</div>
                 <div class="carousel-caption">
                     <h2>Caption 2</h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url('image/slider-3.jpg');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 3</h2>
                 </div>
@@ -135,29 +127,29 @@
 			<div class="row">
         	<div class="col-sm-12">
             <div class="col-md-3 col-sm-6 ">
-            <div class="img-responsive img-portfolio"></div> 
-            <img src="image/main-img-8.png" alt="" >
+            <img class="img-responsive img-portfolio" src="image/icon-main-2.jpg" alt="" >
+         
             	<div class=" text-center">
             	 <h4><strong>중금리 직거래</strong></h4>
                	  <p>기존 금융기관의 지점 운영비, 인건비, 광고비 등의 비용을 온라인 중금리 직거래를 통해 획기적으로 낮췄습니다. 이제 가장 합리적인 대출 이자와 투자 수익을 경험하세요.</p>
             	</div>
             </div>
             <div class="col-md-3 col-sm-6 ">
-            <img class="img-responsive img-portfolio" src="image/main-img-1.png" alt="" >
+            <img class="img-responsive img-portfolio" src="image/icon-main-1.jpg" alt="" >
             	<div class=" text-center">
             	 <h4><strong>기술기반 신용평가</strong></h4>
                	  <p>기존 금융기관의 신용평가 방식은 때론 합리적이지 못할 때가 있습니다. 기술과 금융이 결합된 돈좀의 혁신적인 신용평가 시스템을 통해 나의 신용을 재평가 받으세요.</p>
             	</div>
             </div>
             <div class="col-md-3 col-sm-6 ">
-            <img class="img-responsive img-portfolio" src="image/main-img-7.png" alt="" >
+            <img class="img-responsive img-portfolio" src="image/icon-main-3.jpg" alt="" >
             	<div class=" text-center">
             	 <h4><strong>다양한 투자 포트폴리오</strong></h4>
                	  <p>한가지 카테고리만의 투자가 좀 불안 하시다고요? 돈좀에서는 개인 및 사업자 채권뿐만 아니라 부동산 담보, 매출담보 등의 다양한 카테고리의 채권에 분산투자 가능하지요.</p>
             	</div>
             </div>
             <div class="col-md-3 col-sm-6 ">
-            <img class="img-responsive img-portfolio " src="image/main-img-3.png" alt="" >
+            <img class="img-responsive img-portfolio " src="image/icon-main-4.jpg" alt="" >
             	<div class=" text-center">
             	 <h4><strong>블록체인 기반 송금</strong></h4>
                	  <p>공인인증서, 엑티브엑스 등의 복잡한고, 어려운 보안툴은 좀!! 비트코인 송금시 사용되는 블록체인 보안기술을 돈좀 투자시스템에 적용하진 못했지만, 실제 돈이 아니니 안전한 투자환경을 즐기세요!!</p>
