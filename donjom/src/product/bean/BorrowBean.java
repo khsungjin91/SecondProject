@@ -56,17 +56,5 @@ public class BorrowBean {
 		return mv;
 	}
 	
-	@RequestMapping()
-	public ModelAndView investDetail(String p_code){
-		
-		String str = p_code.substring(5,10);
-
-		List list = sqlMap.queryForList("result.getloan", str);
-			
-		mv.addObject("list", list);
-		
-		mv.setViewName("");
-		return mv;
-	}
 
 }

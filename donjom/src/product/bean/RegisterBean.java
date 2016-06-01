@@ -37,9 +37,7 @@ public class RegisterBean {
 		mv.setViewName("/product/fund_register.jsp");
 		return mv;
 	}
-	
-	
-	
+
 	@RequestMapping("/registerPro.dj")
 	public ModelAndView RegisterPro(MultipartHttpServletRequest request,String [] content,
 			RegisterDto dto, String [] upfile)throws Exception{ 
@@ -59,8 +57,6 @@ public class RegisterBean {
 		
 		Date day = new Date();
 		SimpleDateFormat date = new SimpleDateFormat("yy");
-		
-		System.out.println(br_category);
 		
 		switch (br_category){
 		case "»ç¾÷ÀÚ":

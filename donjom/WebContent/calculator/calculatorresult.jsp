@@ -13,7 +13,7 @@
 	<div>
 	
 	
-		<table class="table table-bordered">
+		<table class="table table-bordered" border="1">
 			<tr class="table active">
 				<td>회차</td>
 				<td>상환금</td>

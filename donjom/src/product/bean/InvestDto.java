@@ -2,12 +2,20 @@ package product.bean;
 
 public class InvestDto {
 	
-	private String i_memname,i_pname,i_pcode,i_repayday,i_times,i_profit,i_invest,i_way,i_date,i_success
+	private String i_memname,i_pname,i_pcode,i_repayday,i_times,i_profit,i_invest,i_way,i_date,i_success,p_funding
 	,nickname,email,randomacc;
 	 
 	private int i_memnum,no;
 	
 	
+	public String getP_funding() {
+		return p_funding;
+	}
+
+	public void setP_funding(String p_funding) {
+		this.p_funding = p_funding;
+	}
+
 	public String getRandomacc() {
 		return randomacc;
 	}

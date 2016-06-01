@@ -28,8 +28,8 @@ public class ManagerPriceBean {
 	@RequestMapping("/manager_remittance.dj")
 	public ModelAndView Remittance(InvestDto dto){
 		
-		List investlist = sqlMap.queryForList("result.manager_p", null);
-		List remittancelist = sqlMap.queryForList("result.manager_rt", null);
+		List investlist = sqlMap.queryForList("result.remmitance_before", null);
+		List remittancelist = sqlMap.queryForList("result.remmitance_after", null);
 		
 		mv.addObject("list", investlist);
 		mv.addObject("listrt", remittancelist);
@@ -43,7 +43,8 @@ public class ManagerPriceBean {
 		Calendar repayday = Calendar.getInstance();
 		
 		List repaydaylist = sqlMap.queryForList("result.matchday", null);
-		List remittancelist = sqlMap.queryForList("result.manager_rt", null);
+		List refunds_inglist = sqlMap.queryForList("result.refunds_ing", null);
+		//List refunds_endlist = sqlMap.queryForList("result.refunds_end", null);
 		
 		int [] possible = new int[repaydaylist.size()];
 		
@@ -55,10 +56,10 @@ public class ManagerPriceBean {
 		}else{
 			possible[i] = 0;
 		}
-		System.out.println(possible[i]);
 		}
 		mv.addObject("possible", possible);
-		mv.addObject("listrt", remittancelist);
+		mv.addObject("listrt", refunds_inglist);
+		//mv.addObject("list", refunds_endlist);
 		mv.setViewName("/managerprice/manager_refunds.jsp");
 		return mv;
 	}
@@ -145,6 +146,8 @@ public class ManagerPriceBean {
 		double y = 0;
 		int no = 0;
 		
+		String str = p_code.substring(5,10);
+		
 		dto.setP_code(p_code);
 		
 		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
@@ -158,41 +161,52 @@ public class ManagerPriceBean {
 		
 		if(dto.getP_way().equals("0")){
 			
-		for(int i = 0; i<price.size();i++){
-			no = (Integer)sqlMap.queryForObject("getno", email.get(i));
-			
-			interast = (Double.parseDouble(dto.getP_rate())/12/100);
-			
-			x = 1+interast;
-			y = x;
-			for(int j = 0 ; j < term-1 ; j++){
-				y *= x;
-			}
-			d = (interast*y) / (y-1); 
-			
-			d = Double.parseDouble(String.format("%.7f", d));
-			total[i] = (int)((Float.parseFloat(price.get(i)+"0000")*d));
-			
-			map.put("no", no);
-			map.put("refundmoney", total[i]);
-			
-			sqlMap.update("refunds_start", map);
-		}
+				for(int i = 0; i<price.size();i++){
+					no = (Integer)sqlMap.queryForObject("getno", email.get(i));
+					
+					interast = (Double.parseDouble(dto.getP_rate())/12/100);
+					
+					x = 1+interast;
+					y = x;
+					for(int j = 0 ; j < term-1 ; j++){
+						y *= x;
+					}
+					d = (interast*y) / (y-1); 
+					
+					d = Double.parseDouble(String.format("%.7f", d));
+					total[i] = (int)((Float.parseFloat(price.get(i)+"0000")*d));
+					
+					map.put("no", no);
+					map.put("refundmoney", total[i]);
+					
+					sqlMap.update("refunds_start", map);
+				}
+				
 		}else if(dto.getP_way().equals("1")){
 			
-		for(int i = 0; i<price.size();i++){
-			no = (Integer)sqlMap.queryForObject("getno", email.get(i));
-			
-			interast = (Double.parseDouble(dto.getP_rate())/12/100);
-			d = Double.parseDouble(String.format("%.7f", interast));
-			total[i] = (int) (Double.parseDouble(price.get(i)+"0000") * d);
-			
-			map.put("no", no);
-			map.put("refundmoney", total[i]);
-			
-			sqlMap.update("refunds_start", map);
-			}
+				for(int i = 0; i<price.size();i++){
+					no = (Integer)sqlMap.queryForObject("getno", email.get(i));
+					
+					interast = (Double.parseDouble(dto.getP_rate())/12/100);
+					d = Double.parseDouble(String.format("%.7f", interast));
+					total[i] = (int) (Double.parseDouble(price.get(i)+"0000") * d);
+					
+					map.put("no", no);
+					map.put("refundmoney", total[i]);
+					
+					sqlMap.update("refunds_start", map);
+					}
 		}
+		
+		int refunds_times = (Integer)sqlMap.queryForObject("result.minno", str);
+		
+		map.put("p_code", p_code);
+		map.put("times", refunds_times);
+		map.put("str", str);
+		
+		sqlMap.insert("result.refunds_insert", map);
+		sqlMap.update("result.back_update", map);
+		sqlMap.update("result.fundingup", map);
 	
 		mv.setViewName("/managerprice/refunds_interastor.jsp");
 		return mv;

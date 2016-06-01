@@ -14,19 +14,31 @@
 </select>
 
 <select id="in_history" resultClass="investDto" parameterClass="int">
-	select * from invest where i_memnum = #no# order by i_date desc
+	select * from invest i,product p  where i.i_pcode=p.p_code and i.i_memnum = #no# order by i.i_date desc
 </select> 
 
 <select id="investcheck" resultClass="int" parameterClass="java.util.Map">
 	select count(*) from invest where i_memnum=#no# and i_pcode=#p_code#
 </select>
 
-<select id="manager_p" resultClass="registerDto">
+<select id="oneget_i" resultClass="investDto" parameterClass="java.util.Map">
+	select * from invest where i_memnum = #no# and i_pcode=#p_code#
+</select>
+
+<select id="remmitance_before" resultClass="registerDto">
 	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success != 'refunds' order by p.no desc
 </select>
 
-<select id="manager_rt" resultClass="registerDto">
+<select id="remmitance_after" resultClass="registerDto">
 	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success = 'refunds' order by p.no desc
+</select>
+
+<select id="refunds_ing" resultClass="registerDto">
+	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success = 'refunds' and p.p_term != p.p_funding  order by p.no desc
+</select>
+
+<select id="refunds_end" resultClass="registerDto">
+	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success = 'overend'
 </select>
 
 <select id="matchday" resultClass="String">
@@ -53,7 +65,13 @@
 	select p_code from product where p_brno = #br_no#
 </select>
 
+<select id="minno" resultClass="int" parameterClass="String">
+	select min(no) from dj_$str$ where back=0
+</select> 
 
+<select id="max_refunds_no" resultClass="int" parameterClass="String">
+	select max(no) from dj_$str$ where back=1 
+</select>
 <!-- manager로 옮기기 -->
 <select id="investcount" resultClass="int">
 	select count(*) from invest
@@ -81,6 +99,10 @@
 	select count(m_check) from message where m_memno=#no# and m_check=1
 </select>
 
+<insert id="refunds_insert" parameterClass="java.util.Map">
+	insert into refunds values(refunds_seq.nextval,#p_code#,#times#,sysdate)
+</insert>
+
 <update id="completeinvest" parameterClass="registerDto">
 	update invest set i_success=#p_success# where i_pcode=#p_code#
 </update>
@@ -93,6 +115,11 @@
 	update message set m_check=0 where m_memno=#no#
 </update>
 
+<update id="back_update" parameterClass="java.util.Map">
+	update dj_$str$ set back=1 where no=#times#
+</update>
 
-
+<update id="fundingup" parameterClass="java.util.Map">
+	update product set p_funding=#times# where p_code=#p_code#
+</update>
 </sqlMap>

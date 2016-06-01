@@ -8,7 +8,9 @@
 </head>
 <body>
 
-송금완료
+<script type="text/javascript">
+window.location="manager_remittance.dj";
+</script>
 
 </body>
 </html>

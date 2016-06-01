@@ -42,12 +42,12 @@ var coun2;
   {  $("#loanback"+coun2).html(a);}
   
   
-  function loanCall(count){
+  function refundsCall(count){
 	  coun2 = count;
 
 	  $.ajax({
 		  type : "post",
-		  url : "",
+		  url : "/donjom/refundsresult.dj",
 		  data:{
 			  p_code:$("#code"+count).val()	  
 		  },
@@ -79,7 +79,7 @@ var coun2;
 <td>상환예정일</td><td>회차</td><td>수익률(연)</td><td>투자금액</td><td>펀딩진행상황</td>
 </tr>
 <tr>
-<td>매월${list.i_repayday}일</td><td>0회/${list.i_times}회</td><td>${list.i_profit}%</td><td>${list.i_invest}만원</td>
+<td>매월${list.i_repayday}일</td><td>${list.p_funding}회/${list.i_times}회</td><td>${list.i_profit}%</td><td>${list.i_invest}만원</td>
 <td>
 <c:if test="${list.i_success == 'success'}">
 펀딩성공!
@@ -97,7 +97,7 @@ var coun2;
 
 <input type="button" id="${list.no}" onclick="callAjax('${i.count}')" value="상환플랜 보기">
 
-<div><input type="button" id="refundHistory" value="상환내역 보기" onclick="loanCall('${i.count}')"></div>
+<div><input type="button" id="refundHistory" value="상환내역 보기" onclick="refundsCall('${i.count}')"></div>
 
 </div>
 <div id="loanback${i.count}"></div>
