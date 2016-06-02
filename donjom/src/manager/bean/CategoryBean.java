@@ -20,9 +20,8 @@ public class CategoryBean {
 	
 		// 카테고리 목록
 		@RequestMapping("/manager_category.dj")
-		public ModelAndView category(HttpServletRequest request){	
-			// 카테고리 목록 불러오기
-			List list = sqlMap.queryForList("cetegoryList", null);	
+		public ModelAndView category (HttpServletRequest request){
+			List list =sqlMap.queryForList("categoryList", null);
 			mv.addObject("list", list);
 			mv.setViewName("/managerpage/manager_category.jsp");
 			return mv;
