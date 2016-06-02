@@ -212,8 +212,8 @@ public class ManagerPriceBean {
 		
 		if(dto.getP_funding().equals(dto.getP_term())){
 			
-			sqlMap.update("result.", p_code);
-			sqlMap.update("result.", p_code);
+			sqlMap.update("result.changeEnd", p_code);
+			sqlMap.update("result.changeOver", p_code);
 			
 		}
 	

@@ -104,7 +104,14 @@
 	
 	※ 회차별 상환플랜과 상환내역의 상환금은 오차가 있을 수 있습니다. (월별 이용 일수가 28, 29, 30, 31일로 변동 사항이 있기 때문) <br/>
 	
-	잔여상환원금 :<fmt:formatNumber type="number" maxFractionDigits="3" value="${garbige}" />원
+	잔여상환원금 :
+	<c:if test="${dto.i_success != 'overend' }">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${garbige}" />
+	원
+	</c:if>
+	<c:if test="${dto.i_success == 'overend' }">
+	전액상환완료!
+	</c:if>
 	
 </body>
 </html>

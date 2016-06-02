@@ -194,6 +194,7 @@ public class InvestHistoryBean {
 		
 		int garbige = investmoney2 - orgprice;
 		
+		mv.addObject("dto", dto);
 		mv.addObject("garbige", garbige);
 		mv.addObject("map", map);
 		mv.setViewName("/calculator/refundsresult.jsp");

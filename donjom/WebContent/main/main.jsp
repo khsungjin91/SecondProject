@@ -121,7 +121,7 @@
 								<li>(${list.p_people}명)</li>
 								<li><c:if test="${list.p_success == 'doing'}">
 										<strong>펀딩진행중</strong>
-									</c:if> <c:if test="${list.p_success == 'success' || list.p_success == 'refunds'}">
+									</c:if> <c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
 										<strong>펀딩성공</strong>
 									</c:if> <c:if test="${list.p_success == 'fail'}">
 										<strong>펀딩실패</strong>
