@@ -56,7 +56,7 @@ if(x == 2){%>
 
 <%}else if(x == 1){%>
 <script>
-	window.location="admin_login.dj";
+	window.location="manager_main.dj";
 </script>
 
 <%}else if(x == 0){%>

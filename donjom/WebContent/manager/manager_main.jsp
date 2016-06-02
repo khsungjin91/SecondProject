@@ -27,7 +27,21 @@
 
       <!-- Main content -->
       <section class="content">
-       
-	
+       <div class="col-md-3 col-sm-6 col-xs-12">
+       <a href="main.dj">
+       <div class="info-box">
+  <!-- Apply any bg-* class to to the icon to color it -->
+  <span class="info-box-icon bg-blue">
+<img alt="" src="image/home-page.png">
+	</span>
+  <div class="info-box-content">
+    <span class="info-box-text">DONJOM MAIN</span>
+    <span class="info-box-number">돈좀 메인페이지 </span>
+  </div><!-- /.info-box-content -->
+
+</div></a><!-- /.info-box -->
+</div>
+
+	</section>
 </body>
 </html>

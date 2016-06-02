@@ -6,17 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script>
-function home(){
-	window.location="main.dj"
-}
-function myhome(){
-	window.location="manager_main.dj"
-}
-function logout(){
-	window.location="admin_logout.dj"
-}
-</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> 
@@ -59,36 +49,16 @@ function logout(){
 			</div>
 	</c:if>
 <c:if test="${sessionScope.adminId!=null}">
-		<div class="container">
-			<div class="row">
-				<div class="login-box">
-					<div class="login-logo">
-						<div class="login-heading">
-							<b>관리할 페이지 선택좀</b>
-						</div>
-					</div>
-					<div class="box-body">
-						<label class="text-center"> <img alt=""
-							src="image/home-page.png">
-							<button type="button" value="home" class="btn btn-block bg-green"
-								onclick="home()">돈좀 HOME으로 이동!!</button>
-						</label> <label class="text-center"> <img alt=""
-							src="image/admin-page.png">
-							<button type="button" value="myhome"
-								class="btn btn-block bg-orange" onclick="myhome()">Admin
-								페이지로 이동!!</button>
-						</label>
-						<hr>
-						<button type="button" onclick="logout()" class="btn btn-block ">
-							<h4>로그아웃</h4>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<script>
+
+function (){
+	document.location.repload("manager_main.dj");
+}
+
+</script>
 
 
-	</c:if>
+	</c:if> 
 
 </body>
 </html>
