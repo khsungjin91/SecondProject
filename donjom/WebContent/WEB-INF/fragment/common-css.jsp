@@ -15,7 +15,7 @@
 <link href="<c:url value="bt/css/bootstrap.min.css"/>" rel="stylesheet">
 <link href="<c:url value="bt/css/bootstrap-theme.min.css"/>" rel="stylesheet">
 <!-- 사이드바 부트스트랩 테마 -->
-<link href="<c:url value="bt/css/simple-sidebar.css"/>" rel="stylesheet">
+<%-- <link href="<c:url value="bt/css/simple-sidebar.css"/>" rel="stylesheet"> --%>
 <!-- 사이드바 부트스트랩 테마 -->
 <link href="<c:url value="bt/css/modern-business.css"/>" rel="stylesheet">
 <!-- 어썸폰트 아이콘 CSS -->

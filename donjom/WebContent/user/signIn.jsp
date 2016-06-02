@@ -103,11 +103,12 @@
 
  <title>LOGIN</title> 
  </head> 
- <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
- <body class="hold-transition login-page" > 
+
+ <body > 
+  <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
  <div class="login-box">
  	<div class="login-logo">
- 		<a href="main.dj"><img src="image/brand.png" width="200px"></a>
+ 		<a href="main.dj"><img src="image/brand.png" ></a>
  	</div> 
  <div class="login-box-body">
  	<h2 class="text-center">·Î±×ÀÎ</h2> 

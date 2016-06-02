@@ -131,8 +131,8 @@
 
        var classicOptions = {
          title: '올해 월별 평균 대출액',
-         width: 900,
-         height: 500,
+        
+         height: 400,
          // Gives each series an axis that matches the vAxes number below.
          series: {
            0: {targetAxisIndex: 0},
@@ -173,19 +173,38 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/admin-slider.jsp" />
+<div class="content-wrapper">
+    <div class="container">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          대출 심사  
+          <small>현황 그래프</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="#">Layout</a></li>
+          <li class="active">Top Navigation</li>
+        </ol>
+      </section>
 
-	<!-- Page Content -->
-	<div id="page-content-wrapper">
-		<div class="container-fluid">
+      <!-- Main content -->
+			<section class="content">
 			<div class="row">
-				<div class="col-lg-12">
-
-					<div id="chart_div"></div>
-
-					<div id="barchart_material" style="width: 600px; height: 350px;"></div>
-
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="box box-primary">
+							<div class="box-body">
+								<div id="chart_div"></div>
+							</div>
+						</div>
+					</div>
+				<div class="col-md-8">
+					<div id="barchart_material" "></div>
+				</div>
+				<div class="col-md-8">
 					<div id="piechart_3d" style="width: 600px; height: 350px;"></div>
-
+					</div>
 					<div id="br_requestList">
 						<table class="table table-bordered">
 							<tr>
@@ -210,7 +229,7 @@
 								</tr>
 							</c:forEach>
 						</table>
-						
+
 					</div>
 				</div>
 			</div>

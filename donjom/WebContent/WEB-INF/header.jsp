@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/fragment/common-js.jsp" />
 
 </head>
-<body>
+<body  class="hold-transition skin-green-light layout-top-nav">
 <script type="text/javascript">
 
 $('#loan-cal').on('shown.bs.modal', function () {
@@ -71,11 +71,12 @@ $('#loan-cal').on('shown.bs.modal', function () {
 	}
 %>
 
-<div class="warpper">
-	 <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+<div class="wrapper">
+
+   <header class="main-header">
+    <nav class="navbar navbar-static-top">
       <div class="container">
-        <div class="navbar-header">
+         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -140,10 +141,12 @@ $('#loan-cal').on('shown.bs.modal', function () {
         </li>
           </ul>
           </c:if>
-      </div><!--/.nav-collapse -->
-   
+      </div><!--/.nav-collapse
       </div>
+      <!-- /.container-fluid -->
     </nav>
+  </header>
+
     
     <!-- Modal -->
 <div class="modal fade" id="loan-cal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
