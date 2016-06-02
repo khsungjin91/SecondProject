@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title> 언론 관리자 페이지 </title>
 </head>
+
 <body>
 <h2> 언론 </h2>
 
@@ -17,7 +18,7 @@
 	<table border="1">
 	<c:forEach var="list" items="${list}" >
 		<tr>
-			<td><img src="/donjom/image/${list.image}"/> </td>
+		<!-- 	<td><img src="/donjom/image/${list.image}"/> </td> --> 
 			
 		</tr>
 		<tr>
@@ -37,10 +38,13 @@
 				<td> 등록된 게시물이 없습니다.</td>
 		</c:if>
 		</c:forEach>
+		
 	</table>
 	<input type="submit" value="뉴스 올리기">
 	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_deletePro.dj'">
+	
 	</form>
+
 
 </body>
 </html>
