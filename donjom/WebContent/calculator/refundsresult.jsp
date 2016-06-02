@@ -33,9 +33,9 @@
 		</td>
 		<td>
 			<table>
-				<c:forEach var="count" items="${map.count}" varStatus="i">
+				<c:forEach var="repayday" items="${map.repayday}" >
 				<tr>
-					<td>${i.count}</td>
+					<td>${repayday}</td>
 				</tr>
 				</c:forEach>
 			</table>
@@ -94,17 +94,17 @@
 	<tr>
 	<td>합계</td>
 	<td></td>
-	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="100000" />원</td>
-	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="100000" />원</td>
-	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="100000" />원</td>
-	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="100000" />원</td>
-	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="100000" />원</td>
+	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.totaltotal}" />원</td>
+	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.orgprice}" />원</td>
+	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.interesttotal}" />원</td>
+	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.taxtotal}" />원</td>
+	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.supertotal}" />원</td>
 	</tr>
 </table>
 	
 	※ 회차별 상환플랜과 상환내역의 상환금은 오차가 있을 수 있습니다. (월별 이용 일수가 28, 29, 30, 31일로 변동 사항이 있기 때문) <br/>
 	
-	잔여상환원금 : 합한거 - 원금 
+	잔여상환원금 :<fmt:formatNumber type="number" maxFractionDigits="3" value="${garbige}" />원
 	
 </body>
 </html>

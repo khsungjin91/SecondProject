@@ -34,7 +34,9 @@ var coun2;
 	        	investmoney : $('#money'+count).val(),
 	        	term : $('#term'+count).val(),
 	        	way : $('#way'+count).val(),
-	        	rate : $('#rate'+count).val()
+	        	rate : $('#rate'+count).val(),
+	        	p_code:$("#code"+count).val(),
+	        	split : 1
 	        },
 	        success: test,// 페이지요청 성공시 실행 함수
 	        error: whenError	//페이지요청 실패시 실행함수

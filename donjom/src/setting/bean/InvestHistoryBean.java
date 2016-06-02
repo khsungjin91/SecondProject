@@ -1,5 +1,8 @@
 package setting.bean;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +30,10 @@ public class InvestHistoryBean {
 	private int realtotal = 0;
 	
 	@RequestMapping("/refundsresult.dj")
-	public ModelAndView investDetail(String p_code,HttpSession session,InvestDto dto){
+	public ModelAndView investDetail(String p_code,HttpSession session,InvestDto dto)throws Exception{
+		Calendar cal = Calendar.getInstance();
 		Map map = new HashMap();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
@@ -55,7 +60,8 @@ public class InvestHistoryBean {
 		int [] taxed = new int [term];
 		int [] realtotaled = new int[term];	
 		int [] count = new int[term];
-
+		String [] repayday = new String[term];
+		
 		int orgprice = 0;
 		int supertotal = 0;
 		int totaltotal = 0;
@@ -67,6 +73,18 @@ public class InvestHistoryBean {
 		double interast = 0;
 		double x = 0;
 		double y = 0;
+		
+		String z = dto.getI_date().substring(6, 7);
+		int b = Integer.parseInt(z);
+		cal.set(cal.MONTH, b);
+
+		for(int i = 0; i<term ; i++){
+			
+			String  thisDayMiner = cal.get(cal.YEAR)+"."+(cal.get(cal.MONTH)+i+1)+"."+dto.getI_repayday();
+			Date date = format.parse(thisDayMiner);
+			thisDayMiner = new java.text.SimpleDateFormat ("yyyy.MM.dd").format(date);
+			repayday[i] = thisDayMiner;
+		}
 		
 		if(dto.getI_way().equals("1")){
 			
@@ -172,8 +190,11 @@ public class InvestHistoryBean {
 		map.put("interested", interested);
 		map.put("refunds",refunds);
 		map.put("p_price",p_price);
+		map.put("repayday", repayday);
 		
+		int garbige = investmoney2 - orgprice;
 		
+		mv.addObject("garbige", garbige);
 		mv.addObject("map", map);
 		mv.setViewName("/calculator/refundsresult.jsp");
 		return mv;

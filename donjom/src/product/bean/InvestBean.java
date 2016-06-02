@@ -21,10 +21,7 @@ public class InvestBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
-	
-	private int total = 0;
-	private int tax = 0;
-	private int realtotal = 0;
+
 	
 	@RequestMapping("/fund_ready.dj")
 	public ModelAndView Investcal(RegisterDto dto,String amount,HttpSession session,PointDto pointdto){

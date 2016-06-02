@@ -90,10 +90,7 @@ public class InvestedBean {
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
-		System.out.println(code);
-		System.out.println(no);
-	
+
 		map.put("p_code", code);
 		map.put("no", no);
 
