@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- 메타태그 시작  -->
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -12,6 +12,13 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <body class="hold-transition skin-green-light layout-top-nav">
+<c:if test="${sessionScope.adminId==null}">
+<script>
+alert("접근 권한이 없습니다.");
+window.location="admin_login.dj";
+</script>
+</c:if>
+
 <div class="wrapper">
 
   <header class="main-header">
