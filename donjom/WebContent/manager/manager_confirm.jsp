@@ -33,7 +33,7 @@
 	<input type="text" align="right" name="search" id="search"/>
 	<input type="button" value="검색" onclick="copen()" id="lookup"/>
 </form>
-	<table class="table table-condensed">
+	<table class="table table-bordered table-responsive table-hover">
 		<tr>
 			<td>회원이름 </td>
 			<td>생년월일</td>

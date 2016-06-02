@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.views.xslt.ArrayAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -38,8 +40,13 @@ public class ManagerBean {
 	
 	//회원관리
 	@RequestMapping("/manager_member.dj")
-	public String managermember(){
-		return "/manager/manager_member.jsp";
+	public ModelAndView managermember(HttpServletRequest request){
+		int setting=1;
+		List list = sqlMap.queryForList("m_memberInfo",null);
+		mv.addObject("setting",setting);
+		mv.addObject("list", list);
+		mv.setViewName("/manager/manager_member.jsp");
+		return mv;
 	}
 	
 	
