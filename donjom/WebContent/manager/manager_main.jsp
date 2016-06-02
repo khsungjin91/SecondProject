@@ -24,7 +24,9 @@
           <li class="active">Top Navigation</li>
         </ol>
       </section>
-
+</div>
+<hr>
+</div>
       <!-- Main content -->
       <section class="content">
        <div class="col-md-3 col-sm-6 col-xs-12">

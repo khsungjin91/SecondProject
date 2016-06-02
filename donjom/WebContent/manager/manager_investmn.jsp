@@ -120,8 +120,7 @@
                        2]);
       var options_bar = {
     	        title: "연령대별 투자 현황",
-    	        width: 1000,
-    	        height: 400,
+    	        
     	        bar: {groupWidth: "55%"},
     	        legend: { position: "none" },
     	      };
@@ -132,17 +131,80 @@
  
 <body>
 <jsp:include page="/WEB-INF/admin-slider.jsp" />
-<h2> 투자 현황 상태</h2>
+<div class="content-wrapper">
+		<div class="container">
+			<div class="row">
+				<!-- Content Header (Page header) -->
+				<div class="content-header">
+					<h1>
+						투자 현황 상태 
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+						<li class="active">투자현황 </li>
+					</ol>
+				</div>
+			</div>
+			</div>
+			<hr>
+			</div>
 
-총 투자 개수 : ${count} 투자 <br/>
+	<div class="container">
+		
+			 <div class="col-sm-12 col-sm-3">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>${count}</h3>
+				<p>총 투자 개수</p>
+            </div>
+        </div>
+        <!-- ./col -->
+		</div>
+		<div class="col-sm-12 col-sm-3">
+			<div class="small-box bg-aqua">
+			<div class="inner">
+			<h3>${i_doing}</h3>
+			<p>투자진행 상품 </p>
+			</div></div>
+		</div>
+		<div class="col-sm-12 col-sm-3">
+		<div class="small-box bg-aqua">
+		<div class="inner">
+			 <h3>${i_overend}</h3>
+			 <p>투자종료 상품 </p>
+		</div>
+		</div>
+		</div>
+		<div class="col-sm-12 col-sm-3">
+		<div class="small-box bg-aqua">
+		<div class="inner">
+		<h3>${i_refunds}</h3>
+		<p>상환진행 상품</p> 
+		</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div id="piechart_1" class="box box-primary"></div>
+			</div>
+			<div class="col-sm-6">
+				<div id="piechart_2" class="box box-primary"></div>
+			</div>
+			<div class="col-sm-6">
+				<div id="piechart_3" class="box box-primary"></div>
+			</div>
+		</div>
+		
+		<div id="barchart_material" class="box box-primary"></div>
+		
+	</div>
 
-투자진행 상품 : ${i_doing}<br/>
-투자종료 상품 : ${i_overend}<br/>
-상환진행 상품 : ${i_refunds}<br/>
-<div id="piechart_1" style="width: 600px; height: 200px;"></div>
-<div id="piechart_2" style="width: 650px; height: 200px;"></div>
-<div id="piechart_3" style="width: 600px; height: 200px;"></div>
-<div id="barchart_material" style="width: 1000px; height: 400px; border: 1px solid black;"></div>
+
+
+
 
 </body>
 </html>
