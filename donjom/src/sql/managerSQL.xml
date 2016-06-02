@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap> 
+<sqlMap>
 
-<typeAlias alias="mem" type="sign.bean.memberDto"/>
-<typeAlias alias="memInfo" type="setting.bean.SettingDto"/>
-<typeAlias alias="borrow" type="product.bean.BorrowDto"/>
-<typeAlias alias="evaluation" type="manager.bean.evaluationDto"/>
-<typeAlias alias="product" type="product.bean.RegisterDto"/>
-<typeAlias alias="invest" type="product.bean.InvestDto"/>
+	<typeAlias alias="mem" type="sign.bean.memberDto" />
+	<typeAlias alias="memInfo" type="setting.bean.SettingDto" />
+	<typeAlias alias="borrow" type="product.bean.BorrowDto" />
+	<typeAlias alias="evaluation" type="manager.bean.evaluationDto" />
+	<typeAlias alias="product" type="product.bean.RegisterDto" />
+	<typeAlias alias="invest" type="product.bean.InvestDto" />
 
 	<!-- 일반회원의 이름,메일,가입날짜 조회 -->
-	<select id ="m_member" resultClass="mem" >
-		select nickname, email,join from member	where confirm=0		
+	<select id="m_member" resultClass="mem">
+		select nickname,
+		email,join from member where confirm=0
 	</select>
-	
+
 	<!-- 일반회원 검색 -->
-	<!-- parameterClass: 받아올값-->
-	<select id ="noconfirm_search" resultClass="mem" parameterClass="java.util.Map" >
-		select nickname, email,join from member 
-		where $noconfirm$ like '%' || #search# || '%' 
+	<!-- parameterClass: 받아올값 -->
+	<select id="noconfirm_search" resultClass="mem" parameterClass="java.util.Map">
+		select nickname, email,join from member
+		where $noconfirm$ like '%' || #search# || '%'
 		and confirm=0
 	</select>
 
 	<!-- 인증회원의 전체 조회 -->
-	<select id ="m_memberInfo" resultClass="memInfo">
-		select i.name,i.birth,i.gender,i.mobilenum,i.bankcode,i.bankaccnum,i.address,i.randomacc, m.email,m.join
+	<select id="m_memberInfo" resultClass="memInfo">
+		select
+		i.name,i.birth,i.gender,i.mobilenum,i.bankcode,i.bankaccnum,i.address,i.randomacc,
+		m.email,m.join
 		from member m ,memberinfo i
-		where m.no=i.no 
+		where m.no=i.no and
+		i.socialnum is not null
 	</select>
-	
+
 	<!-- 인증회원 검색 -->
-	<select id="confirm_search" resultClass="memInfo" parameterClass="java.util.Map">
-		select i.name,i.birth,i.gender,i.mobilenum,i.bankcode,i.bankaccnum,i.address,i.randomacc, m.email,m.join 
-		from member m,memberinfo i 
+	<select id="confirm_search" resultClass="memInfo"
+		parameterClass="java.util.Map">
+		select
+		i.name,i.birth,i.gender,i.mobilenum,i.bankcode,i.bankaccnum,i.address,i.randomacc,
+		m.email,m.join
+		from member m,memberinfo i
 		where $confirm$ like '%'|| #search# ||'%'
 		and m.no=i.no
 	</select>
-	
-	
+
+
 	<!-- 이메일에따른 투자현황 -->
 	<select id="invest_email" resultClass="invest" parameterClass="int">
 		select *from invest where i_memnum=#no# order by no desc
@@ -45,8 +52,8 @@
 	<select id="invest_count" resultClass="int" parameterClass="int">
 		select count(*)from invest where i_memnum=#no# order by no desc
 	</select>
-	
-	
+
+
 	<!-- 이메일에따른 대출현황 -->
 	<select id="borrow_email" resultClass="borrow" parameterClass="int">
 		select * from borrow where memno=#no# order by no desc
@@ -54,114 +61,161 @@
 	<select id="borrow_count" resultClass="int" parameterClass="int">
 		select count(*) from borrow where memno=#no# order by no desc
 	</select>
-	
-	<select id="gender" resultClass="String" >
+
+	<select id="gender" resultClass="String">
 		select m.gender
-		from borrow b,memberinfo m where b.memno=m.no
+		from
+		borrow b,memberinfo m where b.memno=m.no
 	</select>
 	<select id="birth" resultClass="String">
 		select b.membirth
-		from borrow b,memberinfo m where b.memno=m.no
-	</select>	
-	
-	
+		from borrow
+		b,memberinfo m where b.memno=m.no
+	</select>
+
+
 	<!-- 현재년도의 총대출액 -->
 	<select id="borrow_priceYear" resultClass="int" parameterClass="String">
 		select br_sum from borrow where substr(br_date,1,2)=#yy#
 	</select>
 	<!-- 현재년도의 총list중 month출력 -->
-	<select id="borrow_dateYear" resultClass="String" parameterClass="String">
-		select substr(br_date,4,2)from borrow where substr(br_date,1,2)=#yy#
+	<select id="borrow_dateYear" resultClass="String"
+		parameterClass="String">
+		select substr(br_date,4,2)from borrow where
+		substr(br_date,1,2)=#yy#
 	</select>
-	
+
 	<!-- 현재년도의 성공한 총대출액 -->
-	<select id="borrow_priceYearSc" resultClass="int" parameterClass="String">
-		select br_sum from borrow where substr(br_date,1,2)=#yy# and success='success'	
+	<select id="borrow_priceYearSc" resultClass="int"
+		parameterClass="String">
+		select br_sum from borrow where
+		substr(br_date,1,2)=#yy# and success='success'
 	</select>
 	<!-- 현재년도의 성공한list중 month출력 -->
-	<select id="borrow_dateYearSc" resultClass="String" parameterClass="String">
-		select substr(br_date,4,2)from borrow where substr(br_date,1,2)=#yy# and success='success'
+	<select id="borrow_dateYearSc" resultClass="String"
+		parameterClass="String">
+		select substr(br_date,4,2)from borrow where
+		substr(br_date,1,2)=#yy# and success='success'
 	</select>
-	
-	
-	
-	
+
+
+
+
 	<!-- 개인의 총 투자액 -->
 	<select id="invest_sum_no" resultClass="int" parameterClass="int">
 		select sum(i_invest) from invest where i_memnum=#no#
 	</select>
-	
+
 	<!-- 개인의 총 대출액 -->
 	<select id="borrow_sum_no" resultClass="int" parameterClass="int">
 		select sum(br_sum) from borrow where memno=#no#
 	</select>
-	
+
 	<!-- 성진작품 -->
 	<select id="borrowlist" resultClass="borrow">
-		select * from borrow where no not in(select b.no from borrow b,product p where b.no = p.p_brno) and success = 'success' order by br_date desc
+		select * from borrow where
+		no not in(select b.no from borrow b,product p where b.no = p.p_brno)
+		and success = 'success' order by br_date desc
 	</select>
-	
+
 	<!-- 성진작품 -->
 	<update id="confirmUp" parameterClass="java.util.Map">
-		update member set confirm=#on# where email=#email# 
+		update member set
+		confirm=#on# where email=#email#
 	</update>
-	
-	
+
+
 	<!-- 대출관리-대출list -->
 	<select id="borrowmn" resultClass="borrow">
-		select * from borrow where success='none'order by br_date desc
+		select * from borrow where
+		success='none'order by br_date desc
 	</select>
-	
+
 	<!-- 대출관리-카테고리별 chart -->
 	<!-- 카테고리 코드 -->
 	<select id="size" resultClass="int">
-		select count(*) from category	
+		select count(*) from category
 	</select>
-	
+
 	<select id="c_code" resultClass="String">
 		select c_code from category
 	</select>
-	
+
 	<select id="c_name" resultClass="String" parameterClass="String">
-		select c_name from category	where c_code = #c_code#
+		select
+		c_name from category where c_code = #c_code#
 	</select>
-	
-	<!-- 카테고리별 대출 건수  -->
+
+	<!-- 카테고리별 대출 건수 -->
 	<select id="count_category" resultClass="int" parameterClass="String">
-	select count(*) from product where p_category = #p_category#	
+		select count(*) from product where p_category = #p_category#
 	</select>
 
 	<!-- 심사list -->
 	<select id="evaluation" resultClass="evaluation">
-		select * from evaluation 
+		select * from evaluation
 	</select>
 
 	<!-- 심사list검색 -->
-	<select id="evaluation_search" resultClass="evaluation" parameterClass="java.util.Map">
+	<select id="evaluation_search" resultClass="evaluation"
+		parameterClass="java.util.Map">
 		select * from evaluation
-		where $evaluation$ like '%'|| #search# ||'%'
+		where $evaluation$ like '%'||
+		#search# ||'%'
 	</select>
-	
+
 	<!-- 심사평 insert -->
 	<insert id="evaluation_writeinsert" parameterClass="evaluation">
-		insert into evaluation values(#e_memid#,
-								#e_memname#,
-								#e_document#,
-								#e_doccount#,
-								#e_result#,
-								#e_content#,
-								#e_cphave#,
-								#e_cpfile#)
+		insert into
+		evaluation values(#e_memid#,
+		#e_memname#,
+		#e_document#,
+		#e_doccount#,
+		#e_result#,
+		#e_content#,
+		#e_cphave#,
+		#e_cpfile#)
 	</insert>
 	<!-- borrowDto에 sucess업뎃 -->
 	<update id="borrowup" parameterClass="borrow">
-		update borrow set success=#success# where no=#no#
+		update borrow set
+		success=#success# where no=#no#
 	</update>
 	<!-- no로 borrow 조회 -->
 	<select id="borrow" resultClass="borrow" parameterClass="int">
-	 	select *from borrow where no=#no#
+		select *from borrow where no=#no#
+	</select>
+
+	<select id="investcount" resultClass="int">
+		select count(*) from invest
+	</select>
+
+	<select id="investpcode" resultClass="String">
+		select i_pcode from invest
+	</select>
+
+	<select id="investway" resultClass="int" parameterClass="String">
+		select count(i_way) from invest where i_way=#i_way#
+	</select>
+
+	<select id="investage" resultClass="String">
+		select m.birth from memberinfo m, invest i where m.no = i.i_memnum
+	</select>
+
+	<select id="investgender" resultClass="String">
+		select m.gender from memberinfo m, invest i where m.no = i.i_memnum
 	</select>
 	
+	<select id="investdoing" resultClass="int">
+		select count(i_success) from invest where i_success='doing'
+	</select>
+
+	<select id="investoverend" resultClass="int">
+		select count(i_success) from invest where i_success='overend'
+	</select>
 	
+	<select id="investrefunds" resultClass="int">
+		select count(i_success) from invest where i_success='refunds'
+	</select>
 	
 </sqlMap>

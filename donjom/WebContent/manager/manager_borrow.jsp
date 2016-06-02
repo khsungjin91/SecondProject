@@ -70,7 +70,12 @@
 						<td>${list.br_object}</td>
 						<td>${list.br_term}개월</td>
 						<td>${list.br_hopeday}일</td>
-						<td>${list.br_way}</td>
+						<c:if test="${list.br_way==1}">
+							<td>원금 만기 상환</td>
+						</c:if>
+						<c:if test="${list.br_way==0}">
+							<td>원리금 균등 상환</td>
+						</c:if>						
 						<td>${list.br_work}</td>
 						<td>${list.br_job}</td>
 						<td>${list.br_employ}</td>

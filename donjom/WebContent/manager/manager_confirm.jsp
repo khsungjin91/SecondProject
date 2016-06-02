@@ -6,17 +6,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>confirm member page</title>
+<script>
+	function copen(){
+		var con = form.confirm.value;
+		var sear = form.search.value;
+		
+		var url ="confirm_search.dj?confirm="+con+"&search="+sear;
+		window.open(url, "open", "width=1500, height=400")
+	}
+	$("#search").keypress(function(event){
+		if(event.keyCode == 13){
+			$('#lookup').focus().click();
+			return false;
+		}
+	});
+</script>
 </head>
 <body>
-<form action="confirm_search.dj" method="post">
+<form name="form" method="post" >
 	<select name="confirm"> 
 		<option value="name">회원이름</option>
 		<option value="mobilenum">핸드폰번호</option>
 		<option value="bankaccnum">계좌번호</option>
 		<option value="virtualacc">가상계좌</option>
 	</select>
-	<input type="text" align="right" name="search"/>
-	<input type="submit" value="검색" align="right"/>
+	<input type="text" align="right" name="search" id="search"/>
+	<input type="button" value="검색" onclick="copen()" id="lookup"/>
 </form>
 	<table class="table table-condensed">
 		<tr>

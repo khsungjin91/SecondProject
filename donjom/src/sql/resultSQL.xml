@@ -72,28 +72,6 @@
 <select id="max_refunds_no" resultClass="int" parameterClass="String">
 	select max(no) from dj_$str$ where back=1 
 </select>
-<!-- manager로 옮기기 -->
-<select id="investcount" resultClass="int">
-	select count(*) from invest
-</select>
-
-<select id="investpcode" resultClass="String">
-	select i_pcode from invest
-</select>
-
-<select id="investway" resultClass="int" parameterClass="String">
-	select count(i_way) from invest where i_way=#i_way#
-</select>
-
-<select id="investage" resultClass="String">
-	select m.birth from memberinfo m, invest i where m.no = i.i_memnum
-</select>
-
-<select id="investgender" resultClass="String">
-	select m.gender from memberinfo m, invest i where m.no = i.i_memnum
-</select>
-
-<!-- 여기까지 -->
 
 <select id="alarm" resultClass="int" parameterClass="int">
 	select count(m_check) from message where m_memno=#no# and m_check=1

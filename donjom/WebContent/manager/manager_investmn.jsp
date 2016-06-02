@@ -136,9 +136,9 @@
 
 총 투자 개수 : ${count} 투자 <br/>
 
-투자진행 상품 : <br/>
-투자종료 상품 : <br/>
-
+투자진행 상품 : ${i_doing}<br/>
+투자종료 상품 : ${i_overend}<br/>
+상환진행 상품 : ${i_refunds}<br/>
 <div id="piechart_1" style="width: 600px; height: 200px;"></div>
 <div id="piechart_2" style="width: 650px; height: 200px;"></div>
 <div id="piechart_3" style="width: 600px; height: 200px;"></div>

@@ -25,7 +25,7 @@ public class TestBean {
 	public ModelAndView managerinvestmn(InvestDto dto,Bar_ChartDto chartdto){
 
 		//투자 전체 count
-		int count  = (Integer)sqlMap.queryForObject("result.investcount", null);	
+		int count  = (Integer)sqlMap.queryForObject("investcount", null);	
 		String [] category = new String[count];
 		//투자 방법 0,1로 구분 
 		String [] way ={"0","1"};
@@ -36,9 +36,9 @@ public class TestBean {
 		int p = 0;	int c = 0;	int b = 0;	int r = 0;
 		String p_code = "";
 	  
-		List code_list = sqlMap.queryForList("result.investpcode", null);
-		List l_birth = sqlMap.queryForList("result.investage", null);
-		List l_gender = sqlMap.queryForList("result.investgender", null);
+		List code_list = sqlMap.queryForList("investpcode", null);
+		List l_birth = sqlMap.queryForList("investage", null);
+		List l_gender = sqlMap.queryForList("investgender", null);
 		
 		SimpleDateFormat spf= new SimpleDateFormat("yyyy");
 		Date date =new Date();
@@ -89,7 +89,7 @@ public class TestBean {
 		for(int i = 0; i<way.length ; i++){
 		dto.setI_way(way[i]);
 		// 0 과 1 번 각각의 투자 방법의 count를 가져온다.
-		way_count[i] = (int) sqlMap.queryForObject("result.investway", dto.getI_way());
+		way_count[i] = (int) sqlMap.queryForObject("investway", dto.getI_way());
 		}
 		//category
 		for(int i = 0; i<count ; i++){
@@ -101,7 +101,16 @@ public class TestBean {
 			if(category[i].equals("P"))	{p += category[i].indexOf("P")+1;}
 			if(category[i].equals("C"))	{c += category[i].indexOf("C")+1;}
 		}
-
+		
+		//투자상태
+		int i_doing=(Integer)sqlMap.queryForObject("investdoing", null);
+		int i_overend=(Integer)sqlMap.queryForObject("investoverend", null);
+		int i_refunds=(Integer)sqlMap.queryForObject("investrefunds", null);
+		
+		
+		mv.addObject("i_doing",i_doing);
+		mv.addObject("i_overend",i_overend);
+		mv.addObject("i_refunds",i_refunds);
 		mv.addObject("count", count);
 		mv.addObject("dto", chartdto);
 		mv.addObject("wayfull", way_count[0]);

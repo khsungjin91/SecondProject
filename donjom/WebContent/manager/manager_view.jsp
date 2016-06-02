@@ -60,7 +60,12 @@
 						<td>${list.i_invest}만원</td>
 						<td>${list.i_repayday}일</td>
 						<td>${list.i_profit}%</td>
-						<td>${list.i_way}</td>
+						<c:if test="${list.i_way==1}">
+							<td>원금 만기 상환</td>
+						</c:if>
+						<c:if test="${list.i_way==0}">
+							<td>원리금 균등 상환</td>
+						</c:if>
 						<td>${list.i_success}</td>
 					</tr>
 				</c:forEach>
