@@ -47,7 +47,7 @@ function whenerror(){
 <td><a href="fundView.dj?p_code=${listrt.p_code}">${listrt.p_name}</a></td>
 <td>${listrt.p_price}만원</td>
 <td>${listrt.p_rate}%</td>
-<td>0회/${listrt.p_term}회</td>
+<td>${listrt.p_funding}회/${listrt.p_term}회</td>
 <td>매월${listrt.p_repayday}일</td>
 <td>${listrt.p_people}명</td>
 <td>${listrt.name}</td>

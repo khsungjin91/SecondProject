@@ -6,6 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+function AreuSure(code){
+	if(confirm("투자를 취소 하시겠습니까?")){
+		window.location="fund_investcancle.dj?code="+code;
+	}else{
+		self.close;
+	}
+	
+}
+</script>
 </head>
 <body>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -87,6 +98,9 @@ var coun2;
 <c:if test="${list.i_success == 'refunds'}">
 상환중...
 </c:if>
+<c:if test="${list.i_success == 'overend'}">
+상환완료
+</c:if>
 <c:if test="${list.i_success == 'doing'}">
 펀딩진행중...
 </c:if>
@@ -102,6 +116,8 @@ var coun2;
 </div>
 <div id="loanback${i.count}"></div>
 <div id="callback${i.count}"></div>
+
+<input type="button" value="투자취소" onclick="AreuSure('${list.i_pcode}')">
 </c:forEach>
 
 

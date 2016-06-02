@@ -122,4 +122,13 @@
 <update id="fundingup" parameterClass="java.util.Map">
 	update product set p_funding=#times# where p_code=#p_code#
 </update>
+
+<update id="changeEnd" parameterClass="String">
+	update product set p_success='overend' where p_code=#p_code#
+</update>
+
+<update id="changeOver" parameterClass="String">
+	update invest set i_success='overend' where i_pcode=#p_code#
+</update>
+
 </sqlMap>

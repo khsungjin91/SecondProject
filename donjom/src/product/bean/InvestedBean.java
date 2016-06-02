@@ -1,6 +1,8 @@
 package product.bean;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -79,6 +81,29 @@ public class InvestedBean {
 		
 		mv.addObject("list",list);
 		mv.setViewName("/profile/invest_history.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("/fund_investcancle.dj")
+	public ModelAndView investCancel(String code,InvestDto dto,HttpSession session){
+		Map map = new HashMap();
+		
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		System.out.println(code);
+		System.out.println(no);
+	
+		map.put("p_code", code);
+		map.put("no", no);
+
+		dto = (InvestDto)sqlMap.queryForObject("result.oneget_i", map);
+	
+		sqlMap.update("update_p", dto);
+	
+		sqlMap.delete("delete_i", map);
+		
+		mv.setViewName("/product/fund_investcancle.jsp");
 		return mv;
 	}
 	

@@ -5,6 +5,7 @@
 <typeAlias alias="signDto" type="sign.bean.memberDto"/>
 <typeAlias alias="settingDto" type="setting.bean.SettingDto"/>
 <typeAlias alias="sessionDto" type="sign.bean.sessionDto"/>
+<typeAlias alias="investDto" type="product.bean.InvestDto"/>
 
 
 <select id="signcheck" resultClass="int" parameterClass="signDto">
@@ -76,9 +77,23 @@
 						  where no=#no#
 </update>
 
+<update id="update_p" parameterClass="investDto">
+	update product set p_invest=p_invest-#i_invest#,
+						p_people = p_people-1 
+						where p_code = #i_pcode#  
+</update>
+
 <delete id="deleteEmail" parameterClass="signDto">
 	delete from member where email=#email#
 </delete>
+
+<delete id="delete_i" parameterClass="java.util.Map">
+	delete from invest where i_memnum = #no# and i_pcode=#p_code#
+</delete>
+
+
+
+
 
 
 

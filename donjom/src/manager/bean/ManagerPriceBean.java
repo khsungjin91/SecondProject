@@ -207,6 +207,15 @@ public class ManagerPriceBean {
 		sqlMap.insert("result.refunds_insert", map);
 		sqlMap.update("result.back_update", map);
 		sqlMap.update("result.fundingup", map);
+		
+		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
+		
+		if(dto.getP_funding().equals(dto.getP_term())){
+			
+			sqlMap.update("", p_code);
+			sqlMap.update("", p_code);
+			
+		}
 	
 		mv.setViewName("/managerprice/refunds_interastor.jsp");
 		return mv;

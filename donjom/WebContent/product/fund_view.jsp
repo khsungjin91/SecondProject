@@ -34,10 +34,11 @@
  
 function Check(){
 	
-var price = $("#p_price").val();
-var invest = $("#p_invest").val();
-var limit = $("#limit").val();
+var price = parseInt($("#p_price").val());
+var invest = parseInt($("#p_invest").val());
+var limit = parseInt($("#limit").val());
 var mi = price - invest;
+var amount = parseInt($("#amount").val());
 
 if($("#no").val() == $("#p_memeno").val()){
 	alert("대출자는 해당상품에 투자 불가합니다.");
@@ -54,7 +55,7 @@ if($("#amount").val() == '0'){
 	$("#amount").focus();
 	return false;
 }
-if($("#amount").val() > limit){
+if(amount > limit){
 	if(limit > mi){
 		alert("최대 투자 가능 금액은"+mi+"만원 입니다.");
 		$("#amount").focus();
@@ -65,9 +66,9 @@ if($("#amount").val() > limit){
 		return false;
 	}
 }
-if(user.amount.value > mi){
+if(amount > mi){
 	alert("대출가능금액을 초과합니다 \n\n더 낮은 금액으로 투자해주세요.");
-	user.amount.focus();
+	$("#amount").focus();
 	return false;
 }
 
@@ -256,7 +257,7 @@ if(user.amount.value > mi){
 						</c:if>
 
 						<c:if
-							test="${dto.p_success == 'success' || dto.p_success == 'refunds'}">
+							test="${dto.p_success == 'success' || dto.p_success == 'refunds' || dto.p_success == 'overend' }">
 							<td><input type="button" value="펀딩성공"></td>
 						</c:if>
 
