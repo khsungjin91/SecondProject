@@ -6,22 +6,3 @@
  *{margin:0; padding:0;}
  *htm{height:1px;} 
  
- #wrap{}
- 
- #header{ padding:30px; }
- 
- #top_menu{ padding-top:70px; height:200px;  }
- 		  
- #top_menu ul{font-size: 14px; color: #000000; font-weight: bold; }
- #top_menu li{ list-style: none; text-decoration: none;display:inline;}
- .logo {float: left; padding-left: 40px;}
- .menu_line{float:left; padding-left: 50px;}
-
-#mcontent{padding-top:50px; }
-#product{padding-left: 20px; padding-right:20px;  margin:0 auto; }
-.backimg{background-image: url('../image/main-bn.jpg'); no-repeat;}
-.line{border-bottom:1px solid #c0c0c0; padding-top:10px;}
-
-#alram-icon{position:absolute; color:red; padding:0 0 0 15px; z-index:1;}
-#icon-padding{letter-spacing:8px; }
-#text-padding li{margin:0 0 20px 35px;}

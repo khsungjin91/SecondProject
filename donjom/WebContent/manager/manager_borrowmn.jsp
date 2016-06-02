@@ -28,6 +28,7 @@
 
         var options = {
           title: '카테고리별 대출현황',
+          height: 350,
           is3D: true
         };
 
@@ -75,6 +76,7 @@
         var options = {
          
             title: '나이,성별에 따른 대출현황',
+            height: 350,
          
           bars: 'horizontal' // Required for Material Bar Charts.
         };
@@ -130,9 +132,9 @@
        ]);
 
        var classicOptions = {
-         title: '올해 월별 평균 대출액',
+        /*  title: '올해 월별 평균 대출액', */
         
-         height: 400,
+         height: 350,
          // Gives each series an axis that matches the vAxes number below.
          series: {
            0: {targetAxisIndex: 0},
@@ -191,21 +193,9 @@
       <!-- Main content -->
 			<section class="content">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="col-md-6">
-						<div class="box box-primary">
-							<div class="box-body">
-								<div id="chart_div"></div>
-							</div>
-						</div>
-					</div>
-				<div class="col-md-8">
-					<div id="barchart_material" "></div>
-				</div>
-				<div class="col-md-8">
-					<div id="piechart_3d" style="width: 600px; height: 350px;"></div>
-					</div>
-					<div id="br_requestList">
+				
+					<div id="br_requestList" class="col-md-12">
+					<div class="box box-primary">
 						<table class="table table-bordered">
 							<tr>
 								<td>이름</td>
@@ -231,7 +221,49 @@
 						</table>
 
 					</div>
+					</div>
+			
+			
+				<div class="col-md-12">
+					
+						<div class="box box-primary">
+						 <div class="box-header with-border">
+              <h3 class="box-title">올해 월별 평균 대출액</h3>
+			  </div>
+							<div class="box-body">
+								<div id="chart_div"></div>
+							</div>
+						</div>
+					</div>
+					
+				<div class="col-md-6">
+				<div class="box box-primary">
+						 <div class="box-header with-border">
+              <h3 class="box-title">나이, 성별에 따른 대출현황</h3>
+			  </div>
+							<div class="box-body">
+								<div id="barchart_material" ></div>
+							</div>
+						</div>
+					
 				</div>
+				
+					<div class="col-md-6">
+				<div class="box box-primary">
+						 <div class="box-header with-border">
+              <h3 class="box-title">카테고리별 대출현황</h3>
+			  </div>
+							<div class="box-body">
+							<div id="piechart_3d" ></div>
+							</div>
+						</div>
+					
+				</div>
+				
+				
+					
+				
+				
 			</div>
 		</div>
 	</div>
