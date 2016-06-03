@@ -7,11 +7,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> 
 <jsp:include page="/WEB-INF/fragment/common-css.jsp" />
 <jsp:include page="/WEB-INF/fragment/common-js.jsp" />
- <!-- iCheck -->
-  <link rel="stylesheet" href="bt/plugins/iCheck/square/blue.css">
-<title>회원가입</title>
-<!-- FaceBook Login Start -->
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
  <script language="javascript">
         // 페이스북 SDK 초기화
         window.fbAsyncInit = function () {
@@ -176,7 +172,8 @@ function checkPwd(){
 </script>
 
 </head>
-<body class="hold-transition register-page">
+
+<body >
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
 <div class="register-box">

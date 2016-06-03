@@ -80,12 +80,15 @@ if(amount > mi){
 <body>
  <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	<div class="container">
-		<h2>${dto.p_name}</h2>
+		<div class="content-header">
+			<h2>${dto.p_name}</h2>
+		</div>
 		
+		<div class="content-body">
 		<form action="fund_ready.dj" method="post" name="userinput">
 			<input type="hidden" name="email" value="${email}">
 			<div class="col-sm-12">
-				<div class="col-sm-8">
+				<div class="box box-primary">
 				<table class="table">
 					<tr>
 						<td>상품코드</td>
@@ -100,16 +103,17 @@ if(amount > mi){
 				</table>
 			</div>
 			<div class="row">
-			<div class="col-sm-12 col-sm-6 contents-warp left">
+			<div class="col-sm-6">
+			<div class="box box-success">
 				<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
 				<input type="hidden" value="${dto.p_price}" name="p_price" id="p_price">
 				<input type="hidden" value="${dto.p_invest}" name="p_invest" id="p_invest">
 				<input type="hidden" value="${limit}" name="limit" id="limit">
 				<input type="hidden" value="${no}" name="no" id="no">
 				<input type="hidden" value="${dto.p_memeno}" name="p_memeno" id="p_memeno">
-		<div class="row">
+		
 				대출신청내역
-				<table border="1">
+				<table class="table">
 					<tr>
 						<td>구분</td>
 						<td>만기</td>
@@ -123,8 +127,8 @@ if(amount > mi){
 						<td>${dto.p_term}개월</td>
 						<td>${dto.p_rate}%</td>
 						<td>${dto.p_price}만원</td>
-						<td><c:if test="${dto.p_way == 0}">원리금 균등상환</c:if> <c:if
-								test="${dto.p_way == 1}">원금만기 일시상환</c:if></td>
+						<td><c:if test="${dto.p_way == 0}">원리금 균등상환</c:if> 
+						<c:if test="${dto.p_way == 1}">원금만기 일시상환</c:if></td>
 						<td>${dto.p_mrepay}만원</td>
 					</tr>
 					<tr>
@@ -145,15 +149,18 @@ if(amount > mi){
 					</tr>
 
 				</table>
-				</div>
+				
 			</div>
-			</div>
+		
 </div>
-
-			<div class="col-sm-6 contents-aside">
+</div>
+</div>
+<!-- 그래프있는 오른쪽 메뉴 -->
+			<div class="col-sm-4 ">
+			<div class="box box-success">
 				<ul class="list-unstyled">
 					<li>
-					<div id="donut_single" style="width: 500px; height: 250px;"></div>
+					<div id="donut_single" ></div>
 					</li>
 					<li>${dto.p_invest}만원/${dto.p_price}만원</li>
 					<li>
@@ -268,8 +275,10 @@ if(amount > mi){
 					</tr>
 
 				</ul>
+				</div>
 			</div>
 		</form>
+		</div>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body>
