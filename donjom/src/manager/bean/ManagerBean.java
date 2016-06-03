@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import product.bean.BorrowDto;
+import result.bean.PagingBean;
+import setting.bean.pagingAction;
 import sign.bean.memberDto;
 
 @Controller
@@ -40,43 +42,71 @@ public class ManagerBean {
 	
 	//회원관리
 	@RequestMapping("/manager_member.dj")
-	public ModelAndView managermember(HttpServletRequest request){
+	public ModelAndView managermember(HttpServletRequest request, PagingBean page ){
+		String pagecurrent = request.getParameter("currentPage");
+		pagingAction input = null;
 		int setting=1;
+		int currentPage=0;
+		int blockCount=10; // 한 페이지에 들어오는 목록 갯수
+		int blockPage=10; // 한번에 보여지는 페이지의 수 
+		int paging=2;
+				
 		List list = sqlMap.queryForList("m_memberInfo",null);
+		if (pagecurrent !=null){
+			currentPage = Integer.parseInt(pagecurrent);
+		}else{currentPage = 1;}
+		
+		int c_count = (Integer)sqlMap.queryForObject("confirmmemCount", null);
+		int m_count = (Integer)sqlMap.queryForObject("memberCount", null);
+		int totalCount=list.size();
+		String pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
+		List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
+		
+		mv.addObject("pagingHtml",pagingHtml);
 		mv.addObject("setting",setting);
-		mv.addObject("list", list);
+		mv.addObject("plist", pagelist);
+		mv.addObject("c_count",c_count);
+		mv.addObject("m_count",m_count);
+		mv.addObject("setting",setting);
 		mv.setViewName("/manager/manager_member.jsp");
 		return mv;
 	}
-	
-	
-	//인증회원
-	@RequestMapping("/manager_confirm.dj")
-	public ModelAndView managerconfirm(){
-		int setting=1;
-		List list = sqlMap.queryForList("m_memberInfo",null);
-		mv.addObject("setting",setting);
-		mv.addObject("list", list);
-		mv.setViewName("/manager/manager_confirm.jsp");
-		return mv;
-	}
-	
 
 	//인증회원 검색
 	@RequestMapping("/confirm_search.dj")
-	public ModelAndView confirm_search(String confirm,String search){
-		
+	public ModelAndView confirm_search(HttpServletRequest request,String confirm,String search){
+		String pagecurrent = request.getParameter("currentPage");
+			
 		int setting=2;
+		int currentPage=1;
+		int blockCount=10; // 한 페이지에 들어오는 목록 갯수
+		int blockPage=10; // 한번에 보여지는 페이지의 수 
+		String pagingHtml;
+		
 		Map map = new HashMap();
 		map.put("confirm", confirm);
 		map.put("search", search);
+		
 		List list=sqlMap.queryForList("confirm_search",map);
-
-		int x=list.size();
-		mv.addObject("x" ,x);
+		if(pagecurrent != null){
+			currentPage=Integer.parseInt(pagecurrent);
+		}else{	currentPage=1;	}		
+		int totalCount=list.size();
+		
+		SearchPagingA page = new SearchPagingA(currentPage, totalCount, blockCount, blockPage, confirm, search);
+		pagingHtml = page.getPagingHtml().toString(); 
+	
+		int lastCount = totalCount;
+		
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		list = list.subList(page.getStartCount(), lastCount);
+		
+		mv.addObject("pagingHtml",pagingHtml);
 		mv.addObject("setting",setting);
-		mv.addObject("list",list);
-		mv.setViewName("/manager/manager_confirm.jsp");
+		mv.addObject("plist",list);
+		mv.setViewName("/manager/manager_member.jsp");
 		return mv;
 	}
 	

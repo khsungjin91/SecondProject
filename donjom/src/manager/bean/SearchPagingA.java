@@ -1,6 +1,6 @@
-package setting.bean;
+package manager.bean;
 
-public class pagingAction {
+public class SearchPagingA {
 
 	private int currentPage;   // 현재페이지
 	private int totalCount;	 // 전체 게시물 수
@@ -11,19 +11,21 @@ public class pagingAction {
 	private int endCount;	 // 한 페이지에서 보여줄 게시글의 끝 번호
 	private int startPage;	 // 시작 페이지
 	private int endPage;	 // 마지막 페이지
-	private int paging;      // 커런트페이지 경로
-
+	private String confirm;  // 카테고리 
+	private String search;  // 검색어
+	
 	private StringBuffer pagingHtml;
-
+	
 	// 페이징 생성자
-	public pagingAction(int currentPage, int totalCount, int blockCount,
-			int blockPage, int paging) {
+	public SearchPagingA(int currentPage, int totalCount, int blockCount,
+			int blockPage, String confirm,String search) {
 	
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
-		this.paging = paging;
+		this.confirm=confirm;
+		this.search=search;
 
 		// 전체 페이지 수
 		totalPage = (int) Math.ceil((double) totalCount / blockCount);
@@ -55,16 +57,8 @@ public class pagingAction {
 		//item이 들어오고 안들어오고의 차이
 
 		if (currentPage > blockPage) {
-			if(paging == 0){
-		pagingHtml.append("<a href=setting_session_history.dj?currentPage="
-				+ (startPage - 1) +">");
-			}else if(paging == 1){
-		pagingHtml.append("<a href=notification.dj?currentPage="
-				+ (startPage - 1) +">");
-			}else if(paging == 2){
-				pagingHtml.append("<a href=manager_member.dj?currentPage="
-						+ (startPage - 1) +">");
-			}
+			pagingHtml.append("<a href=confirm_search.dj?currentPage="+ (startPage - 1) +"&confirm="+confirm+"&search="+search+">");
+			
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
@@ -82,15 +76,9 @@ public class pagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
-				if(paging == 0){
-				pagingHtml.append("&nbsp;<a href='setting_session_history.dj?currentPage=");
-				}else if(paging == 1){
-				pagingHtml.append("&nbsp;<a href='notification.dj?currentPage=");
-				}else if(paging == 2){
-					pagingHtml.append("&nbsp;<a href='manager_member.dj?currentPage=");
-				}				
+				pagingHtml.append("&nbsp;<a href=confirm_search.dj?currentPage=");
 				pagingHtml.append(i);
-				pagingHtml.append("'>");
+				pagingHtml.append("&confirm="+confirm+"&search="+search+">");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
 			}
@@ -102,16 +90,8 @@ public class pagingAction {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			if(paging == 0){
-			pagingHtml.append("<a href=setting_session_history.dj?currentPage="
-					+ (endPage + 1) + ">");
-			}else if(paging == 1){
-			pagingHtml.append("<a href=notification.dj?currentPage="
-					+ (endPage + 1) + ">");	
-			}else if(paging == 2){
-				pagingHtml.append("<a href='manager_member.dj?currentPage="
-						+ (endPage + 1) + ">");
-			}
+			pagingHtml.append("<a href=confirm_search.dj?currentPage="
+						+ (endPage + 1) +"&confirm="+confirm+"&search="+search+">");
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 			}
@@ -198,3 +178,4 @@ public class pagingAction {
 		this.pagingHtml = pagingHtml;
 	}
 }
+
