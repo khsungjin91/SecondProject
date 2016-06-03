@@ -9,11 +9,10 @@
 </head>
 <body>
 	<form method="post" action="manager_categoryPro.dj">
-	카테고리 코드 : <input type="text" name="c_code"/>	<br />
+	카테고리 코드 : <input type="text" name="c_code"/> <br />
 	카테고리 이름 : <input type="text" name="c_name"/> <br /><br />
 	<input type="submit" value="카테고리 추가"/>
 	<input type="button" value="카테고리 수정" onclick="javascript:location.href='manager_categoryModify.dj'"/>
-	<input type="button" value="카테고리 삭제" onclick="javascript:location.href='manager_categoryDel.dj'" >
 	</form> 
 
 	<br/>

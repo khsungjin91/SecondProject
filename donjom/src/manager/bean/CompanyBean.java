@@ -19,12 +19,9 @@ public class CompanyBean {
 	private ModelAndView mv;
 	
 	// 회사정보 변경폼
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/manager_companyinfo.dj")
-	public ModelAndView companyinfo(ManagerCompanyDto company, HttpServletRequest request){
-		List list = sqlMap.queryForList("companyList", company);
-		
-		request.getParameter("ceo");
+	public ModelAndView companyinfo(HttpServletRequest request){
+		List list = sqlMap.queryForList("companyList", null);
 		mv.addObject("list", list);
 		mv.setViewName("/managerpage/manager_companyinfo.jsp");
 		return mv;
@@ -42,17 +39,21 @@ public class CompanyBean {
 		return mv;
 	}
 	// 회사정보 수정
-	@SuppressWarnings({ "rawtypes", "unused" })
 	@RequestMapping("/manager_companyModify.dj")
 	public ModelAndView companyModify(HttpServletRequest request, ManagerCompanyDto company){
 		// 저장된 db를 input text에 불러와야 함
-		List list = sqlMap.queryForList("companyList", company);
+		List list = sqlMap.queryForList("companyList", null);
 		mv.setViewName("company");
 		// 수정된 내용 db 저장
 		sqlMap.update("companymodify", company);
 		// 저장된 목록 보여주기
 		mv.addObject("company", company);
 		mv.setViewName("/managerpage/manager_companyinfo.jsp");
+		return mv;
+	}
+	@RequestMapping("/manager_companyModifyPro.dj")
+	public ModelAndView companyModifyPro(){
+		mv.setViewName("/managgerpage/manager_companyModifyPro.jsp");
 		return mv;
 	}
 	

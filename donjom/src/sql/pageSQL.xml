@@ -7,7 +7,7 @@
 	<typeAlias alias="news" type="manager.bean.ManagerNewsDto"/>
 
 	<!-- 회사정보  -->
-	<select id="companyList" parameterClass="company">
+	<select id="companyList" resultClass="company" parameterClass="String">
 		select company, ceo, licensee, address, companynum, fax, email, max, overdue from companyinfo
 	</select>
 	<!-- 회사정보 저장 -->
@@ -36,6 +36,10 @@
 	<insert id="categoryin" parameterClass="category">
 		insert into category (c_code, c_name) values (#c_code#, #c_name#) 
 	</insert>
+	<!-- 카테고리 수정 -->
+	<select id="categoryview" resultClass="category" parameterClass="category">
+		select * from category 
+	</select>
 	<!-- 카테고리 수정 -->
 	<update id="categorymodify" parameterClass="category" >
 		update category set c_code = #c_code#,

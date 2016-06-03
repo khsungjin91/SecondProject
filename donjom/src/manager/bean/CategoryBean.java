@@ -26,7 +26,6 @@ public class CategoryBean {
 			mv.setViewName("/managerpage/manager_category.jsp");
 			return mv;
 		}
-		
 		//카테고리 추가
 		@RequestMapping("/manager_categoryPro.dj")
 		public ModelAndView categoryPro(ManagerCategoryDto category){
@@ -40,13 +39,16 @@ public class CategoryBean {
 			mv.setViewName("/managerpage/manager_categoryPro.jsp");	
 			return mv;	
 		}
-		
 		// 카테고리 수정
 		@RequestMapping("/manager_categoryModify.dj")
-		public ModelAndView categoryModify(ManagerCategoryDto category){
-			sqlMap.update("categorymodify", category);
-			mv.addObject("category", category);
-			mv.setViewName("/managerpage/manager_categoryModify.jsp");
+		public ModelAndView categoryModify(){
+	
+			mv.setViewName("/managerpage/manager_categorymodify.jsp");
+			return mv;
+		}
+		@RequestMapping("/manager_categoryModifyPro.dj")
+		public ModelAndView categoryModifyPro(){
+			mv.setViewName("/managerpage/manager_categorymodifyPro.jsp");
 			return mv;
 		}
 		
