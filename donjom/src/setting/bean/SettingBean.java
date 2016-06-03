@@ -36,37 +36,54 @@ public class SettingBean {
 		return mv;
 	}
 	
+	@RequestMapping("/upProfile.dj")
+	public ModelAndView profileup(MultipartHttpServletRequest request,HttpSession session,memberDto dto)throws Exception{
+		int setting = 0;
+		MultipartFile mf = null;
+		
+		String email = (String)session.getAttribute("memId");
+		
+		mf = request.getFile("save");
+		
+		String orgname = mf.getOriginalFilename();
+		
+		System.out.println(orgname);
+		
+		dto.setEmail(email);
+		dto.setProfile(orgname);
+		
+		sqlMap.update("modifyprofile", dto);
+		
+		String path = request.getServletContext().getRealPath("")+"//save//";
+		
+		File copy = new File(path + orgname);
+		
+		mf.transferTo(copy);
+		
+		mv.addObject("setting", setting);
+		mv.setViewName("/signup/signup_modifyPro.jsp");
+		return mv;
+	}
+	
 	
 	
 	@RequestMapping("signup_modifyPro.dj")
-	public ModelAndView settingPro(String pw,String newpw,HttpSession session,memberDto ModiDto,MultipartHttpServletRequest request)
+	public ModelAndView settingPro(String pw,String newpw,HttpSession session,memberDto ModiDto)
 		throws Exception{
 		
 		String email = (String)session.getAttribute("memId");
 		String mempw = (String)sqlMap.queryForObject("findPw", email);
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
-		MultipartFile mf = request.getFile("save");
-		String orgName  = mf.getOriginalFilename();
-		String path = request.getServletContext().getRealPath("")+"\\save\\";
-		
-		if(orgName.equals("")){
-			
-			}else{
-				ModiDto.setProfile(no + orgName);
-			
-				File copy = new File(path+ModiDto.getProfile());
-				mf.transferTo(copy);
-			}
 	
-		int setting = 0;
-		
+		int setting = 0; // signup_modifiPro 경로
+		int x = 1; //singError 경로표시
+	
 		if(pw.equals(mempw)){			
 			
 			ModiDto.setEmail(email);		
 			
 			if(newpw.equals("")){
-
+				
 			sqlMap.update("modifyInfo", ModiDto);
 			
 			}else{
@@ -82,6 +99,7 @@ public class SettingBean {
 			
 		}else{
 			
+			mv.addObject("x", x);
 			mv.setViewName("/user/signError.jsp");
 		}
 		

@@ -52,7 +52,7 @@ public class RegisterBean {
 		int fileindex = Integer.parseInt(request.getParameter("fileindex"));
 		
 		String path = request.getServletContext().getRealPath("")+"\\file\\";
-		MultipartFile mf = null;;
+		MultipartFile mf = null;
 		String orgname = "";
 		
 		Date day = new Date();

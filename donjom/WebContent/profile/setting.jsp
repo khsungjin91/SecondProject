@@ -60,6 +60,31 @@ function open_win_noresizable (url, name) {
 }
 
 </script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+function upload(){
+	
+	alert("1");
+	  var formData = new FormData();
+	  alert("2"); 
+	  formData.append("save", $("#save")[0].files[0]);
+	  alert("3"); 
+	$.ajax({
+		type : "post",
+		url : "/donjom/upProfile.dj",
+		data : {
+			save : formData
+		},
+		processData: false,
+  	    contentType: false,
+		success : function test(data){ alert("good"); },
+		error : function error(){ alert("error"); }
+		
+	});
+	alert("4"); 
+}
+
+</script>
 </head>
 <body>
 
@@ -142,22 +167,17 @@ window.location="signIn.dj";
 				 <label class="col-xs-2 control-label">프로필사진수정</label>
 				 <div class="col-xs-5">
 				<c:if test="${dto.profile == null}">			
- 					<input type="file" name="save">		
+ 					<input type="file" name="save" id="save" style="" onchange="upload()">		
 				</c:if>
 				<c:if test="${dto.profile != null}">	
 					<input type="hidden" value="${dto.profile}" name="profile">	
-					<img src="/donjom/save/${dto.profile}" width="150">				
+					<img src="/donjom/save/${dto.profile}" width="100"> 
+					<input type="file" name="save" id="save" style="" onchange="upload()">			
 				</c:if> 
 				 </div>
 			</div>	
 			<hr>
-				<div class="form-group">
-				 <label class="col-xs-2 control-label">추천인이메일 </label>
-				 <div class="col-xs-5">
-				 <input type="text" name="goodemail" class="form-control">	
-				 </div>
-				</div>							
-<hr>
+			
 	<h3>비밀번호 변경 </h3>
 		<div class="form-group">
 				 <label class="col-xs-2 control-label">새비밀번호 </label>

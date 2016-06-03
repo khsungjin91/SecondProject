@@ -153,33 +153,7 @@ public class ManagerBean {
 			mv.setViewName("/manager/manager_borrow.jsp");
 			return mv;
 		}
-		
-	//일반회원
-	@RequestMapping("/manager_noconfirm.dj")
-	public ModelAndView managernoconfirm(){
-		int setting = 1;
-		List list = sqlMap.queryForList("m_member", null);
-		mv.addObject("setting",setting);
-		mv.addObject("list",list);
-		mv.setViewName("/manager/manager_noconfirm.jsp");
-		return mv;
-	}
 	
-	//일반회원 검색
-	@RequestMapping("/noconfirm_search.dj")
-	public ModelAndView noconfirm_search(String noconfirm,String search){
-		int setting = 2;
-		Map map = new HashMap();
-		map.put("noconfirm", noconfirm);
-		//noconfirm을  받아서 noconfirm이름으로 map에 저장
-		map.put("search", search);
-		List list = sqlMap.queryForList("noconfirm_search", map);
-		//map을 가지고 sql문을  수행하여 나온결과를 list에 저장  
-		mv.addObject("setting",setting);
-		mv.addObject("list",list);
-		mv.setViewName("/manager/manager_noconfirm.jsp");
-		return mv;
-	}
 	
 	//투자자list,차트 (성진이가 할것)
 	@RequestMapping("/manager_investmn.dj")
@@ -195,8 +169,6 @@ public class ManagerBean {
 	public ModelAndView managerborrowlist(){
 		List list = sqlMap.queryForList("borrowlist", null);
 		int count = list.size();
-		
-		System.out.println(count);
 		
 		mv.addObject("count", count);
 		mv.addObject("list", list);

@@ -17,6 +17,13 @@
 </script>
 </c:if>
 
+<c:if test="${x == 1}">
+<script>
+	alert("비밀번호를 확인해주세요.");
+	history.go(-1);
+</script>
+</c:if>
+
 <c:if test="${x == 0}">
 <script>
 	alert("아이디와 비밀번호를 확인해주세요.");
