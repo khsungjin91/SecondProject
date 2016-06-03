@@ -15,15 +15,8 @@
 
 <form action="help_faqPro.dj" method="post">
  <table class="table">
- 	<tr>
- 		<td>제목</td>
- 		<td><input type="text" name="h_subject" class="form-control"></td>
- 	</tr>
- 	<tr>
- 	<td>내용</td>
- 	<td><textarea name="h_content" class="ckedit" style="width:100%;height:200px;"></textarea></td>
- 	</tr>
- 	<tr>
+ 	
+ 		<tr>
  	<td>분류</td>
  	<td>
  	<label class="radio-inline" >
@@ -40,6 +33,15 @@
  	</label>
  	</td>
  	</tr>
+ 	<tr>
+ 		<td>제목</td>
+ 		<td><input type="text" name="h_subject" class="form-control"></td>
+ 	</tr>
+ 	<tr>
+ 	<td>내용</td>
+ 	<td>	  <textarea name="h_content" class="ckeditor" style="width:100%;height:200px;"></textarea></td>
+ 	</tr>
+ 
  	
  </table>
  <input type="submit" class="btn btn-default" value="글작성">

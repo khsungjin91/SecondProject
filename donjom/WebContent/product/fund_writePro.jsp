@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="../WEB-INF/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
 	<script>
 		function fund_cancle() {
