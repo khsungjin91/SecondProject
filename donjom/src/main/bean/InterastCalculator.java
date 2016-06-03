@@ -45,11 +45,11 @@ public class InterastCalculator {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 		String email = (String)session.getAttribute("memId");
-		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		Map map = calculator.Calculator(investmoney, term, way, rate);
 
-		if(split == 1){
+		if(session.getAttribute("memId") != null  && split == 1){
+			int no = (Integer)sqlMap.queryForObject("getno", email);
 			String [] repayday = new String[term];
 			
 			map.put("no", no);
@@ -73,7 +73,7 @@ public class InterastCalculator {
 			
 		mv.addObject("map",map);
 		mv.setViewName("/calculator/investresult.jsp");
-		}else{
+		}else if(split == 0){
 			
 		mv.addObject("map",map);
 		mv.setViewName("/calculator/calculatorresult.jsp");

@@ -22,7 +22,8 @@ $(document).ready(function(){
 	        	investmoney : $("#investmoney").val(),
 	        	term : $("#term").val(),
 	        	rate : $("#rate").val(), 
-	        	way : $("#way").val() 
+	        	way : $("#way").val(), 
+	        	split : 0 
 	        },
 	        success: test,	// 페이지요청 성공시 실행 함수
 	        error: whenError	//페이지요청 실패시 실행함수
