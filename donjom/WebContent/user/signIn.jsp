@@ -107,9 +107,7 @@
  <body > 
   <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
  <div class="login-box">
- 	<div class="login-logo">
- 		<a href="main.dj"><img src="image/brand.png" ></a>
- 	</div> 
+ 
  <div class="login-box-body">
  	<h2 class="text-center">·Î±×ÀÎ</h2> 
   <form class="form-signin" action="signPro.dj" method="post" name="userinput"> 

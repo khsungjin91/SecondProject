@@ -153,7 +153,7 @@
          },
          vAxis: {
            viewWindow: {
-             max: 8000
+             max: 20000
            }
          }
        };

@@ -3,15 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href="style/css/herb.css" rel="stylesheet">
-	<link href="bt/css/bootstrap.min.css" rel="stylesheet">
- 	<link href="bt/css/bootstrap-theme.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
+<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
 <title>도움말</title>
 </head>
 <body>
+<div class="container">
+
 <form action="help_faqPro.dj" method="post">
  <table class="table">
  	<tr>
@@ -20,22 +21,22 @@
  	</tr>
  	<tr>
  	<td>내용</td>
- 	<td><input type="textarea" name="h_content" class="form-control"></td>
+ 	<td><textarea name="h_content" class="ckedit" style="width:100%;height:200px;"></textarea></td>
  	</tr>
  	<tr>
  	<td>분류</td>
  	<td>
  	<label class="radio-inline" >
- 	<input type="radio"  name="h_category" value="option1">공통
+ 	<input type="radio"  name="h_category" value="공통">공통
  	</label>
  		<label class="radio-inline" >
- 	<input type="radio"  name="h_category" value="option2">대출
+ 	<input type="radio"  name="h_category" value="대출">대출
  	</label>
  		<label class="radio-inline" >
- 	<input type="radio"  name="h_category" value="option3">투자
+ 	<input type="radio"  name="h_category" value="투자">투자
  	</label>
  		<label class="radio-inline" >
- 	<input type="radio"  name="h_category" value="option4">계정
+ 	<input type="radio"  name="h_category" value="계정">계정
  	</label>
  	</td>
  	</tr>
@@ -45,11 +46,16 @@
 </form>
 
 
-<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="bt/js/bootstrap.min.js"></script>
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="bt/js/ie10-viewport-bug-workaround.js"></script>
+</div>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1');
+    //bootstrap WYSIHTML5 - text editor
+    $(".textarea").wysihtml5();
+  });
+</script>
+
 </body>
 </html>
