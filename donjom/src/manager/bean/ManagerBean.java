@@ -165,7 +165,7 @@ public class ManagerBean {
 		return mv;
 	}
 	
-	
+	//일반회원 검색
 	@RequestMapping("/noconfirm_search.dj")
 	public ModelAndView noconfirm_search(String noconfirm,String search){
 		int setting = 2;

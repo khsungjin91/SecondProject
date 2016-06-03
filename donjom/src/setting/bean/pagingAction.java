@@ -64,6 +64,9 @@ public class pagingAction {
 			}else if(paging == 2){
 				pagingHtml.append("<a href=manager_member.dj?currentPage="
 						+ (startPage - 1) +">");
+			}else if(paging == 3){
+				pagingHtml.append("<a href=manager_noconfirm.dj?currentPage="
+						+ (startPage - 1) +">");
 			}
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
@@ -88,7 +91,9 @@ public class pagingAction {
 				pagingHtml.append("&nbsp;<a href='notification.dj?currentPage=");
 				}else if(paging == 2){
 					pagingHtml.append("&nbsp;<a href='manager_member.dj?currentPage=");
-				}				
+				}else if(paging == 3){
+					pagingHtml.append("&nbsp;<a href='manager_noconfirm.dj?currentPage=");
+				}					
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -110,6 +115,9 @@ public class pagingAction {
 					+ (endPage + 1) + ">");	
 			}else if(paging == 2){
 				pagingHtml.append("<a href='manager_member.dj?currentPage="
+						+ (endPage + 1) + ">");
+			}else if(paging == 3){
+				pagingHtml.append("<a href='manager_noconfirm.dj?currentPage="
 						+ (endPage + 1) + ">");
 			}
 			pagingHtml.append("다음");
