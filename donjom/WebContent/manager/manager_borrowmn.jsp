@@ -93,6 +93,7 @@
 
     	var now = ${now};
  		var today = new Date();
+ 		var max = ${max};
  		
  		var all_avg1 = ${all_avg1}; 	var sc_avg1= ${sc_avg1};
  		var all_avg2 = ${all_avg2};		var sc_avg2= ${sc_avg2};
@@ -153,7 +154,7 @@
          },
          vAxis: {
            viewWindow: {
-             max: 20000
+             max: max+10000
            }
          }
        };

@@ -3,6 +3,7 @@ package chart.bean;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -64,8 +65,7 @@ public class BrChartBean {
 				String[] birth=((String) l_birth.get(i)).split("");
 				String year=birth[0]+birth[1]+birth[2]+birth[3];
 				int age= Integer.parseInt(now) - Integer.parseInt(year) +1; 
-				System.out.println("age"+age);
-			
+							
 				if(l_gender.get(i).equals("men")){	
 					if(age>=0 && age<20){m_noadult +=1; chartdto.setM_noadult(m_noadult);}
 					else if(age>=20 && age<30){m_twenty +=1; chartdto.setM_twenty(m_twenty);}
@@ -92,8 +92,10 @@ public class BrChartBean {
 			List p_list= sqlMap.queryForList("borrow_priceYear", yy);
 			List m_list= sqlMap.queryForList("borrow_dateYear", yy);
 			
-			int all_sum=0;	int all_count=0;	float all_avg[] ={0,0,0,0,0,0,0,0,0,0,0,0}; 
-			
+			int all_sum[]={0,0,0,0,0,0,0,0,0,0,0,0};	
+			int all_count[]={0,0,0,0,0,0,0,0,0,0,0,0};	
+			float all_avg[] ={0,0,0,0,0,0,0,0,0,0,0,0}; 
+			float max[]=new float[12];
 		
 			for(int i=0;i<p_list.size();i++){
 				m_list.get(i);
@@ -101,68 +103,92 @@ public class BrChartBean {
 				
 				if(m_list.get(i).equals("01")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[0] = (float)all_sum/(float)all_count;
+					all_count[0] +=1;
+					all_sum[0] +=(Integer)p_list.get(i);
+					all_avg[0] = (float)all_sum[0]/(float)all_count[0];
+					max[0] = (float)all_sum[0]/(float)all_count[0];
 				}else if(m_list.get(i).equals("02")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[1] = (float)all_sum/(float)all_count;
+					all_count[1] +=1;
+					all_sum[1] +=(Integer)p_list.get(i);
+					all_avg[1] = (float)all_sum[1]/(float)all_count[1];
+					max[1] = (float)all_sum[1]/(float)all_count[1];
+					
 				}else if(m_list.get(i).equals("03")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[2] = (float)all_sum/(float)all_count;
+					all_count[2] +=1;
+					all_sum[2] +=(Integer)p_list.get(i);
+					all_avg[2] = (float)all_sum[2]/(float)all_count[2];
+					max[2] = (float)all_sum[2]/(float)all_count[2];
+							
 				}else if(m_list.get(i).equals("04")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[3] = (float)all_sum/(float)all_count;
+					all_count[3] +=1;
+					all_sum[3] +=(Integer)p_list.get(i);
+					all_avg[3] = (float)all_sum[3]/(float)all_count[3];
+					max[3] = (float)all_sum[3]/(float)all_count[3];
+					
 				}else if(m_list.get(i).equals("05")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[4] = (float)all_sum/(float)all_count;
+					all_count[4] +=1;
+					all_sum[4] +=(Integer)p_list.get(i);
+					all_avg[4] = (float)all_sum[4]/(float)all_count[4];
+					max[4] = (float)all_sum[4]/(float)all_count[4];
+					
 				}else if(m_list.get(i).equals("06")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[5] = (float)all_sum/(float)all_count;
+					all_count[5] +=1;
+					all_sum[5] +=(Integer)p_list.get(i);
+					all_avg[5] = (float)all_sum[5]/(float)all_count[5];
+					max[5] = (float)all_sum[5]/(float)all_count[5];
+					
 				}else if(m_list.get(i).equals("07")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[6] = (float)all_sum/(float)all_count;
+					all_count[6] +=1;
+					all_sum[6] +=(Integer)p_list.get(i);
+					all_avg[6] = (float)all_sum[6]/(float)all_count[6];
+					max[6] = (float)all_sum[6]/(float)all_count[6];
+					
 				}else if(m_list.get(i).equals("08")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[7] = (float)all_sum/(float)all_count;
+					all_count[7] +=1;
+					all_sum[7] +=(Integer)p_list.get(i);
+					all_avg[7] = (float)all_sum[7]/(float)all_count[7];
+					max[7] = (float)all_sum[7]/(float)all_count[7];
+						
 				}else if(m_list.get(i).equals("09")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[8] = (float)all_sum/(float)all_count;
+					all_count[8] +=1;
+					all_sum[8] +=(Integer)p_list.get(i);
+					all_avg[8] = (float)all_sum[8]/(float)all_count[8];
+					max[8] = (float)all_sum[8]/(float)all_count[8];
+					
 				}else if(m_list.get(i).equals("10")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[9] = (float)all_sum/(float)all_count;
+					all_count[9] +=1;
+					all_sum[9] +=(Integer)p_list.get(i);
+					all_avg[9] = (float)all_sum[9]/(float)all_count[9];
+					max[9] = (float)all_sum[9]/(float)all_count[9];
+		
 				}else if(m_list.get(i).equals("11")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[10] = (float)all_sum/(float)all_count;
+					all_count[10] +=1;
+					all_sum[10] +=(Integer)p_list.get(i);
+					all_avg[10] = (float)all_sum[10]/(float)all_count[10];
+					max[10] = (float)all_sum[10]/(float)all_count[10];
+					
 				}else if(m_list.get(i).equals("12")){
 					p_list.get(i);
-					all_count +=1;
-					all_sum +=(Integer)p_list.get(i);
-					all_avg[11] = (float)all_sum/(float)all_count;
+					all_count[11] +=1;
+					all_sum[11] +=(Integer)p_list.get(i);
+					all_avg[11] = (float)all_sum[11]/(float)all_count[11];
+					max[11] = (float)all_sum[11]/(float)all_count[11];
+					
 				}
-				
-				System.out.println(all_avg[i]);
+			
 			}
+			
+			Arrays.sort(max);
 			
 			//line 차트(성공한 월별평균대출액)
 			List psc_list=sqlMap.queryForList("borrow_priceYearSc", yy);
@@ -236,16 +262,14 @@ public class BrChartBean {
 					sc_sum +=(Integer)psc_list.get(i);
 					sc_avg[11] = (float)sc_sum/(float)sc_count;
 				}
-				System.out.println(all_avg[i]);
 			}
-			
-			
 			
 			for(int i =0;i<12;i++){
 				mv.addObject("all_avg"+(i+1),all_avg[i]);}
 			for(int i =0;i<12;i++){
 				mv.addObject("sc_avg"+(i+1),sc_avg[i]);	}
 			
+			mv.addObject("max",max[11]);
 			mv.addObject("now",now);
 			mv.addObject("dto",chartdto);
 			mv.addObject("b",count[0]);
