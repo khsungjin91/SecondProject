@@ -201,10 +201,5 @@
 		<div id="barchart_material" class="box box-primary"></div>
 		
 	</div>
-
-
-
-
-
 </body>
 </html>

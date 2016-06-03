@@ -27,9 +27,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
 	  $('#myInput').focus()
 	})
 </script>
-<script>
 
-</script>
 <%
     Class.forName("oracle.jdbc.driver.OracleDriver");
     Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@masterkh.iptime.org:7000:orcl","donjom","donjom");

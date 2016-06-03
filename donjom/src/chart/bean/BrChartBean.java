@@ -48,10 +48,9 @@ public class BrChartBean {
 			
 			SimpleDateFormat spf= new SimpleDateFormat("yyyy");
 			Date date =new Date();
-			System.out.println(date);
+		
 			String now = spf.format(date);
-			System.out.println(now);
-			
+		
 			int m_noadult=0;	int m_twenty=0;
 			int m_thirty=0;		int m_forty=0;
 			int m_fifty=0;		int m_sixty=0;
@@ -95,8 +94,7 @@ public class BrChartBean {
 			
 			int all_sum=0;	int all_count=0;	float all_avg[] ={0,0,0,0,0,0,0,0,0,0,0,0}; 
 			
-			
-			
+		
 			for(int i=0;i<p_list.size();i++){
 				m_list.get(i);
 				p_list.get(i);

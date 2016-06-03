@@ -42,10 +42,9 @@ public class TestBean {
 		
 		SimpleDateFormat spf= new SimpleDateFormat("yyyy");
 		Date date =new Date();
-		System.out.println(date);
-		String now = spf.format(date);
-		System.out.println(now);
 		
+		String now = spf.format(date);
+	
 		String [] gender = new String[l_gender.size()];
 		int m_noadult=0;	int m_twenty=0;
 		int m_thirty=0;		int m_forty=0;
@@ -62,7 +61,6 @@ public class TestBean {
 			String[] birth=((String) l_birth.get(i)).split("");
 			String year=birth[0]+birth[1]+birth[2]+birth[3];
 			int age= Integer.parseInt(now) - Integer.parseInt(year) +1; 
-			System.out.println("age"+age);
 		
 			if(l_gender.get(i).equals("men")){	
 				gender_count[0] += 1;

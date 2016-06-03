@@ -38,15 +38,20 @@ public class InvestHistoryBean {
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		String str = p_code.substring(5,10);
+		//상품개인 DB 에서 back이 1인 최고의 no 번호
 		int refunds_max = (Integer)sqlMap.queryForObject("result.max_refunds_no", str);
 		
 		map.put("no", no);
 		map.put("p_code", p_code);
 	
+		//투자자가 투자한 상품의  invest 한개 가져오기 
 		dto = (InvestDto)sqlMap.queryForObject("result.oneget_i", map);
+		
+		//투자자가 투자한 금액 가져오기
 		String investmoney = dto.getI_invest();
 		int investmoney2 = Integer.parseInt(investmoney+"0000");
 		
+		//
 		String times = String.valueOf(investmoney2);;
 		
 		//환급되야할수
@@ -73,7 +78,9 @@ public class InvestHistoryBean {
 		double interast = 0;
 		double x = 0;
 		double y = 0;
+
 		
+		// 상환일자 계산
 		String z = dto.getI_date().substring(6, 7);
 		int b = Integer.parseInt(z);
 		cal.set(cal.MONTH, b);
@@ -86,27 +93,32 @@ public class InvestHistoryBean {
 			repayday[i] = thisDayMiner;
 		}
 		
+		//원금만기 일시상환 계산식
 		if(dto.getI_way().equals("1")){
 			
+			//이자 계산 연이자  이율 / 12(1년)
 			interast = (Double.parseDouble(dto.getI_profit())/12);
 			
-			d = Double.parseDouble(String.format("%.3f", interast));
-					
+			//이자를 소숫점 7번째자리수 까지 잘라준다.
+			d = Double.parseDouble(String.format("%.7f", interast));
+			
+			// 이자와 투자금액을 곱하고 100 을 나눠서 월상환금을 구한다.
 			total = (int)(Double.parseDouble(investmoney+"0000") * d) / 100;
 			
+			// 세금 27.5 % 금액을 total에서 구한다.
 			tax = (int)(total*27.5/100);
 			
+			// total(월 상환금) 과 tax(세금)을 빼면 realtotal(실수령금액) 이 나온다.
 			realtotal = total-tax;
 			
 			for(int i = 0; i < term ; i++){
 				
-				count[i] = i+1;
-					
-				refunds[i] = total;
-				p_price[i] = 0;
-				interested[i] = total;
-				taxed[i] = tax;
-				realtotaled[i] = realtotal;
+				count[i] = i+1;					//회차수
+				refunds[i] = total;				//상환금
+				p_price[i] = 0;					//원금
+				interested[i] = total;			//이자
+				taxed[i] = tax;					//세금
+				realtotaled[i] = realtotal;		//실수령액
 				
 				//원금만기에서만 작동 나눠진 원금의 합
 				totalto += refunds[i];
@@ -130,6 +142,7 @@ public class InvestHistoryBean {
 			orgprice= p_price[term-1];
 			}
 			
+			//원리금 일시상환 계산기
 		}else if(dto.getI_way().equals("0")){
 			
 			//이자율
@@ -152,28 +165,22 @@ public class InvestHistoryBean {
 			//총투자금액 
 			balance = investmoney2;
 			
-			//만기 개월 수 만큼 for문 돌리기
+			//지금까지 상환된 회차 수만큼 for문을 돌려 계산해준다.
 			for(int i = 0 ; i <term; i++){
 				
-				count[i] = i+1;   //회차 구하기
-					
-				refunds[i] = total;  //월상환액 균등하다
-				
-				interested[i] = (int)(balance * interast);  // 월 이자 월마다 다르다
-			
-				p_price[i]  = total - interested[i]; //원금  월마다 다르다
-				
-				taxed[i] = (int)(interested[i]*27.5/100); //이자에따른 세금
-				
-				realtotaled[i] = refunds[i] - taxed[i];
-						
+				count[i] = i+1;   							 //회차 구하기				
+				refunds[i] = total;  						 //월상환액 균등하다			
+				interested[i] = (int)(balance * interast);   // 월 이자 월마다 다르다		
+				p_price[i]  = total - interested[i];		 //원금  월마다 다르다			
+				taxed[i] = (int)(interested[i]*27.5/100);	 //이자에따른 세금			
+				realtotaled[i] = refunds[i] - taxed[i];					
 				balance = balance-p_price[i];
 				
-				orgprice += p_price[i];
-				totaltotal += refunds[i];
-				taxtotal += taxed[i]; 
-				interesttotal += interested[i];
-				supertotal += realtotaled[i];
+				orgprice += p_price[i];			// 원금 총합
+				totaltotal += refunds[i]; 		// 상환금 총합
+				taxtotal += taxed[i]; 			//세금총합
+				interesttotal += interested[i]; // 이자총합
+				supertotal += realtotaled[i];	// 실수령액 총합
 				
 			}
 		}
