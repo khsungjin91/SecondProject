@@ -58,6 +58,10 @@
 	update memprice set total_ch= total_ch + #refundmoney# where no=#no#
 </update>
 
+<update id="returninvest" parameterClass="java.util.Map">
+	update memprice set total_ch = total_ch + #invest# where no = #no#
+</update>
+
 
 
 </sqlMap>

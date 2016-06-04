@@ -26,12 +26,13 @@ public class InvestedBean {
 	
 	@RequestMapping("/invest_start.dj")
 	public ModelAndView invested(HttpSession session,SettingDto meminfodto,InvestDto investdto,
-			RegisterDto registerDto,MessageDto dto){
+			RegisterDto registerDto){
 		MessageBean msm = new MessageBean();
+		//메세지 경로
+		int sns = 1; 
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
 		
 		meminfodto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		
@@ -46,7 +47,7 @@ public class InvestedBean {
 		investdto.setI_profit(registerDto.getP_rate());
 		investdto.setI_repayday(registerDto.getP_repayday());
 		
-		msm.investMessageGo(investdto,dto,sqlMap);
+		msm.investMessageGo(investdto,sqlMap,sns);
 		
 		sqlMap.insert("investstart", investdto);
 		sqlMap.update("updateinvest", investdto);
@@ -87,18 +88,32 @@ public class InvestedBean {
 	@RequestMapping("/fund_investcancle.dj")
 	public ModelAndView investCancel(String code,InvestDto dto,HttpSession session){
 		Map map = new HashMap();
+		MessageBean message = new MessageBean();
+		//메세지 경로
+		int sns = 2;
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-
+		
 		map.put("p_code", code);
 		map.put("no", no);
-
+		
 		dto = (InvestDto)sqlMap.queryForObject("result.oneget_i", map);
-	
+		//투자금 형 변환
+		String money = dto.getI_invest()+"0000";
+		int invest =Integer.parseInt(money);
+		
+		map.put("invest", invest);
+
+		//투자자에게 돈돌려주기
+		sqlMap.update("returninvest", map);
+		// 투자된 기록들 삭제
 		sqlMap.update("update_p", dto);
-	
+		// 투자 삭제 메세지 발송
+		message.investMessageGo(dto, sqlMap, sns);
+		// 투자건 삭제
 		sqlMap.delete("delete_i", map);
+		
 		
 		mv.setViewName("/product/fund_investcancle.jsp");
 		return mv;

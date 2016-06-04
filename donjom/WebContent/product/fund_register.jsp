@@ -82,28 +82,30 @@ function calculrator(userinput){
 <tr>
 <td>
 <select name="p_category">
-<option value="${dto.br_category}">${dto.br_category}(대출자희망)</option>
+<option value="${dto.br_category}">
+<c:if test="${dto.br_category == 'b'}">
+사업자(대출자희망)
+</c:if>
+<c:if test="${dto.br_category == 'p'}">
+개인(대출자희망)
+</c:if>
+<c:if test="${dto.br_category == 'r'}">
+부동산(대출자희망)
+</c:if>
+<c:if test="${dto.br_category == 'c'}">
+매출담보(대출자희망)
+</c:if>
+</option>
 <option value="b">
 <c:if test="${dto.br_category == 'b'}">
 사업자
 </c:if>
 </option>
-<option value="p">
-<c:if test="${dto.br_category == 'p'}">
-개인
-</c:if>
-</option>
-<option value="r">
-<c:if test="${dto.br_category == 'r'}">
-부동산
-</c:if>
-</option>
-<option value="c">
-<c:if test="${dto.br_category == 'c'}">
-대출담보
-</c:if>
-</option>
+<option value="p">개인</option>
+<option value="r">부동산</option>
+<option value="c">매출담보</option>
 </select>
+
 </td>
 <td><input type="text" value="${dto.br_term}" name="p_term">개월</td>
 <td>연<input type="text" name="p_rate" id="rate" onkeyup="calculrator(this.target)">%</td>

@@ -20,6 +20,12 @@
 		<td>세금</td>
 		<td>실수령액</td>
 	</tr>
+	<c:if test="${backcount == 0}">
+	<tr>
+	<td colspan="7">상환된 내역이 아직 없습니다.</td>
+	</tr>
+	</c:if>
+	<c:if test="${backcount != 0}">
 	<tr>
 		<td>
 			<table>
@@ -100,6 +106,7 @@
 	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.taxtotal}" />원</td>
 	<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${map.supertotal}" />원</td>
 	</tr>
+	</c:if>
 </table>
 	
 	※ 회차별 상환플랜과 상환내역의 상환금은 오차가 있을 수 있습니다. (월별 이용 일수가 28, 29, 30, 31일로 변동 사항이 있기 때문) <br/>
@@ -112,6 +119,7 @@
 	<c:if test="${dto.i_success == 'overend' }">
 	전액상환완료!
 	</c:if>
+	
 	
 </body>
 </html>

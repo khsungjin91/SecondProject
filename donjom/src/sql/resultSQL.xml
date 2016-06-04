@@ -77,6 +77,10 @@
 	select count(m_check) from message where m_memno=#no# and m_check=1
 </select>
 
+<select id="getbackcount" resultClass="int" parameterClass="String">
+	select count(back) from dj_$str$ where back=1
+</select>
+
 <insert id="refunds_insert" parameterClass="java.util.Map">
 	insert into refunds values(refunds_seq.nextval,#p_code#,#times#,sysdate)
 </insert>

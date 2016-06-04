@@ -95,10 +95,4 @@
 	delete from invest where i_memnum = #no# and i_pcode=#p_code#
 </delete>
 
-
-
-
-
-
-
 </sqlMap>

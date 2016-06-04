@@ -34,12 +34,20 @@ public class InvestHistoryBean {
 		Calendar cal = Calendar.getInstance();
 		Map map = new HashMap();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
+		int refunds_max = 0;
 		String str = p_code.substring(5,10);
+		//상품개인 DB 에서 back이 1인 카운트를 가져온다.
+		int backcount = (Integer)sqlMap.queryForObject("result.getbackcount", str);
+		
+		//count 가 1보다 클때 실행한다.
+		if(backcount > 1){
 		//상품개인 DB 에서 back이 1인 최고의 no 번호
-		int refunds_max = (Integer)sqlMap.queryForObject("result.max_refunds_no", str);
+		refunds_max = (Integer)sqlMap.queryForObject("result.max_refunds_no", str);
+		}
 		
 		map.put("no", no);
 		map.put("p_code", p_code);
@@ -201,6 +209,7 @@ public class InvestHistoryBean {
 		
 		int garbige = investmoney2 - orgprice;
 		
+		mv.addObject("backcount", backcount);
 		mv.addObject("dto", dto);
 		mv.addObject("garbige", garbige);
 		mv.addObject("map", map);

@@ -59,16 +59,16 @@ public class RegisterBean {
 		SimpleDateFormat date = new SimpleDateFormat("yy");
 		
 		switch (br_category){
-		case "사업자":
+		case "b":
 			m_code = "B";
 			break;
-		case "부동산":
+		case "r":
 			m_code = "R";
 			break;
-		case "개인":
+		case "p":
 			m_code = "P";
 			break;
-		case "매출담보":
+		case "c":
 			m_code = "C";
 			break;
 		default:
