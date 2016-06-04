@@ -63,7 +63,6 @@ public class ManagerBean {
 		List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
 		
 		mv.addObject("pagingHtml",pagingHtml);
-		mv.addObject("setting",setting);
 		mv.addObject("plist", pagelist);
 		mv.addObject("c_count",c_count);
 		mv.addObject("m_count",m_count);

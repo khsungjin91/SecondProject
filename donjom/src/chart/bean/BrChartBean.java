@@ -194,7 +194,9 @@ public class BrChartBean {
 			List psc_list=sqlMap.queryForList("borrow_priceYearSc", yy);
 			List msc_list=sqlMap.queryForList("borrow_dateYearSc", yy);
 			
-			int sc_sum=0; 	int sc_count=0;		float sc_avg[] ={0,0,0,0,0,0,0,0,0,0,0,0}; 
+			int sc_sum[]={0,0,0,0,0,0,0,0,0,0,0,0};
+			int sc_count[]={0,0,0,0,0,0,0,0,0,0,0,0};
+			float sc_avg[] ={0,0,0,0,0,0,0,0,0,0,0,0}; 
 			
 			
 			for(int i=0;i<psc_list.size();i++){
@@ -203,64 +205,64 @@ public class BrChartBean {
 				
 				if(msc_list.get(i).equals("01")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[0] = (float)sc_sum/(float)sc_count;
+					sc_count[0] +=1;
+					sc_sum[0] +=(Integer)psc_list.get(i);
+					sc_avg[0] = (float)sc_sum[0]/(float)sc_count[0];
 				}else if(msc_list.get(i).equals("02")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[1] = (float)sc_sum/(float)sc_count;
+					sc_count[1] +=1;
+					sc_sum[1] +=(Integer)psc_list.get(i);
+					sc_avg[1] = (float)sc_sum[1]/(float)sc_count[1];
 				}else if(msc_list.get(i).equals("03")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[2] = (float)sc_sum/(float)sc_count;
+					sc_count[2] +=1;
+					sc_sum[2] +=(Integer)psc_list.get(i);
+					sc_avg[2] = (float)sc_sum[2]/(float)sc_count[2];
 				}else if(msc_list.get(i).equals("04")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[3] = (float)sc_sum/(float)sc_count;
+					sc_count[3] +=1;
+					sc_sum[3] +=(Integer)psc_list.get(i);
+					sc_avg[3] = (float)sc_sum[3]/(float)sc_count[3];
 				}else if(msc_list.get(i).equals("05")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[4] = (float)sc_sum/(float)sc_count;
+					sc_count[4] +=1;
+					sc_sum[4] +=(Integer)psc_list.get(i);
+					sc_avg[4] = (float)sc_sum[4]/(float)sc_count[4];
 				}else if(msc_list.get(i).equals("06")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[5] = (float)sc_sum/(float)sc_count;
+					sc_count[5] +=1;
+					sc_sum[5] +=(Integer)psc_list.get(i);
+					sc_avg[5] = (float)sc_sum[5]/(float)sc_count[5];
 				}else if(msc_list.get(i).equals("07")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[6] = (float)sc_sum/(float)sc_count;
+					sc_count[6] +=1;
+					sc_sum[6] +=(Integer)psc_list.get(i);
+					sc_avg[6] = (float)sc_sum[6]/(float)sc_count[6];
 				}else if(msc_list.get(i).equals("08")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[7] = (float)sc_sum/(float)sc_count;
+					sc_count[7] +=1;
+					sc_sum[7] +=(Integer)psc_list.get(i);
+					sc_avg[7] = (float)sc_sum[7]/(float)sc_count[7];
 				}else if(msc_list.get(i).equals("09")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[8] = (float)sc_sum/(float)sc_count;
+					sc_count[8] +=1;
+					sc_sum[8] +=(Integer)psc_list.get(i);
+					sc_avg[8] = (float)sc_sum[8]/(float)sc_count[8];
 				}else if(msc_list.get(i).equals("10")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[9] = (float)sc_sum/(float)sc_count;
+					sc_count[9] +=1;
+					sc_sum[9] +=(Integer)psc_list.get(i);
+					sc_avg[9] = (float)sc_sum[9]/(float)sc_count[9];
 				}else if(msc_list.get(i).equals("11")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[10] = (float)sc_sum/(float)sc_count;
+					sc_count[10] +=1;
+					sc_sum[10] +=(Integer)psc_list.get(i);
+					sc_avg[10] = (float)sc_sum[10]/(float)sc_count[10];
 				}else if(msc_list.get(i).equals("12")){
 					psc_list.get(i);
-					sc_count +=1;
-					sc_sum +=(Integer)psc_list.get(i);
-					sc_avg[11] = (float)sc_sum/(float)sc_count;
+					sc_count[11] +=1;
+					sc_sum[11] +=(Integer)psc_list.get(i);
+					sc_avg[11] = (float)sc_sum[11]/(float)sc_count[11];
 				}
 			}
 			

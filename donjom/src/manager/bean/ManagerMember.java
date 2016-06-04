@@ -58,12 +58,34 @@ public class ManagerMember {
 			String pagecurrent = request.getParameter("currentPage");//우선여기까지
 			
 			int setting = 2;
+			int currentPage = 1;
+			int blockCount = 10;
+			int blockPage = 10;
+			String pagingHtml;
+			
 			Map map = new HashMap();
 			map.put("noconfirm", noconfirm);
 			//noconfirm을  받아서 noconfirm이름으로 map에 저장
 			map.put("search", search);
+			
 			List list = sqlMap.queryForList("noconfirm_search", map);
 			//map을 가지고 sql문을  수행하여 나온결과를 list에 저장  
+			if(pagecurrent != null){
+				currentPage = Integer.parseInt(pagecurrent);
+			}else{ currentPage = 1;}
+			int totalCount = list.size();
+			
+			SearchPagingA page = new SearchPagingA(currentPage, totalCount, blockCount, blockPage, noconfirm, search);
+			pagingHtml = page.getPagingHtml().toString();
+			
+			int lastCount = totalCount;
+			
+			if(page.getEndCount() < totalCount)
+				lastCount = page.getEndCount() + 1;
+			
+			list = list.subList(page.getStartCount(), lastCount);
+						
+			mv.addObject("pagingHtml",pagingHtml);
 			mv.addObject("setting",setting);
 			mv.addObject("list",list);
 			mv.setViewName("/manager/manager_noconfirm.jsp");

@@ -30,6 +30,7 @@
 					<td>${list.join}</td>
 				</tr>
 			</c:forEach>
+			<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
 		</c:if>
 		<c:if test="${setting == 2}">
 			<c:forEach var="list" items="${list}">
@@ -39,6 +40,7 @@
 					<td>${list.join}</td>
 				</tr>
 			</c:forEach>
+			<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
 		</c:if>
 	</table>
 </body>
