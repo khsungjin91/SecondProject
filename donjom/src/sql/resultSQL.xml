@@ -90,7 +90,7 @@
 </update>
 
 <update id="completefund" parameterClass="registerDto">
-	update product set p_success=#p_success# where p_code=#p_code#
+	update product set p_success=#p_success#,p_enddate=#p_enddate# where p_code=#p_code#
 </update>
 
 <update id="readed" parameterClass="int">

@@ -3,11 +3,27 @@ package product.bean;
 public class RegisterDto {
 	
 	private String p_content,p_code,p_name,p_price,p_img,p_people,p_invest,p_purpose,
-				p_way,p_rate,p_term,p_funding,p_repayday,p_success,p_file,p_category,p_mrepay,name;
+				p_way,p_rate,p_term,p_funding,p_repayday,p_success,p_file,p_category,p_mrepay,name,p_date,p_enddate;
 	private int no,p_memeno,p_brno;
 	
 	
 	
+
+	public String getP_date() {
+		return p_date;
+	}
+
+	public void setP_date(String p_date) {
+		this.p_date = p_date;
+	}
+
+	public String getP_enddate() {
+		return p_enddate;
+	}
+
+	public void setP_enddate(String p_enddate) {
+		this.p_enddate = p_enddate;
+	}
 
 	public String getName() {
 		return name;

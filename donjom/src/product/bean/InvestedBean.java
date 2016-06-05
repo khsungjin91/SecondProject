@@ -1,5 +1,7 @@
 package product.bean;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import result.bean.MessageBean;
 import result.bean.MessageDto;
 import setting.bean.SettingDto;
+import time.bean.ConsumeTime;
 
 @Controller
 public class InvestedBean {
@@ -26,8 +29,9 @@ public class InvestedBean {
 	
 	@RequestMapping("/invest_start.dj")
 	public ModelAndView invested(HttpSession session,SettingDto meminfodto,InvestDto investdto,
-			RegisterDto registerDto){
+			RegisterDto registerDto)throws Exception{
 		MessageBean msm = new MessageBean();
+		ConsumeTime consume = new ConsumeTime();
 		//메세지 경로
 		int sns = 1; 
 		
@@ -55,23 +59,28 @@ public class InvestedBean {
 		registerDto.setP_code(investdto.getI_pcode());
 		registerDto = (RegisterDto)sqlMap.queryForObject("productone", registerDto);
 		
+		//펀딩성공한경우
 		if(Integer.parseInt(registerDto.getP_price()) == 
 				Integer.parseInt(registerDto.getP_invest())){
-			 
+			
+			//소요시간 계산해서 DB에 넣는 객체생성
+			String soyotume = consume.consumetime(registerDto);
+			
+			//펀딩성공의 경우 투자자들과 상품에 성공알림을 보내고 상품에 소요시간을 넣어준다.
+			registerDto.setP_enddate(soyotume);
 			registerDto.setP_success("success");
-			//펀드가 성공한경우 투자자들과 상품에 성공알림을 보낸다.
 			sqlMap.update("result.completefund", registerDto);
 			sqlMap.update("result.completeinvest", registerDto);
-			
 		}
 		//무조건 맨밑에 있어야함
 		investdto.setI_invest(investdto.getI_invest()+"0000");
 		sqlMap.update("input_invest", investdto);
-		//
 		
 		mv.setViewName("/product/fund_investPro.jsp");
 		return mv;
 	}
+	
+	
 	
 	@RequestMapping("/invest_history.dj")
 	public ModelAndView investhistory(HttpSession session){
@@ -84,6 +93,8 @@ public class InvestedBean {
 		mv.setViewName("/profile/invest_history.jsp");
 		return mv;
 	}
+	
+	
 	
 	@RequestMapping("/fund_investcancle.dj")
 	public ModelAndView investCancel(String code,InvestDto dto,HttpSession session){
@@ -113,8 +124,7 @@ public class InvestedBean {
 		message.investMessageGo(dto, sqlMap, sns);
 		// 투자건 삭제
 		sqlMap.delete("delete_i", map);
-		
-		
+	
 		mv.setViewName("/product/fund_investcancle.jsp");
 		return mv;
 	}
