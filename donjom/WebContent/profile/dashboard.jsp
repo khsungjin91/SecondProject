@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
-<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
+
  	<title>대시보드</title>
  	<c:if test = "${sessionScope.memId == null}">
  	<script type="text/javascript">
@@ -16,33 +13,34 @@
  	</script>
  	</c:if>
 </head>
-<body>
+<body >
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
-<c:if test="${sessionScope.memId == null }">
-<script type="text/javascript">
-window.location="signIn.dj";
-</script>
-</c:if>
 
-	<section class="profile-detail">
-	<div class="container profile-wrap">
-		<div class="col-sm-3 mobile-profile-nav">
-			<div class="user-info text-center radius">						
+	<div class="warpper dash-body">
+	<div class="container">
+		<div class="col-sm-3">
+			<div class="text-center">						
 				<img src="/donjom/save/${dto.profile}" class="img-circle" width="150"  >
-				<p class="name txt-cut-line user-nick">${dto.nickname}	</p>
-				<p class="email txt-cut-line">${dto.email}</p>
-				<p class="date">가입일  ${dto.join}</p>
-				<div class="btn-profile-edit hidden-xs">
-					<button type="button" class="btn btn-success" onclick="location.href='setting.dj'"><i class="fa fa-cog"></i> 기본정보 수정</button>
+				<p class="user-nick">${dto.nickname}	</p>
+				<p >${dto.email}</p>
+				<p >가입일  ${dto.join}</p>
+				<div class=" hidden-xs">
+					<button type="button" class="btn btn-flat bg-orange" onclick="location.href='setting.dj'"><i class="fa fa-cog"></i> 기본정보 수정</button>
 				</div>
 			</div>
-			<ul class="menu menu-dashboard radius">
-				<li class="dashboard"><a href ="dashboard.dj" class="active"><span class="glyphicon glyphicon-dashboard"></span> 대시보드</a></li>
-				<li class="invest"><a href="invest_history.dj" class=""> 투자내역</a></li>
-				<li class="lend"><a href="laon_history.dj" class=""> 대출내역</a></li>
-				<li class="moeny"><a href="point_deposit.dj" class=""> 충전/환급</a></li>
-				<li class="moeny hidden-xs"><a href="notification.dj" class="">알림 메세지</a></li>
-				<li class="setting"><a href="setting.dj" class="">설정</a></li>
+			<hr>
+			<ul class=" dash-menu list-unstyled ">
+				<li ><a href="dashboard.dj"><i class="fa fa-fw fa-tachometer fa-lg"></i>대시보드</a></li>
+				<li><a href="invest_history.dj"><i class="fa fa-fw fa-bar-chart fa-lg"></i>투자내역</a></li>
+				<li><a href="laon_history.dj">
+				<i class="fa fa-fw fa-tasks fa-lg"></i>대출내역</a></li>
+				<li><a href="point_deposit.dj">
+				<i class="fa fa-fw fa-money fa-lg"></i>충전/환급</a></li>
+				<li><a href="notification.dj">
+				<i class="fa fa-fw fa-bullhorn fa-lg"></i>알림메세지</a></li>
+				<li><a href="setting.dj">
+				<i class="fa fa-fw fa-gear fa-lg"></i>설정</a></li>
 			</ul>
 		</div>
 		
@@ -52,11 +50,11 @@ window.location="signIn.dj";
 			<!-- 좌측 -->
 			<div class="col-sm-12 col-md-8 contents-left">
 				<!-- 투자요약 -->
-				<div class="panel panel-default contents">
-					<div class="panel-heading">
-					<h3 class="panel-title">투자요약</h3>
+				<div class="box box-solid box-primary">
+					<div class="box-header">
+					<h3 class="box-title">투자요약</h3>
 					</div>
-					<div class="panel-body">
+					<div class="box-body">
 						<ul class="col-xs-6">
 							<li> 
 								<p class="title-edge">누적 투자금</p>
@@ -98,11 +96,11 @@ window.location="signIn.dj";
 				<!-- //투자요약 -->
 									
 				<!-- 대출요약 -->
-				<div class="panel panel-default contents">
-					<div class="panel-heading">
-					<h3 class="panel-title">대출요약</h3>
+				<div class="box box-solid box-primary ">
+					<div class="box-header">
+					<h3 class="box-title">대출요약</h3>
 					</div>
-					<div class="panel-body">
+					<div class="box-body">
 						<ul class="col-xs-6">
 							<li>
 								<p class="title-edge">누적 대출금</p>
@@ -145,17 +143,17 @@ window.location="signIn.dj";
 			<!-- 우측 -->
 			<div class="col-sm-12 col-md-4 contents-aside">
 				<!-- 가상계좌정보 -->
-				<div class="panel panel-default contents contents-right">
-					<div class="panel-heading">
-						<h3 class="panel-title">가상계좌 정보</h3>
+				<div class="box box-solid box-primary contents contents-right">
+					<div class="box-header">
+						<h3 class="box-title">가상계좌 정보</h3>
 					</div>
-					<div class="panel-body body-margin-bank text-center">
+					<div class="box-body body-margin-bank text-center">
 						<c:if test = "${infodto.randomacc == null}">
 						<button class="btn deposit" onclick="location.href='setting_cert_person.dj'">가상계좌 생성하기</button>							
 						</c:if>
 						<c:if test = "${infodto.randomacc != null}">
 						<div>보유 예치금</div>
-						<div>원</div> 
+						<div class="title-con"> <fmt:formatNumber value="${total }" pattern="#,###" />원</div> 
 						예금주 ${infodto.name} 
 						<hr>
 						${infodto.bankcode} ${infodto.randomacc}
@@ -165,20 +163,32 @@ window.location="signIn.dj";
 				<!-- //가상게좌정보 -->
                                           
                 <!-- 알림 메세지 -->
-				<div class="panel panel-default contents contents-right">
-					<div class="panel-heading">
-					<h3 class="panel-title">알림 메세지<a class="btn-box-more radius right" href="notification.dj">더보기</a></h3>
+				<div class="box box-solid  box-primary ">
+					<div class="box-header">
+					<h3 class="box-title">알림 메세지</h3><div class="box-tools"><a class="btn btn-sm" href="notification.dj" type="button">더보기</a></div>
 					</div>
-					<div class="panel-body timeline timeline-off">
+					<div class="box-body">
 					<c:if test="${count == 0 }">
 					    <div class="timeline-off-box"><span>메세지가 없습니다.</span></div>
 					</c:if>
-					<c:if test="${count != 0 }">
+					
+					 <ul class="timeline">
+					 
+					 	<li>
+					 		<div class="timeline-item">
+					 		<c:if test="${count != 0 }">
 						<c:forEach var="list" items="${list}">
-							<div>${list.m_content}</div>
-							<div>${list.m_time}</div>
-						</c:forEach>	
+					 		
+					 			<div class="timeline-body">${list.m_content}</div>
+					 				<span class="time">
+					 			<fmt:parseDate var="dateString" value="${list.m_time}" pattern="yyyy-MM-dd HH:mm:ss" />
+								<fmt:formatDate value="${dateString}" pattern="yy.MM.dd HH:mm" /></span>
+					 			</c:forEach>	
 					</c:if>
+					 		</div>
+					 	</li>
+					 </ul>
+					
 					</div>
 					</div>
 				<!-- //알림 메세지 -->	
@@ -186,6 +196,7 @@ window.location="signIn.dj";
 			<!-- 우측 -->		
 		</div>
 </div>		
-</section>
+</div><!-- container end -->
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body>
 </html>

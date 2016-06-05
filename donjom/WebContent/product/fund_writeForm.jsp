@@ -52,35 +52,35 @@
 						<label class="col-sm-2 control-label">이름</label>
 						<div class="col-sm-8">
 							<input type="text" name="memname" value="${sedto.name}"
-								class="form-control" >
+								class="form-control"  readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">생년월일</label>
 						<div class="col-sm-8">
 							<input type="text" name="membirth" value="${sedto.birth}"
-								class="form-control " >
+								class="form-control "  readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">성별</label>
 						<div class="col-sm-8">
 							<input type="text" name="sex" value="${sedto.gender}"
-								class="form-control " >
+								class="form-control "  readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">이메일 주소</label>
 						<div class="col-sm-8">
 							<input type="text" name="mememail" value="${email}"
-								class="form-control" >
+								class="form-control"  readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">휴대폰 번호</label>
 						<div class="col-sm-8">
 							<input type="text" name="memphone" value="${sedto.mobilenum}"
-								class="form-control" >
+								class="form-control"  readonly>
 						</div>
 					</div>
 					<div class="form-group">

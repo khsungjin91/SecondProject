@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import point.bean.PointDto;
 import result.bean.MessageDto;
 import sign.bean.memberDto;
 import sign.bean.sessionDto;
@@ -24,8 +25,9 @@ public class DashboardBean {
 	private ModelAndView mv;
 	
 	@RequestMapping("/dashboard.dj")
-	public ModelAndView Dashboard(HttpSession session,memberDto dto,SettingDto infodto, HttpServletRequest request){
+	public ModelAndView Dashboard(HttpSession session,memberDto dto,SettingDto infodto, HttpServletRequest request, PointDto pdto){
 		int count = 0;
+		long total = 0;
 		
 		String email = (String)session.getAttribute("memId");
 		
@@ -35,8 +37,9 @@ public class DashboardBean {
 		count = list.size();
 		
 		infodto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
-		
-		
+		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
+				
+		total = pdto.getTotal_ch() - pdto.getTotal_re();
 		
 		mv.addObject("infodto", infodto);
 		mv.addObject("list", list);
@@ -44,6 +47,7 @@ public class DashboardBean {
 		
 		dto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
 		
+		mv.addObject("total",total);
 		mv.addObject("count",count);
 		mv.addObject("dto", dto);
 		mv.setViewName("/profile/dashboard.jsp");

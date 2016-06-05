@@ -15,11 +15,11 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Effort', 'Amount given'],
-          ['My all',   1000],
+          ['My all',   1000], /* 수정해주세요~~ */
         ]);
 
         var options = {
-          colors : ['red','#000000'],
+          colors : ['skyblue','#000000'],
           pieHole: 0.8,
           pieSliceTextStyle: {
             color: 'black',
@@ -79,31 +79,26 @@ if(amount > mi){
 </head>
 <body>
  <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-	<div class="container">
-		<div class="content-header">
-			<h2>${dto.p_name}</h2>
-		</div>
+	<div class="container text-center">
+		<div class="content-header"><h2>${dto.p_name}</h2></div>
+			<form action="fund_ready.dj" method="post" name="userinput">
+				<div class="content-body">
+					<input type="hidden" name="email" value="${email}">
+						<table class="table">
+							<tr>
+								<td>상품코드</td>
+								<td>대출목적</td>
+								<td>남은시간</td>
+							</tr>
+							<tr>
+								<td>${dto.p_code}</td>
+								<td>${dto.p_category}</td>
+								<td>Time</td>
+							</tr>
+						</table>
 		
-		<div class="content-body">
-		<form action="fund_ready.dj" method="post" name="userinput">
-			<input type="hidden" name="email" value="${email}">
-			<div class="col-sm-12">
-				<div class="box box-primary">
-				<table class="table">
-					<tr>
-						<td>상품코드</td>
-						<td>대출목적</td>
-						<td>남은시간</td>
-					</tr>
-					<tr>
-						<td>${dto.p_code}</td>
-						<td>${dto.p_category}</td>
-						<td>Time</td>
-					</tr>
-				</table>
-			</div>
-			<div class="row">
-			<div class="col-sm-6">
+			
+		<div class="col-xs-12 col-sm-9">
 			<div class="box box-success">
 				<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
 				<input type="hidden" value="${dto.p_price}" name="p_price" id="p_price">
@@ -111,8 +106,10 @@ if(amount > mi){
 				<input type="hidden" value="${limit}" name="limit" id="limit">
 				<input type="hidden" value="${no}" name="no" id="no">
 				<input type="hidden" value="${dto.p_memeno}" name="p_memeno" id="p_memeno">
-		
-				대출신청내역
+		<div class="box-header">
+				<h4>대출신청내역</h4>
+				
+				</div>
 				<table class="table">
 					<tr>
 						<td>구분</td>
@@ -132,18 +129,19 @@ if(amount > mi){
 						<td>${dto.p_mrepay}만원</td>
 					</tr>
 					<tr>
-						<td colspan="6">대출목적</td>
+						<td >대출목적</td>
 					</tr>
 					<tr>
 						<td colspan="6">${dto.p_purpose}</td>
 					</tr>
 					<c:forEach var="conlist" items="${contentlist}">
 						<tr>
-							<td colspan="6">${conlist.p_content}</td>
+							<td colspan="6"><h3>컨텐츠</h3>${conlist.p_content}</td>
 						</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="6"><c:forEach var="filelist" items="${filelist}">
+						<td colspan="6"><h3>서류</h3>
+						<c:forEach var="filelist" items="${filelist}">
 								<a href="/donjom/file/${filelist.p_file}">${filelist.p_file}/</a>
 							</c:forEach></td>
 					</tr>
@@ -153,68 +151,58 @@ if(amount > mi){
 			</div>
 		
 </div>
-</div>
+
 </div>
 <!-- 그래프있는 오른쪽 메뉴 -->
-			<div class="col-sm-4 ">
+			<div class="col-xs-12 col-sm-3 right hidden-xs ">
 			<div class="box box-success">
 				<ul class="list-unstyled">
 					<li>
 					<div id="donut_single" ></div>
 					</li>
-					<li>${dto.p_invest}만원/${dto.p_price}만원</li>
 					<li>
-					<label>투자자 인원수</label>
-					<div>${dto.p_people}명</div>
+					<h3 ><b class="text-green">${dto.p_invest}만원/${dto.p_price}만원</b></h3>
 					</li>
+					
 					<li>
-					<label>상환방식</label>
-					<div>
+					<div>${dto.p_people}명 투자완료</div>
+					</li>
+					
+					<li><hr></li>
+					
+					<li><p class="title">상환방식</p>
+					<div><p class="title-con">
 						<c:if test="${dto.p_way == 0}">
 							<td>원리금 균등상환</td>
 						</c:if>
 						<c:if test="${dto.p_way == 1}">
 							<td>원금만기 일시상환</td>
-						</c:if>
+						</c:if></p>
 						</div>
 					</li>
-					<tr>
-						<td>수익률</td>
-					</tr>
-					<tr>
-						<td>${dto.p_rate}%</td>
-					</tr>
-					<tr>
-						<td>투자기간</td>
-					</tr>
-					<tr>
-						<td>${dto.p_term}개월</td>
-					</tr>
-					<c:if
-						test="${dto.p_success == 'doing' &&  check == 0 && When.When == 1}">
-						<tr>
-							<td>투자금액</td>
-						</tr>
-						<tr>
-							<td><input type="text" name="amount" id="amount">만원</td>
-						</tr>
+					
+					<li><p class="title">수익률</p>
+					<p class="title-con">${dto.p_rate}%</p>
+					</li>
+					<li><p class="title">투자기간</p>
+					<p class="title-con">${dto.p_term}개월</p></li>
+					
+					<c:if test="${dto.p_success == 'doing' &&  check == 0 && When.When == 1}">
+						<li><p class="title">투자금액</p></li>
+						<li><div class="input-group">
+						<input type="text" name="amount" id="amount" class="form-control">
+						<div class="input-group-addon">만원</div>
+						</div></li>
 					</c:if>
-					<tr>
-						<td>펀딩기간 : 1주일</td>
-					</tr>
-					<c:if
-						test="${dto.p_success == 'doing' && check == 0 && When.When == 1}">
-						<tr>
-							<td>최대투자가능금액</td>
-						</tr>
-						<tr>
-							<td>${limit}만원</td>
-						</tr>
+					
+						<li><p class="title">펀딩기간 : 1주일</p><br/></li>
+					
+					<c:if test="${dto.p_success == 'doing' && check == 0 && When.When == 1}">
+						<li><p class="title">최대투자 가능금액 :</p>
+						<span class="text-green"> ${limit}</span>만원</li><br/>
 					</c:if>
-					<tr>
-						<td>상환일 : 매월${dto.p_repayday}일 + 5일</td>
-					</tr>
-					<tr>
+					<li><p>상환일 : 매월${dto.p_repayday}일 + 5일</p></li>
+					
 						<c:if test="${dto.p_success == 'doing' && When.When == 0}">
 							<c:if test="${dto.p_success == 'doing' && When.WhenTUS == 2}">
 								<script type="text/javascript">
@@ -253,33 +241,29 @@ if(amount > mi){
 						<c:if test="${When.When == 1}">
 
 							<c:if test="${dto.p_success == 'doing' && check == 0}">
-								<td><input type="submit" value="투자미리보기"
-									onclick="return Check()"></td>
+								<li><input type="submit" value="투자미리보기" class="btn btn-lg bg-green"	onclick="return Check()"></li>
 							</c:if>
 
 							<c:if test="${dto.p_success == 'doing' && check != 0}">
-								<td><input type="button" value="투자완료"></td>
+								<li><input type="button" value="투자완료" class="btn btn-lg bg-red"></li>
 							</c:if>
 
 						</c:if>
 
 						<c:if
 							test="${dto.p_success == 'success' || dto.p_success == 'refunds' || dto.p_success == 'overend' }">
-							<td><input type="button" value="펀딩성공"></td>
+							<li><input type="button" value="펀딩성공" class="btn btn-lg bg-green"></li>
 						</c:if>
 
 						<c:if test="${dto.p_success == 'fail'}">
-							<td><input type="button" value="펀딩실패"></td>
+							<li><input type="button" value="펀딩실패" class="btn btn-lg bg-red"></li>
 						</c:if>
-
-					</tr>
-
-				</ul>
+</ul>
 				</div>
 			</div>
 		</form>
 		</div>
-	</div>
+
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body>
 </html>

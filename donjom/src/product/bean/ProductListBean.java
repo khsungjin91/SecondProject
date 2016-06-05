@@ -18,9 +18,12 @@ public class ProductListBean {
 	
 	@RequestMapping("/fundList_total.dj")
 	public ModelAndView productList(){
+		String fundcount;
 		
 		List list = sqlMap.queryForList("productList", null);
+		fundcount = (String)sqlMap.queryForObject("productborrow", null);
 		
+		mv.addObject("fundcount",fundcount);
 		mv.addObject("list", list);
 		mv.setViewName("/product/fund_list.jsp");
 		return mv;

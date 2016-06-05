@@ -5,6 +5,7 @@
 <%@ page import = "java.sql.PreparedStatement"%>
 <%@ page import = "java.sql.ResultSet"%>
 <%@ page import = "point.bean.PointDto" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <title>welcome to DonJom</title>
@@ -107,14 +108,19 @@ $('#loan-cal').on('shown.bs.modal', function () {
          <c:if test="${sessionScope.memId != null}">
             
             <ul class="nav navbar-nav navbar-right">
+             
+                    
+             
              <li>
               <a href="notification.dj">
              <c:if test="${count != 0}">
-             <!-- 석모형 알람이미지 --><div id="alram-icon"><i class="fa fa-fw fa-check-circle"></i>	</div> 
+             <!-- 석모형 알람이미지 -->
+             <span class="label label-danger"><i class="fa fa-fw fa-check-circle"></i></span>	
              </c:if>
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            </li>
-             <li><a href="#" class="hidden-sm">예치금 <%=total %>원</a></li>
+             <li><a href="#" class="hidden-sm">예치금 
+           <fmt:formatNumber value="<%=total %>" pattern="#,###" />원</a></li>
            
        <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->

@@ -17,8 +17,30 @@
 					 <a href="fundList_total.dj" type="button" class="btn btn-lg">부동산</a>
 					 <a href="fundList_total.dj" type="button" class="btn btn-lg">담보대출</a>
 		</section>
+		
 				<hr>
+				<div class="content-header">
+					<ul class="list-inline text-center">
+					<li><h4>총 ${fundcount } 개의 상품이 있습니다.</h4></li>
+					<li><div class="btn-group " >
+						<button type="button" class="btn btn-default btn-flat" data-toggle="dropdown" aria-expended="false">
+						전체<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li class="active"><a href="#">전체 <span class="badge bg-aqua">${fundcount }</span></a> </li>
+							 <li ><a href="#">상환중 <span class="badge">0</span></a></li>
+							<li><a href="#">상환완료<span class="badge bg-green">0</span></a></li>
+							<li><a href="#">연체<span class="badge bg-yellow">0</span></a></li>
+							<li><a href="#">부도<span class="badge bg-red">0</span></a></li>
+							
+						</ul>
+						</div>
+						</li>
+						</ul>
+					
+					<br/>
 				
+				</div>
 				<div class="content-body">
 					<c:forEach var="list" items="${list}">
 				<div class="col-md-4">

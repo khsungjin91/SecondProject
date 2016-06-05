@@ -6,3 +6,12 @@
  *{margin:0; padding:0;}
  *htm{height:1px;} 
  
+.title{font-size:14px; color:#999; font-weight: 400; margin-bottom:-1px; }
+.title-con{font-size:24px; color:#555; font-weight: 700; margin-bottom:10px; letter-spacing: -1px;}
+.user-nick{font-size:26px; color:#555; font-weight: 700; margin-bottom:0px; letter-spacing: -1px;}
+.user-info{margin-top:30px;}
+.dash-menu{font-size: 16px; color: #555; font-weight: 200; line-height: 2.2;  }
+.dash-menu li {border-bottom:1px solid #e7e7e7;  padding:8px;}
+.dash-menu li a{ width: 140px; height: 30px; display: block; color:#000000;}
+.dash-menu li a:HOVER{font-weight:600; color:#008000;}
+.dash-body{margin:30px;}
