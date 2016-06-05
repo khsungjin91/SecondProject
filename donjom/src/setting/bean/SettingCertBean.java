@@ -1,6 +1,8 @@
 package setting.bean;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -157,5 +159,28 @@ public class SettingCertBean {
 			return mv;
 		}
 		
+		@RequestMapping("/change_bank.dj")
+		public ModelAndView changebank(){
+			
+			mv.setViewName("/profile/change_bank.jsp");
+			return mv;
+		}
+		
+		@RequestMapping("/gochange.dj")
+		public ModelAndView change(String bankcode ,String bankaccnum,HttpSession session){
+			String email = (String)session.getAttribute("memId");
+			int no = (Integer)sqlMap.queryForObject("getno", email);
+			
+			Map map = new HashMap();
+			
+			map.put("no", no);
+			map.put("bankcode", bankcode);
+			map.put("bankaccnum", bankaccnum);
+			
+			sqlMap.update("changebank", map);
+			
+			mv.setViewName("/profile/bankbody.jsp");
+			return mv;
+		}
 		
 }

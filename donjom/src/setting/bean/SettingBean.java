@@ -24,7 +24,7 @@ public class SettingBean {
 	@Autowired
 	private ModelAndView mv;
 	
-	@RequestMapping("setting.dj")
+	@RequestMapping("/setting.dj")
 	public ModelAndView settingForm(HttpSession session,memberDto getDto){
 		
 	String email = (String)session.getAttribute("memId");
@@ -35,13 +35,18 @@ public class SettingBean {
 		mv.setViewName("/profile/setting.jsp");
 		return mv;
 	}
+
 	
-	@RequestMapping("/upProfile.dj")
-	public ModelAndView profileup(MultipartHttpServletRequest request,HttpSession session,memberDto dto)throws Exception{
-		int setting = 0;
-		MultipartFile mf = null;
+	@RequestMapping("/signup_modifyPro.dj")
+	public ModelAndView settingPro(MultipartHttpServletRequest request,String pw,String newpw,HttpSession session,memberDto ModiDto)
+		throws Exception{
 		
+		MultipartFile mf = null;
+		int setting = 0; // signup_modifiPro 경로
+		int x = 1; //singError 경로표시
 		String email = (String)session.getAttribute("memId");
+		String mempw = (String)sqlMap.queryForObject("findPw", email);
+		int no = (Integer)sqlMap.queryForObject("getno", email);
 		
 		mf = request.getFile("save");
 		
@@ -49,34 +54,18 @@ public class SettingBean {
 		
 		System.out.println(orgname);
 		
-		dto.setEmail(email);
-		dto.setProfile(orgname);
+		if(orgname.equals("")){}else{
+		ModiDto.setEmail(email);
+		ModiDto.setProfile(orgname);
 		
-		sqlMap.update("modifyprofile", dto);
+		sqlMap.update("modifyprofile", ModiDto);
 		
 		String path = request.getServletContext().getRealPath("")+"//save//";
 		
 		File copy = new File(path + orgname);
 		
 		mf.transferTo(copy);
-		
-		mv.addObject("setting", setting);
-		mv.setViewName("/signup/signup_modifyPro.jsp");
-		return mv;
-	}
-	
-	
-	
-	@RequestMapping("signup_modifyPro.dj")
-	public ModelAndView settingPro(String pw,String newpw,HttpSession session,memberDto ModiDto)
-		throws Exception{
-		
-		String email = (String)session.getAttribute("memId");
-		String mempw = (String)sqlMap.queryForObject("findPw", email);
-		int no = (Integer)sqlMap.queryForObject("getno", email);
-	
-		int setting = 0; // signup_modifiPro 경로
-		int x = 1; //singError 경로표시
+		}
 	
 		if(pw.equals(mempw)){			
 			
@@ -120,6 +109,50 @@ public class SettingBean {
 		mv.setViewName("/signup/signup_modifyPro.jsp");
 		return mv;
 	}
+	
+	
+	@RequestMapping("/deleteimg.dj")
+	public ModelAndView delete(HttpSession session){
+		
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		
+		sqlMap.update("deleteimg", no);
+		
+		mv.setViewName("/profile/deleteimg.jsp");
+		return mv;
+	}
+	
+	
+	/*upload jquery 실패
+	 * 
+	 * @RequestMapping("/upload.dj")
+	public ModelAndView profileup(MultipartHttpServletRequest request,HttpSession session,memberDto dto)throws Exception{
+		System.out.println("1");
+		int setting = 0;
+		MultipartFile mf = null;
+		
+		String email = (String)session.getAttribute("memId");
+		
+		mf = request.getFile("save");
+		
+		String orgname = mf.getOriginalFilename();
+		
+		dto.setEmail(email);
+		dto.setProfile(orgname);
+		
+		sqlMap.update("modifyprofile", dto);
+		
+		String path = request.getServletContext().getRealPath("")+"//save//";
+		
+		File copy = new File(path + orgname);
+		
+		mf.transferTo(copy);
+		
+		mv.addObject("setting", setting);
+		mv.setViewName("/signup/signup_modifyPro.jsp");
+		return mv;
+	}*/
 
 
 }

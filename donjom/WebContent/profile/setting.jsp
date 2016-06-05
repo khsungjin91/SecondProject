@@ -9,7 +9,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/fragment/common-css.jsp" />
 <jsp:include page="/WEB-INF/fragment/common-js.jsp" />
+<style type="text/css">
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+
+</style>
 <title>Insert title here</title>
+
 <script>
 
 function checkIt(){
@@ -61,29 +75,54 @@ function open_win_noresizable (url, name) {
 
 </script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery.form.js"></script>
 <script>
 function upload(){
 	
-	alert("1");
-	  var formData = new FormData();
-	  alert("2"); 
-	  formData.append("save", $("#save")[0].files[0]);
-	  alert("3"); 
+	  var form = $("#save")[0];
+		alert(form)
+	  var formData = new FormData(form);
 	$.ajax({
-		type : "post",
-		url : "/donjom/upProfile.dj",
+		url : "/donjom/upload.dj",
 		data : {
 			save : formData
 		},
 		processData: false,
   	    contentType: false,
+		type : "post",
 		success : function test(data){ alert("good"); },
 		error : function error(){ alert("error"); }
 		
 	});
-	alert("4"); 
+	alert("end"); 
 }
 
+
+function deleteimg(){
+	
+	$.ajax({
+		
+		type:"post",
+		url:"/donjom/deleteimg.dj",
+		success : function test(data){ $("#img").html(data); },
+		error : function error(){ alert("error"); }
+	});
+	
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+function view(html, $target) {
+    if (html.files && html.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $target.css('display', '');
+            //$target.css('background-image', 'url(\"' + e.target.result + '\")'); // 배경으로 지정시
+            $target.html('<img src="' + e.target.result + '" border="0" width="150"  alt="review" />');
+        }
+        reader.readAsDataURL(html.files[0]);
+    }
+}
 </script>
 </head>
 <body>
@@ -163,18 +202,30 @@ window.location="signIn.dj";
 				 </div>
 				</div>		
 				
-			<div class="form-group">
+			<div id="img" class="form-group">
 				 <label class="col-xs-2 control-label">프로필사진수정</label>
+				 
 				 <div class="col-xs-5">
 				<c:if test="${dto.profile == null}">			
- 					<input type="file" name="save" id="save" style="" onchange="upload()">		
+ 					<input type="file" name="save" id="save" onchange="view(this,$('#imgreview'))">
+ 					<div id="imgreview"></div>		
+				</c:if>
+				<c:if test="${dto.profile != null}">	
+					<input type="hidden" value="${dto.profile}" name="profile">	
+					<img src="/donjom/save/${dto.profile}" width="150"> 
+					<input type="button" value="이미지삭제" onclick="deleteimg()">
+				</c:if> 
+				 </div>
+				 
+				<!--  <div class="col-xs-5">
+				<c:if test="${dto.profile == null}">			
+ 					<input type="file" name="save" id="save" onchange="upload()">		
 				</c:if>
 				<c:if test="${dto.profile != null}">	
 					<input type="hidden" value="${dto.profile}" name="profile">	
 					<img src="/donjom/save/${dto.profile}" width="100"> 
-					<input type="file" name="save" id="save" style="" onchange="upload()">			
 				</c:if> 
-				 </div>
+				 </div> -->
 			</div>	
 			<hr>
 			

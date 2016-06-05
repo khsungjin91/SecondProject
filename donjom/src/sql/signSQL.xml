@@ -87,6 +87,10 @@
 						where p_code = #i_pcode#  
 </update>
 
+<update id="changebank" parameterClass="java.util.Map">
+	update memberinfo set bankcode=#bankcode#,bankaccnum=#bankaccnum# where no=#no#
+</update>
+
 <delete id="deleteEmail" parameterClass="signDto">
 	delete from member where email=#email#
 </delete>
@@ -94,5 +98,9 @@
 <delete id="delete_i" parameterClass="java.util.Map">
 	delete from invest where i_memnum = #no# and i_pcode=#p_code#
 </delete>
+
+<update id="deleteimg" parameterClass="int">
+	update member set profile='' where no = #no#
+</update>
 
 </sqlMap>

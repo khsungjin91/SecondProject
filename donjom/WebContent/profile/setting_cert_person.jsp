@@ -35,7 +35,18 @@ $(document).ready(function(){
   function whenError(){
       alert("Error");
   }
-
+  
+  
+  function changeAcc(){
+	  
+	 	$.ajax({
+	 		type: "post",
+	 		url:"/donjom/change_bank.dj",
+	 		success: function bank(a){ $("#changehere").html(a); },
+	 		error : whenError
+	 	});
+  }
+ 	
   
   function check(){
 	  
@@ -120,11 +131,9 @@ window.location="signIn.dj";
 <c:if test="${memdto.confirm == 1}">
 메일인증완료상태입니다.			<br/>
 </c:if>
-휴대폰번호	<input type="text" name="mobilenum" value="${dto.mobilenum}" disabled="disabled">		<br/>
-<!-- ajax 사용 -->
-은행명	<input type="text" name="bankcode" value="${dto.bankcode}" disabled="disabled">			<br/>
-계좌번호	<input type="text" name="bankaccnum" value="${dto.bankaccnum}" disabled="disabled">		<br/>
-<input type="button" value="은행 및 계좌 변경" onclick="">											<br/>
+휴대폰번호	<input type="text" name="mobilenum" value="${dto.mobilenum}" disabled="disabled">		
+<!-- ajax 사용 은행 정보만 바뀌게 해놨음 -->
+<jsp:include page="/profile/bankbody.jsp"></jsp:include>
 </c:if>
 
 <!-- 입력안한경우  -->
@@ -145,7 +154,7 @@ window.location="signIn.dj";
 <c:if test="${memdto.confirm == 1}">
 메일인증완료상태입니다.																					<br/>
 </c:if>														
-휴대폰번호	<input type="text" name="mobilenum" id="mobilenum" maxlength="11">													<br/>
+휴대폰번호	<input type="text" name="mobilenum" id="mobilenum" maxlength="11">						<br/>
 은행명 <select name="bankcode" id="bankcode">
 	<option value="신한은행">신한은행</option>
 	<option value="우리은행">우리은행</option>
@@ -153,21 +162,21 @@ window.location="signIn.dj";
 	<option value="기업은행">기업은행</option>
 	<option value="국민은행">국민은행</option>
 	<option value="하나은행">하나은행</option>
-	</select>													<br/>
-계좌번호	<input type="text" name="bankaccnum" id="bankaccnum">													<br/>
+	</select>																					<br/>
+계좌번호	<input type="text" name="bankaccnum" id="bankaccnum">									<br/>
 <input type="submit" value="입력완료" onclick="return check()">									<br/>
 </form>
 </c:if>
-※ 23:30~01:00 사이에는 은행 전산망 점검 시간으로 이용에 제한이 있을수 있습니다.											<br/>
+※ 23:30~01:00 사이에는 은행 전산망 점검 시간으로 이용에 제한이 있을수 있습니다.										<br/>
 ※ 환급계좌 변경은 SMS 본인인증 후 가능합니다																	<br/><br/>
 
 <!-- 주민등록번호와 주소 입력 구간 -->
 
 투자자 원천징수 정보																					<br/>
 ※ 투자를 하시려면 아래 정보를 입력하시기 바랍니다.	
-<!-- 입력한 경우 -->															<br/>
+<!-- 입력한 경우 -->																				<br/>
 <c:if test="${dto.socialnum != null}">
-주민등록번호<input type="text" name="socialnum" value="${socialnum}" disabled="disabled">		<br/>
+주민등록번호<input type="text" name="socialnum" value="${socialnum}" disabled="disabled">			<br/>
 주소		<input type="text" name="address" value="${dto.address}" disabled="disabled">			<br/>
 </c:if>
 
@@ -175,7 +184,7 @@ window.location="signIn.dj";
 <c:if test="${dto.socialnum == null}">
 <form action="setting_detail_pro.dj" method="post">
 주민등록번호<input type="text" name="socialnum" maxlength="13"> &nbsp; 예)8910121234567				<br/>
-주소		<input type="text" name="address">	&nbsp; 예) 서울시 강남구 역삼동	230-10					<br/>
+주소		<input type="text" name="address">	&nbsp; 예) 서울시 강남구 역삼동	230-10						<br/>
 <input type="submit" value="입력완료">																<br/>
 </form>
 </c:if>
