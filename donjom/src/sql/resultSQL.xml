@@ -82,7 +82,7 @@
 </select>
 
 <insert id="refunds_insert" parameterClass="java.util.Map">
-	insert into refunds values(refunds_seq.nextval,#p_code#,#times#,sysdate)
+	insert into refunds values(refunds_seq.nextval,#no#,#p_code#,#total#,#times#,sysdate)
 </insert>
 
 <update id="completeinvest" parameterClass="registerDto">

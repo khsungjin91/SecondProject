@@ -70,7 +70,7 @@ public class SignUpBean {
 	@RequestMapping("/check_Email.dj")
 	public ModelAndView Emailcheck(String email){
 		int check = -1;
-		System.out.println(email);
+	
 		if(email.equals("")){
 			
 		}else{

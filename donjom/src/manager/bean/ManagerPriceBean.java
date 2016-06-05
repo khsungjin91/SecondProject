@@ -151,13 +151,18 @@ public class ManagerPriceBean {
 		dto.setP_code(p_code);
 		
 		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
+		int refunds_times = (Integer)sqlMap.queryForObject("result.minno", str);
+		
 		int term = Integer.parseInt(dto.getP_term()); 
 			
+		//상품에 투자한 투자자들의 이메일List 를 가져온다.
 		List email = sqlMap.queryForList("get_invest_email", p_code);
+		//투자자들의 투자금액List 를 가져온다.
 		List price = sqlMap.queryForList("refunds_price", p_code);
 		
 		int [] investmoney = new int[price.size()];
 		int [] total = new int[price.size()];
+		
 		
 		if(dto.getP_way().equals("0")){
 			
@@ -178,8 +183,11 @@ public class ManagerPriceBean {
 					
 					map.put("no", no);
 					map.put("refundmoney", total[i]);
+					map.put("times", refunds_times);
+					map.put("p_code", p_code);
 					
-					sqlMap.update("refunds_start", map);
+					sqlMap.insert("result.refunds_insert", map); // refundsDB에 들어가는
+					sqlMap.update("refunds_start", map);// 상환금을 투자자들에게 뿌린다.	
 				}
 				
 		}else if(dto.getP_way().equals("1")){
@@ -193,23 +201,23 @@ public class ManagerPriceBean {
 					
 					map.put("no", no);
 					map.put("refundmoney", total[i]);
+					map.put("times", refunds_times);
+					map.put("p_code", p_code);
 					
-					sqlMap.update("refunds_start", map);
+					sqlMap.insert("result.refunds_insert", map); // refundsDB에 들어가는
+					sqlMap.update("refunds_start", map);// 상환금을 투자자들에게 뿌린다.	
 					}
 		}
-		
-		int refunds_times = (Integer)sqlMap.queryForObject("result.minno", str);
-		
-		map.put("p_code", p_code);
-		map.put("times", refunds_times);
+	
 		map.put("str", str);
 		
-		sqlMap.insert("result.refunds_insert", map);
-		sqlMap.update("result.back_update", map);
-		sqlMap.update("result.fundingup", map);
+		sqlMap.insert("result.refunds_insert", map); // refundsDB에 들어가는	
+		sqlMap.update("result.back_update", map); // 상품개인DB에  back을 1로 만들어준다.
+		sqlMap.update("result.fundingup", map); // 투자자들이 볼 수 있도록 회차를 늘려준다.
 		
 		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
 		
+		//만약 상환회차와 지금까지한 상환회차가 같으면 상환종료를 알린다.
 		if(dto.getP_funding().equals(dto.getP_term())){
 			
 			sqlMap.update("result.changeEnd", p_code);

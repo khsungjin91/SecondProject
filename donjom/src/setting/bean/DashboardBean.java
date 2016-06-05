@@ -36,13 +36,13 @@ public class DashboardBean {
 		
 		infodto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		
+		
+		
 		mv.addObject("infodto", infodto);
 		mv.addObject("list", list);
 		}
 		
 		dto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
-		
-		
 		
 		mv.addObject("count",count);
 		mv.addObject("dto", dto);

@@ -59,7 +59,6 @@ public class InvestHistoryBean {
 		String investmoney = dto.getI_invest();
 		int investmoney2 = Integer.parseInt(investmoney+"0000");
 		
-		//
 		String times = String.valueOf(investmoney2);;
 		
 		//환급되야할수

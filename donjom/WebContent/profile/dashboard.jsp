@@ -18,6 +18,12 @@
 </head>
 <body>
 
+<c:if test="${sessionScope.memId == null }">
+<script type="text/javascript">
+window.location="signIn.dj";
+</script>
+</c:if>
+
 	<section class="profile-detail">
 	<div class="container profile-wrap">
 		<div class="col-sm-3 mobile-profile-nav">
@@ -148,7 +154,11 @@
 						<button class="btn deposit" onclick="location.href='setting_cert_person.dj'">가상계좌 생성하기</button>							
 						</c:if>
 						<c:if test = "${infodto.randomacc != null}">
-						${infodto.randomacc}
+						<div>보유 예치금</div>
+						<div>원</div> 
+						예금주 ${infodto.name} 
+						<hr>
+						${infodto.bankcode} ${infodto.randomacc}
 						</c:if>
 					</div>
 				</div>
