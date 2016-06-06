@@ -9,8 +9,8 @@
 				<li><a href="#" type="button">이용약관</a></li>
 				<li><a href="#" type="button">개인정보취급방침</a></li>
 				<li><a href="#" type="button">투자이용약관</a></li>
-				<li><a href="#" type="button">도움말</a></li>
-				<li><a href="#" type="button">공지사항</a></li>
+				<li><a href="help_faq.dj" type="button">도움말</a></li>
+				<li><a href="notice.dj" type="button">공지사항</a></li>
 			</ul>
 				
 			</div>

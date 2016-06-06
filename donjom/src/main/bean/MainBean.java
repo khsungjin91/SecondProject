@@ -41,4 +41,9 @@ public class MainBean {
 		return mv;
 	}
 
+	@RequestMapping("/test.dj")
+	public ModelAndView test(){
+		mv.setViewName("/main/test.jsp");
+		return mv;
+	}
 }

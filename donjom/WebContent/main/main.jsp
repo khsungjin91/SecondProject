@@ -174,37 +174,114 @@
 
 	<!-- Features Section -->
 	<div class="container">
+	<div class="row">
+	<div class="col-lg-12">
+	<h3 class="box-header text-center">돈좀 언론이야기</h3>
+	</div>
+	</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="page-header">Modern Business Features</h2>
+				<h3 class="box-header text-center">돈좀 대표 고객사들 </h3>
+				<hr>
 			</div>
-			<div class="col-md-6"></div>
-			<div class="col-md-6">
-				<img class="img-responsive" src="http://placehold.it/700x450" alt="">
-			</div>
+			
+            <div id="myCarousel1" class="carousel slide">
+                <!-- Carousel items -->
+                
+                <div class="carousel-inner">
+                <br>
+                    <div class="item active">
+                        <div class="row">
+                             <div class="col-xs-2">
+                     			 <img src="image/ta-logo-1.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-2.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>5조<br> 어벤져스</p></div>
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>4조<br> 화상채팅</p></div>
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>1조<br> 마이웹</p></div>
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>3조<br> 서울가유</p></div>
+							 </div>
+							 
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                             <div class="col-xs-2">
+                     			 <img src="image/ta-logo-1.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-2.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-3.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-4.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-5.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-4.gif" alt="Image" class="img-responsive">
+							 </div>
+                            
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                </div>
+                <!--/carousel-inner--> 
+                <a class="left carousel-control" href="#myCarousel1" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+ 				<a class="right carousel-control" href="#myCarousel1" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+ 
+
+            </div>
+            <!--/myCarousel-->
+        </div>
+        
+      
 		</div>
 		<!-- /.row -->
-	</div>
+
 	<hr>
 
 	<!-- Call to Action Section -->
+  <div class="container">
+                        <div class="row">
+                             <div class="col-xs-2">
+                     			 <img src="image/cooperate_escrow.png" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/cooperate_linewalks.png" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/cooperate_paygate.png" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/cooperate_ssl.png" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/top_logo.jpg" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" > <p>2조 DONJOM</p></div>
+							 </div>
+                            
+                        </div>
+                        <!--/row-->
+                    </div>
 
-	<div class="row">
-		<div class="col-md-12 ">
-			<div class="col-md-8 col-md-offset-2">
-				<ul class="list-inline">
-					<li><img src="image/cooperate_escrow.png"></li>
-					<li><img src="image/cooperate_linewalks.png"></li>
-					<li><img src="image/cooperate_paygate.png"></li>
-					<li><img src="image/cooperate_ssl.png"></li>
-					<li><img src="image/top_logo.jpg"></li>
-				</ul>
-			</div>
-		</div>
-		<!-- <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
-                </div> -->
-	</div>
 
 
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
