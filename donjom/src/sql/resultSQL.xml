@@ -26,11 +26,11 @@
 </select>
 
 <select id="remmitance_before" resultClass="registerDto">
-	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success != 'refunds' order by p.no desc
+	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success != 'refunds' and p.p_success != 'overend' order by p.no desc
 </select>
 
 <select id="remmitance_after" resultClass="registerDto">
-	select * from product p,memberinfo m where p.p_memeno = m.no and p.p_success = 'refunds' order by p.no desc
+	select * from (select * from product where p_success = 'refunds' or p_success = 'overend') p ,memberinfo m  where p.p_memeno = m.no order by p.no desc
 </select>
 
 <select id="refunds_ing" resultClass="registerDto">
