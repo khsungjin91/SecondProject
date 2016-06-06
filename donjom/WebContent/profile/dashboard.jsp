@@ -145,7 +145,7 @@
 				<!-- 가상계좌정보 -->
 				<div class="box box-solid box-primary contents contents-right">
 					<div class="box-header">
-						<h3 class="box-title">가상계좌 정보</h3>
+						<h3 class="box-title">가상계좌 정보</h3><div class="box-tools"><a class="btn btn-sm" href="point_deposit.dj" type="button">환급하기</a></div>
 					</div>
 					<div class="box-body body-margin-bank text-center">
 						<c:if test = "${infodto.randomacc == null}">

@@ -1547,6 +1547,10 @@ p {
 	white-space: nowrap
 }
 
+.text-lineheight{
+	line-height: 2;
+	
+}
 .text-lowercase {
 	text-transform: lowercase
 }
@@ -1682,7 +1686,7 @@ dl {
 }
 
 dd, dt {
-	line-height: 1.42857143
+	line-height: 2
 }
 
 dt {
@@ -1699,12 +1703,12 @@ dd {
 		width: 160px;
 		overflow: hidden;
 		clear: left;
-		text-align: right;
+		text-align: left;
 		text-overflow: ellipsis;
 		white-space: nowrap
 	}
 	.dl-horizontal dd {
-		margin-left: 180px
+		margin-left: 100px
 	}
 }
 

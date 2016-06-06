@@ -119,7 +119,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
              </c:if>
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            </li>
-             <li><a href="#" class="hidden-sm">예치금 
+             <li><a href="point_deposit.dj" class="hidden-sm">예치금 
            <fmt:formatNumber value="<%=total %>" pattern="#,###" />원</a></li>
            
        <li class="dropdown user user-menu">

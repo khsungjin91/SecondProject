@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import setting.bean.SettingDto;
+import sign.bean.memberDto;
 
 @Controller
 public class PointBean {
@@ -19,7 +20,7 @@ public class PointBean {
 	private ModelAndView mv;
 	
 	@RequestMapping("/point_deposit.dj")
-	public ModelAndView pointDeposit(PointDto pdto,SettingDto dto,HttpSession session){
+	public ModelAndView pointDeposit(PointDto pdto,SettingDto dto,HttpSession session, memberDto mdto){
 		long total = 0;
 		String email = (String)session.getAttribute("memId");
 		
@@ -28,11 +29,13 @@ public class PointBean {
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
 		pdto = (PointDto)sqlMap.queryForObject("get_total", no);
-			
+		mdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);	
+		
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
 		}
 	
 		mv.addObject("total",total);
+		mv.addObject("mdto", mdto);
 		mv.addObject("dto", dto);
 		mv.setViewName("/point/point_deposit.jsp");
 		return mv;
