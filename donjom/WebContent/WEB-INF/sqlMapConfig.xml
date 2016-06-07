@@ -5,6 +5,7 @@
 
 	<settings  useStatementNamespaces="true" />
 	
+	<sqlMap resource="/sql/mainSQL.xml"/>
 	<sqlMap resource="/sql/signSQL.xml"/>
 	<sqlMap resource="/sql/managerSQL.xml"/>
 	<sqlMap resource="/sql/pointSQL.xml"/>

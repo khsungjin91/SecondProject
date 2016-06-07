@@ -17,7 +17,7 @@
 	select * from borrow where no=#no#
 </select>
 
-<select id="product_count" resultClass="String">
+<select id="product_count" resultClass="int">
 	select count(*) from product
 </select>
 
@@ -45,8 +45,16 @@
 	select * from product where p_category=#category#
 </select>
 
-<select id="another_count" resultClass="String">
+<select id="another_count" resultClass="int">
 	select count(*) from product where p_category=#category#
+</select>
+
+<select id="success_sort" resultClass="int" parameterClass="String">
+	select count(*) from product where p_success=#status#
+</select>
+
+<select id="success2_sort" resultClass="int" parameterClass="java.util.Map">
+	select count(*) from product where p_category=#category# and p_success=#status#
 </select>
 
 <statement id="createTable"  parameterClass="String">

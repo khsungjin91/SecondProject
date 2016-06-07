@@ -1,6 +1,8 @@
 package product.bean;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -18,30 +20,35 @@ public class ProductListBean {
 	
 	@RequestMapping("/fundList.dj")
 	public ModelAndView productList(String category){
-		String fundcount = "";
-		String [] status = {"refunds","fail","overend"};
+		Map map = new HashMap();
+		int fundcount = 0;
+		String [] status = {"refunds","overend","fail"};
+		String [] status_jsp = {"상환중","상환완료","부도"};
 		int [] status_count = new int[status.length];
 		List list = null;
 		
-		System.out.println(category);
-		
 		if(category == null){
 		list = sqlMap.queryForList("productList", null);
-		fundcount = (String)sqlMap.queryForObject("product_count", null);
+		fundcount = (Integer)sqlMap.queryForObject("product_count", null);
 		
 		for(int i = 0; i < status.length ; i++){
-		status_count[i] = (Integer)sqlMap.queryForObject("", status[i]);
+		status_count[i] = (Integer)sqlMap.queryForObject("success_sort", status[i]);
 		}
 		
 		}else{
 		list = sqlMap.queryForList("list_another", category);
-		fundcount = (String)sqlMap.queryForObject("another_count", category);
+		fundcount = (Integer)sqlMap.queryForObject("another_count", category);
 		
 		for(int i = 0; i < status.length ; i++){
-			status_count[i] = (Integer)sqlMap.queryForObject("", status[i]);
+			map.put("status",status[i]);
+			map.put("category",category);
+			status_count[i] = (Integer)sqlMap.queryForObject("success2_sort", map);
 		}
 		}
 		
+		mv.addObject("refunds", status_count[0]);
+		mv.addObject("overend", status_count[1]);
+		mv.addObject("fail", status_count[2]);
 		mv.addObject("list", list);
 		mv.addObject("fundcount",fundcount);
 		mv.setViewName("/product/fund_list.jsp");

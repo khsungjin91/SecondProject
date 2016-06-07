@@ -68,8 +68,12 @@
 			data-slide="next"> <span class="icon-next"></span>
 		</a>
 	</header>
-
-
+<ul>
+<li>평균이자율(연) : ${avg_interest}%</li>
+<li>누적 대출액 : ${accumulate_loan}원</li>
+<li>누적상환액 : 0원</li>
+<li>부도율 : ${fail_avg}%</li>
+</ul>
 	<!-- Page Content -->
 	<div class="container">
 

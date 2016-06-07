@@ -36,14 +36,28 @@ public class MainBean {
 		//상품리스트 
 		List list = sqlMap.queryForList("productList", null);
 		
+		
+		int total_interest = (Integer)sqlMap.queryForObject("product_count", null);
+		//평균이자율  = 전체 이자율의 합 / product전체 count
+		float interest_count = Float.parseFloat((String) sqlMap.queryForObject("sum_interest", null));
+		float avg_interest = interest_count/total_interest;
+		
+		//누적대출액 = borrow 에서 success 한 금액의 전체합
+		String accumulate_loan = (String)sqlMap.queryForObject("sum_borrow", null) + "0000";
+		
+		//누적상환액 = refunds 에서  i_money의 전체 합
+		//long accumulate_refunds = (Long)sqlMap.queryForObject("", null);
+		
+		//부도율 = product전체 count / product 에서 success의 fail 값
+		int fail_count = (Integer)sqlMap.queryForObject("fail_count", null);
+		float fail_avg = (float)fail_count/(float)total_interest;
+		
+		
+		mv.addObject("fail_avg", fail_avg);
+		mv.addObject("accumulate_loan", accumulate_loan);
+		mv.addObject("avg_interest", avg_interest);
 		mv.addObject("list",list);
 		mv.setViewName("/main/main.jsp");
-		return mv;
-	}
-
-	@RequestMapping("/test.dj")
-	public ModelAndView test(){
-		mv.setViewName("/main/test.jsp");
 		return mv;
 	}
 }

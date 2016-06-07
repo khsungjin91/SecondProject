@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap>
+	
+<select id="sum_interest" resultClass="String">
+	select sum(p_rate) from product
+</select>	
 
-	<typeAlias alias="dto" type="DTO"/>
+<select id="fail_count" resultClass="int">
+	select count(*) from product where p_success='fail'
+</select>
 	
-	<select id="" resultClass="" parameterClass="">
-	
-	</select>
-	
-	<insert id="" parameterClass="">
-	
-	</insert>
+<select id="sum_borrow" resultClass="String">
+	select sum(br_sum) from borrow where success='success'
+</select>	
 
-	<delete id="" parameterClass="">
-	
-	</delete>
-	
-	<update id="" parameterClass="">
-	
-	</update>
-	
+<select id="distinct_count" resultClass="int">
+	select count(*) from (select distinct i_memnum from invest)
+</select>
+
 </sqlMap>

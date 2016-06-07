@@ -28,10 +28,10 @@
 						</button>
 						<ul class="dropdown-menu" role="menu">
 							<li class="active"><a href="#">전체 <span class="badge bg-aqua">${fundcount}</span></a> </li>
-							 <li ><a href="#">상환중 <span class="badge">0</span></a></li>
-							<li><a href="#">상환완료<span class="badge bg-green">0</span></a></li>
+							 <li ><a href="#">상환중 <span class="badge">${refunds}</span></a></li>
+							<li><a href="#">상환완료<span class="badge bg-green">${overend}</span></a></li>
 							<li><a href="#">연체<span class="badge bg-yellow">0</span></a></li>
-							<li><a href="#">부도<span class="badge bg-red">0</span></a></li>
+							<li><a href="#">부도<span class="badge bg-red">${fail}</span></a></li>
 							
 						</ul>
 						</div>
