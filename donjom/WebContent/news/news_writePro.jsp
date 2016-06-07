@@ -8,10 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="list" items="${list}">
+	
 	<table border="1">
 		<tr>
-			<td> <img src="/donjom/image/${list.image}"/> </td>
+			<td> <img src="/donjom/newssave/${list.image}"/> </td>
 		</tr>
 		<tr>
 			<td> ${list.sitename} </td>
@@ -27,7 +27,7 @@
 		</tr>
 
 	</table>
-	</c:forEach>
+	
 	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_writePro.dj'">
 	<input type="reset" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
 </body>

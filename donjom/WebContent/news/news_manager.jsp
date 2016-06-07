@@ -16,10 +16,9 @@
 	
 	<form action="news_write.dj" method="post">
 	<table border="1">
-	<c:forEach var="list" items="${list}" >
+	
 		<tr>
-		<!-- 	<td><img src="/donjom/image/${list.image}"/> </td> --> 
-			
+			<td><img src="/donjom/newssave/${list.image}"/> </td> 
 		</tr>
 		<tr>
 			<td> ${list.sitename} </td>
@@ -37,7 +36,7 @@
 			<tr>
 				<td> 등록된 게시물이 없습니다.</td>
 		</c:if>
-		</c:forEach>
+		
 		
 	</table>
 	<input type="submit" value="뉴스 올리기">

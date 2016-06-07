@@ -11,7 +11,7 @@
 <table border="1">
 	<c:forEach var="list" items="${list}">
 		<tr>
-			<td><img src="/donjom/image/${list.image}"/></td>
+			<td><img src="/donjom/newssave/${list.image}"/></td>
 		</tr>
 		<tr>
 			<td>${list.sitename}</td>

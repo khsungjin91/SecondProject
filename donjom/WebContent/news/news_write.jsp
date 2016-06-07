@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +13,8 @@
 	<input type="text" name="serch">
 	<input type="button" value="검색">
 	
-	<form action="news_writePro.dj" method="post" enctype="multipatr/form-data">
+	<!--  <form action="news_writePro.dj" method="post" enctype="multipatr/form-data"> -->
+	<form name="newsForm" action="<c:url value="/news_writePro.dj"/>" method="post" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<td> 뉴스이미지 </td>
