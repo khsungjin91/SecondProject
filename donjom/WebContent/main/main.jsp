@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -68,12 +69,16 @@
 			data-slide="next"> <span class="icon-next"></span>
 		</a>
 	</header>
-<ul>
-<li>평균이자율(연) : ${avg_interest}%</li>
-<li>누적 대출액 : ${accumulate_loan}원</li>
-<li>누적상환액 : 0원</li>
-<li>부도율 : ${fail_avg}%</li>
-</ul>
+	<div class="container-fulid text-center bg-green-active color-palette">
+		<ul class="title-conul list-inline">
+			<li>
+			<div class="title-main">평균이자율(연)</div> ${avg_interest}%</li>
+			<li><div class="title-main">누적 대출액</div><fmt:formatNumber value="${accumulate_loan}" pattern="#,###" /> 원</li>
+			<li><div class="title-main">누적상환액</div> 0원</li>
+			<li><div class="title-main">부도율</div> ${fail_avg}%</li>
+		</ul>
+	</div>
+
 	<!-- Page Content -->
 	<div class="container">
 
@@ -85,17 +90,22 @@
 			<!-- card section part -->
 			<c:forEach var="list" items="${list}">
 				<div class="col-md-4">
-					<div class="box box-success">
+					<div class="box box-solid box-primary ">
 						<div class="box-header with-border">
-							<a href="fundView.dj?p_code=${list.p_code}" type="button"
-								class="btn btn-block btn-lg">${list.p_name}</a>
+							<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name}</a>
 						</div>
-						<a href="fundView.dj?p_code=${list.p_code}">
-							<div class="box-body">
-								<strong>${list.p_name}</strong><br> ${list.p_purpose}
-								<hr>
-								<p class="money">
-								목표 ${list.p_price}<span>만원</span> 연 ${list.p_rate}%<span>수익률</span>
+						
+							<div class="box-body link-aa">
+							 
+							<a href="fundView.dj?p_code=${list.p_code}"></a>
+								
+								<div class="title-pr">${list.p_name}</div>
+								<div class="title-pr-con"> ${list.p_purpose}</div>
+								<hr >
+								<div class="link-pd">
+								<span class="title-con">
+								목표 ${list.p_price}</span><span class="title">만원</span> 
+								<span class="title-con">연 ${list.p_rate}%</span><span class="title">수익률</span>
 								</p>
 								<p class="rate">
 									<span class="txt-point purpose"> ${list.p_category}</span> <span
@@ -103,9 +113,9 @@
 									<span class="level">등급 <span class="txt-point">D1</span></span>
 								</p>
 							</div>
-						</a>
-						<div class="progress progress-sm">
-							<div class="progress-bar progress-bar-warning" role="progressbar" style="width:${list.p_invest/list.p_price*100}%"></div>
+						
+						<div class=" progress progress-sm">
+							<div class="progress-bar progress-bar-info" role="progressbar" style="width:${list.p_invest/list.p_price*100}%"></div>
 						</div>
 						<div class="progress-detail">
 							<ul class="list-inline">
@@ -121,6 +131,7 @@
 										<strong>펀딩실패</strong>
 									</c:if></li>
 							</ul>
+						</div>
 						</div>
 					</div>
 				</div>

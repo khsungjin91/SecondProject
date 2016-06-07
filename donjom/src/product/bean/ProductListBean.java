@@ -55,5 +55,10 @@ public class ProductListBean {
 		return mv;
 	}
 
+	@RequestMapping("/ex.dj")
+	private ModelAndView exfund(){
+		mv.setViewName("/product/fund_practice.jsp");
+		return mv;
+	}
 
 }
