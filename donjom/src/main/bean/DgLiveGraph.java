@@ -1,5 +1,8 @@
 package main.bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -16,7 +19,8 @@ public class DgLiveGraph {
 	
 	@RequestMapping("/DJlive.dj")
 	public ModelAndView graph(){
-		
+		Map map = new HashMap();
+		InterastGraph ig = new InterastGraph();
 		String investmoney_total = (String)sqlMap.queryForObject("total_invest_money", null)+"0000";
 		String borrowmoney_total = (String)sqlMap.queryForObject("sum_borrow", null)+"0000";
 		int total_interest = (Integer)sqlMap.queryForObject("product_count", null);
@@ -50,7 +54,9 @@ public class DgLiveGraph {
 		int fail_count = (Integer)sqlMap.queryForObject("fail_count", null);
 		float fail_avg = (float)fail_count/(float)total_interest;
 				
-				
+		map = ig.interast(sqlMap);
+		
+		mv.addObject("map", map);
 		mv.addObject("acc_br_person", acc_br_person);
 		mv.addObject("borrow_avg", borrow_avg);
 		mv.addObject("investperson_total", investperson_total);

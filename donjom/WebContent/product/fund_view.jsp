@@ -7,30 +7,99 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
 <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Effort', 'Amount given'],
-          ['My all',   1000], /* 수정해주세요~~ */
-        ]);
+FusionCharts.ready(function(){
+    var fusioncharts = new FusionCharts({
+    type: 'hled',
+    renderAt: 'chart',
+    width: '250',
+    height: '100',
+    dataFormat: 'json',
+    dataSource: {
+        "chart": {
+            "lowerLimit": "0",
+            "upperLimit": "100",
+            "lowerLimitDisplay": "Empty",
+            "upperLimitDisplay": "Full",
+            "numberSuffix": "%",
+            "origW": "200",
+            "origH": "100",
+            "theme": "fint"
+        },
+        //All annotations are grouped under this element
+        "annotations": {
+            "showbelow": "1",
+        },
+        "colorRange": {
+            "color": [{
+                "minValue": "0",
+                "maxValue": "100",
+                "code": "#68D168"
+            }]
+        },
+        "value": "50"
+    },
+    "events": {
+        "drawComplete": function(evt, arg) {
+            var i,
+                //Annotation
+                annotations = evt.sender.annotations,
+                //Value
+                val = evt.sender.getData(),
+                //Color Range Array
+                crArr = evt.sender.args.dataSource.colorRange.color;
 
-        var options = {
-          colors : ['skyblue','#000000'],
-          pieHole: 0.8,
-          pieSliceTextStyle: {
-            color: 'black',
-            fontSize : '20'
-          },
-          legend: 'none'
-        };
+            for (i = crArr.length - 1; i >= 0; i--) {
+                //When value falls within the color range
+                if (val >= crArr[i].minValue && val <= crArr[i].maxValue) {
+                    annotations.update('bgRectAngle', {
+                        "fillColor": crArr[i].code
+                    });
+                }
+            }
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-        chart.draw(data, options);
-      }
+        }
+    }
+
+}
+);
+    fusioncharts.render();
+});
+
+FusionCharts.ready(function(){
+	    var fusioncharts = new FusionCharts({
+	    type: 'angulargauge',
+	    renderAt: 'chart-container',
+	    width: '250',
+	    dataFormat: 'json',
+	    dataSource: {
+	        "chart": {
+	            "lowerLimit": "0",
+	            "upperLimit": "100",
+	            "gaugeStartAngle": "90",
+	            "gaugeEndAngle": "-630",
+	            "theme": "fint"
+	        },
+	        "colorRange": {
+	            "color": [{
+	                "minValue": "0",
+	                "maxValue": "100",
+	                "code": "#ffffff"
+	            }]
+	        },
+	        "dials": {
+	            "dial": [{
+	                "value": "50"
+	            }]
+	        }
+	    }
+	}
+	);
+	    fusioncharts.render();
+	});
  
 function Check(){
 	
@@ -158,7 +227,8 @@ if(amount > mi){
 			<div class="box box-success">
 				<ul class="list-unstyled">
 					<li>
-					<div id="donut_single" ></div>
+					 <div id="chart-container"></div>
+					  <div id="chart"></div>
 					</li>
 					<li>
 					<h3 ><b class="text-green">${dto.p_invest}만원/${dto.p_price}만원</b></h3>

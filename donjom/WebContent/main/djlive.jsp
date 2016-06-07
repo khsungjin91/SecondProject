@@ -6,28 +6,139 @@
 <title>Radar points</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/radar.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/patterns.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
+<script type="text/javascript">
 
-
-<style type="text/css">
-#chartdiv {
-	width		: 400px;
-	height		: 300px;
-	font-size	: 11px;
+  FusionCharts.ready(function(){
+    var fusioncharts = new FusionCharts({
+    type: 'radar',
+    renderAt: 'container',
+    width: '500',
+    height: '380',
+    dataFormat: 'json',
+    dataSource: {
+    	
+        "chart": {
+            "caption": "등급별분포",
+            "numberPreffix": "$",
+            "theme": "fint",
+            "radarfillcolor": "#ffffff"
+        },
+        "categories": [{
+            "category": [{
+                "label": "1등급 | V1"
+            }, {
+                "label": "2등급 | V2"
+            }, {
+                "label": "3등급 | V3"
+            }, {
+                "label": "4등급 | V4"
+            }, {
+                "label": "5등급 | V5"
+            },{
+                "label": "6등급 | V6"
+            }]
+        }],
+        "dataset": [{
+            "seriesname": "신용등급",
+            "data": [{
+                "value": '${avg_interest}'
+            }, {
+                "value": "20"
+            }, {
+                "value": "50"
+            }, {
+                "value": "70"
+            }, {
+                "value": "10"
+            }, {
+                "value": "30"
+            }]
+        }, {
+            "seriesname": "DJ등급",
+            "data": [{
+                "value": "300"
+            }, {
+                "value": "50"
+            }, {
+                "value": "10"
+            }, {
+                "value": "40"
+            }, {
+                "value": "50"
+            }, {
+                "value": "70"
+            }]
+        }]
+    }
 }
-#chartdiv2 {
-	width		: 400px;
-	height		: 300px;
-	font-size	: 11px;
-	margin-left: 100px;
-}			
+);
+    fusioncharts.render();
+});
+  
+  
+  
+  FusionCharts.ready(function(){
+	    var fusioncharts = new FusionCharts({
+	    type: 'radar',
+	    renderAt: 'chart',
+	    width: '500',
+	    height: '350',
+	    dataFormat: 'json',
+	    dataSource: {
+	    	
+	        "chart": {
+	            "caption": "금리별 분포",
+	            "numberPreffix": "$",
+	            "theme": "fint",
+	            "radarfillcolor": "#ffffff"
+	        },
+	        "categories": [{
+	            "category": [{
+	                "label": "5~6.9%"
+	            }, {
+	                "label": "7~8.9%"
+	            }, {
+	                "label": "9~10.9%"
+	            }, {
+	                "label": "11~12.9%"
+	            }, {
+	                "label": "13~14.9%"
+	            }, {
+	                "label": "15% 이상"
+	            }]
+	        }],
+	        "dataset": [{
+	            "data": [{
+	                "value": '${map.first}'
+	            }, {
+	                "value": '${map.second}'
+	            }, {
+	                "value": '${map.thirth}'
+	            }, {
+	                "value": '${map.forth}'
+	            }, {
+	                "value": '${map.fifth}'
+	            }, {
+	                "value": '${map.sixth}'
+	            }]
+	        }]
+	    }
+	}
+	);
+	    fusioncharts.render();
+	});
+ 
+</script>
+<style>
 #chartdiv3 {
 	width	: 100%;
 	height	: 500px;
-}						
+}	
 </style>
 </head>
 <body>
@@ -57,215 +168,191 @@
 <td>${invest_count}</td>
 </tr>
 </table>
-
-	<div style="width: 70%; margin: 0 auto">
-	<div id="chartdiv" style="float: left;">?</div>
-	<div id="chartdiv2" style="float: right;">?</div>
-	</div>
-	<div id="chartdiv3" style="">?</div>
-	  <div id="chart"></div>    
+	<div style="width: 70%; margin: 0 auto; ">
+ 		<div id="container" style="float: left"></div>
+  		<div id="chart" style="float: right"></div>
+  	</div>
+	<div id="chartdiv3" style="padding-top:  50px">?</div>
+</body>
+ 
 <script>
-var chart = AmCharts.makeChart( "chartdiv2", {
-	  "type": "radar",
-	  "theme": "none",
-	  "dataProvider": [ {
-	    "country": "Czech Republic",
-	    "litres": 156.9
-	  }, {
-	    "country": "Ireland",
-	    "litres": 131.1
-	  }, {
-	    "country": "Germany",
-	    "litres": 115.8
-	  }, {
-	    "country": "Australia",
-	    "litres": 109.9
-	  }, {
-	    "country": "Austria",
-	    "litres": 108.3
-	  }, {
-	    "country": "UK",
-	    "litres": 99
-	  } ],
-	  "valueAxes": [ {
-	    "minimum": 0,
-	    "axisAlpha": 0.15
-	  } ],
-	  "startDuration": 5,
-	  "graphs": [ {
-	    "balloonText": "[[value]] litres of beer per year",
-	    "bullet": "round",
-	    "valueField": "litres"
-	  } ],
-	  "titles": [
-	             {
-	               "size": 20,
-	               "text": "금리별 분포"
-	  } ],
-	  "categoryField": "country",
-	  "export": {
-	    "enabled": true
-	  }
-	} );
-	
-	
-var chart = AmCharts.makeChart( "chartdiv", {
-	  "type": "radar",
-	  "theme": "none",
-	  "dataProvider": [ {
-	    "Level": "1등급 | V1",
-	    "litres": 156.9
-	  }, {
-	    "Level": "2등급 | V2",
-	    "litres": 131.1
-	  }, {
-	    "Level": "3등급 | V3",
-	    "litres": 115.8
-	  }, {
-	    "Level": "4등급 | V4",
-	    "litres": 109.9
-	  }, {
-	    "Level": "5등급 | V5",
-	    "litres": 108.3
-	  }, {
-	    "Level": "6등급 | V6",
-	    "litres": 99
-	  } ],
-	  "valueAxes": [ {
-	    "minimum": 0,
-	    "axisAlpha": 0.15
-	  } ],
-	  "startDuration": 5,
-	  "graphs": [ {
-		"title": "Graph title",
-	    "balloonText": "[[value]] test",
-	    "bullet": "round",
-	    "valueField": "litres"
-	  } ],
-	  "titles": [
-	             {
-	               "size": 15,
-	               "text": "등급별 분포도"
-	  } ],
-	  "categoryField": "Level",
-	  "export": {
-	    "enabled": true
-	  }
-	} );
-	
 	
 var chart = AmCharts.makeChart("chartdiv3", {
     "type": "serial",
-    "theme": "patterns",
-    "legend": {
-        "useGraphSettings": true
-    },
+    "theme": "light",
+    "marginRight": 80,
+    "marginTop": 17,
+    "autoMarginOffset": 20,
     "dataProvider": [{
-        "year": 1930,
-        "italy": 1,
-        "germany": 5,
-        "uk": 3
+        "date": "2015-04",
+        "사업자": 20,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1934,
-        "italy": 1,
-        "germany": 2,
-        "uk": 6
+        "date": "2015-05",
+        "사업자": 75,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1938,
-        "italy": 2,
-        "germany": 3,
-        "uk": 1
+        "date": "2015-06",
+        "사업자": 15,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1950,
-        "italy": 3,
-        "germany": 4,
-        "uk": 1
+        "date": "2015-07",
+        "사업자": 75,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1954,
-        "italy": 5,
-        "germany": 1,
-        "uk": 2
+        "date": "2015-08",
+        "사업자": 158,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1958,
-        "italy": 3,
-        "germany": 2,
-        "uk": 1
+        "date": "2015-09",
+        "사업자": 57,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1962,
-        "italy": 1,
-        "germany": 2,
-        "uk": 3
+        "date": "2015-10",
+        "사업자": 107,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1966,
-        "italy": 2,
-        "germany": 1,
-        "uk": 5
+        "date": "2015-11",
+        "price": 89,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1970,
-        "italy": 3,
-        "germany": 5,
-        "uk": 2
+        "date": "2015-12",
+        "사업자": 75,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1974,
-        "italy": 4,
-        "germany": 3,
-        "uk": 6
+        "date": "2016-01",
+        "사업자": 132,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }, {
-        "year": 1978,
-        "italy": 1,
-        "germany": 2,
-        "uk": 4
+        "date": "2016-02",
+        "사업자": 158,
+        "매출담보": 500,
+        "개인" : 250,
+        "부동산" : 1000
+    }, {
+        "date": "2016-03",
+        "사업자": 56,
+        "매출담보": 104,
+        "개인" : 455,
+        "부동산" : 2000
+    }, {
+        "date": "2016-04",
+        "사업자": 169,
+        "매출담보": 424,
+        "개인" : 475,
+        "부동산" : 354
+    }, {
+        "date": "2016-05",
+        "사업자": 24,
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
+    }, {
+        "date": "2016-06",
+        "사업자": 147, 
+        "매출담보": 20,
+        "개인" : 40,
+        "부동산" : 50
     }],
     "valueAxes": [{
-        "integersOnly": true,
-        "maximum": 6,
-        "minimum": 1,
-        "reversed": true,
-        "axisAlpha": 0,
-        "dashLength": 5,
-        "gridCount": 10,
-        "position": "left",
-        "title": "Place taken"
+        "logarithmic": true,
+        "dashLength": 1,
+        "guides": [{
+            "dashLength": 6,
+            "inside": true,
+            "label": "average",
+            "lineAlpha": 1,
+            "value": 90.4
+        }],
+        "position": "left"
     }],
-    "startDuration": 0.5,
     "graphs": [{
-        "balloonText": "place taken by Italy in [[category]]: [[value]]",
         "bullet": "round",
-        "hidden": true,
-        "title": "Italy",
-        "valueField": "italy",
-		"fillAlphas": 0
-    }, {
-        "balloonText": "place taken by Germany in [[category]]: [[value]]",
+        "id": "g1",
+        "bulletBorderAlpha": 1,
+        "bulletColor": "#FFFFFF",
+        "bulletSize": 7,
+        "lineThickness": 2,
+        "title": "사업자",
+        "type": "smoothedLine",
+        "useLineColorForBulletBorder": true,
+        "valueField": "사업자"
+    },{
         "bullet": "round",
-        "title": "Germany",
-        "valueField": "germany",
-		"fillAlphas": 0
-    }, {
-        "balloonText": "place taken by UK in [[category]]: [[value]]",
+        "id": "g2",
+        "bulletBorderAlpha": 1,
+        "bulletColor": "#FFFFFF",
+        "bulletSize": 7,
+        "lineThickness": 2,
+        "title": "매출담보",
+        "type": "smoothedLine",
+        "useLineColorForBulletBorder": true,
+        "valueField": "매출담보"
+    },{
         "bullet": "round",
-        "title": "United Kingdom",
-        "valueField": "uk",
-		"fillAlphas": 0
+        "id": "g3",
+        "bulletBorderAlpha": 1,
+        "bulletColor": "#FFFFFF",
+        "bulletSize": 7,
+        "lineThickness": 2,
+        "title": "개인",
+        "type": "smoothedLine",
+        "useLineColorForBulletBorder": true,
+        "valueField": "개인"
+    },{
+        "bullet": "round",
+        "id": "g4",
+        "bulletBorderAlpha": 1,
+        "bulletColor": "#FFFFFF",
+        "bulletSize": 7,
+        "lineThickness": 2,
+        "title": "부동산",
+        "type": "smoothedLine",
+        "useLineColorForBulletBorder": true,
+        "valueField": "부동산"
     }],
     "chartCursor": {
-        "cursorAlpha": 0,
-        "zoomable": false
+        "valueLineEnabled": true,
+        "valueLineBalloonEnabled": true,
+        "valueLineAlpha": 0.5,
+        "fullWidth": true,
+        "cursorAlpha": 0.05
     },
-    "categoryField": "year",
+    "dataDateFormat": "YYYY-MM",
+    "categoryField": "date",
     "categoryAxis": {
-        "gridPosition": "start",
-        "axisAlpha": 0,
-        "fillAlpha": 0.05,
-        "fillColor": "#000000",
-        "gridAlpha": 0,
-        "position": "top"
+        "parseDates": true
     },
     "export": {
-    	"enabled": true,
-        "position": "bottom-right"
-     }
+        "enabled": true
+    }
 });
+
+chart.addListener("dataUpdated", zoomChart);
+
+function zoomChart() {
+	 chart.zoomToDates(new Date(2015, 4), new Date(2016, 6));
+}
 
 	
 </script>

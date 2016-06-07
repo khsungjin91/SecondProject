@@ -15,7 +15,7 @@
 	<sqlMap resource="/sql/pageSQL.xml"/>
 	<sqlMap resource="/sql/noticeSQL.xml"/>
 	<sqlMap resource="/sql/helpSQL.xml"/>
-	
+	<sqlMap resource="/sql/graphSQL.xml"/>
 	
 	
 </sqlMapConfig>

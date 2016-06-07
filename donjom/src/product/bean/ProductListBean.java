@@ -33,6 +33,7 @@ public class ProductListBean {
 		
 		for(int i = 0; i < status.length ; i++){
 		status_count[i] = (Integer)sqlMap.queryForObject("success_sort", status[i]);
+
 		}
 		
 		}else{
@@ -43,6 +44,7 @@ public class ProductListBean {
 			map.put("status",status[i]);
 			map.put("category",category);
 			status_count[i] = (Integer)sqlMap.queryForObject("success2_sort", map);
+	
 		}
 		}
 		
