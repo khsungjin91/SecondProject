@@ -18,4 +18,16 @@
 	select count(*) from (select distinct i_memnum from invest)
 </select>
 
+<select id="distinct_br_count" resultClass="int">
+	select count(*) from (select distinct memno from borrow)
+</select>
+
+<select id="total_invest_money" resultClass="String">
+	select sum(i_invest) from invest
+</select>
+
+<select id="all_count" resultClass="int">
+	select count(*) from invest
+</select>
+
 </sqlMap>
