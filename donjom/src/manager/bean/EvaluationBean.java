@@ -23,7 +23,7 @@ public class EvaluationBean {
 	@Autowired
 	private ModelAndView mv;
 	
-	//대출완료list (심사하는곳)
+	//대출완료list (심사된 list)
 	@RequestMapping("/manager_evaluation.dj")
 	public ModelAndView managerevaluation(){
 		List list= sqlMap.queryForList("evaluation", null);
@@ -37,7 +37,15 @@ public class EvaluationBean {
 
 		return mv;
 	}
-	
+	// 심사평 상세보기 
+	@RequestMapping("/manager_econtents.dj")
+	public ModelAndView managerecontents(){
+		
+		
+		
+		mv.setViewName("/manager/manager_econtents.jsp");
+		return mv;
+	}
 	
 	//심사평작성
 	@RequestMapping("/manager_evaluation_write.dj")
