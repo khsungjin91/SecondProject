@@ -93,7 +93,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="loan_step1.dj" class="navbar-link"><b>대출JOM</b></a></li>
-			<li><a href="fundList_total.dj" ><b>투자JOM</b></a></li>
+			<li><a href="fundList.dj" ><b>투자JOM</b></a></li>
 			<li><a href="DJlive.dj" ><b>상태JOM</b></a></li>
 			<li><a href="ex.dj" class="hidden-sm"><b>연습JOM</b></a></li>
 			<li><a href="#" data-target="#loan-cal"  data-toggle="modal" class="hidden-sm"><b>계산기JOM</b></a></li>

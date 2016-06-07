@@ -41,6 +41,10 @@
 	select count(*) from borrow where memno=#no# and success='none'
 </select>
 
+<select id="list_anoter" resultClass="registerDto" parameterClass="String">
+	select * from product where p_category=#category#
+</select>
+
 <statement id="createTable"  parameterClass="String">
 	create table dj_$str$(
 		no number(38) primary key,

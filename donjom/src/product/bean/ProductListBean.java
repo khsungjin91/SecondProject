@@ -16,18 +16,25 @@ public class ProductListBean {
 	@Autowired
 	private ModelAndView mv;
 	
-	@RequestMapping("/fundList_total.dj")
-	public ModelAndView productList(){
+	@RequestMapping("/fundList.dj")
+	public ModelAndView productList(String category){
 		String fundcount;
+		List list = null;
 		
-		List list = sqlMap.queryForList("productList", null);
-		fundcount = (String)sqlMap.queryForObject("productborrow", null);
+		System.out.println(category);
 		
-		mv.addObject("fundcount",fundcount);
+		if(category == null){
+		list = sqlMap.queryForList("productList", null);
+		}else{
+		list = sqlMap.queryForList("list_anoter", category);
+		}
+		
 		mv.addObject("list", list);
+		fundcount = (String)sqlMap.queryForObject("productborrow", null);
+		mv.addObject("fundcount",fundcount);
 		mv.setViewName("/product/fund_list.jsp");
 		return mv;
 	}
-	
+
 
 }

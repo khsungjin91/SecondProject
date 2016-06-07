@@ -11,11 +11,11 @@
 <div class="warpper">
 	<div class="container">
 		 <section class="content-header">
-					 <a href="fundList_total.dj" type="button" class="btn btn-lg">전체</a>
-					 <a href="fundList_total.dj" type="button" class="btn btn-lg">사업자</a>
-					 <a href="fundList_total.dj" type="button" class="btn btn-lg">개인신용</a>
-					 <a href="fundList_total.dj" type="button" class="btn btn-lg">부동산</a>
-					 <a href="fundList_total.dj" type="button" class="btn btn-lg">담보대출</a>
+					 <a href="fundList.dj" type="button" class="btn btn-lg">전체</a>
+					 <a href="fundList.dj?category=b" type="button" class="btn btn-lg">사업자</a>
+					 <a href="fundList.dj?category=p" type="button" class="btn btn-lg">개인신용</a>
+					 <a href="fundList.dj?category=r" type="button" class="btn btn-lg">부동산</a>
+					 <a href="fundList.dj?category=c" type="button" class="btn btn-lg">담보대출</a>
 		</section>
 		
 				<hr>
@@ -27,7 +27,7 @@
 						전체<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li class="active"><a href="#">전체 <span class="badge bg-aqua">${fundcount }</span></a> </li>
+							<li class="active"><a href="#">전체 <span class="badge bg-aqua">${fundcount}</span></a> </li>
 							 <li ><a href="#">상환중 <span class="badge">0</span></a></li>
 							<li><a href="#">상환완료<span class="badge bg-green">0</span></a></li>
 							<li><a href="#">연체<span class="badge bg-yellow">0</span></a></li>
