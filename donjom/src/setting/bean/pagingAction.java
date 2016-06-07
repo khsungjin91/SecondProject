@@ -56,16 +56,22 @@ public class pagingAction {
 
 		if (currentPage > blockPage) {
 			if(paging == 0){
-		pagingHtml.append("<a href=setting_session_history.dj?currentPage="
+				pagingHtml.append("<a href=setting_session_history.dj?currentPage="
 				+ (startPage - 1) +">");
 			}else if(paging == 1){
-		pagingHtml.append("<a href=notification.dj?currentPage="
+				pagingHtml.append("<a href=notification.dj?currentPage="
 				+ (startPage - 1) +">");
 			}else if(paging == 2){
 				pagingHtml.append("<a href=manager_member.dj?currentPage="
 						+ (startPage - 1) +">");
 			}else if(paging == 3){
 				pagingHtml.append("<a href=manager_noconfirm.dj?currentPage="
+						+ (startPage - 1) +">");
+			}else if(paging == 4){
+				pagingHtml.append("<a href=manager_evaluation.dj?currentPage="
+						+ (startPage - 1) +">");
+			}else if(paging == 5){
+				pagingHtml.append("<a href=manager_borrowmn.dj?currentPage="
 						+ (startPage - 1) +">");
 			}
 			pagingHtml.append("이전");
@@ -86,14 +92,18 @@ public class pagingAction {
 				pagingHtml.append("</font></b>");
 			} else {
 				if(paging == 0){
-				pagingHtml.append("&nbsp;<a href='setting_session_history.dj?currentPage=");
+					pagingHtml.append("&nbsp;<a href='setting_session_history.dj?currentPage=");
 				}else if(paging == 1){
-				pagingHtml.append("&nbsp;<a href='notification.dj?currentPage=");
+					pagingHtml.append("&nbsp;<a href='notification.dj?currentPage=");
 				}else if(paging == 2){
 					pagingHtml.append("&nbsp;<a href='manager_member.dj?currentPage=");
 				}else if(paging == 3){
 					pagingHtml.append("&nbsp;<a href='manager_noconfirm.dj?currentPage=");
-				}					
+				}else if(paging == 4){
+					pagingHtml.append("&nbsp;<a href='manager_evaluation.dj?currentPage=");
+				}else if(paging == 5){
+					pagingHtml.append("&nbsp;<a href='manager_borrowmn.dj?currentPage=");
+				}				
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -119,7 +129,13 @@ public class pagingAction {
 			}else if(paging == 3){
 				pagingHtml.append("<a href='manager_noconfirm.dj?currentPage="
 						+ (endPage + 1) + ">");
-			}
+			}else if(paging == 4){
+				pagingHtml.append("<a href='manager_evaluation.dj?currentPage="
+						+ (endPage + 1) + ">");
+			}else if(paging == 5){
+				pagingHtml.append("<a href='manager_borrowmn.dj?currentPage="
+						+ (endPage + 1) + ">");
+			}		
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 			}

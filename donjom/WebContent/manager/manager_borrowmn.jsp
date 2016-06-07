@@ -219,6 +219,7 @@
 									</td>
 								</tr>
 							</c:forEach>
+							<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
 						</table>
 
 					</div>

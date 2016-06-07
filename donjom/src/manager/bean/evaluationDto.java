@@ -2,7 +2,7 @@ package manager.bean;
 
 public class evaluationDto {
 	private String e_memid,e_memname,e_document,e_result,e_content,e_cphave,e_cpfile;
-	private int e_doccount;
+	private int e_doccount,no;
 	
 	public String getE_content() {
 		return e_content;
@@ -34,6 +34,8 @@ public class evaluationDto {
 	public void setE_result(String e_result) {this.e_result = e_result;	}
 	public int getE_doccount() {return e_doccount;	}
 	public void setE_doccount(int e_doccount) {this.e_doccount = e_doccount;}
+	public int getNo() {return no;}
+	public void setNo(int no) {	this.no = no;}
 	
 	
 }

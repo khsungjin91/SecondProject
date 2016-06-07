@@ -42,10 +42,10 @@ public class ManagerMember {
 			}else{currentPage = 1;}
 			
 			int totalCount = list.size();
-			String paginHtml  = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
+			String pagingHtml  = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 			List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
 			
-			mv.addObject("pagingHtml",paginHtml);
+			mv.addObject("pagingHtml",pagingHtml);
 			mv.addObject("setting",setting);
 			mv.addObject("list",pagelist);
 			mv.setViewName("/manager/manager_noconfirm.jsp");
@@ -55,7 +55,7 @@ public class ManagerMember {
 		//일반회원 검색
 		@RequestMapping("/noconfirm_search.dj")
 		public ModelAndView noconfirm_search(HttpServletRequest request,String noconfirm,String search){
-			String pagecurrent = request.getParameter("currentPage");//우선여기까지
+			String pagecurrent = request.getParameter("currentPage");
 			
 			int setting = 2;
 			int currentPage = 1;

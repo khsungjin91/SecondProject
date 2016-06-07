@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,23 +10,21 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/admin-slider.jsp" />
-<div class="content-wrapper">
+	<div class="content-wrapper">
 		<div class="container">
 			<div class="row">
 				<!-- Content Header (Page header) -->
 				<div class="content-header">
-					<h1>
-						평가 완료 리스트 
-					</h1>
+					<h1>평가 완료 리스트</h1>
 					<ol class="breadcrumb">
 						<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 						<li class="active">평가완료리스트</li>
 					</ol>
 				</div>
 			</div>
-			</div>
-			<hr>
-			</div>
+		</div>
+		<hr>
+	</div>
 	<div class="container">
 		<div class="box box-success">
 			<table class="table table-bordered">
@@ -47,9 +46,19 @@
 						<tr>
 							<td>${list.mememail}</td>
 							<td>${list.memname}</td>
-							<td>${list.br_object}</td>
+							<td>
+							<c:choose>
+								<c:when test="${fn:length(list.br_object) > 14}">
+									<c:out value="${fn:substring(list.br_object,0,13)}" />....
+         						</c:when>
+								<c:otherwise>
+									<c:out value="${list.br_object}" />
+								</c:otherwise>
+							</c:choose>
+							</td>
 							<td>${list.br_date}</td>
-							<td ><a href="product_register.dj?no=${list.no}" class="btn btn-success">상품올리기</a></td>
+							<td><a href="product_register.dj?no=${list.no}"
+								class="btn btn-success">상품올리기</a></td>
 						</tr>
 					</c:forEach>
 				</c:if>

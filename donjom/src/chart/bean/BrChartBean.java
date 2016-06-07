@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.views.xslt.ArrayAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import manager.bean.Bar_ChartDto;
 import product.bean.BorrowDto;
+import result.bean.PagingBean;
+import setting.bean.pagingAction;
 import sign.bean.memberDto;
 
 @Controller
@@ -33,10 +37,29 @@ public class BrChartBean {
 	
 	//대출신청list,차트 
 		@RequestMapping("/manager_borrowmn.dj")
-		public ModelAndView managerborrowmn(Bar_ChartDto chartdto){
+		public ModelAndView managerborrowmn(HttpServletRequest request, PagingBean page,Bar_ChartDto chartdto){
+			//pasing 
+			String pagecurrent = request.getParameter("currentPage");
+			pagingAction input = null;
+			
+			int currentPage = 0;
+			int blockCount = 5;
+			int blockPage = 10;
+			int paging = 5;
+			
+			List list = sqlMap.queryForList("borrowmn", null);
+			if(pagecurrent != null){
+				currentPage = Integer.parseInt(pagecurrent);
+			}else {currentPage =1;}
+			
+			int totalCount = list.size();
+			String pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
+			List pagelist =page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
+					
+			
+			
 			//pie 차트
 			String [] ctg={"b","r","p","c"};
-			List list = sqlMap.queryForList("borrowmn", null);
 			
 			int []count=new int[ctg.length];
 			
@@ -271,6 +294,7 @@ public class BrChartBean {
 			for(int i =0;i<12;i++){
 				mv.addObject("sc_avg"+(i+1),sc_avg[i]);	}
 			
+			mv.addObject("pagingHtml",pagingHtml);
 			mv.addObject("max",max[11]);
 			mv.addObject("now",now);
 			mv.addObject("dto",chartdto);
@@ -278,7 +302,7 @@ public class BrChartBean {
 			mv.addObject("r",count[1]);
 			mv.addObject("p",count[2]);
 			mv.addObject("c",count[3]);
-			mv.addObject("list",list);
+			mv.addObject("list",pagelist);
 			mv.setViewName("/manager/manager_borrowmn.jsp");
 			return mv;
 		}

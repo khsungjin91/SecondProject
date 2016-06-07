@@ -166,9 +166,14 @@
 
 	<!-- 심사list -->
 	<select id="evaluation" resultClass="evaluation">
-		select * from evaluation
+		select * from evaluation 
+		order by no desc
 	</select>
-
+	<!-- no에 대한 심사평 -->
+	<select id="econtent" resultClass="evaluation" parameterClass="int">
+		select *from evaluation
+		where no=#no# 
+	</select>
 	<!-- 심사list검색 -->
 	<select id="evaluation_search" resultClass="evaluation"
 		parameterClass="java.util.Map">

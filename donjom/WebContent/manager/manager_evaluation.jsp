@@ -63,7 +63,7 @@
 									<td>${list.e_cphave}</td>
 									<td>${list.e_cpfile}</td>
 									<td>${list.e_doccount}</td>
-									<td><a href=>
+									<td><a href ="manager_econtents.dj?no=${list.no}">
 										<c:choose>
 											<c:when test="${fn:length(list.e_content) > 21}">
 												<c:out value="${fn:substring(list.e_content,0,20)}" />....
@@ -78,6 +78,7 @@
 											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
 								</tr>
 							</c:forEach>
+							<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
 						</c:if>
 
 						<c:if test="${setting ==2}">
@@ -89,7 +90,7 @@
 									<td>${list.e_cphave}</td>
 									<td>${list.e_cpfile}</td>
 									<td>${list.e_doccount}</td>
-									<td>
+									<td><a href ="manager_econtents.dj?no=${list.no}">
 										<c:choose>
 											<c:when test="${fn:length(list.e_content) > 21}">
 												<c:out value="${fn:substring(list.e_content,0,20)}" />....
@@ -103,9 +104,11 @@
 											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
 								</tr>
 							</c:forEach>
+							<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
 						</c:if>
 					</table>
 				</c:if>
+				
 				<c:if test="${count == 0}">
 	대출 심사완료된 항목이 없습니다. 	
 	</c:if>
