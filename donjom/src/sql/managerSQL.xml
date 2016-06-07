@@ -187,7 +187,9 @@
 		#e_result#,
 		#e_content#,
 		#e_cphave#,
-		#e_cpfile#)
+		#e_cpfile#,
+		eval_seq.nextval,
+		sysdate)
 	</insert>
 	<!-- borrowDto에 sucess업뎃 -->
 	<update id="borrowup" parameterClass="borrow">

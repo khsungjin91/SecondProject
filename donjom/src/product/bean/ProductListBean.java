@@ -18,19 +18,31 @@ public class ProductListBean {
 	
 	@RequestMapping("/fundList.dj")
 	public ModelAndView productList(String category){
-		String fundcount;
+		String fundcount = "";
+		String [] status = {"refunds","fail","overend"};
+		int [] status_count = new int[status.length];
 		List list = null;
 		
 		System.out.println(category);
 		
 		if(category == null){
 		list = sqlMap.queryForList("productList", null);
+		fundcount = (String)sqlMap.queryForObject("product_count", null);
+		
+		for(int i = 0; i < status.length ; i++){
+		status_count[i] = (Integer)sqlMap.queryForObject("", status[i]);
+		}
+		
 		}else{
-		list = sqlMap.queryForList("list_anoter", category);
+		list = sqlMap.queryForList("list_another", category);
+		fundcount = (String)sqlMap.queryForObject("another_count", category);
+		
+		for(int i = 0; i < status.length ; i++){
+			status_count[i] = (Integer)sqlMap.queryForObject("", status[i]);
+		}
 		}
 		
 		mv.addObject("list", list);
-		fundcount = (String)sqlMap.queryForObject("productborrow", null);
 		mv.addObject("fundcount",fundcount);
 		mv.setViewName("/product/fund_list.jsp");
 		return mv;

@@ -17,7 +17,7 @@
 	select * from borrow where no=#no#
 </select>
 
-<select id="productborrow" resultClass="String">
+<select id="product_count" resultClass="String">
 	select count(*) from product
 </select>
 
@@ -41,8 +41,12 @@
 	select count(*) from borrow where memno=#no# and success='none'
 </select>
 
-<select id="list_anoter" resultClass="registerDto" parameterClass="String">
+<select id="list_another" resultClass="registerDto" parameterClass="String">
 	select * from product where p_category=#category#
+</select>
+
+<select id="another_count" resultClass="String">
+	select count(*) from product where p_category=#category#
 </select>
 
 <statement id="createTable"  parameterClass="String">
