@@ -24,19 +24,7 @@ public class ManagerPriceBean {
 	@Autowired
 	private ModelAndView mv;
 	
-	//송금
-	@RequestMapping("/manager_remittance.dj")
-	public ModelAndView Remittance(InvestDto dto){
-		
-		List investlist = sqlMap.queryForList("result.remmitance_before", null);
-		List remittancelist = sqlMap.queryForList("result.remmitance_after", null);
-		
-		mv.addObject("list", investlist);
-		mv.addObject("listrt", remittancelist);
-		mv.setViewName("/managerprice/manager_remittance.jsp");
-		return mv;
-	}
-	
+
 	//환급
 	@RequestMapping("/manager_refunds.dj")
 	public ModelAndView Refund(RegisterDto dto){
@@ -61,31 +49,6 @@ public class ManagerPriceBean {
 		mv.addObject("listrt", refunds_inglist);
 		//mv.addObject("list", refunds_endlist);
 		mv.setViewName("/managerprice/manager_refunds.jsp");
-		return mv;
-	}
-	
-	//송금 미리보기
-	@RequestMapping("/Money_check.dj")
-	public ModelAndView MoneyCheck(String p_code,RegisterDto dto){		
-		
-		List list = sqlMap.queryForList("money_check", p_code);
-		
-		dto.setP_code(p_code);
-		
-		dto = (RegisterDto)sqlMap.queryForObject("productone",dto);
-		
-		mv.addObject("dto", dto);
-		mv.addObject("list",list);
-		mv.setViewName("/managerprice/Money_check.jsp");
-		return mv;
-	}
-	
-	//송금하기
-	@RequestMapping("/send_loanmoney.dj")
-	public ModelAndView SendMoney(String p_code){
-		sqlMap.update("send_refunds_i", p_code);
-		sqlMap.update("send_refunds_p", p_code);
-		mv.setViewName("/managerprice/send_loanmoney.jsp");
 		return mv;
 	}
 

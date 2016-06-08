@@ -46,7 +46,13 @@ window.location="admin_login.dj";
 			<li><a href="manager_borrowmn.dj" type="button">대출 현황</a></li>
 			<li><a href="manager_borrowlist.dj" type="button">평가 업로드</a></li>
 			<li><a href="manager_evaluation.dj" type="button">대출심사</a></li>
-			<li><a href="manager_remittance.dj" type="button">충전/환급</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">송금/환급<span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="manager_remittance.dj" type="button">송금하기</a></li>
+				<li><a href="manager_refunds.dj" type="button">환급하기</a></li>
+				</ul>
+				</li>
         
           </ul>
           

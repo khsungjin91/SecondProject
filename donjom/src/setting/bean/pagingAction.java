@@ -57,10 +57,10 @@ public class pagingAction {
 		if (currentPage > blockPage) {
 			if(paging == 0){
 				pagingHtml.append("<a href=setting_session_history.dj?currentPage="
-				+ (startPage - 1) +">");
+						+ (startPage - 1) +">");
 			}else if(paging == 1){
 				pagingHtml.append("<a href=notification.dj?currentPage="
-				+ (startPage - 1) +">");
+						+ (startPage - 1) +">");
 			}else if(paging == 2){
 				pagingHtml.append("<a href=manager_member.dj?currentPage="
 						+ (startPage - 1) +">");
@@ -73,7 +73,14 @@ public class pagingAction {
 			}else if(paging == 5){
 				pagingHtml.append("<a href=manager_borrowmn.dj?currentPage="
 						+ (startPage - 1) +">");
+			}else if(paging == 6){
+				pagingHtml.append("<a href=manager_remittance.dj?currentPage="
+						+ (startPage - 1) +">");
+			}else if(paging == 7){
+				pagingHtml.append("<a href=manager_remittanced.dj?currentPage="
+						+ (startPage - 1) +">");
 			}
+			
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
@@ -103,6 +110,12 @@ public class pagingAction {
 					pagingHtml.append("&nbsp;<a href='manager_evaluation.dj?currentPage=");
 				}else if(paging == 5){
 					pagingHtml.append("&nbsp;<a href='manager_borrowmn.dj?currentPage=");
+				}else if(paging == 6){
+					pagingHtml.append("&nbsp;<a href='manager_remittance.dj?currentPage=");
+				}else if(paging == 7){
+					pagingHtml.append("&nbsp;<a onclick='paging(");
+					pagingHtml.append(i);
+					pagingHtml.append(")' href='#currentPage=");
 				}				
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
@@ -134,6 +147,12 @@ public class pagingAction {
 						+ (endPage + 1) + ">");
 			}else if(paging == 5){
 				pagingHtml.append("<a href='manager_borrowmn.dj?currentPage="
+						+ (endPage + 1) + ">");
+			}else if(paging == 6){
+				pagingHtml.append("<a href='manager_remittance.dj?currentPage="
+						+ (endPage + 1) + ">");
+			}else if(paging == 7){
+				pagingHtml.append("<a href='manager_remittanced.dj?currentPage="
 						+ (endPage + 1) + ">");
 			}		
 			pagingHtml.append("다음");

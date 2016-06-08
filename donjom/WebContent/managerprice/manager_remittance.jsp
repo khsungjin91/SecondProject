@@ -11,7 +11,7 @@
 function Refunds(){
 	$.ajax({
 		type : "post",
-		url : "/donjom/manager_refunds.dj",
+		url : "/donjom//manager_remittanced.dj",
 		success : test,
 		error : whenerror
 	});
@@ -27,67 +27,86 @@ function whenerror(){
 	alert("Error");
 }
 
+function paging(current){
+	
 
-
-
-
+	$.ajax({
+		type : "post",
+		url:"/donjom/manager_remittanced.dj",
+		data: {
+			pagecurrent : current
+		},
+		success: test,
+		error: whenerror
+		
+	});
+	
+}
 
 </script>
 </head>
-<body>
+<body onload="Refunds()">
 
-<div id="callback">
-<div>
-	<ul>
-		<li><input type="button" value="송금관련"></li>
-		<li><input type="button" value="상환관련" onclick="Refunds()"></li>
-	</ul>
-</div>
+<jsp:include page="/WEB-INF/admin-slider.jsp" />
+<div class="content-wrapper">
+		<div class="container">
+			<div class="row">
+				<!-- Content Header (Page header) -->
+				<div class="content-header">
+					<h1>
+						송금 관리 
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+						<li class="active">송금 관리</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+<div class="row">
+			<div class="box box-primary">
+				<div class="box-body">
+					<div class="col-sm-12">
+						<div>송금상품</div>
+						<table class="table table-bordered table-responsive table-hover">
+							<tr>
+								<td>상품코드</td>
+								<td>상품제목</td>
+								<td>투자된금액</td>
+								<td>총투자인원</td>
+								<td>대출자이름</td>
+								<td>대출자정보</td>
+								<td>성공여부</td>
+								<td>송금</td>
+							</tr>
+								<c:forEach var="list" items="${list}">
+									<tr>
+										<td>${list.p_code}</td>
+										<td><a href="fundView.dj?p_code=${list.p_code}">${list.p_name}</a></td>
+										<td>${list.p_invest}만원/${list.p_price}만원</td>
+										<td>${list.p_people}명</td>
+										<td>${list.name}</td>
+										<td><a href="confirm_search.dj?confirm=i.no&search=${list.p_memeno}">상세정보</a></td>
+										<td>${list.p_success}</td>
+										<td>
+										<c:if test="${list.p_success eq 'success'}">
+										<input type="button" value="송금미리보기" onclick="javascript:window.location='Money_check.dj?p_code=${list.p_code}'">
+										</c:if>
+										<c:if test="${list.p_success eq 'fail' || list.p_success eq 'doing'}">
+										송금불가
+										</c:if>
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
+							<div align="center" style="margin-bottom: 50px">${pagingHtml}</div>
+					<div id="callback"></div>
 
-<div>송금상품</div>
-
-<table border="1">
-<tr>
-<td>상품코드</td><td>상품제목</td><td>투자된금액</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td><td>성공여부</td><td>송금</td>
-</tr>
-<c:forEach var="list" items="${list}">
-<tr>
-<td>${list.p_code}</td>
-<td><a href="fundView.dj?p_code=${list.p_code}">${list.p_name}</a></td>
-<td>${list.p_invest}만원/${list.p_price}만원</td>
-<td>${list.p_people}명</td>
-<td>${list.name}</td>
-<td><a href="confirm_search.dj?confirm=i.no&search=${list.p_memeno}">상세정보</a></td>
-<td>${list.p_success}</td>
-<td>
-<c:if test="${list.p_success eq 'success'}">
-<input type="button" value="송금미리보기" onclick="javascript:window.location='Money_check.dj?p_code=${list.p_code}'">
-</c:if>
-<c:if test="${list.p_success eq 'fail' || list.p_success eq 'doing'}">
-송금불가
-</c:if>
-</td>
-</tr>
-</c:forEach>
-</table>
-
-<div style="margin-top: 100px">송금한 상픔</div>
-
-<table border="1">
-<tr>
-<td>상품코드</td><td>상품제목</td><td>투자된금액</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td>
-</tr>
-<c:forEach var="listrt" items="${listrt}">
-<tr>
-<td>${listrt.p_code}</td>
-<td><a href="fundView.dj?p_code=${listrt.p_code}">${listrt.p_name}</a></td>
-<td>${listrt.p_price}만원</td>
-<td>${listrt.p_people}명</td>
-<td>${listrt.name}</td>
-<td><a href="confirm_search.dj?confirm=i.no&search=${listrt.p_memeno}">상세정보</a></td>
-</c:forEach>
-</table>
-
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
