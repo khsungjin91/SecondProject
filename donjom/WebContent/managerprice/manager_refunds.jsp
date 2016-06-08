@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>DJ관리자 환급관리</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 function Remittance(){
 	$.ajax({
 		type : "post",
-		url : "/donjom/manager_remittance.dj",
+		url : "/donjom/manager_refunded.dj",
 		success : test,
 		error : whenerror
 	});
@@ -27,7 +27,7 @@ function whenerror(){
 
 </script>
 </head>
-<body>
+<body onload="Remittance()">
 
 <jsp:include page="/WEB-INF/admin-slider.jsp" />
 <div class="content-wrapper">
@@ -47,13 +47,13 @@ function whenerror(){
 		</div>
 		<hr>
 	</div>
-<div>환급상품</div>
-
+<div class="container">
 
 <div class="row">
 			<div class="box box-primary">
 				<div class="box-body">
 					<div class="col-sm-12">
+						<div>환급상품</div>
 						<table style="float: left" class="table table-bordered table-responsive table-hover">
 							<tr>
 							<td>상품코드</td><td>상품제목</td><td>대출한금액</td><td>대출이자</td><td>상환회차</td><td>상환일</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td><td>이자환급</td>
@@ -70,6 +70,7 @@ function whenerror(){
 								<td>${listrt.name}</td>
 								<td><a href="confirm_search.dj?confirm=i.no&search=${listrt.p_memeno}">상세정보</a></td>
 								<td><input type="button" value="이자환급" onclick="javascript:window.location='Money_check_f.dj?p_code=${listrt.p_code}'"></td>
+								</tr>
 								</c:forEach>
 								</table>
 								<table class="table table-bordered table-responsive table-hover">
@@ -86,10 +87,12 @@ function whenerror(){
 							<br/>
 							<br/>
 				<div><hr color="black"></div>
-				<div>환급완료상품</div>
+					<div id="callback"></div>
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+
 </body>
 </html>

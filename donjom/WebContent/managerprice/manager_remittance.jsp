@@ -15,8 +15,6 @@ function Refunds(){
 		success : test,
 		error : whenerror
 	});
-	
-	
 }
 
 function test(a){
@@ -29,7 +27,6 @@ function whenerror(){
 
 function paging(current){
 	
-
 	$.ajax({
 		type : "post",
 		url:"/donjom/manager_remittanced.dj",
@@ -65,6 +62,8 @@ function paging(current){
 		</div>
 		<hr>
 	</div>
+	
+	<div class="container">
 <div class="row">
 			<div class="box box-primary">
 				<div class="box-body">
@@ -107,6 +106,7 @@ function paging(current){
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </body>
 </html>

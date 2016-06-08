@@ -35,10 +35,10 @@ public class ManagerPriceBean {
 		//List refunds_endlist = sqlMap.queryForList("result.refunds_end", null);
 		
 		int [] possible = new int[repaydaylist.size()];
-		
+		System.out.println(repayday.get(repayday.DAY_OF_WEEK));
 		for(int i = 0; i < repaydaylist.size(); i++ ){
 	//Integer.parseInt((String) repaydaylist.get(i)
-		if(repayday.get(Calendar.DAY_OF_MONTH) >= 30
+		if(repayday.get(repayday.DAY_OF_WEEK) >= 30
 				|| repayday.get(Calendar.DAY_OF_MONTH) <= Integer.parseInt((String) repaydaylist.get(i))+5){
 			possible[i] = 1;
 		}else{
@@ -52,6 +52,16 @@ public class ManagerPriceBean {
 		return mv;
 	}
 
+	@RequestMapping("/manager_refunded.dj")
+	public ModelAndView Refunded(RegisterDto dto){
+		
+		List list = sqlMap.queryForList("result.refunds_end", null);
+		
+		mv.addObject("listrt", list);
+		mv.setViewName("/managerprice/manager_refunded.jsp");
+		return mv;
+	}
+	
 	//환급미리보기
 	@RequestMapping("/Money_check_f.dj")
 	public ModelAndView MoneyCheck_f(String p_code,RegisterDto dto){		
