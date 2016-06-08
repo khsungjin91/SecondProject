@@ -11,9 +11,9 @@
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
-<script src="js/chart-data.js"></script>
-<script src="js/easypiechart.js"></script>
-<script src="js/chart.min.js"></script>
+<script src="bt/js/chart-data.js"></script>
+<script src="bt/js/easypiechart.js"></script>
+<script src="bt/js/chart.min.js"></script>
 <link href="bt/css/styles.css" rel="stylesheet">
 <script type="text/javascript">
 
