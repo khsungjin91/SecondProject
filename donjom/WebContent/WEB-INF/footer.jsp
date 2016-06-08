@@ -15,7 +15,8 @@
 				
 			</div>
 			<hr>
-			<div class="col-lg-12">
+			
+			<div class="col-lg-6">
 			<address>
 				<strong class="bottom-font">(주)돈좀</strong><br>
 				대표이사 : 박성진, 윤석모, 마현경, 장재은, 박주완<br>
@@ -27,13 +28,18 @@
 				
 			</address>
 			
-			<p>대출금리 : 최고 연 20%이내 (연체금리 최고 연 27%이내) 과도한 빚, 고통의 시작입니다.<br>
+		
+			</div>
+			<div class="col-sm-6">
+			<p class="bottom-font">페이스북에서 돈좀을 만나보세요</p>
+			</div>
+				
+			
+		</div>
+		<div class="container">
+		<p>대출금리 : 최고 연 20%이내 (연체금리 최고 연 27%이내) 과도한 빚, 고통의 시작입니다.<br>
 				이자 외 별도로 중계수수료를 수취하는 것은 불법입니다.<br>	
 				취급수수료등 기타 부대비용 없습니다.</p>
 				<p>Copyright &copy; DONJOM 2016</p>
-			</div>
-			<div class="col-sm-12">
-			<p class="bottom-font">페이스북에서 돈좀을 만나보세요</p>
-			</div>
-		</div>
+				</div>
 	</footer>

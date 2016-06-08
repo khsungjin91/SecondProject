@@ -24,8 +24,5 @@
 .rate .text-green{font-size: 18px; color: #555; font-weight: 700;}
 .rate li{font-size: 17px; color: #555; font-weight: 400; display: inline; padding:5px;}
 .with-border{}
-.percent{display: block;
-	position: absolute;
-	font-size: 26px;
-	top: 48px;
-	width: 220px;}
+.percent{display: block; position: absolute; font-size: 26px; top: 48px; width: 220px;}
+.justhi{padding:30px;}

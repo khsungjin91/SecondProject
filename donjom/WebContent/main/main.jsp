@@ -198,7 +198,7 @@
 				<hr>
 			</div>
 			
-            <div id="myCarousel1" class="carousel slide">
+            <div id="myCarousel1" class="carousel slide justhi">
                 <!-- Carousel items -->
                 
                 <div class="carousel-inner">
@@ -271,7 +271,7 @@
 
 	<!-- Call to Action Section -->
   <div class="container">
-                        <div class="row">
+                        <div class="row justhi">
                              <div class="col-xs-2">
                      			 <img src="image/cooperate_escrow.png" alt="Image" class="img-responsive">
 							 </div>

@@ -11,9 +11,7 @@
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
-<script src="bt/js/chart-data.js"></script>
-<script src="bt/js/easypiechart.js"></script>
-<script src="bt/js/chart.min.js"></script>
+
 <link href="bt/css/styles.css" rel="stylesheet">
 <script type="text/javascript">
 
@@ -137,40 +135,7 @@
 	    fusioncharts.render();
 	});
 
-  // 도넛 차트
-
-  var doughnutData = [
-					{
-						value: 300,
-						color:"#30a5ff",
-						highlight: "#62b9fb",
-						label: "Blue"
-					},
-					{
-						value: 50,
-						color: "#ffb53e",
-						highlight: "#fac878",
-						label: "Orange"
-					},
-					{
-						value: 100,
-						color: "#1ebfae",
-						highlight: "#3cdfce",
-						label: "Teal"
-					},
-					{
-						value: 120,
-						color: "#f9243f",
-						highlight: "#f6495f",
-						label: "Red"
-					}
-	
-				];
-  window.onload = function(){
-  	var chart3 = document.getElementById("doughnut-chart").getContext("2d");
-	window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {responsive : true
-	});
-  };
+ 
   
 </script>
 <style>
@@ -183,6 +148,18 @@
 <body>
 
 <h3>DJ LIVE</h3>
+<div class="container">
+	<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header">Doughnut Chart</div>
+					<div class="box-body">
+						<div class="canvas-wrapper">
+							<canvas class="chart" id="doughnut-chart" ></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
 <ul>
 <li>평균이자율(연) : ${avg_interest}%</li>
 <li>누적대출액 : ${accumulate_loan}원</li>
@@ -219,18 +196,7 @@ ${map_li.b_twelve}
 	<div style="margin-top: 500px">
 	<div id="chart_div2"></div>
 	</div>
-	<div class="row">
-	<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">Doughnut Chart</div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="chart" id="doughnut-chart" ></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
+	
 	
 </body>
 
@@ -303,5 +269,8 @@ ${map_li.b_twelve}
     }
 
 </script>
+<script src="bt/js/chart-data.js"></script>
+<script src="bt/js/easypiechart.js"></script>
+<script src="bt/js/chart.min.js"></script>
 </body>
 </html>
