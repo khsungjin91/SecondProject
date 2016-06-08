@@ -11,11 +11,12 @@
 <body>
 <h2> 언론 </h2>
 
+	<form action="news_search.dj" method="post">
 	<input type="text" name="serch">
 	<input type="button" value="검색">
+	</form>
 	
 	<form action="news_write.dj" method="post">
-	
 	<table border="1">
 	<c:forEach var="list" items="${list}">
 		<tr>

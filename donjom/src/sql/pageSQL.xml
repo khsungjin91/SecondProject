@@ -3,20 +3,20 @@
 <sqlMap> 
 
 	<typeAlias alias="category" type="manager.bean.ManagerCategoryDto"/>
-	<typeAlias alias="company" type="manager.bean.ManagerCompanyDto"/>
+	<typeAlias alias="companyinfo" type="manager.bean.ManagerCompanyDto"/>
 	<typeAlias alias="news" type="manager.bean.ManagerNewsDto"/>
 
 	<!-- 회사정보  -->
-	<select id="companyList" resultClass="company" parameterClass="String">
+	<select id="companyList" resultClass="companyinfo" parameterClass="String">
 		select company, ceo, licensee, address, companynum, fax, email, max, overdue from companyinfo
 	</select>
 	<!-- 회사정보 저장 -->
-	<insert id="companyin" parameterClass="company">
+	<insert id="companyin" parameterClass="companyinfo">
 		insert into companyinfo (company, ceo, licensee, address, companynum, fax, email, max, overdue)
 				values (#company#, #ceo#, #licensee#, #address#, #companynum#, #fax#, #email#, #max#, #overdue#)
 	</insert>
 	<!-- 회사정보 수정 -->
-	<update id="companymodify" parameterClass="company">
+	<update id="companymodify" parameterClass="companyinfo">
 		update companyinfo set  company = #company#,
 								ceo = #ceo#,
 								licensee = #licensee#, 

@@ -76,26 +76,26 @@ public class CategoryBean {
 		}
 		// 회사정보 저장
 		@RequestMapping("/manager_companyPro.dj") 
-		public ModelAndView companyPro(ManagerCompanyDto company){
+		public ModelAndView companyPro(ManagerCompanyDto companyinfo){
 			// input 입력 
 			mv.setViewName("company");
 			// db 저장
-			sqlMap.insert("companyin", company);
+			sqlMap.insert("companyin", companyinfo);
 			// 저장된 목록 보여주기
-			mv.addObject("company", company);
+			mv.addObject("company", companyinfo);
 			mv.setViewName("/managerpage/manager_companyPro.jsp");
 			return mv;
 		}
 		// 회사정보 수정
 		@RequestMapping("/manager_companyModify.dj")
-		public ModelAndView companyModify(HttpServletRequest request, ManagerCompanyDto company){
+		public ModelAndView companyModify(HttpServletRequest request, ManagerCompanyDto companyinfo){
 			// 저장된 db를 input text에 불러와야 함
 			List list = sqlMap.queryForList("companyList", null);
 			mv.setViewName("company");
 			// 수정된 내용 db 저장
-			sqlMap.update("companymodify", company);
+			sqlMap.update("companymodify", companyinfo);
 			// 저장된 목록 보여주기
-			mv.addObject("company", company);
+			mv.addObject("company", companyinfo);
 			mv.setViewName("/managerpage/manager_companyinfo.jsp");
 			return mv;
 		}
