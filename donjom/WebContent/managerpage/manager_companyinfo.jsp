@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -15,46 +15,47 @@
 <div class="col-sm-12 col-sm-6 ">
 	<div class="row">
 	<form action="manager_companyPro.dj" method="post" class="form-horizontal">
+	
 			<div class="form-group">
 				<label class="col-sm-4 control-label">회사 명 :</label>
 				<div class="col-sm-10 col-sm-6">
-					<input type="text" name="company" value="${company.getCompany}" class="form-control">
+					<input type="text" name="company" value="${list.company}" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
 					<label class="col-sm-4 control-label">대표이사 : </label>
 				<div class="col-sm-10 col-sm-6">
-					<input type="text" name="ceo" value="${company.ceo}" class="form-control"> 
+					<input type="text" name="ceo" value="${list.ceo}" class="form-control"> 
 				</div>
 			</div>
 	<div class="form-group">
 					<label class="col-sm-4 control-label">사업자등록번호 :</label>
 					<div class="col-sm-10 col-sm-6">
-					 <input type="text" name="licensee"value="${company.licensee}" class="form-control">
+					 <input type="text" name="licensee"value="${list.licensee}" class="form-control">
 		</div>
 	</div>
 	<div class="form-group">
 					<label class="col-sm-4 control-label">주소 :	</label>
 					<div class="col-sm-10 col-sm-6">
-					<input type="text" name="address"value="${company.address}" class="form-control"> </div></div>
+					<input type="text" name="address"value="${list.address}" class="form-control"> </div></div>
 	<div class="form-group">
 					<label class="col-sm-4 control-label">회사대표번호 :</label> 
 					<div class="col-sm-10 col-sm-6">
-					<input type="text" name="companynum"value="${company.companynum}" class="form-control"></div></div>
+					<input type="text" name="companynum"value="${list.companynum}" class="form-control"></div></div>
 	<div class="form-group">
 					<label class="col-sm-4 control-label">팩스 번호 : </label>
 					<div class="col-sm-10 col-sm-6">
-					<input type="text" name="fax"value="${company.fax}" class="form-control"> </div></div>
+					<input type="text" name="fax"value="${list.fax}" class="form-control"> </div></div>
 	<div class="form-group">
 					<label class="col-sm-4 control-label">이메일 : 	</label>
 					<div class="col-sm-10 col-sm-6">
-					<input type="text" name="email"value="${company.email}" class="form-control"> </div></div>
+					<input type="text" name="email"value="${list.email}" class="form-control"> </div></div>
 	<br/>
 	<div class="form-group">
 					<label class="col-sm-4 control-label">대출 금리 :</label>
 					
-					 최고 <input type="text" name="max"value="${company.max}"> <br/>
-		(연체금리 최고  <input type="text" name="overdue"value="${company.overdue}">) 
+					 최고 <input type="text" name="max"value="${list.max}"> <br/>
+		(연체금리 최고  <input type="text" name="overdue"value="${list.overdue}">) 
 		과도한 빚, 개고생의 시작입니다. <p/>
 		</div>
 		<hr>
@@ -64,7 +65,7 @@
 		<br/>
 		2016 DonJom Inc.
 		</div>
-
+	
 	<hr>
 	<div class="col-sm-12 col-sm-8 col-sm-offset-4">
 	<input type="submit" value="저장" class="btn btn-success btn-lg">
@@ -72,8 +73,10 @@
 	class="btn btn-default btn-lg">
 	<input type="reset" value="취소" onclick="javascript:location.href='manager_page.dj'" class="btn btn-default btn-lg"> 
 		</div>
+		
 	</form>
 	</div>
 </div>
+
 	</body>
 </html>

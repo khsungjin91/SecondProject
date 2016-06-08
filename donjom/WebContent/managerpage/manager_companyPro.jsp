@@ -25,7 +25,7 @@
 	2016 DonJom Inc.
 	<br />
 	
-	<input type="reset" value="회사정보" onclick="javascript:location.href='manager_companyinfo.dj'"> 
+	<input type="button" value="회사정보" onclick="javascript:location.href='manager_companyinfo.dj'"> 
 
 
 </body>

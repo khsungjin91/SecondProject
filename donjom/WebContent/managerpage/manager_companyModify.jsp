@@ -8,17 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="manager_companyModify.dj" method="post">
-	회사 명  :<input type="text" name="company" value="${company.getCompany}"> <br />
-	대표이사 : <input type="text" name="ceo" value="${company.ceo}"> <br />
-	사업자등록번호 : <input type="text" name="licensee" value="${company.licensee}"> <br />
-	주소 :<input type="text" name="address" value="${company.address}"> <br />
-	회사대표번호 : <input type="text" name="companynum" value="${company.companynum}"> <br />
-	팩스 번호 :<input type="text" name="fax" value=" ${company.fax}"> <br />
-	이메일 : <input type="text" name="email" value="${company.email}"> <br />
+	<form action="manager_companyModifyPro.dj" method="post">
+	회사 명  :<input type="text" name="company" value="${list.company}"> <br />
+	대표이사 : <input type="text" name="ceo" value="${list.ceo}"> <br />
+	사업자등록번호 : <input type="text" name="licensee" value="${list.licensee}"> <br />
+	주소 :<input type="text" name="address" value="${list.address}"> <br />
+	회사대표번호 : <input type="text" name="companynum" value="${list.companynum}"> <br />
+	팩스 번호 :<input type="text" name="fax" value=" ${list.fax}"> <br />
+	이메일 : <input type="text" name="email" value="${list.email}"> <br />
 	<br/>
-	대출 금리 : 최고 <input type="text" name="max" value="${company.max}"> 
-		(연체금리 최고  <input type="text" name="overdue" value="${company.overdue}">) 
+	대출 금리 : 최고 <input type="text" name="max" value="${list.max}"> 
+		(연체금리 최고  <input type="text" name="overdue" value="${list.overdue}">) 
 		과도한 빚, 개고생의 시작입니다.
 		이자 외 별도로 중계수수료를 수취하는 것은 불법입니다.
 		취급수수료등 기타 부대비용 없습니다.

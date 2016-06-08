@@ -68,9 +68,10 @@ public class CategoryBean {
 	
 		// 회사정보 변경폼
 		@RequestMapping("/manager_companyinfo.dj")
-		public ModelAndView companyinfo(HttpServletRequest request){
-			List list = sqlMap.queryForList("companyList", null);
-			mv.addObject("list", list);
+		public ModelAndView companyinfo(HttpServletRequest request, ManagerCompanyDto companyinfo){
+			
+			
+			mv.addObject("list", companyinfo);
 			mv.setViewName("/managerpage/manager_companyinfo.jsp");
 			return mv;
 		}
