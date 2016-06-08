@@ -33,13 +33,6 @@ public class ManagerBean {
 	@Autowired
 	private ModelAndView mv;
 	
-	@RequestMapping("/manager_main.dj")
-	public ModelAndView managermain(){
-		
-		mv.setViewName("/manager/manager_main.jsp");
-		return mv;
-	}
-	
 	//회원관리
 	@RequestMapping("/manager_member.dj")
 	public ModelAndView managermember(HttpServletRequest request, PagingBean page ){

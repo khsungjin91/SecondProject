@@ -118,6 +118,23 @@ public class EvaluationBean {
 			mv.setViewName("/manager/manager_evaluation_writesc.jsp");
 			return mv;
 		}
+		
+		
+		
+		
+	// 심사수정
+	@RequestMapping("/manager_evaluation_modify.dj")
+	public ModelAndView managerevaluationmodify(BorrowDto dto, evaluationDto edto,int no){
+		dto=(BorrowDto)sqlMap.queryForObject("borrow", dto.getNo());
+		edto = (evaluationDto)sqlMap.queryForObject("econtent",no);
+		
+		
+		
+		mv.addObject("edto",edto);
+		mv.addObject("dto",dto);
+		mv.setViewName("/manager/manager_evaluation_modify.jsp");
+		return mv;
+	}
 	
 	//심사-찾기 
 	@RequestMapping("/manager_evaluation_search.dj")

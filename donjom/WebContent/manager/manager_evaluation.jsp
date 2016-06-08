@@ -53,6 +53,7 @@
 							<td width="50">서류 개수</td>
 							<td width="600">심사 내용</td>
 							<td>심사 결과</td>
+							<td>심사 수정</td>
 						</tr>
 						<c:if test="${setting ==1 }">
 							<c:forEach var="list" items="${list}">
@@ -76,6 +77,9 @@
 								
 									<td><label class="badge bg-olive"> <i
 											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
+									<td>
+									<input type="button" value="심사수정" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
+									</td>
 								</tr>
 							</c:forEach>
 							<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
@@ -102,6 +106,9 @@
 									</td>
 									<td><label class="badge bg-olive"> <i
 											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
+									<td>
+									<input type="button" value="심사수정" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
+									</td>
 								</tr>
 							</c:forEach>
 							<tr><td colspan="11" align="center">${pagingHtml}</td></tr>

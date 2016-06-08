@@ -68,6 +68,7 @@
 						</c:if>
 						<td>${list.i_success}</td>
 					</tr>
+					
 				</c:forEach>
 				<tr>총 투자액 : ${sum}만원
 				</tr>

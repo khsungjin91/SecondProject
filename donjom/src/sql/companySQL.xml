@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+	<typeAlias alias="mem" type="sign.bean.memberDto" />
+	<typeAlias alias="memInfo" type="setting.bean.SettingDto" />
+	<typeAlias alias="borrow" type="product.bean.BorrowDto" />
+	<typeAlias alias="evaluation" type="manager.bean.evaluationDto" />
+	<typeAlias alias="product" type="product.bean.RegisterDto" />
+	<typeAlias alias="invest" type="product.bean.InvestDto" />
+	<typeAlias alias="company" type="manager.bean.companyDto"/>
+	<typeAlias alias="cprefunds" type="manager.bean.cprefundsDto"/>
+
+	<!-- 회사에서 대출자에게 투자한 내역-->
+	<select id="company" resultClass="company">
+		select * from company
+	</select>	
+	
+	<!-- 회사가 투자한 대출에 대해 상환된 내역 -->
+	<select id="cprefunds" resultClass="cprefunds">
+		select * from cprefunds
+	</select>
+
+
+
+
+	
+</sqlMap>
