@@ -1,5 +1,6 @@
 package manager.bean;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -30,12 +33,13 @@ public class NewsBean {
 	@RequestMapping("/news_manager.dj")
 	public ModelAndView newsmanager(HttpServletRequest request){
 		List list = sqlMap.queryForList("newsList", null);
+		mv.addObject("list",list);
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;
 	}
 	// 뉴스올리기
 	@RequestMapping("/news_write.dj")
-	public ModelAndView newswrite (ManagerNewsDto news){
+	public ModelAndView newswrite (ManagerNewsDto news){	
 		// input txet에 입력
 		mv.setViewName("news");
 		// db에  저장
@@ -62,10 +66,8 @@ public class NewsBean {
 	@RequestMapping("/news_deletePro.dj")
 	public ModelAndView newsdeletePro(ManagerNewsDto news, String title){
 		news.setTitle(title);
-		System.out.println("a");
 		// db에서 삭제
 		sqlMap.update("newsDel", news);
-		System.out.println("b");
 		mv.setViewName("/news/news_manager.dj");
 		return mv;
 	}

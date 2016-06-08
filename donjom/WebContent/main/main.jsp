@@ -192,7 +192,37 @@
 	<div class="row">
 	<div class="col-lg-12">
 	<h3 class="box-header text-center">돈좀 언론이야기</h3>
-	</div>
+			  <div id="myCarousel1" class="carousel slide">
+                <!-- Carousel items -->
+                
+                <div class="carousel-inner">
+                <br>
+                    <div class="item active">
+                        <div class="row">
+                             <div class="col-xs-2">
+                     			 <img src="image/ta-logo-1.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <img src="image/ta-logo-2.gif" alt="Image" class="img-responsive">
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>5조<br> 어벤져스</p></div>
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>4조<br> 화상채팅</p></div>
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>1조<br> 마이웹</p></div>
+							 </div>
+							 <div class="col-xs-2">
+                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>3조<br> 서울가유</p></div>
+							 </div>
+							 
+                        </div>
+                        </div>
+                        </div>
+            
+	
 	</div>
 		<div class="row">
 			<div class="col-lg-12">
@@ -264,11 +294,11 @@
             </div>
             <!--/myCarousel-->
         </div>
-        
+        </div>
       
 		</div>
 		<!-- /.row -->
-
+</div>
 	<hr>
 
 	<!-- Call to Action Section -->

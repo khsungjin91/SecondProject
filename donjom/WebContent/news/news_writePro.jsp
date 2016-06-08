@@ -9,26 +9,32 @@
 </head>
 <body>
 	
+	<form action="news_writePro.dj" method="post" enctype="multipatr/form-data">
 	<table border="1">
 		<tr>
-			<td> <img src="/donjom/newssave/${list.image}"/> </td>
+			<td> 뉴스이미지 </td>
+			<td> <input type="file" name="image" > </td>
+
 		</tr>
 		<tr>
-			<td> ${list.sitename} </td>
+			<td> 뉴스사이트명 </td>
+			<td> <input type="text" name="sitename" value="${news.sitename}"> </td>
 		</tr>
 		<tr> 
-			<td> ${list.title} </td>
+			<td> 뉴스제목 </td>
+			<td> <input type="text" name="title" value="${news.title}"> </td>
 		</tr>
 		<tr>
-			<td> ${list.content} </td>
+			<td> 뉴스내용요약 </td>
+			<td> <input type="text" name="content" value="${news.content}"> </td>
 		</tr>
 		<tr>
-			<td> ${list.site} </td>
+			<td> 자세히 보기 </td>
+			<td> <input type="text" name="site" value="${news.site}"> </td>
 		</tr>
-
 	</table>
-	
-	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_writePro.dj'">
-	<input type="reset" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
+	<input type="submit" value="뉴스 수정하기">
+	<input type="button" value="삭제" onclick="javascript:location.href='news_delete.dj'">
+	</form>
 </body>
 </html>
