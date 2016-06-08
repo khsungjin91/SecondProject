@@ -34,7 +34,7 @@
 		</tr>
 	</table>
 	<input type="submit" value="뉴스 수정하기">
-	<input type="button" value="삭제" onclick="javascript:location.href='news_delete.dj'">
+	<input type="button" value="삭제" onclick="javascript:location.href='news_deletePro.dj'">
 	</form>
 </body>
 </html>

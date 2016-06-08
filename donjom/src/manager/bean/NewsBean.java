@@ -37,6 +37,14 @@ public class NewsBean {
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;
 	}
+	// 뉴스 검색
+	@RequestMapping("/news_search.dj")
+	public ModelAndView newssearch(){
+		List list = sqlMap.queryForList("newsList", null);
+		mv.addObject("list", list);
+		mv.setViewName("/news_manager.dj");
+		return mv;
+	}
 	// 뉴스올리기
 	@RequestMapping("/news_write.dj")
 	public ModelAndView newswrite (ManagerNewsDto news){	
