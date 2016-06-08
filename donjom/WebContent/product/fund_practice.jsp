@@ -6,30 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Effort', 'Amount given'],
-          ['My all',   1000], /* 수정해주세요~~ */
-        ]);
-
-        var options = {
-          colors : ['skyblue','#000000'],
-          pieHole: 0.8,
-          pieSliceTextStyle: {
-            color: 'black',
-            fontSize : '20'
-          },
-          legend: 'none'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-        chart.draw(data, options);
-      }
+    
  
 function Check(){
 	
@@ -117,9 +96,13 @@ if(amount > mi){
 <!-- 그래프있는 오른쪽 메뉴 -->
 			<div class="col-xs-12 col-sm-3 right hidden-xs ">
 			<div class="box box-success">
-				<ul class="list-unstyled">
+				<ul class="list-unstyled ">
 					<li>
-					<div id="donut_single" ></div>
+					<div class="panel-body easypiechart-panel">
+					<div class="easypiechart" id="easypiechart-blue" data-percent="<%-- ${dto.p_invest/dto.p_price*100} --%>92" >
+					<span class="percent">92%</span>
+						</div>
+						</div><!-- 그래프 -->
 					</li>
 					<li>
 					<h3 ><b class="text-green">${dto.p_invest}만원/${dto.p_price}만원</b></h3>
@@ -226,5 +209,10 @@ if(amount > mi){
 		</div>
 
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
+		
+	<script src="bt/js/easypiechart.js"></script>
+	<script src="bt/js/easypiechart-data.js"></script>
+
+	
 </body>
 </html>
