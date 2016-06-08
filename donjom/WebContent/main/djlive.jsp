@@ -11,6 +11,10 @@
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
+<script src="js/chart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/chart.min.js"></script>
+<link href="bt/css/styles.css" rel="stylesheet">
 <script type="text/javascript">
 
   FusionCharts.ready(function(){
@@ -81,7 +85,7 @@
 });
   
   
-  
+  // 레이더 차트
   FusionCharts.ready(function(){
 	    var fusioncharts = new FusionCharts({
 	    type: 'radar',
@@ -133,6 +137,41 @@
 	    fusioncharts.render();
 	});
 
+  // 도넛 차트
+
+  var doughnutData = [
+					{
+						value: 300,
+						color:"#30a5ff",
+						highlight: "#62b9fb",
+						label: "Blue"
+					},
+					{
+						value: 50,
+						color: "#ffb53e",
+						highlight: "#fac878",
+						label: "Orange"
+					},
+					{
+						value: 100,
+						color: "#1ebfae",
+						highlight: "#3cdfce",
+						label: "Teal"
+					},
+					{
+						value: 120,
+						color: "#f9243f",
+						highlight: "#f6495f",
+						label: "Red"
+					}
+	
+				];
+  window.onload = function(){
+  	var chart3 = document.getElementById("doughnut-chart").getContext("2d");
+	window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {responsive : true
+	});
+  };
+  
 </script>
 <style>
 #chartdiv3 {
@@ -160,12 +199,12 @@
 <td>누적 투자건 수</td>
 </tr> 
 <tr>
-<td> ${borrow_avg}</td>
-<td>${acc_br_person}</td>
-<td>${person_avg}</td>
-<td>${investperson_total}</td>
-<td>${onebyone_avg}</td>
-<td>${invest_count}</td>
+<td> ${borrow_avg}원</td>
+<td>${acc_br_person}명</td>
+<td>${person_avg}원</td>
+<td>${investperson_total}명</td>
+<td>${onebyone_avg}원</td>
+<td>${invest_count}건</td>
 </tr>
 </table>
 ${map_li.r_twelve}
@@ -180,6 +219,19 @@ ${map_li.b_twelve}
 	<div style="margin-top: 500px">
 	<div id="chart_div2"></div>
 	</div>
+	<div class="row">
+	<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Doughnut Chart</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="chart" id="doughnut-chart" ></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+	
 </body>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
