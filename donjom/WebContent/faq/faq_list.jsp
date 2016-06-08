@@ -13,6 +13,16 @@
 <body>
 
 	<div class="container">
+	<div class="box ">
+		<ul>
+			<li><a href="help_faq.dj?h_category=all" type="button" class="btn btn-lg">공통</a></li>
+			<li><a href="help_faq.dj?h_category='투자'" type="button" class="btn btn-lg">투자</a></li>
+			<li><a href="help_faq.dj?h_category=공통" type="button" class="btn btn-lg">공통</a></li>
+			<li><a href="help_faq.dj?h_category=공통" type="button" class="btn btn-lg">공통</a></li>
+			
+			
+		</ul>
+	</div>
 		<div class="col-sm-8" id="accordion">
 			<c:forEach var="list" items="${list }">
 				<div class="panel panel-success">

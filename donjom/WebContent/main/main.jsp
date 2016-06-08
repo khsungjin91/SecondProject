@@ -29,7 +29,7 @@
 								<p><h2>돈좀 빌려줘본 DONJOM</h2>
 								<p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br> 돈좀 빌려달라고 해보세요~!!</p>
 								<br>
-								<p><input type="button" class="btn btn-default" value="투자안내보기"></p>
+								<p><a href="manager_investguide.dj" type="button" class="btn btn-default">투자안내보기</a></p>
 							</div>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 			data-slide="next"> <span class="icon-next"></span>
 		</a>
 	</header>
-	<div class="container-fulid text-center bg-gray">
+	<div class="container-fulid text-center bg-navy">
 		<ul class="title-conul list-inline">
 			<li>
 			<div class="title-main">평균이자율(연)</div> ${avg_interest}%</li>
@@ -102,18 +102,16 @@
 								<div class="title-pr">${list.p_name}</div>
 								<div class="title-pr-con"> ${list.p_purpose}</div>
 								<hr >
-								<div class="link-pd">
-								<span class="title-con">
-								목표 ${list.p_price}</span><span class="title">만원</span> 
-								<span class="title-con">연 ${list.p_rate}%</span><span class="title">수익률</span>
-								</p>
-								<p class="rate">
-									<span class="txt-point purpose"> ${list.p_category}</span> <span
-										class="day">만기</span> <span class="txt-point">${list.p_term}개월</span>
-									<span class="level">등급 <span class="txt-point">D1</span></span>
-								</p>
-							</div>
-						
+								
+								<span class="title-con text-green">
+								목표 ${list.p_price} </span><span class="title"> 만원</span> 
+								<span class="title-con text-green">연 ${list.p_rate}% </span><span class="title"> 수익률</span>
+							
+								<ul class="rate">
+									<li><span class="text-green"> ${list.p_category}</span> 만기 </li>
+									<li><span class="text-green">${list.p_term}</span> 개월</li>
+									<li>등급 <span class="text-green"> D1</span></li>
+								</ul>
 						<div class=" progress progress-sm">
 							<div class="progress-bar progress-bar-info" role="progressbar" style="width:${list.p_invest/list.p_price*100}%"></div>
 						</div>
@@ -122,13 +120,13 @@
 								<li>${list.p_invest/list.p_price*100}%진행</li>
 								<li>(${list.p_people}명)</li>
 								<li><c:if test="${list.p_success == 'doing'}">
-										<strong>펀딩진행중</strong>
+										<b class="text-aqua">펀딩진행중</b>
 									</c:if> 
 									<c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
-										<strong>펀딩성공</strong>
+										<b class="text-green">펀딩성공</b>
 									</c:if> 
 									<c:if test="${list.p_success == 'fail'}">
-										<strong>펀딩실패</strong>
+										<b class="text-danger">펀딩실패</b>
 									</c:if></li>
 							</ul>
 						</div>
@@ -192,37 +190,7 @@
 	<div class="row">
 	<div class="col-lg-12">
 	<h3 class="box-header text-center">돈좀 언론이야기</h3>
-			  <div id="myCarousel1" class="carousel slide">
-                <!-- Carousel items -->
-                
-                <div class="carousel-inner">
-                <br>
-                    <div class="item active">
-                        <div class="row">
-                             <div class="col-xs-2">
-                     			 <img src="image/ta-logo-1.gif" alt="Image" class="img-responsive">
-							 </div>
-							 <div class="col-xs-2">
-                     			 <img src="image/ta-logo-2.gif" alt="Image" class="img-responsive">
-							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>5조<br> 어벤져스</p></div>
-							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>4조<br> 화상채팅</p></div>
-							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>1조<br> 마이웹</p></div>
-							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>3조<br> 서울가유</p></div>
-							 </div>
-							 
-                        </div>
-                        </div>
-                        </div>
-            
-	
+	</div>
 	</div>
 		<div class="row">
 			<div class="col-lg-12">
@@ -294,11 +262,11 @@
             </div>
             <!--/myCarousel-->
         </div>
-        </div>
+        
       
 		</div>
 		<!-- /.row -->
-</div>
+
 	<hr>
 
 	<!-- Call to Action Section -->
