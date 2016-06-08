@@ -4,13 +4,24 @@ import java.io.File;
 import java.util.Date;
 
 public class ManagerNewsDto {
+	private int num;
+	
 	private String image;
 	private String sitename;
 	private String title;
 	private String content;
 	private String site;
 	private Date reg;
-	
+
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public void setReg(Date reg) {
+		this.reg = reg;
+	}
 	public String getImage() {
 		return image;
 	}

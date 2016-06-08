@@ -38,9 +38,10 @@
 			<td> <input type="text" name="site"> </td>
 		</tr>
 	</table>
-	<input type="submit" value="뉴스 저장하기">
-	<input type="button" value="뉴스 수정하기" onclick="javascript:location.href='news_writePro.dj'">
-	<input type="button" value="목록으로" onclick="javascript:location.href='news_manager.dj'">
+	<input type="submit" value="뉴스 저장">
+	<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_writePro.dj?no=${news.num}'">
+	<input type="button" value="삭제" onclick="javascript:location.href='news_delete.dj?no=${news.num}'">
+	<input type="button" value="목록" onclick="javascript:location.href='news_manager.dj'">
 	</form>
 
 </body>

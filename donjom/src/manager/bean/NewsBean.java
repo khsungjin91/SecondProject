@@ -31,16 +31,16 @@ public class NewsBean {
 	}
 	// 관리자 모드에서 보여지는 뉴스페이지
 	@RequestMapping("/news_manager.dj")
-	public ModelAndView newsmanager(HttpServletRequest request){
-		List list = sqlMap.queryForList("newsList", null);
-		mv.addObject("list",list);
+	public ModelAndView newsmanager(ManagerNewsDto news, int no){
+		news = (ManagerNewsDto) sqlMap.queryForObject("newsView", no);
+		mv.addObject("list", news);
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;
 	}
 	// 뉴스 검색
 	@RequestMapping("/news_search.dj")
 	public ModelAndView newssearch(){
-		List list = sqlMap.queryForList("newsList", null);
+		List list = sqlMap.queryForList("newsView", null);
 		mv.addObject("list", list);
 		mv.setViewName("/news_manager.dj");
 		return mv;
@@ -71,9 +71,9 @@ public class NewsBean {
 		return mv;
 	}
 	// 뉴스 삭제
-	@RequestMapping("/news_deletePro.dj")
-	public ModelAndView newsdeletePro(ManagerNewsDto news, String title){
-		news.setTitle(title);
+	@RequestMapping("/news_delete.dj")
+	public ModelAndView newsdeletePro(ManagerNewsDto news, int no){
+		news.setNum(no);
 		// db에서 삭제
 		sqlMap.update("newsDel", news);
 		mv.setViewName("/news/news_manager.dj");

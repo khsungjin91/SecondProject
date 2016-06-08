@@ -16,9 +16,12 @@
 	<input type="button" value="검색">
 	</form>
 	
-	<form action="news_write.dj" method="post">
+	<form action="" method="post">
 	<table border="1">
 	<c:forEach var="list" items="${list}">
+		<tr>
+			<td>${list.num}</td>
+		</tr>
 		<tr>
 			<td><img src="/donjom/newssave/${list.image}"/> </td> 
 		</tr>
@@ -41,8 +44,9 @@
 		</c:forEach>
 		
 	</table>
-	<input type="submit" value="뉴스 올리기">
-	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_deletePro.dj'">
+	<input type="submit" value="뉴스 올리기" onclick="javascript:location.href='news_write.dj'">
+	<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_modify.dj?no=${news.num}'">
+	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_delete.dj?no=${news.num}'">
 	
 	</form>
 

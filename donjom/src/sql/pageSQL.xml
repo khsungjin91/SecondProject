@@ -55,19 +55,24 @@
 	<select id="newsList" resultClass="news" parameterClass="String">
 		select image, sitename, title, content, site, reg from news
 	</select>
+	<select id="newsView" resultClass="news" parameterClass="int">
+		select num, image, sitename, title, content, site, reg from news where num=#num#
+	</select>
 	<!-- 뉴스 전체 글수  -->
 	<select id="allcount" parameterClass="news">
 		select count(*) from news
 	</select>
 	<!-- 뉴스 저장 -->
 	<insert id="newsin" parameterClass="news">
-		insert into news (image, 
+		insert into news (num,
+						  image, 
 						  sitename,
 						  title,
 						  content,
 						  site,
 						  reg) 
-				  values (#image#,
+				  values (news_seq.nextval,
+				  		  #image#,
 				  		  #sitename#,
 				  		  #title#,
 				  		  #content#,
@@ -85,6 +90,6 @@
 	</update>
 	<!-- 뉴스 삭제 -->
 	<delete id="newsDel" parameterClass="news">
-		delete from news where title = #title#
+		delete from news where num = #num#
 	</delete>
 </sqlMap>
