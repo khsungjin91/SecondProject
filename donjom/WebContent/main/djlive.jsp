@@ -114,17 +114,17 @@
 	        }],
 	        "dataset": [{
 	            "data": [{
-	                "value": '${map.first}'
+	                "value": '${map_r.first}'
 	            }, {
-	                "value": '${map.second}'
+	                "value": '${map_r.second}'
 	            }, {
-	                "value": '${map.thirth}'
+	                "value": '${map_r.thirth}'
 	            }, {
-	                "value": '${map.forth}'
+	                "value": '${map_r.forth}'
 	            }, {
-	                "value": '${map.fifth}'
+	                "value": '${map_r.fifth}'
 	            }, {
-	                "value": '${map.sixth}'
+	                "value": '${map_r.sixth}'
 	            }]
 	        }]
 	    }
@@ -132,12 +132,12 @@
 	);
 	    fusioncharts.render();
 	});
- 
+
 </script>
 <style>
 #chartdiv3 {
 	width	: 100%;
-	height	: 500px;
+	height	: 350px;
 }	
 </style>
 </head>
@@ -168,193 +168,88 @@
 <td>${invest_count}</td>
 </tr>
 </table>
+${map_li.r_twelve}
+${map_li.p_twelve}
+${map_li.c_twelve}
+${map_li.b_twelve}
+
 	<div style="width: 70%; margin: 0 auto; ">
  		<div id="container" style="float: left"></div>
   		<div id="chart" style="float: right"></div>
   	</div>
-	<div id="chartdiv3" style="padding-top:  50px">?</div>
+	<div style="margin-top: 500px">
+	<div id="chart_div2"></div>
+	</div>
 </body>
- 
-<script>
-	
-var chart = AmCharts.makeChart("chartdiv3", {
-    "type": "serial",
-    "theme": "light",
-    "marginRight": 80,
-    "marginTop": 17,
-    "autoMarginOffset": 20,
-    "dataProvider": [{
-        "date": "2015-04",
-        "사업자": 20,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-05",
-        "사업자": 75,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-06",
-        "사업자": 15,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-07",
-        "사업자": 75,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-08",
-        "사업자": 158,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-09",
-        "사업자": 57,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-10",
-        "사업자": 107,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-11",
-        "price": 89,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2015-12",
-        "사업자": 75,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2016-01",
-        "사업자": 132,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2016-02",
-        "사업자": 158,
-        "매출담보": 500,
-        "개인" : 250,
-        "부동산" : 1000
-    }, {
-        "date": "2016-03",
-        "사업자": 56,
-        "매출담보": 104,
-        "개인" : 455,
-        "부동산" : 2000
-    }, {
-        "date": "2016-04",
-        "사업자": 169,
-        "매출담보": 424,
-        "개인" : 475,
-        "부동산" : 354
-    }, {
-        "date": "2016-05",
-        "사업자": 24,
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }, {
-        "date": "2016-06",
-        "사업자": 147, 
-        "매출담보": 20,
-        "개인" : 40,
-        "부동산" : 50
-    }],
-    "valueAxes": [{
-        "logarithmic": true,
-        "dashLength": 1,
-        "guides": [{
-            "dashLength": 6,
-            "inside": true,
-            "label": "average",
-            "lineAlpha": 1,
-            "value": 90.4
-        }],
-        "position": "left"
-    }],
-    "graphs": [{
-        "bullet": "round",
-        "id": "g1",
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "bulletSize": 7,
-        "lineThickness": 2,
-        "title": "사업자",
-        "type": "smoothedLine",
-        "useLineColorForBulletBorder": true,
-        "valueField": "사업자"
-    },{
-        "bullet": "round",
-        "id": "g2",
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "bulletSize": 7,
-        "lineThickness": 2,
-        "title": "매출담보",
-        "type": "smoothedLine",
-        "useLineColorForBulletBorder": true,
-        "valueField": "매출담보"
-    },{
-        "bullet": "round",
-        "id": "g3",
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "bulletSize": 7,
-        "lineThickness": 2,
-        "title": "개인",
-        "type": "smoothedLine",
-        "useLineColorForBulletBorder": true,
-        "valueField": "개인"
-    },{
-        "bullet": "round",
-        "id": "g4",
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "bulletSize": 7,
-        "lineThickness": 2,
-        "title": "부동산",
-        "type": "smoothedLine",
-        "useLineColorForBulletBorder": true,
-        "valueField": "부동산"
-    }],
-    "chartCursor": {
-        "valueLineEnabled": true,
-        "valueLineBalloonEnabled": true,
-        "valueLineAlpha": 0.5,
-        "fullWidth": true,
-        "cursorAlpha": 0.05
-    },
-    "dataDateFormat": "YYYY-MM",
-    "categoryField": "date",
-    "categoryAxis": {
-        "parseDates": true
-    },
-    "export": {
-        "enabled": true
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+ google.charts.load('current', {'packages':['line', 'corechart']});
+      google.charts.setOnLoadCallback(lineChart);
+
+    function lineChart() {
+     
+      var chartDiv = document.getElementById('chart_div2');
+     
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Month');
+      data.addColumn('number', "개인");
+      data.addColumn('number', "사업자");
+      data.addColumn('number', "부동산");
+      data.addColumn('number', "매출담보");
+      
+      data.addRows([
+        [new Date('${map_l.m1}'),  parseInt('${map_l.p_one}'),  parseInt('${map_l.b_one}'), parseInt('${map_l.r_one}'), parseInt('${map_l.c_one}')],
+        [new Date('${map_l.m2}'),  parseInt('${map_l.p_two}'),  parseInt('${map_l.b_two}'), parseInt('${map_l.r_two}'), parseInt('${map_l.c_two}')],
+        [new Date('${map_l.m3}'),  parseInt('${map_l.p_three}'),  parseInt('${map_l.b_three}'), parseInt('${map_l.r_three}'), parseInt('${map_l.c_three}')],
+        [new Date('${map_l.m4}'),  parseInt('${map_l.p_four}'), parseInt('${map_l.b_four}'), parseInt('${map_l.r_four}'), parseInt('${map_l.c_four}')],
+        [new Date('${map_l.m5}'),  parseInt('${map_l.p_five}'), parseInt('${map_l.b_five}'), parseInt('${map_l.r_five}'), parseInt('${map_l.c_five}')],
+        [new Date('${map_l.m6}'),  parseInt('${map_l.p_six}'), parseInt('${map_l.b_six}'), parseInt('${map_l.r_six}'), parseInt('${map_l.c_six}')],
+        [new Date('${map_l.m7}'),  parseInt('${map_l.p_seven}'), parseInt('${map_l.b_seven}'), parseInt('${map_l.r_seven}'), parseInt('${map_l.c_seven}')],
+        [new Date('${map_l.m8}'),  parseInt('${map_l.p_eghit}'), parseInt('${map_l.b_eghit}'), parseInt('${map_l.r_eghit}'), parseInt('${map_l.c_eghit}')],
+        [new Date('${map_l.m9}'),  parseInt('${map_l.p_nine}'), parseInt('${map_l.b_nine}'), parseInt('${map_l.r_nine}'), parseInt('${map_l.c_nine}')],
+        [new Date('${map_l.m10}'), parseInt('${map_l.p_ten}') ,  parseInt('${map_l.b_ten}'), parseInt('${map_l.r_ten}'), parseInt('${map_l.c_ten}')],
+        [new Date('${map_l.m11}'), parseInt('${map_l.p_eleven}'),  parseInt('${map_l.b_eleven}'), parseInt('${map_l.r_eleven}'), parseInt('${map_l.c_eleven}')],
+        [new Date('${map_l.m12}'), parseInt('${map_l.p_twelve}'),  parseInt('${map_l.b_twelve}'), parseInt('${map_l.r_twelve}'), parseInt('${map_l.c_twelve}')]
+      ]);
+
+
+
+      var classicOptions = {
+        title: '월별 카테고리 대출금',
+        height: 350,
+        // Gives each series an axis that matches the vAxes number below.
+        series: {
+          0: {targetAxisIndex: 0},
+          1: {targetAxisIndex: 1}
+        },
+        vAxes: {
+          // Adds titles to each axis.
+          0: {title: ''},
+          1: {title: ''}
+        },
+        hAxis: {
+          ticks: [new Date('${map_l.m12}'), new Date('${map_l.m11}'), new Date('${map_l.m10}'), new Date('${map_l.m9}'),
+                  new Date('${map_l.m8}'),  new Date('${map_l.m7}'), new Date('${map_l.m6}'), new Date('${map_l.m5}'),
+                  new Date('${map_l.m4}'), new Date('${map_l.m3}'), new Date('${map_l.m2}'), new Date('${map_l.m1}')
+                 ]
+        },
+        vAxis: {
+          viewWindow: {
+            max: 60000
+          }
+        }
+      };  
+
+      function drawClassicChart() {
+        var classicChart = new google.visualization.LineChart(chartDiv);
+        classicChart.draw(data, classicOptions);
+      }
+    
+      drawClassicChart();
+   
     }
-});
 
-chart.addListener("dataUpdated", zoomChart);
-
-function zoomChart() {
-	 chart.zoomToDates(new Date(2015, 4), new Date(2016, 6));
-}
-
-	
 </script>
 </body>
 </html>

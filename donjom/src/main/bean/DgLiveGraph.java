@@ -18,9 +18,11 @@ public class DgLiveGraph {
 	private ModelAndView mv;
 	
 	@RequestMapping("/DJlive.dj")
-	public ModelAndView graph(){
-		Map map = new HashMap();
+	public ModelAndView graph()throws Exception{
+		Map map_r = new HashMap();
+		Map map_l = new HashMap();
 		InterastGraph ig = new InterastGraph();
+		MonthTotalGraph mg = new MonthTotalGraph();
 		String investmoney_total = (String)sqlMap.queryForObject("total_invest_money", null)+"0000";
 		String borrowmoney_total = (String)sqlMap.queryForObject("sum_borrow", null)+"0000";
 		int total_interest = (Integer)sqlMap.queryForObject("product_count", null);
@@ -54,9 +56,11 @@ public class DgLiveGraph {
 		int fail_count = (Integer)sqlMap.queryForObject("fail_count", null);
 		float fail_avg = (float)fail_count/(float)total_interest;
 				
-		map = ig.interast(sqlMap);
+		map_r = ig.interast(sqlMap);
+		map_l = mg.monthtotal(sqlMap);
 		
-		mv.addObject("map", map);
+		mv.addObject("map_l",map_l);
+		mv.addObject("map_r", map_r); 
 		mv.addObject("acc_br_person", acc_br_person);
 		mv.addObject("borrow_avg", borrow_avg);
 		mv.addObject("investperson_total", investperson_total);

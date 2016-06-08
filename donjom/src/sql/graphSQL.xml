@@ -2,8 +2,18 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="graph"> 
 
+<typeAlias alias="registerDto" type="product.bean.RegisterDto"/>
+
 <select id="interast_graph" resultClass="String">
 	select p_rate from product
+</select>
+
+<select id="line_graph" resultClass="String">
+	select p_date from product
+</select>
+
+<select id="line_graph2" resultClass="registerDto">
+	select * from product
 </select>
 
 </sqlMap>
