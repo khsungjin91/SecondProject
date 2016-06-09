@@ -196,11 +196,38 @@
 		eval_seq.nextval,
 		sysdate)
 	</insert>
+	
+	<!-- 심사평 내용수정 -->
+	<update id="evaluation_update" parameterClass="evaluation">
+		update evaluation set
+		e_content = #e_content#,
+		e_doccount = #e_doccount#,
+		e_cphave = #e_cphave#,
+		e_result = #e_result#
+		where no=#no#	
+	</update>
+	<!-- 사업체 등기부등록 업데이트 -->
+	<update id="e_cpfile_update" parameterClass="evaluation">
+		update evaluation set
+		e_cpfile=#e_cpfile#
+		where no=#no#
+	</update>
+	<!-- 기타서류 업데이트 -->
+	<update id="e_document_update" parameterClass="evaluation">
+		update evaluation set
+		e_document=#e_document#
+		where no = #no#
+	</update>
+	
+	
+	
+	
 	<!-- borrowDto에 sucess업뎃 -->
 	<update id="borrowup" parameterClass="borrow">
 		update borrow set
 		success=#success# where no=#no#
 	</update>
+	
 	<!-- no로 borrow 조회 -->
 	<select id="borrow" resultClass="borrow" parameterClass="int">
 		select *from borrow where no=#no#

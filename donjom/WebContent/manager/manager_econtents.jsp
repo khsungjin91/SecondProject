@@ -65,6 +65,9 @@
 									<td>${dto.e_content}">
 									<td><label class="badge bg-olive"> <i
 											class="fa fa-check fa-lg "></i><br>${dto.e_result}</label></td>
+									<td>
+									<input type="button" value="심사수정" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${dto.no}'"/>
+									</td>
 								</tr>
 							
 					

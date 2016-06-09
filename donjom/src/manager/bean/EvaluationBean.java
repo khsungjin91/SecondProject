@@ -112,6 +112,7 @@ public class EvaluationBean {
 				docmf.transferTo(copy2);
 			}
 			dto2.setSuccess(dto.getE_result());
+			
 			sqlMap.insert("evaluation_writeinsert",dto);
 			sqlMap.update("borrowup",dto2);
 			
@@ -124,15 +125,54 @@ public class EvaluationBean {
 		
 	// 심사수정
 	@RequestMapping("/manager_evaluation_modify.dj")
-	public ModelAndView managerevaluationmodify(BorrowDto dto, evaluationDto edto,int no){
-		dto=(BorrowDto)sqlMap.queryForObject("borrow", dto.getNo());
+	public ModelAndView managerevaluationmodify(evaluationDto edto,int no){
 		edto = (evaluationDto)sqlMap.queryForObject("econtent",no);
-		
-		
-		
+				
 		mv.addObject("edto",edto);
-		mv.addObject("dto",dto);
 		mv.setViewName("/manager/manager_evaluation_modify.jsp");
+		return mv;
+	}
+	// 심사 update
+	@RequestMapping("/manager_evaluation_update.dj")
+	public ModelAndView managerevaluation(evaluationDto edto, MultipartHttpServletRequest request)throws Exception{
+		System.out.println("그랭"+edto.getE_doccount());
+		
+		MultipartFile cpmf=request.getFile("cpfile");
+		MultipartFile docmf=request.getFile("document");
+		
+		String cpOrgName = cpmf.getOriginalFilename();
+		String docOrgName = docmf.getOriginalFilename();
+		
+		String path= request.getServletContext().getRealPath("")+"\\file\\";
+		System.out.println(cpOrgName);
+		System.out.println(docOrgName);
+		
+		if(cpOrgName.equals("")){
+			// cporgName이 없을경우
+			
+		}else{
+			edto.setE_cpfile(cpOrgName);
+						
+			File copy = new File(path+edto.getE_cpfile());
+						
+			cpmf.transferTo(copy);
+			sqlMap.update("e_cpfile_update", edto);
+		}
+	
+		if(docOrgName.equals("")){
+			// docorgName이 없을경우
+			edto.getE_document();
+		}else{
+			edto.setE_document(docOrgName);
+			
+			File copy2 = new File(path+edto.getE_document());
+
+			docmf.transferTo(copy2);
+			sqlMap.update("e_document_update", edto);
+		}
+		sqlMap.update("evaluation_update", edto);
+		
+		mv.setViewName("/manager/manager_evaluation_update.jsp");
 		return mv;
 	}
 	
