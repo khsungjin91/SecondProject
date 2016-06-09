@@ -48,13 +48,15 @@ public class RegistedBean {
 		mv.addObject("no",no);
 		}	
 		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
-		
+	
+		String x = (String)sqlMap.queryForObject("result.failday", dto);
+		String failday = x.substring(0, 10);
 		String today = format.format(now);
-		
-		String x = cal.get(cal.YEAR)+"-"+cal.get(cal.MONTH)+"-"+cal.get(cal.DAY_OF_WEEK);
-		Date y = format.parse(x);
-		
-		System.out.println(y);
+	
+		if(failday.equals(today)){
+			
+			sqlMap.update("result.fail", dto.getNo());
+		}
 		
 		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
 		

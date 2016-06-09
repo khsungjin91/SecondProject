@@ -81,6 +81,10 @@
 	select count(back) from dj_$str$ where back=1
 </select>
 
+<select id="failday" resultClass="String" parameterClass="registerDto">
+	 select NEXT_DAY((TO_DATE(substr(#p_date#,0,10), 'yyyy-MM-dd')),5) x from product where no=#no#
+</select>
+
 <insert id="refunds_insert" parameterClass="java.util.Map">
 	insert into refunds values(refunds_seq.nextval,#no#,#p_code#,#total#,#times#,sysdate)
 </insert>
@@ -111,6 +115,10 @@
 
 <update id="changeOver" parameterClass="String">
 	update invest set i_success='overend' where i_pcode=#p_code#
+</update>
+
+<update id="fail" parameterClass="int">
+	update product set p_success='fail' where no=#no# and p_success !='success' and p_success !='overend'
 </update>
 
 </sqlMap>
