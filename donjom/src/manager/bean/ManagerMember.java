@@ -41,12 +41,16 @@ public class ManagerMember {
 				currentPage = Integer.parseInt(pagecurrent);
 			}else{currentPage = 1;}
 			
+			int c_count = (Integer)sqlMap.queryForObject("confirmmemCount", null);
+			int m_count = (Integer)sqlMap.queryForObject("memberCount", null);
 			int totalCount = list.size();
 			String pagingHtml  = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 			List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
 			
 			mv.addObject("pagingHtml",pagingHtml);
 			mv.addObject("setting",setting);
+			mv.addObject("c_count",c_count);
+			mv.addObject("m_count",m_count);
 			mv.addObject("list",pagelist);
 			mv.setViewName("/manager/manager_noconfirm.jsp");
 			return mv;

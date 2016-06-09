@@ -38,6 +38,7 @@
 
 </head>
 <body>
+
 	<c:if test="${count !=0}">
 		<input type="hidden" id="email" value="${email}" />
 

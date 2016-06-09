@@ -24,7 +24,7 @@ public class CompanyBean {
 	//∏ﬁ¿Œ
 	@RequestMapping("/manager_main.dj")
 	public ModelAndView managermain(){
-		CalculatorBean cal = new CalculatorBean();
+	
 		
 		
 		

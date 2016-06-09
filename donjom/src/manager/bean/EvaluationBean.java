@@ -61,8 +61,13 @@ public class EvaluationBean {
 	// 심사평 상세보기 
 	@RequestMapping("/manager_econtents.dj")
 	public ModelAndView managerecontents(evaluationDto dto,int no){
-		
+		System.out.println(no);
 		dto = (evaluationDto)sqlMap.queryForObject("econtent",no);
+		
+		System.out.println(dto.getE_content());
+		System.out.println(dto.getE_memname());
+		System.out.println(dto.getE_result());
+		
 		
 		mv.addObject("dto",dto);
 		mv.setViewName("/manager/manager_econtents.jsp");
