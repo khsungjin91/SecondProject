@@ -14,7 +14,7 @@ public class ManagerPageingDto {
 	
 	private StringBuffer pagingHtml;
 	
-	public ManagerPageingDto(int currentPage, int totalCunt, int blockCount, int blockPage, int totalCount){
+	public ManagerPageingDto(int currentPage, int totalCount, int blockCount, int blockPage){
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
 		this.currentPage = currentPage;

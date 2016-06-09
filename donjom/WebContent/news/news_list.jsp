@@ -9,6 +9,7 @@
 </head>
 <body>
 <table border="1">
+	<c:if test="${setting == 1 }">
 	<c:forEach var="list" items="${list}">
 	
 		<tr>
@@ -30,6 +31,7 @@
 	<tr>
 		<td align="center">${pagingHtml} </td>
 	</tr>
+	</c:if>
 </table>
 </body>
 </html>

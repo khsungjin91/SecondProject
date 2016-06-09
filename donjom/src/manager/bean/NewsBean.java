@@ -23,8 +23,28 @@ public class NewsBean {
 
 	// 메인에서 보여지는 뉴스페이지
 	@RequestMapping("/news_list.dj")
-	public ModelAndView newslist(HttpServletRequest request){
+	public ModelAndView newslist(HttpServletRequest request, ManagerPageingDto page, Object pagingHtml){
+		String pagecurrent = request.getParameter("currentPage");
+		ManagerPageingDto input = null;
+
+		int setting = 1;
+		int currentPage = 0; //현재페이지
+		int blockCount = 10; //한페이지의 게시물의 수
+		int blockPage = 5; // 한 화면에 보여줄 페이지의 수
+		int paging = 1;
+		
 		List list = sqlMap.queryForList("newsList", null);
+		
+		if(pagecurrent != null){
+			currentPage = Integer.parseInt(pagecurrent);
+		}else{currentPage = 1;}
+		
+		int count = (Integer) sqlMap.queryForObject("allcount", null);
+		int totalCount = list.size();
+
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.addObject("setting", setting);
+		mv.addObject("count", count);
 		mv.addObject("list", list);
 		mv.setViewName("/news/news_list.jsp");
 		return mv;		
