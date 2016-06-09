@@ -106,6 +106,9 @@ var coun2;
 <c:if test="${list.i_success == 'doing'}">
 펀딩진행중...
 </c:if>
+<c:if test="${list.i_success == 'fail'}">
+펀딩실패
+</c:if>
 </td>
 </tr>
 </table>

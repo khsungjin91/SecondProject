@@ -118,7 +118,15 @@
 </update>
 
 <update id="fail" parameterClass="int">
-	update product set p_success='fail' where no=#no# and p_success !='success' and p_success !='overend'
+	update product set p_success='fail' where no=#no# and p_success ='doing'
+</update>
+
+<update id="failinvest" parameterClass="String">
+	update invest set i_success='fail' where i_pcode=#p_code# and i_success ='doing'
+</update>
+
+<update id="failtable" parameterClass="String">
+	update dj_$str$ set back=3 
 </update>
 
 </sqlMap>

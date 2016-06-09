@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <c:if test="${count == 0}">
 미리보기는 상품이 올라가 뒤에 가능합니다.
 </c:if>
@@ -32,6 +31,12 @@
 <tr>
 <td>회차</td><td>상환일자</td><td>상환금</td><td>원금</td><td>이자</td><td>세금</td><td>실납입금</td><td>상환완료상태</td>
 </tr>
+<c:if test="${dto.back == 3}">
+<tr>
+<td colspan="8" align="center">대출에 실패 하셨습니다.</td>
+</tr>
+</c:if>
+<c:if test="${dto.back == 1 && dto.back == 0}">
 <c:forEach var="list" items="${list}" >
 	<tr>
 	<td>${list.no}</td>
@@ -53,6 +58,7 @@
 	</td>
 	</tr>
 </c:forEach>
+</c:if>
 </table>
 </c:if>
 
