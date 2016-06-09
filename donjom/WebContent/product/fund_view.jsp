@@ -123,7 +123,7 @@ if(amount > mi){
 						<td colspan="6"><h3>¼­·ù</h3>
 						<c:forEach var="filelist" items="${filelist}">
 								<a href="/donjom/file/${filelist.p_file}">${filelist.p_file}/</a>
-							</c:forEach></td>
+						</c:forEach></td>
 					</tr>
 
 				</table>

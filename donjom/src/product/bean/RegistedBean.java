@@ -1,5 +1,8 @@
 package product.bean;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,9 +27,12 @@ public class RegistedBean {
 	
 	
 	@RequestMapping("/fundView.dj")
-	public ModelAndView productview(String p_code,RegisterDto dto, HttpSession session){
+	public ModelAndView productview(String p_code,RegisterDto dto, HttpSession session)throws Exception{
 		TimeFormat time = new TimeFormat();
 		Map map = new HashMap();
+		Calendar cal = Calendar.getInstance();
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String email = (String)session.getAttribute("memId");
 		int check = 0;
 		int limit = 0;
@@ -41,8 +47,17 @@ public class RegistedBean {
 		check = (Integer)sqlMap.queryForObject("result.investcheck", map);
 		mv.addObject("no",no);
 		}	
+		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
+		
+		String today = format.format(now);
+		
+		String x = cal.get(cal.YEAR)+"-"+cal.get(cal.MONTH)+"-"+cal.get(cal.DAY_OF_WEEK);
+		Date y = format.parse(x);
+		
+		System.out.println(y);
 		
 		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
+		
 		List contentlist = sqlMap.queryForList("contentlist", p_code);
 		List filelist = sqlMap.queryForList("filelist", p_code);
 		
