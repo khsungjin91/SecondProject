@@ -9,7 +9,7 @@
 <body>
 <script>
 
-window.location = "fundList_total.dj";
+window.location = "fundList.dj";
 
 </script>
 </body>
