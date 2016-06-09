@@ -41,6 +41,7 @@ public class RegisterBean {
 	@RequestMapping("/registerPro.dj")
 	public ModelAndView RegisterPro(MultipartHttpServletRequest request,String [] content,
 			RegisterDto dto, String [] upfile)throws Exception{ 
+		
 		CreateTable table = new CreateTable();
 		String p_content = "";
 		String p_code = "";
@@ -90,7 +91,7 @@ public class RegisterBean {
 		}
 		
 		p_code = date.format(day)+"-"+m_code+"-"+str;
-	
+		
 		dto.setP_code(p_code);
 		
 		for(int i = 0 ; i<=indexno ; i++){

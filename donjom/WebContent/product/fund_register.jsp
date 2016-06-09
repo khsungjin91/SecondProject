@@ -96,11 +96,7 @@ function calculrator(userinput){
 매출담보(대출자희망)
 </c:if>
 </option>
-<option value="b">
-<c:if test="${dto.br_category == 'b'}">
-사업자
-</c:if>
-</option>
+<option value="b">사업자</option>
 <option value="p">개인</option>
 <option value="r">부동산</option>
 <option value="c">매출담보</option>
