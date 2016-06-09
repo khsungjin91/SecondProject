@@ -27,7 +27,7 @@
 </insert>
 
 <insert id="re_noinput" parameterClass="pointDto">
-	insert into refunds values(#no#,#re_price#,sysdate)
+	insert into refunding values(#no#,#re_price#,sysdate)
 </insert>
 
 <insert id="total_price" parameterClass="int">

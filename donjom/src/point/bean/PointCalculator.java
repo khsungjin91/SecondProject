@@ -44,7 +44,7 @@ public class PointCalculator {
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
+		System.out.println(re_price);
 		dto.setNo(no);
 		dto.setRe_price(re_price);
 		
