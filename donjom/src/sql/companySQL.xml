@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap>
+<sqlMap namespace="company">
 
 	<typeAlias alias="mem" type="sign.bean.memberDto" />
 	<typeAlias alias="memInfo" type="setting.bean.SettingDto" />
@@ -21,7 +21,29 @@
 		select * from cprefunds
 	</select>
 
+	<select id="in_count" resultClass="int">
+		select count(*) from borrow where success='none'
+	</select>
+	
+	<select id="eval_count" resultClass="int">
+		select count(*) from evaluation
+	</select>
+	
+	<select id="none_register" resultClass="int">
+		select count(*) from borrow where success='success' and no not in(select p_brno from product)
+	</select>
+	
+	<select id="count" resultClass="int">
+		select count(*) from borrow where success='none'
+	</select>
+	
+	<select id="remittance_list" resultClass="product">
+		select * from product where p_success='success'
+	</select>
 
+	<select id="refunds_list" resultClass="product">
+		select * from product where p_success='success'
+	</select>
 
 
 	

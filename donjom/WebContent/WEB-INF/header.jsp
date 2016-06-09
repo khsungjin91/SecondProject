@@ -41,24 +41,21 @@ $('#loan-cal').on('shown.bs.modal', function () {
  	String profile = "";
  	long total = 0;
  	int no = 0;
+ 	String join ="";
+ 	String nickname="";
  	PointDto dto = new PointDto();
  	
 	if(session.getAttribute("memId") != null){
 		
-		pstmt = conn.prepareStatement("select no from member where email=?");
+		pstmt = conn.prepareStatement("select no,nickname,join,profile from member where email=?");
 		pstmt.setString(1, email);
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()){
 			no = rs.getInt("no");
-		}
-		
-		pstmt = conn.prepareStatement("select profile from member where email=?");
-		pstmt.setString(1, email);
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()){
-		profile = rs.getString("profile");		
+			nickname = rs.getString("nickname");
+			join = rs.getString("join");
+			profile = rs.getString("profile");		
 		}
 		
 		pstmt = conn.prepareStatement("select total_ch,total_re from memprice where no=?");

@@ -72,46 +72,65 @@ var coun2;
   
 </script>
 
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+
+	<div class="warpper dash-body">
+		<div class="container">
+<jsp:include page="/WEB-INF/settingside.jsp"></jsp:include>
+	<div class="col-xs-12 col-sm-9 contetns-warp right">
+		<div class="panel-heading">
+	  		<ol class="breadcrumb contents-menu hidden-xs">
+	  		 <li><h3>투자내역</h3></li>
+	  		</ol>
+	  	</div>
+
 <c:forEach var="list" items="${list}" varStatus="i">
 <input type="hidden" id="money${i.count}" value="${list.i_invest}">
 <input type="hidden" id="way${i.count}" value="${list.i_way}">
 <input type="hidden" id="term${i.count}" value="${list.i_times}">
 <input type="hidden" id="rate${i.count}" value="${list.i_profit}">
 <input type="hidden" id="code${i.count}" value="${list.i_pcode}">
-<div style="width: 800px; height: 200px; border: 1px solid black;">
+<div style="width: 800px; height: 200px;">
 <div>
-<div>상품코드 : ${list.i_pcode}</div>
-<div style="float: right;">상환기간 : 대출금 지급전</div>
+	<div>상품코드 : ${list.i_pcode}</div>
+	<div style="float: right;">상환기간 : 대출금 지급전</div>
 </div>
 <div>
-<div>상품 이름 : <a href="fundView.dj?p_code=${list.i_pcode}">${list.i_pname}</a></div>
-<div>투자 일자 : ${list.i_date}</div>
+	<div>상품 이름 : <a href="fundView.dj?p_code=${list.i_pcode}">${list.i_pname}</a></div>
+	<div>투자 일자 : ${list.i_date}</div>
 </div>
-<table border="1">
-<tr>
-<td>상환예정일</td><td>회차</td><td>수익률(연)</td><td>투자금액</td><td>펀딩진행상황</td>
-</tr>
-<tr>
-<td>매월${list.i_repayday}일</td><td>${list.p_funding}회/${list.i_times}회</td><td>${list.i_profit}%</td><td>${list.i_invest}만원</td>
-<td>
-<c:if test="${list.i_success == 'success'}">
-펀딩성공!
-</c:if>
-<c:if test="${list.i_success == 'refunds'}">
-상환중...
-</c:if>
-<c:if test="${list.i_success == 'overend'}">
-상환완료
-</c:if>
-<c:if test="${list.i_success == 'doing'}">
-펀딩진행중...
-</c:if>
-<c:if test="${list.i_success == 'fail'}">
-펀딩실패
-</c:if>
-</td>
-</tr>
-</table>
+		<table class="table table-bordered table-responsive table-hover">
+			<tr>
+				<td>상환예정일</td>
+				<td>회차</td>
+				<td>수익률(연)</td>
+				<td>투자금액</td>
+				<td>펀딩진행상황</td>
+			</tr>
+			<tr>
+				<td>매월${list.i_repayday}일</td>
+				<td>${list.p_funding}회/${list.i_times}회</td>
+				<td>${list.i_profit}%</td>
+				<td>${list.i_invest}만원</td>
+				<td>
+				<c:if test="${list.i_success == 'success'}">
+				펀딩성공!
+				</c:if>
+				<c:if test="${list.i_success == 'refunds'}">
+				상환중...
+				</c:if>
+				<c:if test="${list.i_success == 'overend'}">
+				상환완료
+				</c:if>
+				<c:if test="${list.i_success == 'doing'}">
+				펀딩진행중...
+				</c:if>
+				<c:if test="${list.i_success == 'fail'}">
+				펀딩실패
+				</c:if>
+				</td>
+			</tr>
+		</table>
 
 
 <input type="button" id="${list.no}" onclick="callAjax('${i.count}')" value="상환플랜 보기">
@@ -124,8 +143,9 @@ var coun2;
 
 <input type="button" value="투자취소" onclick="AreuSure('${list.i_pcode}')">
 </c:forEach>
-
-
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,9 +42,94 @@
     <span class="info-box-text">DONJOM MAIN</span>
     <span class="info-box-number">돈좀 메인페이지 </span>
   </div><!-- /.info-box-content -->
-
+  
 </div></a><!-- /.info-box -->
 </div>
+
+<div class="row">
+		<a href="manager_borrowmn.dj">
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-aqua">
+					<ul class="list-inline text-center">
+						<li>미심사 대출</li>
+						<li><h3>${borrow_count}</h3></li>
+						<li>개</li>
+					</ul>
+				</div>
+			</div>
+			<a href="manager_evaluation.dj">
+				<div class="col-lg-3 col-xs-6">
+					<!-- small box -->
+					<div class="small-box bg-red">
+						<ul class="list-inline text-center">
+							<li>심사완료현황</li>
+							<li><h3>${eval_count}</h3></li>
+							<li>개</li>
+						</ul>
+					</div>
+				</div>
+			</a>
+				<a href="manager_borrowlist.dj">
+				<div class="col-lg-3 col-xs-6">
+					<!-- small box -->
+					<div class="small-box bg-green">
+						<ul class="list-inline text-center">
+							<li>미 등록상품</li>
+							<li><h3>${none_register}</h3></li>
+							<li>개</li>
+						</ul>
+					</div>
+				</div>
+			</a>
+				<a href="">
+				<div class="col-lg-3 col-xs-6">
+					<!-- small box -->
+					<div class="small-box bg-yellow">
+						<ul class="list-inline text-center">
+							<li>총 대출금</li>
+							<li><h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${total_borrow}"/></h3></li>
+							<li>만원</li>
+						</ul>
+					</div>
+				</div>
+			</a>
+
+			<!-- ./col -->
+</div>
+	
+
+<div class="col-sm-12 col-md-4 contents-aside">
+				<div class="box box-solid  box-primary ">
+					<div class="box-header">
+					<h3 class="box-title">송금알림</h3><div class="box-tools"><a class="btn btn-sm" href="manager_remittance.dj" type="button">더보기</a></div>
+					</div>
+					<div class="box-body">
+					<c:if test="${rm_count == 0 }">
+					    <div class="timeline-off-box"><span>메세지가 없습니다.</span></div>
+					</c:if>
+					<c:if test="${rm_count != 0 }">
+					<c:forEach var="rm_list" items="${rm_list}">
+					<div class="timeline-body">${rm_list.p_code}</div>
+					</c:forEach>
+					</c:if>
+					</div>
+					</div>
+				<!-- //알림 메세지 -->	
+				
+				<div class="box box-solid  box-primary ">
+					<div class="box-header">
+					<h3 class="box-title">환급알림</h3><div class="box-tools"><a class="btn btn-sm" href="manager_refunds.dj" type="button">더보기</a></div>
+					</div>
+					<div class="box-body">
+					
+			
+					
+					</div>
+					</div>
+				<!-- //알림 메세지 -->	
+			</div>
+			<!-- 우측 -->		
 
 	</section>
 </body>

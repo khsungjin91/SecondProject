@@ -136,28 +136,12 @@ window.location="signIn.dj";
 
 </c:if>
 
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
-<div class="container warp">
-<!-- warp시작 -->
-  <div class="col-sm-3 mobile-profile-nav">
-    <div class="user-info text-center radius">						
-		<img src="/donjom/save/${dto.profile}" class="img-circle" width="90"  height="90">
-		<p class="name txt-cut-line user-nick">${dto.nickname}	</p>
-		<p class="email txt-cut-line">${dto.email}</p>
-		<p class="date">가입일  ${dto.join}</p>
-		<div class="btn-profile-edit hidden-xs">
-			<button type="button" class="btn btn-success" onclick="location.href='setting.dj'"><i class="fa fa-cog"></i> 기본정보 수정</button>
-		</div>
-	</div>
-	<ul class="menu menu-dashboard radius">
-				<li class="dashboard"><a href ="dashboard.dj" class="active"><span class="glyphicon glyphicon-dashboard"></span> 대시보드</a></li>
-				<li class="invest"><a href="invest_history.dj" class=""> 투자내역</a></li>
-				<li class="lend"><a href="laon_history.dj" class=""> 대출내역</a></li>
-				<li class="moeny"><a href="point_deposit.dj" class=""> 충전/환급</a></li>
-				<li class="moeny hidden-xs"><a href="notification.dj" class="">알림 메세지</a></li>
-				<li class="setting"><a href="setting.dj" class="">설정</a></li>
-			</ul>
-  </div>
+
+	<div class="warpper dash-body">
+		<div class="container">
+<jsp:include page="/WEB-INF/settingside.jsp"></jsp:include>
 
 <div class="col-xs-12 col-sm-9 contetns-warp right">
 <!-- 좌측 전체 -->
@@ -276,7 +260,7 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
 * DJ서비스를 더이상 원하지 않을 경우
 <input type="button" value="삭제" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}')">
 	  		 
-	  		 
+	  		 </div>
 	  		</div>
 	  	</div>
 	  </div>

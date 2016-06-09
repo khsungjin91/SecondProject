@@ -19,6 +19,7 @@ public class FailBean {
 			sqlMap.update("result.fail", dto.getNo());
 			sqlMap.update("result.failinvest", dto.getP_code());
 			
+			System.out.println(dto.getP_code());
 
 	}
 

@@ -29,8 +29,6 @@ public class RegistedBean {
 	@RequestMapping("/fundView.dj")
 	public ModelAndView productview(String p_code,RegisterDto dto, HttpSession session)throws Exception{
 		TimeFormat time = new TimeFormat();
-		Date now = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		FailBean fail = new FailBean();
 		Map map = new HashMap();
 		String email = (String)session.getAttribute("memId");
@@ -50,15 +48,6 @@ public class RegistedBean {
 		mv.addObject("no",no);
 		}	
 		//product 1개를 껀내준다.
-		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
-		
-		String x = (String)sqlMap.queryForObject("result.failday", dto);
-		String failday = x.substring(0, 10);
-		String today = format.format(now);
-		// 일주일이 지나면 펀딩 실패
-		if(failday.equals(today) && dto.getP_success().equals("doing")){
-		fail.faillaon(sqlMap, dto);
-		}
 		dto = (RegisterDto)sqlMap.queryForObject("productone", dto);
 		
 		List contentlist = sqlMap.queryForList("contentlist", p_code);

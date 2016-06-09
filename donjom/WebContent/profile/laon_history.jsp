@@ -37,43 +37,51 @@ var coun2;
 </script>
 </head>
 <body>
-<c:forEach var="list" items="${list}" varStatus="i">
-<input type="hidden" id="no${i.count}" name="no" value="${list.no}">
-<div style="width: 800px; height: 200px; border: 1px solid black;">
-<div>
-<div>대출자 이름 : ${list.memname}</div>
+
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+
+	<div class="warpper dash-body">
+		<div class="container">
+<jsp:include page="/WEB-INF/settingside.jsp"></jsp:include>
+		<c:forEach var="list" items="${list}" varStatus="i">
+		<input type="hidden" id="no${i.count}" name="no" value="${list.no}">
+		<div style="width: 800px; height: 200px; border: 1px solid black;">
+		<div>
+		<div>대출자 이름 : ${list.memname}</div>
+		</div>
+		<div>
+		<div>대출 목적 :${fn:substring(list.br_object,0,30)}...</div>
+		<div>대출 일자 : ${list.br_date}</div>
+		</div>
+		<table border="1">
+		<tr>
+		<td>상환희망일</td><td>상환회차</td><td>대출금액</td><td>심사</td>
+		</tr>
+		<tr>
+		<td>매월${list.br_hopeday}일</td><td>0회/${list.br_term}회</td><td>${list.br_sum}만원</td>
+		<td>
+		<c:if test="${list.success == 'success'}">
+		심사완료
+		</c:if>
+		<c:if test="${list.success == 'fail'}">
+		심사실패
+		</c:if>
+		<c:if test="${list.success == 'none'}">
+		심사중
+		</c:if>
+		</td>
+		</tr>
+		</table>
+		
+		<input type="button" onclick="callAjax('${i.count}')" value="대출미리보기">
+		
+		</div>
+		
+		<div id="callback${i.count}"></div>
+		</c:forEach>
+		
+		</div>
 </div>
-<div>
-<div>대출 목적 :${fn:substring(list.br_object,0,30)}...</div>
-<div>대출 일자 : ${list.br_date}</div>
-</div>
-<table border="1">
-<tr>
-<td>상환희망일</td><td>상환회차</td><td>대출금액</td><td>심사</td>
-</tr>
-<tr>
-<td>매월${list.br_hopeday}일</td><td>0회/${list.br_term}회</td><td>${list.br_sum}만원</td>
-<td>
-<c:if test="${list.success == 'success'}">
-심사완료
-</c:if>
-<c:if test="${list.success == 'fail'}">
-심사실패
-</c:if>
-<c:if test="${list.success == 'none'}">
-심사중
-</c:if>
-</td>
-</tr>
-</table>
-
-<input type="button" onclick="callAjax('${i.count}')" value="대출미리보기">
-
-</div>
-
-<div id="callback${i.count}"></div>
-</c:forEach>
-
 
 </body>
 </html>
