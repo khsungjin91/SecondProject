@@ -69,8 +69,6 @@ public class CategoryBean {
 		// 회사정보 변경폼
 		@RequestMapping("/manager_companyinfo.dj")
 		public ModelAndView companyinfo(HttpServletRequest request, ManagerCompanyDto companyinfo){
-			
-			
 			mv.addObject("list", companyinfo);
 			mv.setViewName("/managerpage/manager_companyinfo.jsp");
 			return mv;
@@ -89,20 +87,20 @@ public class CategoryBean {
 		}
 		// 회사정보 수정
 		@RequestMapping("/manager_companyModify.dj")
-		public ModelAndView companyModify(HttpServletRequest request, ManagerCompanyDto companyinfo){
-			// 저장된 db를 input text에 불러와야 함
-			List list = sqlMap.queryForList("companyList", null);
-			mv.setViewName("company");
-			// 수정된 내용 db 저장
-			sqlMap.update("companymodify", companyinfo);
-			// 저장된 목록 보여주기
-			mv.addObject("company", companyinfo);
-			mv.setViewName("/managerpage/manager_companyinfo.jsp");
+		public ModelAndView companyModify(ManagerCompanyDto companyinfo, String company){
+			companyinfo = (ManagerCompanyDto) sqlMap.queryForObject("companyView", company);
+			mv.addObject("list", companyinfo);
+			mv.setViewName("/managerpage/manager_companyModify.jsp");
 			return mv;
 		}
 		@RequestMapping("/manager_companyModifyPro.dj")
-		public ModelAndView companyModifyPro(){
-			mv.setViewName("/managgerpage/manager_companyModifyPro.jsp");
+		public ModelAndView companyModifyPro(ManagerCompanyDto companyinfo){
+			mv.setViewName("companyinfo");
+			// 수정된 내용 db 저장
+			sqlMap.update("companymodify", companyinfo);
+			// 저장된 목록 보여주기
+			mv.addObject("list", companyinfo);
+			mv.setViewName("/managerpage/manager_companyinfo.dj");
 			return mv;
 		}
 

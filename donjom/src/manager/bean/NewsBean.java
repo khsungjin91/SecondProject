@@ -31,8 +31,8 @@ public class NewsBean {
 	}
 	// 관리자 모드에서 보여지는 뉴스페이지
 	@RequestMapping("/news_manager.dj")
-	public ModelAndView newsmanager(ManagerNewsDto news, int no){
-		news = (ManagerNewsDto) sqlMap.queryForObject("newsView", no);
+	public ModelAndView newsmanager(HttpServletRequest request, ManagerNewsDto news){
+		List list = sqlMap.queryForList("newsView", null);
 		mv.addObject("list", news);
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;

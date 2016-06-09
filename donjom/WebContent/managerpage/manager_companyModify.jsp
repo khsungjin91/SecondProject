@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form action="manager_companyModifyPro.dj" method="post">
-	회사 명  :<input type="text" name="company" value="${list.company}"> <br />
+	회사 명  :<input type="text" name="company" value="${companyinfo.company}"> <br />
 	대표이사 : <input type="text" name="ceo" value="${list.ceo}"> <br />
 	사업자등록번호 : <input type="text" name="licensee" value="${list.licensee}"> <br />
 	주소 :<input type="text" name="address" value="${list.address}"> <br />

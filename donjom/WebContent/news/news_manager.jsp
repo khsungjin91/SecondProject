@@ -16,9 +16,9 @@
 	<input type="button" value="검색">
 	</form>
 	
-	<form action="" method="post">
+	<form action="news_write.dj" method="post">
 	<table border="1">
-	<c:forEach var="list" items="${list}">
+	
 		<tr>
 			<td>${list.num}</td>
 		</tr>
@@ -41,10 +41,9 @@
 			<tr>
 				<td> 등록된 게시물이 없습니다.</td>
 		</c:if>
-		</c:forEach>
 		
 	</table>
-	<input type="submit" value="뉴스 올리기" onclick="javascript:location.href='news_write.dj'">
+	<input type="submit" value="뉴스 올리기" >
 	<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_modify.dj?no=${news.num}'">
 	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_delete.dj?no=${news.num}'">
 	

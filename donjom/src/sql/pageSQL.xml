@@ -10,7 +10,9 @@
 	<select id="companyList" resultClass="companyinfo" parameterClass="String">
 		select company, ceo, licensee, address, companynum, fax, email, max, overdue from companyinfo
 	</select>
-
+	<select id="companyView" resultClass="companyinfo" parameterClass="String">
+		select * from companyinfo where company=#company#
+	</select>
 	<!-- 회사정보 저장 -->
 	<insert id="companyin" parameterClass="companyinfo">
 		insert into companyinfo (company, ceo, licensee, address, companynum, fax, email, max, overdue)
@@ -54,7 +56,7 @@
 	<!-- 뉴스  -->
 	<!-- 뉴스 테이블 목록 전체 -->
 	<select id="newsList" resultClass="news" parameterClass="String">
-		select image, sitename, title, content, site, reg from news
+		select image, sitename, title, content, site, reg from news order by num desc
 	</select>
 	<select id="newsView" resultClass="news" parameterClass="int">
 		select num, image, sitename, title, content, site, reg from news where num=#num#

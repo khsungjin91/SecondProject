@@ -10,6 +10,7 @@
 <body>
 <table border="1">
 	<c:forEach var="list" items="${list}">
+	
 		<tr>
 			<td><img src="/donjom/newssave/${list.image}"/></td>
 		</tr>
@@ -26,6 +27,9 @@
 			<td> ${list.site} </td>
 		</tr>
 	</c:forEach>
+	<tr>
+		<td align="center">${pagingHtml} </td>
+	</tr>
 </table>
 </body>
 </html>

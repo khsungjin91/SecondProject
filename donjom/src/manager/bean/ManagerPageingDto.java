@@ -2,11 +2,11 @@ package manager.bean;
 
 public class ManagerPageingDto {
 
-	private int currentPage =1; //현재페이지
+	private int currentPage; //현재페이지
 	private int totalCount; // 전체 게시물 수 
 	private int totalPage;	// 전체 페이지 수
-	private int blockCount = 10; // 한 페이지의 게시물의 수
-	private int blockPage = 5;	// 한 화면에 보여줄 페이지의 수
+	private int blockCount; // 한 페이지의 게시물의 수
+	private int blockPage ;	// 한 화면에 보여줄 페이지의 수
 	private int startCount; // 한 페이지에서 보여줄 게시글의 시작번호
 	private int endCount;	// 한페이지에서 보여줄 게시글의 끝번호
 	private int startPage;	// 시작페이지
@@ -46,7 +46,7 @@ public class ManagerPageingDto {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage){
-			pagingHtml.append("<a href='news_list.dj?currentPage="
+			pagingHtml.append("<a href='news_manager.dj?currentPage="
 					+ (startPage -1) + "'>");
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
@@ -63,7 +63,7 @@ public class ManagerPageingDto {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
-				pagingHtml.append("&nbsp;<a href='news_list.dj?currentPage=");
+				pagingHtml.append("&nbsp;<a href='news_manager.dj?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -75,7 +75,7 @@ public class ManagerPageingDto {
 		
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href='news_list.dj?currentPage=" + (endPage + 1) + ">'");
+			pagingHtml.append("<a href='news_manager.dj?currentPage=" + (endPage + 1) + ">'");
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 		}
