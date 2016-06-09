@@ -107,7 +107,7 @@
 								목표 ${list.p_price} </span><span class="title"> 만원</span> 
 								<span class="title-con text-green">연 ${list.p_rate}% </span><span class="title"> 수익률</span>
 							
-								<ul class="rate">
+								<ul class="rate text-uppercase">
 									<li><span class="text-green"> ${list.p_category}</span> 만기 </li>
 									<li><span class="text-green">${list.p_term}</span> 개월</li>
 									<li>등급 <span class="text-green"> D1</span></li>
