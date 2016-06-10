@@ -64,12 +64,15 @@
 <!-- warp시작 -->
 		<div class="col-sm-3">
 			<div class="text-center">	
-			<c:if test="${dto.profile == null}">
+			<%if(profile == null){ %>
+			
 			<img src="image/default.jpg" class="img-circle" width="150"  >
-			</c:if>
-			<c:if test="${dto.profile != null}">				
+			
+			<%}else{ %>
+						
 				<img src="/donjom/save/<%=profile %>" class="img-circle" width="150"  >
-				</c:if>
+			
+				<%} %>
 				<p class="user-nick"><%=nickname %>	</p>
 				<p ><%=email %></p>
 				<p >가입일  <%=join %></p>
