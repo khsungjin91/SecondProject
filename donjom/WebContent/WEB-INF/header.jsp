@@ -126,7 +126,12 @@ $('#loan-cal').on('shown.bs.modal', function () {
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                 <!-- The user image in the navbar-->
+                  <c:if test="${dto.profile == null }">
+                <img src="image/default.jpg" class="user-image" >
+                </c:if>
+                <c:if test="${dto.profile != null }">
                 <img src="/donjom/save/<%=profile %>" class="user-image" >
+                </c:if>
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span >${memId}</span>
               </a>

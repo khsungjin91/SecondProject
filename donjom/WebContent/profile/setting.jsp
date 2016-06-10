@@ -141,7 +141,7 @@ window.location="signIn.dj";
 
 	<div class="warpper dash-body">
 		<div class="container">
-<jsp:include page="/WEB-INF/settingside.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/settingside.jsp"/>
 
 <div class="col-xs-12 col-sm-9 contetns-warp right">
 <!-- 좌측 전체 -->
@@ -192,6 +192,7 @@ window.location="signIn.dj";
 				 <div class="col-xs-5">
 				<c:if test="${dto.profile == null}">			
  					<input type="file" name="save" id="save" onchange="view(this,$('#imgreview'))">
+ 					<img src="/image/default.jpg" >
  					<div id="imgreview"></div>		
 				</c:if>
 				<c:if test="${dto.profile != null}">	
@@ -241,7 +242,7 @@ window.location="signIn.dj";
 </div>
 알림설정
 <form action="signup_modifyPro2.dj" method="post" enctype="multipart/form-data">
-<c:if test="${dto.snsreceive == 'on'}">
+<%-- <c:if test="${dto.snsreceive == 'on'}">
 SNS 수신동의<input type="checkbox" name="snsreceive" checked="checked">			<br/>
 </c:if>
 <c:if test="${dto.snsreceive != 'on'}">
@@ -252,7 +253,7 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive" checked="checked">		<b
 </c:if>
 <c:if test="${dto.emailreceive != 'on'}">
 EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
-</c:if>
+</c:if> --%>
 
 <input type="submit" value="확인">
 </form>

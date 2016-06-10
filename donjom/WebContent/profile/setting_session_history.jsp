@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/header.jsp"/>
 
 <c:if test="${sessionScope.memId == null }">
 
@@ -18,24 +19,8 @@ window.location="signIn.dj";
 
 </c:if>
 
+<jsp:include page="/WEB-INF/settingside.jsp"/>
 
-<a href="setting.dj">기본정보 수정</a>	<br/><br/>
-
-<ul>
-	<li>내정보</li>	
-	<li><a href="dashboard.dj">대시보드</a></li>
-	<li><a href="invest_history.dj">투자내역</a></li>
-	<li><a href="laon_history.dj">대출내역</a></li>
-	<li><a href="point_deposit.dj">충전/환급</a></li>
-	<li><a href="notification.dj">알림메세지</a></li>
-	<li><a href="setting.dj">설정</a></li>		
-</ul>
-
-설정 		<br/>
-
-<a href="setting.dj">기본정보</a>
-<a href="setting_cert_person.dj">인증센터</a>
-<a href="setting_session_history.dj">로그인내역</a>			<br/>
 
 <h2>로그인내역</h2>
 

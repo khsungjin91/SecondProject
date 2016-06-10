@@ -67,63 +67,7 @@ window.location="admin_login.dj";
 
             <!-- Notifications Menu -->
             <li class="dropdown notifications-menu">
-              <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">10</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 10 notifications</li>
-                <li>
-                  <!-- Inner Menu: contains the notifications -->
-                  <ul class="menu">
-                    <li><!-- start notification -->
-                      <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                      </a>
-                    </li>
-                    <!-- end notification -->
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">View all</a></li>
-              </ul>
-            </li>
-            <!-- Tasks Menu -->
-            <li class="dropdown tasks-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-flag-o"></i>
-                <span class="label label-danger">9</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 9 tasks</li>
-                <li>
-                  <!-- Inner menu: contains the tasks -->
-                  <ul class="menu">
-                    <li><!-- Task item -->
-                      <a href="#">
-                        <!-- Task title and progress text -->
-                        <h3>
-                          Design some buttons
-                          <small class="pull-right">20%</small>
-                        </h3>
-                        <!-- The progress bar -->
-                        <div class="progress xs">
-                          <!-- Change the css width attribute to simulate progress -->
-                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                            <span class="sr-only">20% Complete</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <!-- end task item -->
-                  </ul>
-                </li>
-                <li class="footer">
-                  <a href="#">View all tasks</a>
-                </li>
-              </ul>
-            </li>
+             
             <c:if test="${sessionScope.adminId!=null}">
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
@@ -133,21 +77,9 @@ window.location="admin_login.dj";
               </a>
              <ul class="dropdown-menu" >
           	<li >
-          	<a href="dashboard.dj">
-          	<i class="fa fa-fw fa-tachometer fa-lg"></i>대시보드</a></li>
-				<li><a href="invest_history.dj">
-				<i class="fa fa-fw fa-bar-chart fa-lg"></i>투자내역</a></li>
-				<li><a href="laon_history.dj">
-				<i class="fa fa-fw fa-tasks fa-lg"></i>대출내역</a></li>
-				<li><a href="point_deposit.dj">
-				<i class="fa fa-fw fa-money fa-lg"></i>충전/환급</a></li>
-				<li><a href="notification.dj">
-				<i class="fa fa-fw fa-bullhorn fa-lg"></i>알림메세지</a></li>
-				<li><a href="setting.dj">
-				<i class="fa fa-fw fa-gear fa-lg"></i>설정</a></li>
-            
-            <li class="divider"></li>
-            
+          	<a href="main.dj">
+          	<i class="fa fa-fw fa-tachometer fa-lg"></i>돈좀메인</a></li>
+				
             <li><a href="admin_logout.dj">로그아웃</a></li>
             </c:if>
           </ul>

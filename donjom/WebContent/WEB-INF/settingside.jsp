@@ -5,6 +5,7 @@
 <%@ page import = "java.sql.PreparedStatement"%>
 <%@ page import = "java.sql.ResultSet"%>
 <%@ page import = "point.bean.PointDto" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,11 +63,16 @@
 
 <!-- warp시작 -->
 		<div class="col-sm-3">
-			<div class="text-center">						
+			<div class="text-center">	
+			<c:if test="${dto.profile == null}">
+			<img src="image/default.jpg" class="img-circle" width="150"  >
+			</c:if>
+			<c:if test="${dto.profile != null}">				
 				<img src="/donjom/save/<%=profile %>" class="img-circle" width="150"  >
+				</c:if>
 				<p class="user-nick"><%=nickname %>	</p>
 				<p ><%=email %></p>
-				<p >가입일  <%=join %>}</p>
+				<p >가입일  <%=join %></p>
 				<div class=" hidden-xs">
 					<button type="button" class="btn btn-flat bg-orange" onclick="location.href='setting.dj'"><i class="fa fa-cog"></i> 기본정보 수정</button>
 				</div>

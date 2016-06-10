@@ -72,11 +72,11 @@ var coun2;
   
 </script>
 
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/header.jsp"/>
 
 	<div class="warpper dash-body">
 		<div class="container">
-<jsp:include page="/WEB-INF/settingside.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/settingside.jsp"/>
 	<div class="col-xs-12 col-sm-9 contetns-warp right">
 		<div class="panel-heading">
 	  		<ol class="breadcrumb contents-menu hidden-xs">
