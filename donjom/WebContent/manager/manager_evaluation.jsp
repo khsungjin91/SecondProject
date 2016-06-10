@@ -47,7 +47,7 @@
 						<tr>
 							<td>아이디</td>
 							<td width="80">이름</td>
-							<td>서류</td>
+							<td>기타 서류</td>
 							<td>사업체 유무</td>
 							<td>사업체 등기부등록</td>
 							<td width="50">서류 개수</td>
