@@ -118,7 +118,7 @@ function view(html, $target) {
         reader.onload = function (e) {
             $target.css('display', '');
             //$target.css('background-image', 'url(\"' + e.target.result + '\")'); // 배경으로 지정시
-            $target.html('<img src="' + e.target.result + '" border="0" width="150"  alt="review" />');
+            $target.html('<img src="' + e.target.result + '" border="0" width="150" class="img-circle" alt="review" />');
         }
         reader.readAsDataURL(html.files[0]);
     }
@@ -168,36 +168,36 @@ window.location="signIn.dj";
 	  		<h3>회원정보 </h3>
 	  		 <form class="form-horizontal" action="signup_modifyPro.dj" method="post" enctype="multipart/form-data" name="userinput" >
 				<div class="form-group">
-				 <label class="col-xs-2 control-label">닉네임</label>
+				 <label class="col-xs-4 control-label">닉네임</label>
 				 <div class="col-xs-5">
 				 <input type="text" name="nickname" value="${dto.nickname}" class="form-control">
 				 </div>
 				</div>
 				<div class="form-group">
-				 <label class="col-xs-2 control-label">이메일</label>
+				 <label class="col-xs-4 control-label">이메일</label>
 				 <div class="col-xs-5">
 				 <input type="text"   value=" ${dto.email}" class="form-control" disabled>
 				 </div>
 				</div>	
 				<div class="form-group">
-				 <label class="col-xs-2 control-label">가입일</label>
+				 <label class="col-xs-4 control-label">가입일</label>
 				 <div class="col-xs-5">
 				 ${dto.join}
 				 </div>
 				</div>		
 				
 			<div id="img" class="form-group">
-				 <label class="col-xs-2 control-label">프로필사진수정</label>
+				 <label class="col-xs-4 control-label">프로필사진수정</label>
 				 
 				 <div class="col-xs-5">
 				<c:if test="${dto.profile == null}">			
- 					<input type="file" name="save" id="save" onchange="view(this,$('#imgreview'))">
- 					<img src="/image/default.jpg" >
- 					<div id="imgreview"></div>		
+ 					
+ 					<input type="file" name="save" id="save" onchange="view(this,$('#imgreview'))" > 
+ 					<br/><div id="imgreview" ></div>		<!-- 이미지 미리보기  -->
 				</c:if>
 				<c:if test="${dto.profile != null}">	
 					<input type="hidden" value="${dto.profile}" name="profile">	
-					<img src="/donjom/save/${dto.profile}" width="150"> 
+					<img src="/donjom/save/${dto.profile}" width="150" class="img-circle"> 
 					<input type="button" value="이미지삭제" onclick="deleteimg()">
 				</c:if> 
 				 </div>
@@ -216,21 +216,21 @@ window.location="signIn.dj";
 			
 	<h3>비밀번호 변경 </h3>
 		<div class="form-group">
-				 <label class="col-xs-2 control-label">새비밀번호 </label>
+				 <label class="col-xs-4 control-label">새비밀번호 </label>
 				 <div class="col-xs-5">
 				 <input type="password" name="newpw" class="form-control">	
 				 </div>
 				</div>	
 		<div class="form-group">
-				 <label class="col-xs-2 control-label">새비밀번호 확인 </label>
+				 <label class="col-xs-4 control-label">새비밀번호 확인 </label>
 				 <div class="col-xs-5">
 				  <input type="password" name="pwch" onkeyup="pwcheck()"class="form-control">	
 				</div>
-				 </div>
-				 <div id="checkPwd" class="text-right">새 비밀번호를 확인해주세요</div>
+			</div>
 			
+			<div id="checkPwd" ><small>새 비밀번호를 확인해주세요</small></div>
 			<div class="form-group">
-				 <label class="col-xs-2 control-label">현재 비밀번호 </label>
+				 <label class="col-xs-4 control-label">현재 비밀번호 </label>
 				 <div class="col-xs-5">
 				  <input type="password" name="pw" class="form-control"><br/>
 				  <div class="text-right"> ※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.</div>		

@@ -19,7 +19,7 @@ window.location="signIn.dj";
 
 </c:if>
 
-<jsp:include page="/WEB-INF/settingside.jsp"/>
+
 
 
 <h2>로그인내역</h2>

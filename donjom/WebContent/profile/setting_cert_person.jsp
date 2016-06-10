@@ -94,9 +94,10 @@ window.location="signIn.dj";
 </script>
 </c:if>
 
+
+	<div class="warpper dash-body">
+		<div class="container">
 <jsp:include page="/WEB-INF/settingside.jsp"/>
-
-
 <h2>개인정보</h2>	<br/>
 
 <!-- 이름 생년월일 성별 휴대전화 은행 계좌번호 입력구간 -->
@@ -176,5 +177,7 @@ window.location="signIn.dj";
 ※ 원천징수정보란?
 빌리의 투자자가 투자 수익이 발생한 경우, 투자자가 국가에 부담할 세액을 빌리가 미리 국가를 대신하여 징수하고, 투자자의 소득 정보를 신고하기 위해 수집하는 정보 입니다.	<br/>
 원천징수정보 미입력 시 빌리에서 투자가 불가 합니다.
+</div>
+</div>
 </body>
 </html>
