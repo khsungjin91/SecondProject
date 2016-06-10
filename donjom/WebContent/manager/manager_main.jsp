@@ -122,9 +122,20 @@
 					<h3 class="box-title">환급알림</h3><div class="box-tools"><a class="btn btn-sm" href="manager_refunds.dj" type="button">더보기</a></div>
 					</div>
 					<div class="box-body">
-					
-			
-					
+					<c:if test="${rf_count == 0 }">
+					    <div class="timeline-off-box"><span>환급할 상품이 없습니다.</span></div>
+					</c:if>
+					<c:if test="${rf_count != 0 }">
+					<table class="table table-bordered table-responsive table-hover">
+					<c:forEach var="rf_list" items="${rf_list}">
+					<tr>
+					<td class="timeline-body">${rf_list.p_code}</td>
+					<td class="timeline-body">${rf_list.p_people}명</td>
+					<td class="timeline-body">환급일 ${rf_list.p_repayday}일</td>
+					</tr>
+					</c:forEach>
+					</table>
+					</c:if>
 					</div>
 					</div>
 				<!-- //알림 메세지 -->	

@@ -34,6 +34,11 @@ public class MainBean {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		FailBean fail = new FailBean();
 		List<RegisterDto> reglist = new ArrayList<RegisterDto>();
+		float y = 0;
+		double avg_interest =0;
+		double fail_avg = 0;
+		String accumulate_loan ="0";
+		int maincount = (Integer)sqlMap.queryForObject("product_count", null);
 		
 		//fail될 상품들을 해당 요일이 되면 실패로 바꿔준다.
 		reglist = sqlMap.queryForList("productList", null);
@@ -51,7 +56,6 @@ public class MainBean {
 		}
 		}
 		
-		
 		if(session.getAttribute("memId") != null){
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
@@ -61,13 +65,14 @@ public class MainBean {
 		//상품리스트 
 		List list = sqlMap.queryForList("productList", null);
 		
+		
 		int total_interest = (Integer)sqlMap.queryForObject("product_count", null);
 		//평균이자율  = 전체 이자율의 합 / product전체 count
+		if(maincount != 0){
 		float interest_count = Float.parseFloat((String) sqlMap.queryForObject("sum_interest", null));
-		float y = interest_count/total_interest;
-		
+		y = interest_count/total_interest;
 		//누적대출액 = borrow 에서 success 한 금액의 전체합
-		String accumulate_loan = (String)sqlMap.queryForObject("sum_borrow", null) + "0000";
+		accumulate_loan = (String)sqlMap.queryForObject("sum_borrow", null) + "0000";
 		
 		//누적상환액 = refunds 에서  i_money의 전체 합
 		//long accumulate_refunds = (Long)sqlMap.queryForObject("", null);
@@ -76,8 +81,10 @@ public class MainBean {
 		int fail_count = (Integer)sqlMap.queryForObject("fail_count", null);
 		float x = (float)fail_count/(float)total_interest*100;
 		
-		double fail_avg = Double.parseDouble(String.format("%.2f", x));		
-		double avg_interest = Double.parseDouble(String.format("%.2f", y));
+		fail_avg = Double.parseDouble(String.format("%.2f", x));		
+		avg_interest = Double.parseDouble(String.format("%.2f", y));
+		
+		}
 		
 		mv.addObject("fail_avg", fail_avg);
 		mv.addObject("accumulate_loan", accumulate_loan);

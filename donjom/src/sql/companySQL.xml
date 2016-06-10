@@ -41,8 +41,8 @@
 		select * from product where p_success='success'
 	</select>
 
-	<select id="refunds_list" resultClass="product">
-		select * from product where p_success='success'
+	<select id="refunds_list" resultClass="product" parameterClass="String">
+		select * from product where p_success='refunds' and p_repayday=#day#
 	</select>
 
 
