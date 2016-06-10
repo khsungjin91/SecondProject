@@ -31,7 +31,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
 
 <%
     Class.forName("oracle.jdbc.driver.OracleDriver");
-    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@masterkh.iptime.org:7000:orcl","donjom","donjom");
+    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@khmaster.iptime.org:7000:orcl","donjom","donjom");
  
     PreparedStatement pstmt = null;
     
@@ -69,6 +69,9 @@ $('#loan-cal').on('shown.bs.modal', function () {
 			
 			total = total_ch - total_re;
 		}
+		if(rs != null){try{rs.close();}catch(Exception e){e.printStackTrace();}}
+		if(pstmt != null){try{pstmt.close();}catch(Exception e){e.printStackTrace();}}
+		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 %>
 
