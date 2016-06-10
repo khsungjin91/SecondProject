@@ -7,6 +7,11 @@
 <title>information board</title>
 </head>
 <body>
-
+<form action="update.dj" method="post">
+墨抛绊府
+力格<input type="text" name="i_subject" >
+<textarea rows="10" cols="20" id="ckedit">しいぉいしぉいけし</textarea>
+<input type="button" value="历厘" >
+</form>
 </body>
 </html>
