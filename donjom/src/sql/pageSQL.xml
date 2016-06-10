@@ -59,7 +59,7 @@
 		select image, sitename, title, content, site, reg from news order by num desc
 	</select>
 	<select id="newsView" resultClass="news" parameterClass="int">
-		select num, image, sitename, title, content, site, reg from news where num=#num#
+		select num, title, reg from news where num=#num#
 	</select>
 	<!-- 뉴스 전체 글수  -->
 	<select id="allcount" parameterClass="news">

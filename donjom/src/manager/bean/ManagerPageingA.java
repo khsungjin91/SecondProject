@@ -1,6 +1,6 @@
 package manager.bean;
 
-public class ManagerPageingDto {
+public class ManagerPageingA {
 
 	private int currentPage; //현재페이지
 	private int totalCount; // 전체 게시물 수 
@@ -14,7 +14,7 @@ public class ManagerPageingDto {
 	
 	private StringBuffer pagingHtml;
 	
-	public ManagerPageingDto(int currentPage, int totalCount, int blockCount, int blockPage){
+	public ManagerPageingA(int currentPage, int totalCount, int blockCount, int blockPage){
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
 		this.currentPage = currentPage;

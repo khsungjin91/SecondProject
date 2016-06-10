@@ -9,46 +9,31 @@
 </head>
 
 <body>
-<h2> 언론 </h2>
+	<h2> 언론 </h2>
 
 	<form action="news_search.dj" method="post">
 	<input type="text" name="serch">
 	<input type="button" value="검색">
 	</form>
-	
+		
 	<form action="news_write.dj" method="post">
 	<table border="1">
-	
 		<tr>
-			<td>${list.num}</td>
+			<td> 번호 </td>
+			<td> 뉴스 제목 </td>
+			<td> 올린 날짜 </td>
 		</tr>
+		<c:forEach var="list" items="${list}">
 		<tr>
-			<td><img src="/donjom/newssave/${list.image}"/> </td> 
-		</tr>
-		<tr>
-			<td> ${list.sitename} </td>
-		</tr>
-		<tr> 
+			<td> ${list.num} </td> 
 			<td> ${list.title} </td>
+			<td> ${list.reg} </td>
 		</tr>
-		<tr>
-			<td> ${list.content} </td>
-		</tr>
-		<tr>
-			<td> ${list.site} </td>
-		</tr>
-		<c:if test="list.size() <= 0">
-			<tr>
-				<td> 등록된 게시물이 없습니다.</td>
-		</c:if>
-		
+		</c:forEach>
 	</table>
-	<input type="submit" value="뉴스 올리기" >
-	<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_modify.dj?no=${news.num}'">
-	<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_delete.dj?no=${news.num}'">
-	
+		<input type="submit" value="뉴스 올리기" >
+		<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_modify.dj'">
+		<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_delete.dj?no=${news.num}'">
 	</form>
-
-
 </body>
 </html>

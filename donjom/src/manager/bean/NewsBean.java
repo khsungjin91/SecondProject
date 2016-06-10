@@ -20,31 +20,36 @@ public class NewsBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
-
-	// 메인에서 보여지는 뉴스페이지
-	@RequestMapping("/news_list.dj")
-	public ModelAndView newslist(HttpServletRequest request, ManagerPageingDto page, Object pagingHtml){
+	// pagetest
+	@RequestMapping("/test.dj")
+	public ModelAndView test(HttpServletRequest request, ManagerPageingA page, String pagingHtml){
 		String pagecurrent = request.getParameter("currentPage");
-		ManagerPageingDto input = null;
-
+		ManagerPageingA input = null;
+		
 		int setting = 1;
 		int currentPage = 0; //현재페이지
-		int blockCount = 10; //한페이지의 게시물의 수
-		int blockPage = 5; // 한 화면에 보여줄 페이지의 수
-		int paging = 1;
+		int blockCount = 10; //한페이지의 게시물의수
+		int blockPage = 5;	 //한 화면에 보여줄 페이지의 수 
+		int paging = 1;		//
 		
 		List list = sqlMap.queryForList("newsList", null);
 		
 		if(pagecurrent != null){
 			currentPage = Integer.parseInt(pagecurrent);
 		}else{currentPage = 1;}
-		
 		int count = (Integer) sqlMap.queryForObject("allcount", null);
 		int totalCount = list.size();
-
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("setting", setting);
 		mv.addObject("count", count);
+		mv.addObject("list", list);
+		mv.setViewName("/news/test.jsp");
+		return mv;
+	}
+	// 메인에서 보여지는 뉴스페이지
+	@RequestMapping("/news_list.dj")
+	public ModelAndView newslist(HttpServletRequest request){
+		List list = sqlMap.queryForList("newsList", null);
 		mv.addObject("list", list);
 		mv.setViewName("/news/news_list.jsp");
 		return mv;		
@@ -53,7 +58,7 @@ public class NewsBean {
 	@RequestMapping("/news_manager.dj")
 	public ModelAndView newsmanager(HttpServletRequest request, ManagerNewsDto news){
 		List list = sqlMap.queryForList("newsView", null);
-		mv.addObject("list", news);
+		mv.addObject("list", list);
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;
 	}
