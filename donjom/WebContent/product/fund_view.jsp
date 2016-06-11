@@ -58,7 +58,7 @@ if(amount > mi){
 
 </head>
 <body>
- <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+ <jsp:include page="/WEB-INF/header.jsp"/>
 	<div class="container text-center">
 		<div class="content-header"><h2>${dto.p_name}</h2></div>
 			<form action="fund_ready.dj" method="post" name="userinput">
