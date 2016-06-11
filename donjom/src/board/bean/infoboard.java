@@ -2,11 +2,15 @@ package board.bean;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import help.bean.helpDTO;
 
 @Controller
 public class infoboard {
@@ -16,59 +20,45 @@ public class infoboard {
 	private ModelAndView mv;
 	
 	@RequestMapping("/inforboard.dj")
-	public ModelAndView infoboard(){
+	public ModelAndView inforboard(HttpServletRequest request){
+				
 		List list = sqlMap.queryForList("infoList", null);
+		
 		mv.addObject("list",list);
 		mv.setViewName("board/infoboard.jsp");
 		return mv;
 	}
 	
-	@RequestMapping("/inforForm.dj")
-	public String inforForm(){
-		return "/board/infor_writeForm.jsp";
-	}
-	
-	@RequestMapping("/infor_writePro.dj")
-	public ModelAndView infor_writePro(infoDto infoDto){
-		sqlMap.insert("inforwritePro", infoDto);
-		mv.setViewName("/infor.dj");		
+	@RequestMapping("/info_view.dj")
+	public ModelAndView inforView (infoDto indto, int no){
+		indto = (infoDto)sqlMap.queryForObject("inforview", no);
+		mv.addObject("indto",indto);
+		mv.setViewName("board/infor_modify.jsp");
 		return mv;
-	}
-	
-	@RequestMapping("infor_view.dj")
-	public ModelAndView inforView(infoDto infoDto, int no){
-		infoDto = (infoDto)sqlMap.queryForObject("inforview", no);
-		mv.addObject("nodto",infoDto);
-		mv.setViewName("/board/infor_view.jsp");
-		return mv;
-		
-	}
-	
-	@RequestMapping("infor_modify.dj")
-	public ModelAndView inforModify(infoDto infoDto, int no){
-		infoDto = (infoDto)sqlMap.queryForObject("inforview", no);
-		mv.addObject("nodto",infoDto);
-		mv.setViewName("/board/infor_modify.jsp");
-		return mv;
-		
 	}
 	
 	@RequestMapping("infor_modifyPro.dj")
-	public ModelAndView inforPro(infoDto infoDto, int no){
-		infoDto.setI_num(no);
-		sqlMap.update("inforupdate", infoDto);
-		mv.setViewName("/infor_view.dj");
+	public ModelAndView informodifyPro(infoDto indto, int no){
+		indto.setI_num(no);
+		sqlMap.update("inforupdate", indto);
+		mv.setViewName("/inforboard.dj");
 		return mv;
 		}
 	
-	@RequestMapping("infor_delete.dj")
-	public ModelAndView inforDelete(infoDto infoDto, int no){
-		infoDto.setI_num(no);
-		sqlMap.update("deleteinfor", infoDto);
-		mv.setViewName("infor.dj");
+	@RequestMapping("/inforForm.dj")
+	public ModelAndView inforForm(){
+		mv.setViewName("board/infor_writeForm.jsp");
 		return mv;
-
 	}
+	
+	@RequestMapping("/inforPro.dj")
+	public ModelAndView inforFormPro(infoDto indto){
+		
+		sqlMap.insert("inforwritePro", indto);
+		mv.setViewName("inforboard.dj");
+		return mv;
+	}
+	
 
 	
 

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-<form action="infor_writePro.dj" method="post" class="form-horizontal">
+<form action="inforPro.dj" method="post" class="form-horizontal">
 <div id="notice" class="form-group">
 
 	<table class="table">
@@ -35,7 +35,7 @@
 		</tr>
 		
 	</table>
-	<input type="hidden" value="">
+	
 <input type="submit" value="등록" class="btn btn-default">
 <input type="button" onclick="javascript:location.href='notice.dj'"  value="취소" class="btn btn-default">
 	

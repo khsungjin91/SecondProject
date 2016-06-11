@@ -30,31 +30,7 @@
 		delete from notice where n_num = #n_num#
 	</delete>
 	
-	<!-- 인포메이션 보드  -->
-	<select id="infoList" resultClass="info">
-	select*from infoboard
-	</select>
 	
-	<insert id="inforwritePro" parameterClass="info">
-		 insert into infoboard(i_num,i_subject,i_content,i_reg,category) values(seq_infoboard.NEXTVAL,#i_subject#,#i_content#,sysdate,#category#)
-
-	</insert>
-	
-
-	<select id="inforview" parameterClass="int" resultClass="info">
-	select*from infoboard where i_num = #i_num#
-	</select>
-	
-	<update id="inforupdate" parameterClass="info">
-	update infoboard set i_subject = #i_subject#,
-					  i_content= #i_content#,
-					  category
-					  where i_num = #i_num#
-	</update>
-	
-	<delete id="deleteinfor">
-		delete from infoboard where i_num = #i_num#
-	</delete>
 	
 	
 	</sqlMap>
