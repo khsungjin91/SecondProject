@@ -23,8 +23,12 @@ public class DgLiveGraph {
 		Map map_l = new HashMap();
 		InterastGraph ig = new InterastGraph();
 		MonthTotalGraph mg = new MonthTotalGraph();
-		String investmoney_total = (String)sqlMap.queryForObject("total_invest_money", null)+"0000";
+		long person_avg = 0;
+		long onebyone_avg = 0;
+		float interest_count = 0 ;
+		String investmoney_total = (String)sqlMap.queryForObject("total_invest_money", null);
 		String borrowmoney_total = (String)sqlMap.queryForObject("sum_borrow", null)+"0000";
+		String sum_interest = (String) sqlMap.queryForObject("sum_interest", null);
 		int total_interest = (Integer)sqlMap.queryForObject("product_count", null);
 		
 		
@@ -35,15 +39,20 @@ public class DgLiveGraph {
 		//누적 투자자수 (중복아이디제거)
 		int investperson_total = (Integer)sqlMap.queryForObject("distinct_count", null);
 		//인당 평균 투자액 = invest대출액 총합/investperson_total
-		long person_avg = Long.parseLong(investmoney_total)/investperson_total;
+		if(investmoney_total != null){
+		person_avg = Long.parseLong(investmoney_total +"0000")/investperson_total;
+		}
 		//누적 투자건 수
 		int invest_count = (Integer)sqlMap.queryForObject("all_count", null);
 		//건당 평균 투자액= invest대출액 총합/invest_count 
-		long onebyone_avg = Long.parseLong(investmoney_total)/invest_count;
-	
+		if(investmoney_total != null){
+		onebyone_avg = Long.parseLong(investmoney_total+"0000")/invest_count;
+		}
 		
 		//평균이자율  = 전체 이자율의 합 / product전체 count
-		float interest_count = Float.parseFloat((String) sqlMap.queryForObject("sum_interest", null));
+		if(sum_interest != null){
+		interest_count = Float.parseFloat(sum_interest);
+		}
 		float avg_interest = interest_count/total_interest;
 				
 		//누적대출액 = borrow 에서 success 한 금액의 전체합
