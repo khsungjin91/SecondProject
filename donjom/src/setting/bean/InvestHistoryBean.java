@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -28,6 +29,21 @@ public class InvestHistoryBean {
 	private int total = 0;
 	private int tax = 0;
 	private int realtotal = 0;
+	
+	@RequestMapping("/invest_history.dj")
+	public ModelAndView investhistory(HttpSession session){
+		
+		String email = (String)session.getAttribute("memId");
+		int no = (Integer)sqlMap.queryForObject("getno", email);
+		List list = sqlMap.queryForList("result.in_history", no);
+		
+		int investcount = list.size();
+		
+		mv.addObject("investcount", investcount);
+		mv.addObject("list",list);
+		mv.setViewName("/profile/invest_history.jsp");
+		return mv;
+	}
 	
 	@RequestMapping("/refundsresult.dj")
 	public ModelAndView investDetail(String p_code,HttpSession session,InvestDto dto)throws Exception{
@@ -85,7 +101,6 @@ public class InvestHistoryBean {
 		double interast = 0;
 		double x = 0;
 		double y = 0;
-
 		
 		// 상환일자 계산
 		String z = dto.getI_date().substring(6, 7);

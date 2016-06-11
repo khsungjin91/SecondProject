@@ -1,4 +1,4 @@
-package product.bean;
+package setting.bean;
 
 import java.util.List;
 
@@ -9,8 +9,12 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import product.bean.TableDto;
+
 @Controller
-public class BorrowBean {
+public class BorrowHistoryBean {
+	
 	
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
@@ -22,11 +26,12 @@ public class BorrowBean {
 	public ModelAndView investhistory(HttpSession session){
 		
 		String email = (String)session.getAttribute("memId");
-		
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
 		List list = sqlMap.queryForList("result.getborrow", no);
 		
+		int loancount = list.size();
+		
+		mv.addObject("loancount", loancount);
 		mv.addObject("list", list);
 		mv.setViewName("/profile/laon_history.jsp");
 		return mv;

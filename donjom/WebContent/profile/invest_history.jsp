@@ -83,7 +83,11 @@ var coun2;
 	  		 <li><h3>투자내역</h3></li>
 	  		</ol>
 	  	</div>
+<c:if test="${investcount == 0 }">
+<h2>투자 내역이 없습니다.</h2>
+</c:if>
 
+<c:if test="${investcount != 0 }">
 <c:forEach var="list" items="${list}" varStatus="i">
 <input type="hidden" id="money${i.count}" value="${list.i_invest}">
 <input type="hidden" id="way${i.count}" value="${list.i_way}">
@@ -143,8 +147,9 @@ var coun2;
 
 <input type="button" value="투자취소" onclick="AreuSure('${list.i_pcode}')">
 </c:forEach>
+</c:if>
 		</div>
-	</div>
+	</div>	
 </div>
 
 </body>

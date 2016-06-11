@@ -79,22 +79,7 @@ public class InvestedBean {
 		mv.setViewName("/product/fund_investPro.jsp");
 		return mv;
 	}
-	
-	
-	
-	@RequestMapping("/invest_history.dj")
-	public ModelAndView investhistory(HttpSession session){
-		
-		String email = (String)session.getAttribute("memId");
-		int no = (Integer)sqlMap.queryForObject("getno", email);
-		List list = sqlMap.queryForList("result.in_history", no);
-		
-		mv.addObject("list",list);
-		mv.setViewName("/profile/invest_history.jsp");
-		return mv;
-	}
-	
-	
+
 	
 	@RequestMapping("/fund_investcancle.dj")
 	public ModelAndView investCancel(String code,InvestDto dto,HttpSession session){
