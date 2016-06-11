@@ -109,7 +109,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-4 control-label">월 고정 비용</label>
+				<label class="col-sm-4 control-label">월 고정 지출비용</label>
 				<div class="col-sm-6">
 				<div class="input-group">
 					<input type="text" name="br_mlockpay" class="form-control">

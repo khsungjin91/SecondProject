@@ -44,11 +44,17 @@ function callAjax(){
 }
 
 </script>
-메일전송이 완료되었습니다. 인증번호를 확인해 주세요. <br/>
-
-<input type="hidden" name="mailSend" value="${mailSend}" id="mailSend">
-<input type="text" name="confirm" id="confirm">
-<input type="button" value="인증하기" onclick="success(this.target);">
-
+	<div class="col-sm-6 col-sm-offset-3">
+		<div class=" form-group">
+			<label> 메일전송이 완료되었습니다! 인증번호를 확인해 주세요.</label> 
+			<input type="hidden" name="mailSend" value="${mailSend}" id="mailSend"> 
+			<div class="col-sm-8">
+			<input type="text" name="confirm" id="confirm" class="form-control">
+			</div>
+			<input type="button" value="인증하기" onclick="success(this.target);" class="btn bg-green">
+			</div>
+			
+		
+	</div>
 </body>
 </html>

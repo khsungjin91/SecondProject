@@ -4,24 +4,10 @@
   
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
-<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
-<style type="text/css">
-.filebox input[type="file"] {  /* 파일 필드 숨기기 */
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip:rect(0,0,0,0);
-    border: 0;
-}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery.form.js"></script>
 
-</style>
+
 <title>Insert title here</title>
 
 <script>
@@ -74,8 +60,7 @@ function open_win_noresizable (url, name) {
 }
 
 </script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//code.jquery.com/jquery.form.js"></script>
+
 <script>
 function upload(){
 	
@@ -110,7 +95,6 @@ function deleteimg(){
 	
 }
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 function view(html, $target) {
     if (html.files && html.files[0]) {
@@ -136,18 +120,16 @@ window.location="signIn.dj";
 
 </c:if>
 
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-
-
+<jsp:include page="/WEB-INF/header.jsp"/>
 	<div class="warpper dash-body">
 		<div class="container">
-<jsp:include page="/WEB-INF/settingside.jsp"/>
+			<jsp:include page="/WEB-INF/settingside.jsp"/>
 
-<div class="col-xs-12 col-sm-9 contetns-warp right">
+<div class="col-xs-12 col-sm-8 contetns-warp right">
 <!-- 좌측 전체 -->
 	<div class="col-sm-12 contents-left">
 	  <!-- 설정부분전체 -->
-	  <div class="panel panel-default contents">
+	  <div class="box box-default contents">
 	  	<div class="panel-heading">
 	  		<ol class="breadcrumb contents-menu hidden-xs">
 	  		 <li><h3>설정</h3></li>
@@ -165,29 +147,29 @@ window.location="signIn.dj";
 	  	</div>
 	  		<div class="cate">
 	  		<div class="form-warp">
-	  		<h3>회원정보 </h3>
+	  			<h3 class="box-header">회원정보 </h3>
 	  		 <form class="form-horizontal" action="signup_modifyPro.dj" method="post" enctype="multipart/form-data" name="userinput" >
 				<div class="form-group">
-				 <label class="col-xs-4 control-label">닉네임</label>
+				 <label class="col-xs-3 control-label">닉네임</label>
 				 <div class="col-xs-5">
 				 <input type="text" name="nickname" value="${dto.nickname}" class="form-control">
 				 </div>
 				</div>
 				<div class="form-group">
-				 <label class="col-xs-4 control-label">이메일</label>
+				 <label class="col-xs-3 control-label">이메일</label>
 				 <div class="col-xs-5">
 				 <input type="text"   value=" ${dto.email}" class="form-control" disabled>
 				 </div>
 				</div>	
 				<div class="form-group">
-				 <label class="col-xs-4 control-label">가입일</label>
+				 <label class="col-xs-3 control-label">가입일</label>
 				 <div class="col-xs-5">
 				 ${dto.join}
 				 </div>
 				</div>		
 				
 			<div id="img" class="form-group">
-				 <label class="col-xs-4 control-label">프로필사진수정</label>
+				 <label class="col-xs-3 control-label">프로필사진수정</label>
 				 
 				 <div class="col-xs-5">
 				<c:if test="${dto.profile == null}">			
@@ -214,30 +196,31 @@ window.location="signIn.dj";
 			</div>	
 			<hr>
 			
-	<h3>비밀번호 변경 </h3>
+	<h3 class="box-header">비밀번호 변경 </h3>
 		<div class="form-group">
-				 <label class="col-xs-4 control-label">새비밀번호 </label>
+				 <label class="col-xs-3 control-label">비밀번호 </label>
 				 <div class="col-xs-5">
 				 <input type="password" name="newpw" class="form-control">	
 				 </div>
 				</div>	
 		<div class="form-group">
-				 <label class="col-xs-4 control-label">새비밀번호 확인 </label>
+				 <label class="col-xs-3 control-label">비밀번호 확인 </label>
 				 <div class="col-xs-5">
 				  <input type="password" name="pwch" onkeyup="pwcheck()"class="form-control">	
 				</div>
 			</div>
 			
-			<div id="checkPwd" ><small>새 비밀번호를 확인해주세요</small></div>
+			<div id="checkPwd" ></div>
 			<div class="form-group">
-				 <label class="col-xs-4 control-label">현재 비밀번호 </label>
+				 <label class="col-xs-3 control-label">현재 비밀번호 </label>
 				 <div class="col-xs-5">
 				  <input type="password" name="pw" class="form-control"><br/>
-				  <div class="text-right"> ※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.</div>		
+				  <div class="text-right"> <small>※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.</small></div>		
 				 </div>
 				</div>
-				
-	<input type="submit" value="수정" onclick="return checkIt()" class="btn btn-success">	
+				<div class="text-center">
+					<input type="submit" value="수정" onclick="return checkIt()" class="btn  btn-lg bg-green">	
+				</div>
 </form>
 
 </div>
@@ -260,9 +243,11 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
 <input type="submit" value="확인">
 </form>
 --%>
-* DJ서비스를 더이상 원하지 않을 경우
-<input type="button" value="삭제" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}')">
-	  		 
+<hr>
+<p class="text-center">
+<small>* DJ서비스를 더이상 원하지 않을 경우 </small>
+<input type="button" value="탈퇴" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}')" class="btn btn-xs bg-red">
+	  		 </p>
 	  		 </div>
 	  		</div>
 	  	</div>

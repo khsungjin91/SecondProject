@@ -26,3 +26,13 @@
 .with-border{}
 .percent{display: block; position: absolute; font-size: 26px; top: 48px; width: 220px;}
 .justhi{padding:30px;}
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
