@@ -7,51 +7,7 @@
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-<script type="text/javascript">
-    
- 
-function Check(){
-	
-var price = parseInt($("#p_price").val());
-var invest = parseInt($("#p_invest").val());
-var limit = parseInt($("#limit").val());
-var mi = price - invest;
-var amount = parseInt($("#amount").val());
 
-if($("#no").val() == $("#p_memeno").val()){
-	alert("대출자는 해당상품에 투자 불가합니다.");
-	$("#amount").focus();
-	return false;
-}
-if(!$("#amount").val()){
-	alert("투자금액을 입력해 주세요");
-	$("#amount").focus();
-	return false;
-}
-if($("#amount").val() == '0'){
-	alert("투자금액은 0이 될 수 없습니다.");
-	$("#amount").focus();
-	return false;
-}
-if(amount > limit){
-	if(limit > mi){
-		alert("최대 투자 가능 금액은"+mi+"만원 입니다.");
-		$("#amount").focus();
-		return false;
-	}else{
-		alert("최대 투자 가능 금액은"+limit+"만원 입니다.");
-		$("#amount").focus();
-		return false;
-	}
-}
-if(amount > mi){
-	alert("대출가능금액을 초과합니다 \n\n더 낮은 금액으로 투자해주세요.");
-	$("#amount").focus();
-	return false;
-}
-
-}
-</script>
 
 
 </head>
@@ -78,12 +34,7 @@ if(amount > mi){
 			
 		<div class="col-xs-12 col-sm-9">
 			<div class="box box-success">
-				<input type="hidden" value="${dto.p_code}" name="p_code" id="p_code">
-				<input type="hidden" value="${dto.p_price}" name="p_price" id="p_price">
-				<input type="hidden" value="${dto.p_invest}" name="p_invest" id="p_invest">
-				<input type="hidden" value="${limit}" name="limit" id="limit">
-				<input type="hidden" value="${no}" name="no" id="no">
-				<input type="hidden" value="${dto.p_memeno}" name="p_memeno" id="p_memeno">
+			
 		<div class="box-header">
 				<h4>연습투자</h4>
 				
@@ -142,67 +93,7 @@ if(amount > mi){
 					
 					
 						<li><p class="title">최대투자 가능금액 :</p>
-						<span class="text-green"> ${limit}</span>만원</li><br/>
-					
-					<li><p>상환일 : 매월${dto.p_repayday}일 + 5일</p></li>
-					
-						<c:if test="${dto.p_success == 'doing' && When.When == 0}">
-							<c:if test="${dto.p_success == 'doing' && When.WhenTUS == 2}">
-								<script type="text/javascript">
-									$(document).ready(function() {
-										window.setInterval('callAjax()', 1000); //3초마다한번씩 함수를 실행한다..!! 
-									});
-									function callAjax() {
-										$.ajax({
-											type : "post",
-											url : "/donjom/timemelee.dj",
-											data : {
-												p_code : $('#p_code').val(),
-											},
-											success : test, // 페이지요청 성공시 실행 함수
-											error : whenError
-										//페이지요청 실패시 실행함수
-										});
-									}
-									function test(aaa) { // 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
-										$("#time").html(aaa);
-									}
-									function whenError() {
-										alert("Error");
-									}
-								</script>
-
-							</c:if>
-
-							<td>
-								<div id="time">펀딩개시는 수요일입니다.</div>
-							</td>
-
-						</c:if>
-
-
-						<c:if test="${When.When == 1}">
-
-							<c:if test="${dto.p_success == 'doing' && check == 0}">
-								<li><input type="submit" value="투자미리보기" class="btn btn-lg bg-green"	onclick="return Check()"></li>
-							</c:if>
-
-							<c:if test="${dto.p_success == 'doing' && check != 0}">
-								<li><input type="button" value="투자완료" class="btn btn-lg bg-red"></li>
-							</c:if>
-
-						</c:if>
-
-						<c:if
-							test="${dto.p_success == 'success' || dto.p_success == 'refunds' || dto.p_success == 'overend' }">
-							<li><input type="button" value="펀딩성공" class="btn btn-lg bg-green"></li>
-						</c:if>
-
-						<c:if test="${dto.p_success == 'fail'}">
-							<li><input type="button" value="펀딩실패" class="btn btn-lg bg-red"></li>
-						</c:if>
-</ul>
-				</div>
+					</div>
 			</div>
 		</form>
 		</div>

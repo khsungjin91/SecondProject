@@ -117,7 +117,7 @@ window.location="signIn.dj";
 		</div>
 	</div>
 
-
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 
 </body>
 </html>

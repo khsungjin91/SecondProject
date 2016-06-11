@@ -249,6 +249,6 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
 	</div>
   </div><!-- 설정부분 전체 상자 -->
 </div><!-- 전체 warp -->
-
+<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body>
 </html>
