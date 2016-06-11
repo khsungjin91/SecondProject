@@ -88,6 +88,11 @@
 				<h1 class="page-header">투자상품</h1>
 			</div>
 			<!-- card section part -->
+			<c:if test="${maincount == 0}">
+			<h2 align="center">등록된 상품이 없습니다.</h2>
+			</c:if>
+			
+			<c:if test="${maincount != 0 }">
 			<c:forEach var="list" items="${list}">
 				<div class="col-md-4">
 					<div class="box box-solid box-primary ">
@@ -134,6 +139,7 @@
 					</div>
 				</div>
 			</c:forEach>
+			</c:if>
 		</div>
 
 		<!-- /.row -->

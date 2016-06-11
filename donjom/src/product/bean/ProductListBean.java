@@ -26,7 +26,7 @@ public class ProductListBean {
 		String [] status_jsp = {"상환중","상환완료","부도"};
 		int [] status_count = new int[status.length];
 		List list = null;
-		
+		int maincount = 0;
 		if(category == null){
 		list = sqlMap.queryForList("productList", null);
 		fundcount = (Integer)sqlMap.queryForObject("product_count", null);
@@ -48,6 +48,9 @@ public class ProductListBean {
 		}
 		}
 		
+		maincount = list.size();
+		
+		mv.addObject("maincount", maincount);
 		mv.addObject("refunds", status_count[0]);
 		mv.addObject("overend", status_count[1]);
 		mv.addObject("fail", status_count[2]);

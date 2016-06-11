@@ -29,8 +29,6 @@
 	select * from product
 </select>
 
-
-
 <select id="productone" resultClass="registerDto" parameterClass="registerDto">
 	select * from product where p_code=#p_code#
 </select>

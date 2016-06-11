@@ -86,6 +86,7 @@ public class MainBean {
 		
 		}
 		
+		mv.addObject("maincount", maincount);
 		mv.addObject("fail_avg", fail_avg);
 		mv.addObject("accumulate_loan", accumulate_loan);
 		mv.addObject("avg_interest", avg_interest);

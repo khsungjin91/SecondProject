@@ -239,10 +239,12 @@ window.location="signIn.dj";
 				
 	<input type="submit" value="수정" onclick="return checkIt()" class="btn btn-success">	
 </form>
+
 </div>
+<%--
 알림설정
 <form action="signup_modifyPro2.dj" method="post" enctype="multipart/form-data">
-<%-- <c:if test="${dto.snsreceive == 'on'}">
+ <c:if test="${dto.snsreceive == 'on'}">
 SNS 수신동의<input type="checkbox" name="snsreceive" checked="checked">			<br/>
 </c:if>
 <c:if test="${dto.snsreceive != 'on'}">
@@ -253,11 +255,11 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive" checked="checked">		<b
 </c:if>
 <c:if test="${dto.emailreceive != 'on'}">
 EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
-</c:if> --%>
+</c:if> 
 
 <input type="submit" value="확인">
 </form>
-
+--%>
 * DJ서비스를 더이상 원하지 않을 경우
 <input type="button" value="삭제" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}')">
 	  		 
