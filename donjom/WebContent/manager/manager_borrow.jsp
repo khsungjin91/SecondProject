@@ -43,8 +43,8 @@
 		<input type="hidden" id="email" value="${email}" />
 
 		<div id="borrow">
-			<input type="button" value="투자" id="invest_button" /> <input
-				type="button" value="대출" id="borrow_button" />
+			<input type="button" value="투자" id="invest_button" /> 
+			<input type="button" value="대출" id="borrow_button" />
 			<table border="1">
 				<tr>
 					<td>카테고리</td>
@@ -104,7 +104,8 @@
 
 					</tr>
 				</c:forEach>
-				<tr>총 대출액 :${sum}만원
+				<tr>
+				<h3>총 대출액 :${sum}만원</h3>
 				</tr>
 			</table>
 		</div>

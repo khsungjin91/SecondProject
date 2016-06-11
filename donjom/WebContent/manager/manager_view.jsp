@@ -42,9 +42,9 @@
 		<input type="hidden" id="email" value="${email}" />
 
 		<div id="invest">
-			<input type="button" value="투자" id="invest_button" /> <input
-				type="button" value="대출" id="borrow_button" />
-			<table border="1">
+			<input type="button" value="투자" id="invest_button" /> 
+			<input type="button" value="대출" id="borrow_button" />
+			<table class="table">
 				<tr>
 					<td>상품이름</td>
 					<td>투자기간</td>

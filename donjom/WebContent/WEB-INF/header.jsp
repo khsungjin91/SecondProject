@@ -21,7 +21,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body  class="hold-transition skin-green-light layout-top-nav">
+<body  class="hold-transition skin-yellow-light layout-top-nav">
 <script type="text/javascript">
 
 $('#loan-cal').on('shown.bs.modal', function () {

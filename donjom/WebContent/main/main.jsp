@@ -69,7 +69,7 @@
 			data-slide="next"> <span class="icon-next"></span>
 		</a>
 	</header>
-	<div class="container-fulid text-center bg-navy">
+	<div class="container-fulid text-center bg-yellow">
 		<ul class="title-conul list-inline">
 			<li>
 			<div class="title-main">평균이자율(연)</div> ${avg_interest}%</li>
