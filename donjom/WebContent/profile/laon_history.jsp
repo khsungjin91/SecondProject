@@ -53,7 +53,10 @@ var coun2;
 <c:if test="${loancount == 0 }">
 	<h2>대출 내역이 없습니다.</h2>
 </c:if>
-
+<div class="text-center">
+<i class="fa fa-hourglass-half fa-5x text-gray"></i>
+	<h2>대출 심사가 진행중입니다.</h2>
+	</div>
 
 <c:if test="${loancount == 0 }">
 
