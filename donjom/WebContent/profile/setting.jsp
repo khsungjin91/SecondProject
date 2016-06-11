@@ -139,12 +139,6 @@ window.location="signIn.dj";
 	  		</ol>
 	  	</div>
 	  	<div class="panel-body">
-	  	  <div class="nav-tabs-custom">
-	  		<ul class="nav nav-tabs">
-	  		 <li class="active"><a href="#">회원인증</a></li>
-	  		 <li><a href="#">소셜연동</a></li>
-	  		</ul>
-	  	</div>
 	  		<div class="cate">
 	  		<div class="form-warp">
 	  			<h3 class="box-header">회원정보 </h3>
@@ -199,13 +193,13 @@ window.location="signIn.dj";
 	<h3 class="box-header">비밀번호 변경 </h3>
 		<div class="form-group">
 				 <label class="col-xs-3 control-label">비밀번호 </label>
-				 <div class="col-xs-5">
+				 <div class="col-xs-6">
 				 <input type="password" name="newpw" class="form-control">	
 				 </div>
 				</div>	
 		<div class="form-group">
 				 <label class="col-xs-3 control-label">비밀번호 확인 </label>
-				 <div class="col-xs-5">
+				 <div class="col-xs-6">
 				  <input type="password" name="pwch" onkeyup="pwcheck()"class="form-control">	
 				</div>
 			</div>
@@ -213,9 +207,9 @@ window.location="signIn.dj";
 			<div id="checkPwd" ></div>
 			<div class="form-group">
 				 <label class="col-xs-3 control-label">현재 비밀번호 </label>
-				 <div class="col-xs-5">
+				 <div class="col-xs-6">
 				  <input type="password" name="pw" class="form-control"><br/>
-				  <div class="text-right"> <small>※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.</small></div>		
+				  <small>※보안을 위해 정보수정시 현재 비밀번호를 입력해주세요.</small>	
 				 </div>
 				</div>
 				<div class="text-center">
