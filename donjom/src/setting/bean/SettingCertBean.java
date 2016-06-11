@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import setting.bean.pagingAction;
 import result.bean.PagingBean;
 import sign.bean.memberDto;
+import sign.bean.sessionDto;
 
 @Controller
 public class SettingCertBean {
@@ -167,7 +168,7 @@ public class SettingCertBean {
 		}
 		
 		@RequestMapping("/gochange.dj")
-		public ModelAndView change(String bankcode ,String bankaccnum,HttpSession session){
+		public ModelAndView change(String bankcode ,String bankaccnum,HttpSession session,SettingDto dto){
 			String email = (String)session.getAttribute("memId");
 			int no = (Integer)sqlMap.queryForObject("getno", email);
 			
@@ -178,7 +179,10 @@ public class SettingCertBean {
 			map.put("bankaccnum", bankaccnum);
 			
 			sqlMap.update("changebank", map);
+						
+			dto = (SettingDto)sqlMap.queryForObject("getoneCert", no);
 			
+			mv.addObject("dto", dto);
 			mv.setViewName("/profile/bankbody.jsp");
 			return mv;
 		}

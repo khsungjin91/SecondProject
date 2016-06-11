@@ -9,33 +9,20 @@
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
-
-$(document).ready(function(){
-    $("#button").click(function(){
-        callAjax();
-    });
-  });
   
-  function callAjax(){
-	  
+  function button(){
+	  alert("1");
       $.ajax({
 	        type: "post",
 	        url : "/donjom/confirm.dj" ,
 	        data: {	// url 페이지도 전달할 파라미터
 	        	chemail : $('#checkemail').val(),
 	        },
-	        success: test,	// 페이지요청 성공시 실행 함수
-	        error: whenError	//페이지요청 실패시 실행함수
+	        success: function test(a){	 $("#callback").html(a); },
+	        error:   function whenError(){alert("Error");}
+	        
    	});
   }
-  function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
-      $("#mailback").html(aaa);
-      console.log(resdata);
-  }
-  function whenError(){
-      alert("Error");
-  }
-  
   
   function changeAcc(){
 	  
@@ -43,12 +30,12 @@ $(document).ready(function(){
 	 		type: "post",
 	 		url:"/donjom/change_bank.dj",
 	 		success: function bank(a){ $("#changehere").html(a); },
-	 		error : whenError
+	 		error : function bankfail(){ alert("error"); },
 	 	});
   }
  	
   
-  function check(){
+  function confirm(){
 	  
 	  if(!$("#name").val()){
 		  alert("이름을 입력해주세요.");
@@ -130,9 +117,9 @@ window.location="signIn.dj";
 		여자<input type="radio" name="gender"  id="gender" value="woman">										<br/>
 
 <c:if test="${memdto.confirm == 0}">
-<div id="mailback">
+<div id="callback">
 메일인증하기<input type="text" value="${memdto.email}" name="checkemail" id="checkemail">						
-<input type="button" value="인증하기" id="button">
+<input type="button" value="인증하기" onclick="button()">
 </div>	
 </c:if>
 <c:if test="${memdto.confirm == 1}">
@@ -148,7 +135,7 @@ window.location="signIn.dj";
 	<option value="하나은행">하나은행</option>
 	</select>																					<br/>
 계좌번호	<input type="text" name="bankaccnum" id="bankaccnum">									<br/>
-<input type="submit" value="입력완료" onclick="return check()">									<br/>
+<input type="submit" value="입력완료" onclick="return confirm()">									<br/>
 </form>
 </c:if>
 ※ 23:30~01:00 사이에는 은행 전산망 점검 시간으로 이용에 제한이 있을수 있습니다.										<br/>

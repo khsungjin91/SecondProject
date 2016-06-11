@@ -8,7 +8,7 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
-function go(){
+function gotochange(){
 	
 	$.ajax({
 		
@@ -19,23 +19,16 @@ function go(){
 			bankcode : $("#bankcode").val() ,
 			bankaccnum : $("#bankaccnum").val()
 		},
-		success : test,
-		error: error
+		success : function test(a){ $("#also").html(a)},
+		error: function error(){alert("Error");}
+
 	});
-}
-
-function test(a){
-	alert("success");
-}
-
-function error(){
-	alert("Error");
 }
 
 </script>
 </head>
 <body>
-
+<div id="also">
 은행명 <select name="bankcode" id="bankcode">
 	<option value="신한은행">신한은행</option>
 	<option value="우리은행">우리은행</option>
@@ -46,7 +39,7 @@ function error(){
 	</select>																					<br/>
 계좌번호	<input type="text" name="bankaccnum" id="bankaccnum">									<br/>
 
-<input type="button" value="변경하기" onclick="go()"/>
-
+<input type="button" value="변경하기" onclick="gotochange()"/>
+</div>
 </body>
 </html>

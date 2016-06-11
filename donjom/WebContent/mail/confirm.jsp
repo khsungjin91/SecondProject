@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
 function success(userinput){
@@ -37,22 +38,12 @@ function callAjax(){
     $.ajax({
 	        type: "post",
 	        url : "/donjom/sendMailPro.dj",
-	        success: test,	// 페이지요청 성공시 실행 함수
-	        error: whenError	//페이지요청 실패시 실행함수
+	        success: function test(aaa){ $("#mailback").html(aaa);},
+	        error: function whenError(){ alert("Error"); }
  	});
 }
 
-function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
-    $("#mailback").html(aaa);
-    console.log(resdata);
-}
-function whenError(){
-    alert("Error");
-}
-
 </script>
-
-		
 메일전송이 완료되었습니다. 인증번호를 확인해 주세요. <br/>
 
 <input type="hidden" name="mailSend" value="${mailSend}" id="mailSend">
