@@ -18,12 +18,12 @@
       <section class="content-header">
         <h1>
           돈좀 관리자 페이지 
-          <small>Example 2.0</small>
+          <small>DONJOM admin page </small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Layout</a></li>
-          <li class="active">Top Navigation</li>
+          <li><a href="#">DONJOM</a></li>
+          <li class="active">ADMIN PAGE</li>
         </ol>
       </section>
 </div>

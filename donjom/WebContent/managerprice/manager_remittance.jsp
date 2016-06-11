@@ -11,7 +11,7 @@
 function Refunds(){
 	$.ajax({
 		type : "post",
-		url : "/donjom//manager_remittanced.dj",
+		url : "manager_remittanced.dj",
 		success : test,
 		error : whenerror
 	});
@@ -101,12 +101,12 @@ function paging(current){
 								</c:forEach>
 							</table>
 							<div align="center" style="margin-bottom: 50px">${pagingHtml}</div>
-					<div id="callback"></div>
+					
 
 			</div>
 		</div>
 	</div>
-</div>
+</div><div id="callback"></div>
 </div>
 </body>
 </html>

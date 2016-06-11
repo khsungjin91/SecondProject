@@ -105,46 +105,45 @@ if(amount > mi){
 						</div><!-- 그래프 -->
 					</li>
 					<li>
-					<h3 ><b class="text-green">${dto.p_invest}만원/${dto.p_price}만원</b></h3>
+					<h3 ><b class="text-green">만원/무제한</b></h3>
 					</li>
 					
 					<li>
-					<div>${dto.p_people}명 투자완료</div>
+					<div>0명 투자완료</div>
 					</li>
 					
 					<li><hr></li>
 					
 					<li><p class="title">상환방식</p>
 					<div><p class="title-con">
-						<c:if test="${dto.p_way == 0}">
+						
 							<td>원리금 균등상환</td>
-						</c:if>
-						<c:if test="${dto.p_way == 1}">
+						
 							<td>원금만기 일시상환</td>
-						</c:if></p>
+					</p>
 						</div>
 					</li>
 					
 					<li><p class="title">수익률</p>
-					<p class="title-con">${dto.p_rate}%</p>
+					<p class="title-con">0%</p>
 					</li>
 					<li><p class="title">투자기간</p>
-					<p class="title-con">${dto.p_term}개월</p></li>
+					<p class="title-con">0개월</p></li>
 					
-					<c:if test="${dto.p_success == 'doing' &&  check == 0 && When.When == 1}">
+					
 						<li><p class="title">투자금액</p></li>
 						<li><div class="input-group">
 						<input type="text" name="amount" id="amount" class="form-control">
 						<div class="input-group-addon">만원</div>
 						</div></li>
-					</c:if>
+					
 					
 						<li><p class="title">펀딩기간 : 1주일</p><br/></li>
 					
-					<c:if test="${dto.p_success == 'doing' && check == 0 && When.When == 1}">
+					
 						<li><p class="title">최대투자 가능금액 :</p>
 						<span class="text-green"> ${limit}</span>만원</li><br/>
-					</c:if>
+					
 					<li><p>상환일 : 매월${dto.p_repayday}일 + 5일</p></li>
 					
 						<c:if test="${dto.p_success == 'doing' && When.When == 0}">

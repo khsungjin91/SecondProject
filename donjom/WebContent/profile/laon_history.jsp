@@ -97,6 +97,6 @@ var coun2;
 		</div>
 	</div>
 </div>
-
+<jsp:include page="/WEB-INF/footer.jsp"/>
 </body>
 </html>

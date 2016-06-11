@@ -15,7 +15,7 @@
         <h2 class="headline text-red">404</h2>
 
         <div class="error-content">
-          <h3><i class="fa fa-warning text-red"></i> 원하시는 페이지를 찾을 수 없습니다.<p>sorry! not found</p></h3>
+          <h3><i class="fa fa-warning text-red"></i> 페이지를 찾을 수 없습니다.<p>ERROR!- Page not found</p></h3>
 <hr><p><img src="image/brand2.png" ></p>
           
 찾으시는 페이지의 주소가 잘못 입력되었거나 , 페이지 주소의 변경 혹은 삭제로 인해 현재 사용하실 수 없습니다.
