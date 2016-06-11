@@ -155,32 +155,32 @@
 						<img class="img-responsive img-portfolio" src="image/icon-main-2.jpg" alt="">
 							<div class=" text-center">
 							<h4><strong>중금리 직거래</strong></h4>
-							<p>기존 금융기관의 지점 운영비, 인건비, 광고비 등의 비용을 온라인 중금리 직거래를 통해 획기적으로
-								낮췄습니다. 이제 가장 합리적인 대출 이자와 투자 수익을 경험하세요.</p>
+							<p><small>기존 금융기관의 지점 운영비, 인건비, 광고비 등의 비용을 온라인 중금리 직거래를 통해 획기적으로
+								낮췄습니다. 이제 가장 합리적인 대출 이자와 투자 수익을 경험하세요.</small></p>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6 ">
 						<img class="img-responsive img-portfolio" src="image/icon-main-1.jpg" alt="">
 						<div class=" text-center">
 							<h4><strong>기술기반 신용평가</strong></h4>
-							<p>기존 금융기관의 신용평가 방식은 때론 합리적이지 못할 때가 있습니다. 기술과 금융이 결합된 돈좀의
-								혁신적인 신용평가 시스템을 통해 나의 신용을 재평가 받으세요.</p>
+							<p><small>기존 금융기관의 신용평가 방식은 때론 합리적이지 못할 때가 있습니다. 기술과 금융이 결합된 돈좀의
+								혁신적인 신용평가 시스템을 통해 나의 신용을 재평가 받으세요.</small></p>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6 ">
 						<img class="img-responsive img-portfolio" src="image/icon-main-3.jpg" alt="">
 						<div class=" text-center">
 							<h4><strong>다양한 투자 포트폴리오</strong></h4>
-							<p>한가지 카테고리만의 투자가 좀 불안 하시다고요? 돈좀에서는 개인 및 사업자 채권뿐만 아니라 부동산 담보,
-								매출담보 등의 다양한 카테고리의 채권에 분산투자 가능하지요.</p>
+							<p><small>한가지 카테고리만의 투자가 좀 불안 하시다고요? 돈좀에서는 개인 및 사업자 채권뿐만 아니라 부동산 담보,
+								매출담보 등의 다양한 카테고리의 채권에 분산투자 가능하지요.</small></p>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6 ">
 						<img class="img-responsive img-portfolio " src="image/icon-main-4.jpg" alt="">
 						<div class=" text-center">
 							<h4><strong>블록체인 기반 송금</strong></h4>
-							<p>공인인증서, 엑티브엑스 등의 복잡한고, 어려운 보안툴은 좀!! 비트코인 송금시 사용되는 블록체인
-								보안기술을 돈좀 투자시스템에 적용하진 못했지만, 실제 돈이 아니니 안전한 투자환경을 즐기세요!!</p>
+							<p><small>공인인증서, 엑티브엑스 등의 복잡한고, 어려운 보안툴은 좀!! 비트코인 송금시 사용되는 블록체인
+								보안기술을 돈좀 투자시스템에 적용하진 못했지만, 실제 돈이 아니니 안전한 투자환경을 즐기세요!!</small></p>
 						</div>
 					</div>
 
@@ -208,27 +208,23 @@
                 <!-- Carousel items -->
                 
                 <div class="carousel-inner">
+                
                 <br>
                     <div class="item active">
                         <div class="row">
-                             <div class="col-xs-2">
+                             <div class="col-xs-3">
                      			 <img src="image/ta-logo-1.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
+							 <div class="col-xs-3">
                      			 <img src="image/ta-logo-2.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>5조<br> 어벤져스</p></div>
+							  <div class="col-xs-3">
+                     			 <img src="image/ta-logo-3.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>4조<br> 화상채팅</p></div>
+							 <div class="col-xs-3">
+                     			 <img src="image/ta-logo-4.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>1조<br> 마이웹</p></div>
-							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" style="width: 190px; height: 120px; border:1px solid; "> <br><p>3조<br> 서울가유</p></div>
-							 </div>
+							
 							 
                         </div>
                         <!--/row-->
@@ -236,24 +232,20 @@
                     <!--/item-->
                     <div class="item">
                         <div class="row">
-                             <div class="col-xs-2">
-                     			 <img src="image/ta-logo-1.gif" alt="Image" class="img-responsive">
-							 </div>
-							 <div class="col-xs-2">
+                           
+							 <div class="col-xs-3">
                      			 <img src="image/ta-logo-2.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
+							 <div class="col-xs-3">
                      			 <img src="image/ta-logo-3.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
+							 <div class="col-xs-3">
                      			 <img src="image/ta-logo-4.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
+							 <div class="col-xs-3">
                      			 <img src="image/ta-logo-5.gif" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
-                     			 <img src="image/ta-logo-4.gif" alt="Image" class="img-responsive">
-							 </div>
+							 
                             
                         </div>
                         <!--/row-->
@@ -293,9 +285,7 @@
 							 <div class="col-xs-2">
                      			 <img src="image/top_logo.jpg" alt="Image" class="img-responsive">
 							 </div>
-							 <div class="col-xs-2">
-                     			 <div class="title-con text-center radius" > <p>2조 DONJOM</p></div>
-							 </div>
+							 
                             
                         </div>
                         <!--/row-->

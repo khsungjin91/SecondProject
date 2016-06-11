@@ -78,7 +78,7 @@
 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header.jsp"/>
 
 	<c:if test="${sessionScope.memId == null}">
 		<script type="text/javascript">
@@ -288,7 +288,7 @@
 	</div>
 	</div>
 	</div>
-
+	<jsp:include page="/WEB-INF/footer.jsp"/>
 
 </body>
 </html>
