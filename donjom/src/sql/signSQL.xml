@@ -6,6 +6,8 @@
 <typeAlias alias="settingDto" type="setting.bean.SettingDto"/>
 <typeAlias alias="sessionDto" type="sign.bean.sessionDto"/>
 <typeAlias alias="investDto" type="product.bean.InvestDto"/>
+<typeAlias alias="memInfoDto" type="setting.bean.SettingDto" />
+	<typeAlias alias="borrowDto" type="product.bean.BorrowDto" />
 
 
 <select id="signcheck" resultClass="int" parameterClass="signDto">
@@ -94,6 +96,23 @@
 <delete id="deleteEmail" parameterClass="signDto">
 	delete from member where email=#email#
 </delete>
+
+<delete id="deleteMemberinfo" parameterClass="int">
+	delete from memberinfo where no=#no#
+</delete>
+
+<delete id="deleteBorrow" parameterClass="int">
+	delete from borrow where memno=#memno# and success !='success'
+</delete>
+
+<delete id="deleteInvest" parameterClass="int">
+	delete from invest where i_memnum=#i_memnum#
+</delete>
+
+<delete id="deleteMemprice" parameterClass="int">
+	delete from memprice where no=#no#
+</delete>
+
 
 <delete id="delete_i" parameterClass="java.util.Map">
 	delete from invest where i_memnum = #no# and i_pcode=#p_code#

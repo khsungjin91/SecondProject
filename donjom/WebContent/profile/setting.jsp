@@ -240,7 +240,7 @@ EMAILL 수신동의<input type="checkbox" name="emailreceive">		<br/><br/>
 <hr>
 <p class="text-center">
 <small>* DJ서비스를 더이상 원하지 않을 경우 </small>
-<input type="button" value="탈퇴" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}')" class="btn btn-xs bg-red">
+<input type="button" value="탈퇴" onClick="javascript:open_win_noresizable('signup_checkPw.dj?email=${dto.email}&memno=${dto.no}')" class="btn btn-xs bg-red">
 	  		 </p>
 	  		 </div>
 	  		</div>

@@ -11,6 +11,7 @@
 <form action="signup_checkPwPro.dj" method="post">
 
 <input type="hidden" value="${email}" name="email">
+<input type="hidden" value="${memno}" name="memno">
 비밀번호 : <input type="password" name="pw"> <br/>
 <input type="submit" value="확인">
 

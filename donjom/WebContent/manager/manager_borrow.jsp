@@ -66,7 +66,22 @@
 				</tr>
 				<c:forEach var="list" items="${list}">
 					<tr>
-						<td>${list.br_category}</td>
+						<c:if test="${list.br_category=='g'}">
+							<td>게임</td>
+						</c:if>
+						<c:if test="${list.br_category=='b'}">
+							<td>사업자</td>
+						</c:if>
+						<c:if test="${list.br_category=='r'}">
+							<td>부동산</td>
+						</c:if>
+						<c:if test="${list.br_category=='p'}">
+							<td>개인</td>
+						</c:if>
+						<c:if test="${list.br_category=='c'}">
+							<td>매출담보</td>
+						</c:if>
+						
 						<td>${list.br_sum}만원</td>
 						<td>${list.br_object}</td>
 						<td>${list.br_term}개월</td>

@@ -39,8 +39,9 @@ public class SignUpBean {
 	}
 	
 	@RequestMapping("/signup_checkPw.dj")
-	public ModelAndView deletePwcheck(String email){
+	public ModelAndView deletePwcheck(String email ,int memno){
 		
+		mv.addObject("memno",memno);
 		mv.addObject("email", email);
 		mv.setViewName("/signup/signup_checkPw.jsp");
 		return mv;
@@ -48,13 +49,17 @@ public class SignUpBean {
 	
 	
 	@RequestMapping("/signup_checkPwPro.dj")
-	public ModelAndView signdelete(memberDto dto, HttpSession session){
-		
+	public ModelAndView signdelete(memberDto dto, HttpSession session,int memno){
 	int check =	(Integer)sqlMap.queryForObject("signcheck", dto);
-		
+				
 	if(check == 1){
 		
 		sqlMap.delete("deleteEmail", dto);
+		sqlMap.delete("deleteMemberinfo", memno);
+		sqlMap.delete("deleteBorrow", memno);
+		sqlMap.delete("deleteInvest", memno);
+		sqlMap.delete("deleteMemprice", memno);
+		
 		session.invalidate();
 		
 		mv.setViewName("/signup/signup_deletePro.jsp");
