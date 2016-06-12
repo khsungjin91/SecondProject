@@ -14,7 +14,7 @@ public class ManagerPageingA {
 	
 	private StringBuffer pagingHtml;
 	
-	public ManagerPageingA(int currentPage, int totalCount, int blockCount, int blockPage){
+	public ManagerPageingA(int currentPage, int totalCount, int blockCount, int blockPage, int paging){
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
 		this.currentPage = currentPage;

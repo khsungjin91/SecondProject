@@ -13,6 +13,9 @@
 	<select id="companyView" resultClass="companyinfo" parameterClass="String">
 		select * from companyinfo where company=#company#
 	</select>
+	<select id="companycount" parameterClass="companyinfo">
+		select count(*) from companyinfo
+	</select>
 	<!-- 회사정보 저장 -->
 	<insert id="companyin" parameterClass="companyinfo">
 		insert into companyinfo (company, ceo, licensee, address, companynum, fax, email, max, overdue)

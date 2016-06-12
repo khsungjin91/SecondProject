@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import setting.bean.pagingAction;
+
 @Controller
 public class NewsBean {
 	
@@ -20,31 +22,20 @@ public class NewsBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
-	// pagetest
-	@RequestMapping("/test.dj")
-	public ModelAndView test(HttpServletRequest request, ManagerPageingA page, String pagingHtml){
-		String pagecurrent = request.getParameter("currentPage");
-		ManagerPageingA input = null;
-		
-		int setting = 1;
-		int currentPage = 0; //현재페이지
-		int blockCount = 10; //한페이지의 게시물의수
-		int blockPage = 5;	 //한 화면에 보여줄 페이지의 수 
-		int paging = 1;		//
-		
-		List list = sqlMap.queryForList("newsList", null);
-		
-		if(pagecurrent != null){
-			currentPage = Integer.parseInt(pagecurrent);
-		}else{currentPage = 1;}
-		int count = (Integer) sqlMap.queryForObject("allcount", null);
-		int totalCount = list.size();
-		mv.addObject("pagingHtml", pagingHtml);
-		mv.addObject("setting", setting);
-		mv.addObject("count", count);
-		mv.addObject("list", list);
-		mv.setViewName("/news/test.jsp");
-		return mv;
+	
+	public String getPage(int currentPage, int totalCount, int blockCount, int blockPage, ManagerPageingA input, int paging){
+		String pagingHtml = null;
+		input = new ManagerPageingA(currentPage, totalCount, blockCount, blockPage, paging);
+		pagingHtml = input.getPagingHtml().toString();
+		return pagingHtml;
+	}
+	public List getList(int currentPage, int totalCount, int blockCount, int blockPage, ManagerPageingA input, List list, int paging){
+		input = new ManagerPageingA(currentPage, totalCount, blockCount, blockPage, paging);
+		int lastCount = totalCount;
+		if(input.getEndCount() < totalCount)
+			lastCount = input.getEndCount() + 1;
+		list = list.subList(input.getStartCount(), lastCount);
+		return list;
 	}
 	// 메인에서 보여지는 뉴스페이지
 	@RequestMapping("/news_list.dj")
