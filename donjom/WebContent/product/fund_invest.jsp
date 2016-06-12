@@ -8,22 +8,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script>
-	function session() {
+	function checkmoney() {
 
-		var mypoint = $
-		{
-			mypoint
-		}
-		;
-		var checkbox = document.userinput;
+		var checkbox = document.user;
 		var amount = checkbox.i_invest.value + '0000';
+		var point = checkbox.point.value;
+
 
 		if (!checkbox.confirm.checked) {
 
 			alert("약관에 동의를 하셔야 합니다.");
 			return false;
 		}
-		if (mypoint < amount) {
+		if (point < amount) {
 			alert("투자금이 보유금액을 초과합니다. 충전해주세요");
 			return false;
 		}
@@ -149,15 +146,14 @@
 
 					${dto.p_repayday}개월 ${dto.p_way}, 연${dto.p_rate}수익률의 원리금수취권에
 					${dto.p_price}을/를 참가합니다. <br />
-					<form action="invest_start.dj" method="post" name="userinput">
+					<form action="invest_start.dj" method="post" name="user">
 
-						<input type="hidden" value="${amount}" name="i_invest"> <input
-							type="hidden" value="${dto.p_code}" name="i_pcode"> <input
-							type="hidden" value="${dto.p_name}" name="i_pname"> <input
-							type="checkbox" name="confirm" value=""> 투자이용약관 <a
-							href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br />
-						<br /> <input type="submit" value="투자하기"
-							onclick="return session()">
+						<input type="hidden" value="${amount}" name="i_invest"> 
+						<input type="hidden" value="${dto.p_code}" name="i_pcode"> 
+						<input type="hidden" value="${dto.p_name}" name="i_pname"> 
+						<input type="hidden" value="${mypoint}" name="point"> 
+							<input type="checkbox" name="confirm" value=""> 투자이용약관 <a href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br />
+						<br /> <input type="submit" value="투자하기" onclick="return checkmoney()">
 
 					</form>
 					</div>

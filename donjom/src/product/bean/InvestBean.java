@@ -45,7 +45,7 @@ public class InvestBean {
 		int term = Integer.parseInt(dto.getP_term());
 		
 		map = calculator.Calculator(amount, term, dto.getP_way(), dto.getP_rate());
-		
+	
 		mv.addObject("mypoint", mypoint);
 		mv.addObject("amount", amount);
 		mv.addObject("map", map);
