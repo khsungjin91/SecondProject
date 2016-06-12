@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -13,35 +14,34 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/header.jsp" />
-		<section class="col-sm-12">
-		
+	<div class="container">
+		<h3 class="box-header text-center">공지사항</h3>
+		<div class="row">
 			<div class="box box-success">
-		<table class="table-condensed">
-			<tr>
-				<td>no</td>
-				<td>제목</td>
+			<div class="box-body">
+				<table class="table text-center">
+					<tr>
+						<td>no</td>
+						<td>제목</td>
 
-				<td>작성일</td>
+						<td>작성일</td>
 
-			</tr>
-			<c:forEach var="list" items="${list }">
-				<tr>
-					<td>${list.n_num }</td>
-					<td><a href="notice_view.dj?no=${list.n_num}">${list.n_subject }</td>
-					<td>${list.n_reg }</td>
-				</tr>
-			</c:forEach>
-
-
-
-		</table>
-		<input type="button"
-			onclick="javascript:location.href='noticeForm.dj'" value="글쓰기"
-			class="btn btn-default">
+					</tr>
+					<c:forEach var="list" items="${list }">
+						<tr>
+							<td>${list.n_num }</td>
+							<td><a href="notice_view.dj?no=${list.n_num}">${list.n_subject }</td>
+							<td>${list.n_reg }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			<!-- 	<input type="button"
+					onclick="javascript:location.href='noticeForm.dj'" value="글쓰기"
+					class="btn btn-default"> -->
 			</div>
-
-
-	</section>
+		</div>
+		</div>
+	</div>
 
 
 	<jsp:include page="/WEB-INF/footer.jsp" />
