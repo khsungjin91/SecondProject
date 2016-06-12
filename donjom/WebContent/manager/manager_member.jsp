@@ -104,8 +104,8 @@
 										<td>${plist.email}</td>
 										<td>${plist.join}</td>
 										<td><input type="button"
-											class="btn btn-block btn-success btn-xs" value="상세보기"
-											onclick="javascript:location.href='manager_view.dj?email=${plist.email}'" />
+											class="btn btn-xs bg-red" value="상세보기"
+											onclick="javascript:window.open('manager_view.dj?email=${plist.email}','_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=400,height=400')" />
 										</td>
 									</tr>
 								</c:forEach>
@@ -126,7 +126,7 @@
 										<td>${plist2.email}</td>
 										<td>${plist2.join}</td>
 										<td><input type="button"
-											class="btn btn-block btn-success btn-xs" value="상세보기"
+											class="btn btn-xs bg-red" value="상세보기"
 											onclick="javascript:location.href='manager_view.dj?email=${plist2.email}'" />
 										</td>
 								</c:forEach>

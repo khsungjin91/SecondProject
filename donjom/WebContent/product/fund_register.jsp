@@ -95,122 +95,120 @@
 
 	<jsp:include page="/WEB-INF/admin-slider.jsp" />
 	<div class="container">
-	 <div class="col-sm-10">
-	 <div class="box-header">
+	
+	<div class="box-header">
 	 	<h3>상품올리기 작성 테이블</h3>
 	 	</div>
-	 	<div class="box box-danger">
-	 	
+	 <form action="registerPro.dj" method="post" enctype="multipart/form-data" name="userinput" class="form-horizontal">
+			<input type="hidden" value="${no}" name="p_brno" class="form-control" />  	
+	<div class="col-sm-4">
+	<div class="box box-danger">
 	 		<div class="box-body ">
-	 	
-	
-		<form action="registerPro.dj" method="post"	enctype="multipart/form-data" name="userinput">
-			<input type="hidden" value="${no}" name="p_brno" /> 
-			<div class="form-horizontal">
-			<div class="form-group">
-			<label class="col-sm-3 control-label">제목</label>
-			<div class="col-sm-5">
-			<input type="text" name="p_name" class="form-control"> 
-			</div>
-			</div>
-			</div>
-			
-
-			<h5>대출신청내역</h5>
-			<table class="table">
-				<tr>
-					<td>구분</td>
-					<td>만기</td>
-					<td>수익률</td>
-					<td>대출금액</td>
-					<td>상환방식</td>
-					<td>월상환액</td>
-				</tr>
-				<tr>
-					<td><select name="p_category">
-							<option value="${dto.br_category}">
-								<c:if test="${dto.br_category == 'b'}">
-사업자(대출자희망)
-</c:if>
-								<c:if test="${dto.br_category == 'p'}">
-개인(대출자희망)
-</c:if>
-								<c:if test="${dto.br_category == 'r'}">
-부동산(대출자희망)
-</c:if>
-								<c:if test="${dto.br_category == 'c'}">
-매출담보(대출자희망)
-</c:if>
+	 		<dl >
+	 			<dt>구분</dt>
+	 			<dd><select name="p_category" class="form-control">
+					<option value="${dto.br_category}">
+						<c:if test="${dto.br_category == 'b'}">
+						사업자(대출자희망)
+						</c:if>
+						<c:if test="${dto.br_category == 'p'}">
+						개인(대출자희망)
+						</c:if>
+						<c:if test="${dto.br_category == 'r'}">
+						부동산(대출자희망)
+						</c:if>
+						<c:if test="${dto.br_category == 'c'}">
+						매출담보(대출자희망)
+						</c:if>
 							</option>
 							<option value="b">사업자</option>
 							<option value="p">개인</option>
 							<option value="r">부동산</option>
 							<option value="c">매출담보</option>
-					</select></td>
-					<td><input type="text" value="${dto.br_term}" name="p_term">개월</td>
-					<td>연<input type="text" name="p_rate" id="rate"
-						onkeyup="calculrator(this.target)">%
-					</td>
-					<td><input type="text" value="${dto.br_sum}" name="p_price"
-						id="p_price">만원</td>
-					<td><select name="p_way">
+					</select></dd>
+	 		<dt>만기</dt>
+	 		<dd><div class="input-group">
+						<input type="text" value="${dto.br_term}" name="p_term" class="form-control">
+						<div class="input-group-addon">개월</div>
+						</div></dd>
+	 		<dt>수익율</dt>
+	 		<dd><div class="input-group">
+				<div class="input-group-addon">연</div>
+				<input type="text" name="p_rate" id="rate" onkeyup="calculrator(this.target)" class="form-control">
+				<div class="input-group-addon">%</div>
+				</div></dd>
+	 		
+	 		<dt>대출금액</dt>
+	 		<dd><div class="input-group">
+			<input type="text" value="${dto.br_sum}" name="p_price"	id="p_price" class="form-control">
+			<div class="input-group-addon">만원</div>
+			</div></dd>
+	 		<dt>상환방식</dt>
+	 		<dd><select name="p_way" class="form-control">
 							<option value="${dto.br_way}">${dto.br_way}(대출자희망)</option>
 							<option value="0">원리금 균등상환</option>
 							<option value="1">원금만기 일시상환</option>
-					</select></td>
-					<td><input type="text" name="p_mrepay" id="p_avg">만원</td>
-				</tr>
-				<tr>
-					<td colspan="6">대출목적</td>
-				</tr>
-				<tr>
-					<td colspan="6"><input type="text" value="${dto.br_object}"
-						name="p_purpose"></td>
-				</tr>
-				<tr>
-					<td colspan="6">DJ 평가 한마디</td>
-				</tr>
-				<tr>
-					<td colspan="6"><input type="text" name=""></td>
-				</tr>
-			</table>
-
-
-			<input type="button" value="내용추가" id="addText"> <br />
-
-
-			<table id="textarray" border="1">
-			</table>
-
-
-			<input type="button" value="서류추가" id="filebutton"> <br />
-
-
-			<table id="fileupload">
-			</table>
-
-
-			<div>
-				<input type="hidden" name="indexno" value="0" id="textindex">
-				<input type="hidden" name="fileindex" value="0" id="fileindex">
-			</div>
-			<input type="hidden" name="br_category" value="${dto.br_category}">
-
-			상환일<select name="p_repayday">
-				<option value="${dto.br_hopeday}">매월${dto.br_hopeday}일
-					상환(대출자희망)</option>
+					</select></dd>
+	 		<dt>월상환액</dt>
+	 		<dd><div class="input-group">
+			<input type="text" name="p_mrepay" id="p_avg" class="form-control">
+			<div class="input-group-addon">만원</div>
+			</div></dd>
+	 		
+	 		</dl>
+	 		
+	 		
+	 		</div>
+	 	</div>
+	</div>
+	 <div class="col-sm-8">
+	 	<div class="box box-danger">
+	 		<div class="box-body ">
+			<dl>
+				<dt>제목</dt>
+				<dd><input type="text" name="p_name" class="form-control"></dd>
+				<dt>대출목적</dt>
+				<dd><input type="text" value="${dto.br_object}" name="p_purpose" class="form-control"></dd>
+				<dt>DJ 평가 한마디</dt>
+				<dd><div class="col-sm-10">
+				<input type="text" name="" class="form-control">
+				</div>
+				<input type="button" value="내용추가" id="addText" class="btn btn-md bg-yellow"></dd>
+				<dd><table id="textarray" class="table">
+			</table></dd>
+			
+			<dd><input type="button" value="서류추가" id="filebutton" class="btn btn-block bg-yellow"></dd>
+			<dd><table id="fileupload">
+			</table></dd>
+			<dt>상환일</dt>
+			<dd><select name="p_repayday" class="form-control">
+				<option value="${dto.br_hopeday}">
+				매월${dto.br_hopeday}일 상환(대출자희망)</option>
 				<option value="1">매월 1일 상환</option>
 				<option value="5">매월 5일 상환</option>
 				<option value="10">매월 10일 상환</option>
 				<option value="15">매월 15일 상환</option>
 				<option value="20">매월 20일 상환</option>
 				<option value="25">매월 25일 상환</option>
-			</select> <br /> <input type="hidden" value="${dto.memno}" name="p_memeno">
-			<input type="submit" value="펀딩시작">
+			</select></dd>
+			
+			</dl>
+			</div>
+			<div class="text-center box-header">
+			<input type="submit" value="펀딩시작" class="btn btn-lg bg-green "></div>
+			</div>
+			</div>
+			<div>
+				<input type="hidden" name="indexno" value="0" id="textindex">
+				<input type="hidden" name="fileindex" value="0" id="fileindex">
+			</div>
+			<input type="hidden" name="br_category" value="${dto.br_category}">
+
+		<input type="hidden" value="${dto.memno}" name="p_memeno">
+			
 		</form>
+		
 		</div>
-		 	</div>
-	 </div>
-	</div>
+	
 </body>
 </html>
