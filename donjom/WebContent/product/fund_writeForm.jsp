@@ -8,14 +8,24 @@
 <title>대출신청</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
 	<c:if test="${sessionScope.memId == null }">
 		<script type="text/javascript">
 			window.location = "signIn.dj";
 		</script>
 	</c:if>
+	
+	<c:if test="${sedto.socialnum == null}">
+	<script>
+	alert("회원인증 후 대출이 가능합니다.");
+	window.location ="setting_cert_person.dj";
+	</script>
+	</c:if>
 
+	<c:if test="${sedto.socialnum != null}">
+	
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	
 	<div class="container">
 		<div class="col-xs-12">
 			<div class="col-xs-12 col-sm-8 col-sm-offset-2 ">
@@ -131,10 +141,11 @@
 		</div>
 	</div>
 
-
-
-
-
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
+
+	</c:if>
+
+
+
 </body>
 </html>
