@@ -12,38 +12,30 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
-function success(userinput){
-	
-	var confirmNo = $("#confirm").val();
-	var mailSendNo = $("#mailSend").val();
-
-	if(confirmNo != mailSendNo){
-		
-		alert("인증번호를 다시 확인해주세요.");
-		return false;
-
-	}else{
-		
-		var callback = callAjax();
-		alert("인증완료");
-		parent.document.userinput.$("#mailback").val(callback);
-	}
-}
-
 function callAjax(){
 	
 	var confirmNo = $("#confirm").val();
 	var mailSendNo = $("#mailSend").val();
 	
+if(confirmNo != mailSendNo){
+		
+		alert("인증번호를 다시 확인해주세요.");
+		return false;
+
+	}else{
+	
     $.ajax({
 	        type: "post",
 	        url : "/donjom/sendMailPro.dj",
-	        success: function test(aaa){ $("#mailback").html(aaa);},
+	        success: function test(aaa){ alert("인증되셨습니다."); $("#mailback").html(aaa);},
 	        error: function whenError(){ alert("Error"); }
  	});
+
+	}
 }
 
 </script>
+<div id="mailback">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class=" form-group">
 			<label> 메일전송이 완료되었습니다! 인증번호를 확인해 주세요.</label> 
@@ -51,10 +43,9 @@ function callAjax(){
 			<div class="col-sm-8">
 			<input type="text" name="confirm" id="confirm" class="form-control">
 			</div>
-			<input type="button" value="인증하기" onclick="success(this.target);" class="btn bg-green">
+			<input type="button" value="인증하기" onclick="callAjax();" class="btn bg-green">
 			</div>
-			
-		
 	</div>
+</div>
 </body>
 </html>

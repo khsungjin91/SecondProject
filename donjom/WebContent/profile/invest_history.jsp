@@ -25,7 +25,7 @@ function AreuSure(code){
 var coun;
 var coun2;
 
-  function callAjax(count){
+  function callplan(count){
 	  coun = count;
       $.ajax({
 	        type: "post",
@@ -38,21 +38,14 @@ var coun2;
 	        	p_code:$("#code"+count).val(),
 	        	split : 1
 	        },
-	        success: test,// 페이지요청 성공시 실행 함수
+	        success:   function plan(count){	$("#callplan"+coun).html(count);},
 	        error: whenError	//페이지요청 실패시 실행함수
    	});    
-  }
-  
-  function test(count){	
-      $("#callback"+coun).html(count);
   }
   
   function whenError(){
       alert("Error");
   }
-  
-  function test2(a)
-  {  $("#loanback"+coun2).html(a);}
   
   
   function refundsCall(count){
@@ -64,7 +57,7 @@ var coun2;
 		  data:{
 			  p_code:$("#code"+count).val()	  
 		  },
-		  success: test2,
+		  success:   function test2(a){  $("#loanback"+coun2).html(a);},
 		  error: whenError
 	  });
 
@@ -137,13 +130,13 @@ var coun2;
 		</table>
 
 
-<input type="button" id="${list.no}" onclick="callAjax('${i.count}')" value="상환플랜 보기">
+<input type="button" id="${list.no}" onclick="callplan('${i.count}')" value="상환플랜 보기">
 
 <div><input type="button" id="refundHistory" value="상환내역 보기" onclick="refundsCall('${i.count}')"></div>
 
 </div>
 <div id="loanback${i.count}"></div>
-<div id="callback${i.count}"></div>
+<div id="callplan${i.count}"></div>
 
 <input type="button" value="투자취소" onclick="AreuSure('${list.i_pcode}')">
 </c:forEach>

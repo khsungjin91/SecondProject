@@ -45,7 +45,6 @@ public class InterastCalculator {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 		String email = (String)session.getAttribute("memId");
-		
 		Map map = calculator.Calculator(investmoney, term, way, rate);
 
 		if(session.getAttribute("memId") != null  && split == 1){
