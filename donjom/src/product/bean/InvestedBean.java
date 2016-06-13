@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import result.bean.MessageBean;
 import result.bean.MessageDto;
 import setting.bean.SettingDto;
@@ -26,7 +28,7 @@ public class InvestedBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired  
 	private ModelAndView mv;
-	
+
 	@RequestMapping("/invest_start.dj")
 	public ModelAndView invested(HttpSession session,SettingDto meminfodto,InvestDto investdto,
 			RegisterDto registerDto)throws Exception{

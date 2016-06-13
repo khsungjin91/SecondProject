@@ -2,7 +2,9 @@ package setting.bean;
 
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import sign.bean.memberDto;
 
 
@@ -24,13 +28,23 @@ public class SettingBean {
 	@Autowired
 	private ModelAndView mv;
 	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
+	
 	@RequestMapping("/setting.dj")
-	public ModelAndView settingForm(HttpSession session,memberDto getDto){
-		
+	public ModelAndView settingForm(HttpSession session,memberDto getDto,HttpServletRequest request){
 	String email = (String)session.getAttribute("memId");
 		
 	getDto = (memberDto)sqlMap.queryForObject("getoneInfo", email);
-		
+	
+	try {
+		request.setCharacterEncoding("euc-kr");
+	} catch (UnsupportedEncodingException e) {
+		e.printStackTrace();
+	}
+	hd = hdbean.headcall(session,sqlMap);
+	
+		mv.addObject("hd", hd);
 		mv.addObject("dto",getDto);
 		mv.setViewName("/profile/setting.jsp");
 		return mv;
@@ -52,17 +66,15 @@ public class SettingBean {
 		
 		String orgname = mf.getOriginalFilename();
 		
-		System.out.println(orgname);
-		
 		if(orgname.equals("")){}else{
 		ModiDto.setEmail(email);
-		ModiDto.setProfile(orgname);
+		ModiDto.setProfile(no + orgname);
 		
 		sqlMap.update("modifyprofile", ModiDto);
 		
 		String path = request.getServletContext().getRealPath("")+"//save//";
 		
-		File copy = new File(path + orgname);
+		File copy = new File(path + no +orgname );
 		
 		mf.transferTo(copy);
 		}
@@ -112,18 +124,20 @@ public class SettingBean {
 	
 	
 	@RequestMapping("/deleteimg.dj")
-	public ModelAndView delete(HttpSession session){
+	public ModelAndView delete(HttpSession session,String profile){
 		
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
-		
+	
+		File f = new File(profile);
+		f.delete();
+	
 		sqlMap.update("deleteimg", no);
 		
 		mv.setViewName("/profile/deleteimg.jsp");
 		return mv;
 	}
-	
-	
+
 	/*upload jquery ½ÇÆÐ
 	 * 
 	 * @RequestMapping("/upload.dj")

@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import = "java.sql.DriverManager"%>
-<%@ page import = "java.sql.Connection"%>
-<%@ page import = "java.sql.PreparedStatement"%>
-<%@ page import = "java.sql.ResultSet"%>
-<%@ page import = "point.bean.PointDto" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
@@ -28,52 +23,6 @@ $('#loan-cal').on('shown.bs.modal', function () {
 	  $('#myInput').focus()
 	})
 </script>
-
-<%
-    Class.forName("oracle.jdbc.driver.OracleDriver");
-    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@khmaster.iptime.org:7000:orcl","donjom","donjom");
- 
-    PreparedStatement pstmt = null;
-    
-    ResultSet rs = null;
-    												
- 	String email = (String)session.getAttribute("memId");
- 	String profile = "";
- 	long total = 0;
- 	int no = 0;
- 	String join ="";
- 	String nickname="";
- 	PointDto dto = new PointDto();
- 	
-	if(session.getAttribute("memId") != null){
-		
-		pstmt = conn.prepareStatement("select no,nickname,join,profile from member where email=?");
-		pstmt.setString(1, email);
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()){
-			no = rs.getInt("no");
-			nickname = rs.getString("nickname");
-			join = rs.getString("join");
-			profile = rs.getString("profile");		
-		}
-		
-		pstmt = conn.prepareStatement("select total_ch,total_re from memprice where no=?");
-		pstmt.setInt(1, no);
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()){
-			
-			long total_ch = rs.getLong("total_ch");
-			long total_re = rs.getLong("total_re");
-			
-			total = total_ch - total_re;
-		}
-		if(rs != null){try{rs.close();}catch(Exception e){e.printStackTrace();}}
-		if(pstmt != null){try{pstmt.close();}catch(Exception e){e.printStackTrace();}}
-		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
-	}
-%>
 
 <div class="wrapper">
 
@@ -120,21 +69,18 @@ $('#loan-cal').on('shown.bs.modal', function () {
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            </li>
              <li><a href="point_deposit.dj" class="hidden-sm">예치금 
-           <fmt:formatNumber value="<%=total %>" pattern="#,###" />원</a></li>
+           <fmt:formatNumber value="${hd.total}" pattern="#,###" />원</a></li>
            
        <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                 <!-- The user image in the navbar-->
-                <% if(profile == null){ %>
-                
+               <c:if test="${hd.profile == null}">
                 <img src="image/default.jpg" class="user-image" >
-               
-                <%}else{ %>
-               
-                <img src="/donjom/save/<%=profile %>" class="user-image" >
-              
-                <%} %>
+               </c:if>
+               <c:if test="${hd.profile != null}">
+                <img src="/donjom/save/${hd.profile}" class="user-image" >
+               </c:if>
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span >${memId}</span>
               </a>

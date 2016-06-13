@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import point.bean.PointDto;
 import result.bean.MessageDto;
 import sign.bean.memberDto;
@@ -23,6 +25,9 @@ public class DashboardBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
+	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	@RequestMapping("/dashboard.dj")
 	public ModelAndView Dashboard(HttpSession session,memberDto dto,SettingDto infodto, HttpServletRequest request, PointDto pdto){
@@ -41,8 +46,11 @@ public class DashboardBean {
 				
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
 		
+		hd = hdbean.headcall(session,sqlMap);
+		mv.addObject("hd", hd);
 		mv.addObject("infodto", infodto);
 		mv.addObject("list", list);
+		
 		}
 		
 		dto = (memberDto)sqlMap.queryForObject("getoneInfo", email);

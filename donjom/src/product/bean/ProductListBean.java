@@ -4,11 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 
 @Controller
 public class ProductListBean {
@@ -18,8 +23,11 @@ public class ProductListBean {
 	@Autowired
 	private ModelAndView mv;
 	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
+	
 	@RequestMapping("/fundList.dj")
-	public ModelAndView productList(String category){
+	public ModelAndView productList(String category,HttpSession session){
 		Map map = new HashMap();
 		int fundcount = 0;
 		String [] status = {"refunds","overend","fail"};
@@ -49,6 +57,10 @@ public class ProductListBean {
 		}
 		
 		maincount = list.size();
+		
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 		
 		mv.addObject("maincount", maincount);
 		mv.addObject("refunds", status_count[0]);

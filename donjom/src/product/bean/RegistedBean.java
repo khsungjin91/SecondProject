@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import time.bean.TimeFormat;
 
 @Controller
@@ -24,6 +26,9 @@ public class RegistedBean {
 	SqlMapClientTemplate sqlMap;
 	@Autowired
 	ModelAndView mv;
+	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	
 	@RequestMapping("/fundView.dj")
@@ -63,6 +68,10 @@ public class RegistedBean {
 		}
 		// ≈∏¿Ã∏” 
 		Map When = time.Time();
+		
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 		
 		mv.addObject("When",When);
 		mv.addObject("limit", limit);

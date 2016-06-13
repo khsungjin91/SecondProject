@@ -85,10 +85,16 @@ function upload(){
 
 function deleteimg(){
 	
+	var img = $("#profile").val();
+	
 	$.ajax({
-		
 		type:"post",
 		url:"/donjom/deleteimg.dj",
+		data : {
+			
+			profile : img		
+			
+		},
 		success : function test(data){ $("#img").html(data); },
 		error : function error(){ alert("error"); }
 	});
@@ -172,7 +178,7 @@ window.location="signIn.dj";
  					<br/><div id="imgreview" ></div>		<!-- 이미지 미리보기  -->
 				</c:if>
 				<c:if test="${dto.profile != null}">	
-					<input type="hidden" value="${dto.profile}" name="profile">	
+					<input type="hidden" value="${dto.profile}" name="profile" id="profile">	
 					<img src="/donjom/save/${dto.profile}" width="150" class="img-circle"> 
 					<input type="button" value="이미지삭제" onclick="deleteimg()">
 				</c:if> 

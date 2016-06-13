@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import product.bean.InvestDto;
 
 @Controller
@@ -25,6 +27,9 @@ public class InvestHistoryBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
+	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	private int total = 0;
 	private int tax = 0;
@@ -39,6 +44,8 @@ public class InvestHistoryBean {
 		
 		int investcount = list.size();
 		
+		hd = hdbean.headcall(session,sqlMap);
+		mv.addObject("hd", hd);
 		mv.addObject("investcount", investcount);
 		mv.addObject("list",list);
 		mv.setViewName("/profile/invest_history.jsp");

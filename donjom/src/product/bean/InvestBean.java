@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import point.bean.PointDto;
 import result.bean.CalculatorBean;
 
@@ -22,6 +24,8 @@ public class InvestBean {
 	@Autowired
 	private ModelAndView mv;
 
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	@RequestMapping("/fund_ready.dj")
 	public ModelAndView Investcal(RegisterDto dto,String amount,HttpSession session,PointDto pointdto){
@@ -45,6 +49,10 @@ public class InvestBean {
 		int term = Integer.parseInt(dto.getP_term());
 		
 		map = calculator.Calculator(amount, term, dto.getP_way(), dto.getP_rate());
+		
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 	
 		mv.addObject("mypoint", mypoint);
 		mv.addObject("amount", amount);

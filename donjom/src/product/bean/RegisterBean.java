@@ -14,6 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
+
 @Controller
 public class RegisterBean {
 	
@@ -21,6 +24,9 @@ public class RegisterBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
+	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	//메니저-펀딩등록관리 
 	@RequestMapping("/product_register.dj")

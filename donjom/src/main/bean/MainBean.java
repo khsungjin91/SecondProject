@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import mail.bean.mailTest;
 import point.bean.PointDto;
 import product.bean.FailBean;
 import product.bean.RegisterDto;
@@ -33,6 +34,8 @@ public class MainBean {
 		Date now = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		FailBean fail = new FailBean();
+		HeadBean hdbean = new HeadBean();
+		HeadDto hd = new HeadDto();
 		List<RegisterDto> reglist = new ArrayList<RegisterDto>();
 		float y = 0;
 		double avg_interest =0;
@@ -60,6 +63,9 @@ public class MainBean {
 		String email = (String)session.getAttribute("memId");
 		int no = (Integer)sqlMap.queryForObject("getno", email);
 		int count = (Integer)sqlMap.queryForObject("result.alarm", no);
+		hd = hdbean.headcall(session,sqlMap);
+	
+		mv.addObject("hd", hd);
 		mv.addObject("count", count);
 		}
 		//상품리스트 
@@ -85,7 +91,7 @@ public class MainBean {
 		avg_interest = Double.parseDouble(String.format("%.2f", y));
 		
 		}
-		
+
 		mv.addObject("maincount", maincount);
 		mv.addObject("fail_avg", fail_avg);
 		mv.addObject("accumulate_loan", accumulate_loan);

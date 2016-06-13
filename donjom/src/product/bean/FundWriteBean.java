@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import setting.bean.SettingDto;
 import sign.bean.memberDto;
 
@@ -22,6 +24,9 @@ public class FundWriteBean {
 	@Autowired
 	private ModelAndView mv;
 	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
+	
 	@RequestMapping("/loan_step1.dj")
 	public ModelAndView write1(SettingDto settingdto,memberDto dto,HttpSession session){
 		
@@ -31,6 +36,10 @@ public class FundWriteBean {
 		if(session.getAttribute("memId") != null){
 			no = (Integer)sqlMap.queryForObject("getno", email);
 		settingdto = (SettingDto)sqlMap.queryForObject("getmemberInfo", no);
+		
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 		
 		mv.addObject("sedto", settingdto);
 		}
@@ -51,7 +60,11 @@ public class FundWriteBean {
 	
 	
 	@RequestMapping("/loan_step2.dj")
-	public ModelAndView write2(BorrowDto dto){
+	public ModelAndView write2(BorrowDto dto,HttpSession session){
+		
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 
 		mv.addObject("memname",dto.getMemname());
 		mv.addObject("membirth",dto.getMembirth());
@@ -75,6 +88,10 @@ public class FundWriteBean {
 		sqlMap.insert("basicborrow", borrowDto);
 		
 		dto = (SettingDto)sqlMap.queryForObject("getmemberInfo",no);
+		
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 		
 		mv.addObject("dto", dto);
 		mv.setViewName("/product/fund_writePro.jsp");

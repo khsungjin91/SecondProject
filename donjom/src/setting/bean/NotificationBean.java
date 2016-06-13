@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import result.bean.MessageDto;
 import result.bean.PagingBean;
 
@@ -21,7 +23,9 @@ public class NotificationBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
-
+	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	@RequestMapping("/notification.dj")
 	public ModelAndView NotiMain(HttpSession session,MessageDto dto,PagingBean page,HttpServletRequest request){
@@ -52,7 +56,10 @@ public class NotificationBean {
 		
 		pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 		list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
-
+		
+		
+		hd = hdbean.headcall(session,sqlMap);
+		mv.addObject("hd", hd);
 		mv.addObject("list", list);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.setViewName("/profile/notification.jsp");

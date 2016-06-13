@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.bean.HeadBean;
+import main.bean.HeadDto;
 import setting.bean.SettingDto;
 import sign.bean.memberDto;
 
@@ -18,6 +20,9 @@ public class PointBean {
 	private SqlMapClientTemplate sqlMap;
 	@Autowired
 	private ModelAndView mv;
+	
+	private HeadBean hdbean = new HeadBean();
+	private HeadDto hd = new HeadDto();
 	
 	@RequestMapping("/point_deposit.dj")
 	public ModelAndView pointDeposit(PointDto pdto,SettingDto dto,HttpSession session, memberDto mdto){
@@ -32,6 +37,9 @@ public class PointBean {
 		mdto = (memberDto)sqlMap.queryForObject("getoneInfo", email);	
 		
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
+		
+		hd = hdbean.headcall(session,sqlMap);
+		mv.addObject("hd", hd);
 		}
 	
 		mv.addObject("total",total);
@@ -56,6 +64,9 @@ public class PointBean {
 
 			
 		total = pdto.getTotal_ch() - pdto.getTotal_re();
+		
+		hd = hdbean.headcall(session,sqlMap);
+		mv.addObject("hd", hd);
 		}
 		
 		mv.addObject("total",total);
