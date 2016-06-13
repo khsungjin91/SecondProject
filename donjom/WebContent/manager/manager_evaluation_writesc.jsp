@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="/WEB-INF/admin-slider.jsp" />
 <div class="container">
-<h2 class="box-header">대출성공!</h2>
+<h2 class="box-header">심사평작성 완료!</h2>
 <div class="box-body">
 <input type="button" value="대출신청list" class="btn btn-lg bg-olive" onClick="window.location.href='manager_borrowmn.dj'"/>
 <input type="button" value="대출완료list"	class="btn btn-lg bg-olive"  onClick="window.location.href='manager_evaluation.dj'" />

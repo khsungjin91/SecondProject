@@ -45,6 +45,7 @@ public class EvaluationBean {
 			currentPage = Integer.parseInt(pagecurrent);
 		}else{currentPage = 1;}
 		
+		System.out.println(list.size());
 		
 		int totalCount = list.size();
 		String pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);

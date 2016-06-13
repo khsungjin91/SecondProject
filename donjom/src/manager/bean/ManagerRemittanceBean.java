@@ -34,7 +34,7 @@ public class ManagerRemittanceBean {
 			int paging = 6;
 			int currentPage = 0;
 			int totalCount = 0;
-			int blockCount = 1;
+			int blockCount = 10;
 			int blockPage = 10;
 			
 			List investlist = sqlMap.queryForList("result.remmitance_before", null);
