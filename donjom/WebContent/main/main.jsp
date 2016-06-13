@@ -105,8 +105,8 @@
 							<a href="fundView.dj?p_code=${list.p_code}"></a>
 								
 								<div class="title-pr">${list.p_name}</div>
-								<div class="title-pr-con"> ${list.p_purpose}</div>
-								<hr >
+								<div class="title-pr-con"> <p>${list.p_purpose}</div>
+							
 								
 								<span class="title-con text-green">
 								목표 ${list.p_price} </span><span class="title"> 만원</span> 
@@ -122,7 +122,7 @@
 						</div>
 						<div class="progress-detail">
 							<ul class="list-inline">
-								<li>${list.p_invest/list.p_price*100}%진행</li>
+								<li><fmt:formatNumber value="${list.p_invest/list.p_price}" type="percent"/>진행</li>
 								<li>(${list.p_people}명)</li>
 								<li><c:if test="${list.p_success == 'doing'}">
 										<b class="text-aqua">펀딩진행중</b>

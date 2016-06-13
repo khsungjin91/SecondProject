@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <title>투자하기</title>
@@ -49,40 +50,46 @@
 				<c:if test="${maincount != 0 }">
 					<c:forEach var="list" items="${list}">
 				<div class="col-md-4">
-					<div class="box box-success">
+					<div class="box box-solid box-primary ">
 						<div class="box-header with-border">
-							<a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-block btn-lg">${list.p_name}</a>
+							<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name}</a>
 						</div>
-						<a href="fundView.dj?p_code=${list.p_code}" >
-						<div class="box-body" >
-							<strong>${list.p_name}</strong><br> ${list.p_purpose}
-							<hr>
-							<p class="money">
-								목표 ${list.p_price}<span>만원</span> 연 ${list.p_rate}%<span>수익률</span>
-							</p>
-							<p class="rate">
-								<span class="txt-point purpose"> ${list.p_category}</span> <span
-									class="day">만기</span> <span class="txt-point">${list.p_term}개월</span>
-								<span class="level">등급 <span class="txt-point">D1</span></span>
-							</p>
-						</div>
-						</a>
-						<div class="progress progress-sm">
-							<div class="progress-bar progress-bar-warning" role="progressbar"
-								style="width:${list.p_invest/list.p_price*100}%"></div>
+						
+							<div class="box-body link-aa">
+							 
+							<a href="fundView.dj?p_code=${list.p_code}"></a>
+								
+								<div class="title-pr">${list.p_name}</div>
+								<div class="title-pr-con"> ${list.p_purpose}</div>
+								
+								
+								<span class="title-con text-green">
+								목표 ${list.p_price} </span><span class="title"> 만원</span> 
+								<span class="title-con text-green">연 ${list.p_rate}% </span><span class="title"> 수익률</span>
+							
+								<ul class="rate text-uppercase">
+									<li><span class="text-green"> ${list.p_category}</span> 만기 </li>
+									<li><span class="text-green">${list.p_term}</span> 개월</li>
+									<li>등급 <span class="text-green"> D1</span></li>
+								</ul>
+						<div class=" progress progress-sm">
+							<div class="progress-bar progress-bar-info" role="progressbar" style="width:${list.p_invest/list.p_price*100}%"></div>
 						</div>
 						<div class="progress-detail">
 							<ul class="list-inline">
-								<li>${list.p_invest/list.p_price*100}%진행</li>
+								<li><fmt:formatNumber value="${list.p_invest/list.p_price}" type="percent"/>진행</li>
 								<li>(${list.p_people}명)</li>
 								<li><c:if test="${list.p_success == 'doing'}">
-										<strong>펀딩진행중</strong>
-									</c:if> <c:if test="${list.p_success == 'success' || list.p_success == 'refunds'|| list.p_success == 'overend'}">
-										<strong>펀딩성공</strong>
-									</c:if> <c:if test="${list.p_success == 'fail'}">
-										<strong>펀딩실패</strong>
+										<b class="text-aqua">펀딩진행중</b>
+									</c:if> 
+									<c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
+										<b class="text-green">펀딩성공</b>
+									</c:if> 
+									<c:if test="${list.p_success == 'fail'}">
+										<b class="text-danger">펀딩실패</b>
 									</c:if></li>
 							</ul>
+						</div>
 						</div>
 					</div>
 				</div>
