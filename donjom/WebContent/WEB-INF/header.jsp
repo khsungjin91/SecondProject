@@ -3,6 +3,35 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
+<script >
+        // 페이스북 SDK 초기화
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1206601269351179'    // Website with Facebook Login 사이트 : 일단 test 용으로 용퓌 계정상에서 app 생성
+                , status: true   // check login status
+                , cookie: true   // enable cookies to allow the server to access the session
+                , xfbml: true    // parse XFBML
+                //,oauth: true
+            });
+                 
+        };
+               
+// 페이스북 SDK(js) 로딩 (페이지 로딩 속도 향상을 위해 사용)
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            //js.src = "//connect.facebook.net/en_US/all.js";
+            js.src = "http://connect.facebook.net/ko_KR/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+        
+  </script>
 <title>welcome to DonJom</title>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,19 +84,15 @@ $('#loan-cal').on('shown.bs.modal', function () {
           </ul>
           </c:if>
          <c:if test="${sessionScope.memId != null}">
-            
             <ul class="nav navbar-nav navbar-right">
-             
-                    
-             
              <li>
-              <a href="notification.dj">
+             <a href="notification.dj">
              <c:if test="${count != 0}">
              <!-- 석모형 알람이미지 -->
              <span class="label label-danger"><i class="fa fa-fw fa-check-circle"></i></span>	
              </c:if>
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
-           </li>
+           	</li>
              <li><a href="point_deposit.dj" class="hidden-sm">예치금 
            <fmt:formatNumber value="${hd.total}" pattern="#,###" />원</a></li>
            
@@ -98,7 +123,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
 				<i class="fa fa-fw fa-gear fa-lg"></i>설정</a></li>
             
             <li class="divider"></li>
-            <li><a href="#">도움말</a></li>
+            <li><a href="help_faq.dj">도움말</a></li>
             <li><a href="logout.dj">로그아웃</a></li>
           </ul>
         </li>
