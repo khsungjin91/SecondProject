@@ -50,6 +50,9 @@ public class RegistedBean {
 		map.put("p_code", p_code);
 		
 		check = (Integer)sqlMap.queryForObject("result.investcheck", map);
+		hd = hdbean.headcall(session,sqlMap);
+		
+		mv.addObject("hd", hd);
 		mv.addObject("no",no);
 		}	
 		//product 1개를 껀내준다.
@@ -68,10 +71,6 @@ public class RegistedBean {
 		}
 		// 타이머 
 		Map When = time.Time();
-		
-		hd = hdbean.headcall(session,sqlMap);
-		
-		mv.addObject("hd", hd);
 		
 		mv.addObject("When",When);
 		mv.addObject("limit", limit);
