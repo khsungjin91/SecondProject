@@ -105,7 +105,7 @@
 										<td>${plist.join}</td>
 										<td><input type="button"
 											class="btn btn-xs bg-red" value="상세보기"
-											onclick="javascript:window.open('manager_view.dj?email=${plist.email}','_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=400,height=400')" />
+											onclick="javascript:window.open('manager_view.dj?email=${plist.email}','_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=1000,height=400')" />
 										</td>
 									</tr>
 								</c:forEach>

@@ -47,9 +47,6 @@
 						<tr>
 							<td>아이디</td>
 							<td width="80">이름</td>
-							<td>기타 서류</td>
-							<td>사업체 유무</td>
-							<td>사업체 등기부등록</td>
 							<td width="50">서류 개수</td>
 							<td width="600">심사 내용</td>
 							<td>심사 결과</td>
@@ -60,9 +57,6 @@
 								<tr>
 									<td>${list.e_memid}</td>
 									<td>${list.e_memname}</td>
-									<td>${list.e_document}</td>
-									<td>${list.e_cphave}</td>
-									<td>${list.e_cpfile}</td>
 									<td>${list.e_doccount}</td>
 									<td><a href ="manager_econtents.dj?no=${list.no}">
 										<c:choose>
@@ -90,9 +84,6 @@
 								<tr>
 									<td>${list.e_memid}</td>
 									<td>${list.e_memname}</td>
-									<td>${list.e_document}</td>
-									<td>${list.e_cphave}</td>
-									<td>${list.e_cpfile}</td>
 									<td>${list.e_doccount}</td>
 									<td><a href ="manager_econtents.dj?no=${list.no}">
 										<c:choose>
