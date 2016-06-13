@@ -52,9 +52,9 @@ public class ManagerBean {
 		
 		int c_count = list2.size();
 		int m_count = list.size();
-		int totalCount=list.size();
+		int totalCount=list2.size();
 		String pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
-		List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
+		List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list2, paging);
 		
 		mv.addObject("pagingHtml",pagingHtml);
 		mv.addObject("plist", pagelist);

@@ -94,6 +94,7 @@
 					</div>
 				</div>
 			</c:forEach>
+			<div align="center">${pagingHtml}</div>
 			</c:if>
 	
 				</div>

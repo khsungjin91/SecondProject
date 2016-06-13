@@ -106,7 +106,8 @@ function paging(current){
 			</div>
 		</div>
 	</div>
-</div><div id="callback"></div>
+</div>
+<div id="callback"></div>
 </div>
 </body>
 </html>

@@ -70,6 +70,8 @@ public class ManagerRemittanceBean {
 			
 			List remittancelist = sqlMap.queryForList("result.remmitance_after", null);
 			
+			int count = remittancelist.size();
+			
 			if(pagecurrent != null){
 				currentPage = Integer.parseInt(pagecurrent);
 			}else{
@@ -81,6 +83,7 @@ public class ManagerRemittanceBean {
 			String pagingHtml  = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 			List list = page.getList(currentPage, totalCount, blockCount, blockPage, input, remittancelist, paging);
 			
+			mv.addObject("count", count);
 			mv.addObject("listrt", list);
 			mv.addObject("pagingHtmled", pagingHtml);
 			mv.setViewName("/managerprice/manager_remittanced.jsp");

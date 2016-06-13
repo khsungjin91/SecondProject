@@ -58,6 +58,11 @@ function whenerror(){
 							<tr>
 							<td>상품코드</td><td>상품제목</td><td>대출한금액</td><td>대출이자</td><td>상환회차</td><td>상환일</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td><td>이자환급</td>
 							</tr>
+							<c:if test="${ing_count == 0 }">
+							<tr><td colspan="10" align="center">상환 가능 한 상품이 없습니다.</td></tr>
+							</c:if>
+							<c:if test="${ing_count != 0 }">
+							
 							<c:forEach var="listrt" items="${listrt}" varStatus="z">
 								<tr>
 								<td>${listrt.p_code}</td>
@@ -72,26 +77,15 @@ function whenerror(){
 								<td><input type="button" value="이자환급" onclick="javascript:window.location='Money_check_f.dj?p_code=${listrt.p_code}'"></td>
 								</tr>
 								</c:forEach>
+							</c:if>
 								</table>
-								<table class="table table-bordered table-responsive table-hover">
-								<tr><td>&nbsp;</td></tr>
-							<c:forEach var="possible" items="${possible}">
-							<tr>
-							<td>
-							<c:if test="${possible == 1}"><span style="color:green; ">환급해!</span></c:if>
-							<c:if test="${possible == 0}"><span style="color:red; ">하지마!</span></c:if>
-							</td>
-							</tr>
-							</c:forEach>
-						</table>
-							<br/>
-							<br/>
-				<div><hr color="black"></div>
-					<div id="callback"></div>
+
+					
 			</div>
 		</div>
 	</div>
 </div>
+<div id="callback"></div>
 </div>
 
 </body>

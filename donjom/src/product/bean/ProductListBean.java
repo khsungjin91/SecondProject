@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import main.bean.HeadBean;
 import main.bean.HeadDto;
+import result.bean.PagingBean;
+import setting.bean.pagingAction;
 
 @Controller
 public class ProductListBean {
@@ -27,7 +30,7 @@ public class ProductListBean {
 	private HeadDto hd = new HeadDto();
 	
 	@RequestMapping("/fundList.dj")
-	public ModelAndView productList(String category,HttpSession session){
+	public ModelAndView productList(String category,HttpSession session,PagingBean page,HttpServletRequest request){
 		Map map = new HashMap();
 		int fundcount = 0;
 		String [] status = {"refunds","overend","fail"};
@@ -36,13 +39,14 @@ public class ProductListBean {
 		List list = null;
 		int maincount = 0;
 	
+		String pagecurrent = request.getParameter("currentPage");
+		
 		if(category == null){
 		list = sqlMap.queryForList("productList", null);
 		fundcount = (Integer)sqlMap.queryForObject("product_count", null);
 		
 		for(int i = 0; i < status.length ; i++){
 		status_count[i] = (Integer)sqlMap.queryForObject("success_sort", status[i]);
-
 		}
 		
 		}else{
@@ -53,18 +57,37 @@ public class ProductListBean {
 			map.put("status",status[i]);
 			map.put("category",category);
 			status_count[i] = (Integer)sqlMap.queryForObject("success2_sort", map);
-	
-		}
+			}
 		}
 		
 		maincount = list.size();
 	
 		if(session.getAttribute("memId") != null){
 			hd = hdbean.headcall(session,sqlMap);
-			
 			mv.addObject("hd", hd);
 		}
 		
+		int paging = 8;
+		pagingAction input = null;
+		String pagingHtml;
+		int totalCount = 0;
+		int currentPage = 0;
+		int blockCount = 3;
+		int blockPage = 10;
+		
+		if(pagecurrent != null){
+			currentPage = Integer.parseInt(pagecurrent);
+		}else{
+			currentPage = 1;
+		}
+		
+		totalCount = list.size();
+		
+		pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
+		list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
+
+		
+		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("maincount", maincount);
 		mv.addObject("refunds", status_count[0]);
 		mv.addObject("overend", status_count[1]);

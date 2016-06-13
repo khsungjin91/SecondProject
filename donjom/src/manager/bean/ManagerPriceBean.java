@@ -29,23 +29,14 @@ public class ManagerPriceBean {
 	@RequestMapping("/manager_refunds.dj")
 	public ModelAndView Refund(RegisterDto dto){
 		Calendar repayday = Calendar.getInstance();
-		
-		List repaydaylist = sqlMap.queryForList("result.matchday", null);
+	
 		List refunds_inglist = sqlMap.queryForList("result.refunds_ing", null);
 		//List refunds_endlist = sqlMap.queryForList("result.refunds_end", null);
+
+		int ing_count =  refunds_inglist.size();
 		
-		int [] possible = new int[repaydaylist.size()];
-		System.out.println(repayday.get(repayday.DAY_OF_WEEK));
-		for(int i = 0; i < repaydaylist.size(); i++ ){
-	//Integer.parseInt((String) repaydaylist.get(i)
-		if(repayday.get(repayday.DAY_OF_WEEK) >= 30
-				|| repayday.get(Calendar.DAY_OF_MONTH) <= Integer.parseInt((String) repaydaylist.get(i))+5){
-			possible[i] = 1;
-		}else{
-			possible[i] = 0;
-		}
-		}
-		mv.addObject("possible", possible);
+		
+		mv.addObject("ing_count", ing_count);
 		mv.addObject("listrt", refunds_inglist);
 		//mv.addObject("list", refunds_endlist);
 		mv.setViewName("/managerprice/manager_refunds.jsp");
@@ -57,6 +48,9 @@ public class ManagerPriceBean {
 		
 		List list = sqlMap.queryForList("result.refunds_end", null);
 		
+		int end_count = list.size();
+		
+		mv.addObject("end_count", end_count);
 		mv.addObject("listrt", list);
 		mv.setViewName("/managerprice/manager_refunded.jsp");
 		return mv;

@@ -79,13 +79,16 @@ public class pagingAction {
 			}else if(paging == 7){
 				pagingHtml.append("<a href=manager_remittanced.dj?currentPage="
 						+ (startPage - 1) +">");
+			}else if(paging == 8){
+				pagingHtml.append("<a href=fundList.dj?currentPage="
+						+ (startPage - 1) +">");
 			}
 			
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
 
-		pagingHtml.append("&nbsp;|&nbsp;");
+		pagingHtml.append("&nbsp;[&nbsp;");
 
 		//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
 	
@@ -94,7 +97,7 @@ public class pagingAction {
 				break;
 			}
 			if (i == currentPage) {
-				pagingHtml.append("&nbsp;<b> <font color='red'>");
+				pagingHtml.append("&nbsp;<b> <font color='orange' size='5'>");
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
@@ -112,6 +115,8 @@ public class pagingAction {
 					pagingHtml.append("&nbsp;<a href='manager_borrowmn.dj?currentPage=");
 				}else if(paging == 6){
 					pagingHtml.append("&nbsp;<a href='manager_remittance.dj?currentPage=");
+				}else if(paging == 8){
+					pagingHtml.append("&nbsp;<a href='fundList.dj?currentPage=");
 				}else if(paging == 7){
 					pagingHtml.append("&nbsp;<a onclick='paging(");
 					pagingHtml.append(i);
@@ -126,7 +131,7 @@ public class pagingAction {
 			pagingHtml.append("&nbsp;");
 		}
 
-		pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
+		pagingHtml.append("&nbsp;&nbsp;]&nbsp;&nbsp;");
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
@@ -154,7 +159,10 @@ public class pagingAction {
 			}else if(paging == 7){
 				pagingHtml.append("<a href='manager_remittanced.dj?currentPage="
 						+ (endPage + 1) + ">");
-			}		
+			}else if(paging == 8){
+				pagingHtml.append("<a href='fundList.dj?currentPage="
+						+ (endPage + 1) + ">");
+			}			
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 			}

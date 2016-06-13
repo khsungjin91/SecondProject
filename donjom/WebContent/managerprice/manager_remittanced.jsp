@@ -25,6 +25,10 @@
 								<td>대출자이름</td>
 								<td>대출자정보</td>
 							</tr>
+							<c:if test="${count == 0 }">
+							<tr><td colspan="6" align="center">상환완료된 상품이 없습니다.</td></tr>
+							</c:if>
+							<c:if test="${count != 0 }">
 								<c:forEach var="listrt" items="${listrt}">
 									<tr>
 										<td>${listrt.p_code}</td>
@@ -35,6 +39,7 @@
 										<td><a href="confirm_search.dj?confirm=i.no&search=${listrt.p_memeno}">상세정보</a></td>
 									</tr>
 								</c:forEach>
+								</c:if>
 						</table>
 						<div align="center">${pagingHtmled}</div>
 						</div>

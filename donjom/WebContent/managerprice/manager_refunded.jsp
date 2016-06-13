@@ -8,17 +8,20 @@
 <title>관리자 환급관리</title>
 </head>
 <body>
-<div class="container">
 
 <div class="row">
 			<div class="box box-primary">
 				<div class="box-body">
 					<div class="col-sm-12">
-						<div>환급완료상품</div>
-						<table style="float: left" class="table table-bordered table-responsive table-hover">
+						<div>환급완료상품
+						<table  class="table table-bordered table-responsive table-hover">
 							<tr>
 							<td>상품코드</td><td>상품제목</td><td>대출한금액</td><td>대출이자</td><td>상환회차</td><td>상환일</td><td>총투자인원</td><td>대출자이름</td><td>대출자정보</td>
 							</tr>
+							<c:if test="${end_count == 0 }">
+							<tr><td colspan="9" align="center">상환완료된 상품이 없습니다.</td></tr>
+							</c:if>
+							<c:if test="${end_count != 0 }">
 							<c:forEach var="listrt" items="${listrt}" varStatus="z">
 								<tr>
 								<td>${listrt.p_code}</td>
@@ -32,11 +35,14 @@
 								<td><a href="confirm_search.dj?confirm=i.no&search=${listrt.p_memeno}">상세정보</a></td>
 								</tr>
 							</c:forEach>
+							</c:if>
 						</table>
+						<div align="center">pagingHtml</div>
+						</div>
 					</div>
 				</div>
 			</div>
 </div>
-</div>
+
 </body>
 </html>
