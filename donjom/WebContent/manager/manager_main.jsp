@@ -150,30 +150,7 @@
 			<!-- //알림 메세지 -->
 		</div>
 		<!-- 우측 -->
-		<div class="col-sm-6">
-			<div class="box box-solid  box-primary ">
-				<div class="box-header">
-					<h3 class="box-title">공지사항</h3>
-					<div class="box-tools">
-						<a class="btn btn-sm" href="noticeForm.dj" type="button">글쓰기</a>
-					</div>
-				</div>
-				<div class="box-body">
-					<table class="table text-center">
-					<tr>
-						<td>no</td>
-						<td>제목</td>
-						<td>작성일</td>
-					</tr>
-					<c:forEach var="list" items="${list }">
-						<tr>
-							<td>${list.n_num }</td>
-							<td><a href="notice_view.dj?no=${list.n_num}">${list.n_subject }</td>
-							<td>${list.n_reg }</td>
-						</tr>
-					</c:forEach>
-				</table>
-				</div>
+		
 			</div>
 		</div>
 	</div>
