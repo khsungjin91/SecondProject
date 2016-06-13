@@ -7,18 +7,24 @@
 <title> 투자 안내 </title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/header.jsp"/>
+	<div class="container">
+		<div class="box-header text-center">
 		<h2> 투자 안내 </h2>
-		저금리 시대! 안정적인 고수익 대출 채권에 투자하세요!<br/>
+		저금리 시대! 안정적인 고수익 대출 채권에 투자하세요!
+		</div>
+		
 		<hr>
-		<br>
+		<div class="box-body">
+		<div class="text-center">
 		<h2>빌리의 간편한 투자절차</h2>
-		<br>
-		예치금 입금 > 투자하기 > SMS인증 > 투자완료<br/>
-		<input type="button" value="투자하기" onclick="javascript:location.href='fundList_total.dj'"><br/>
+		예치금 입금 > 투자하기 > SMS인증 > 투자완료
+		<br><input type="button" value="투자하기" class="btn btn-lg bg-green" onclick="javascript:location.href='fundList.dj'"><br/>
+		</div>
 		<hr>
 		<br>
 		시중 투자상품 대비 5~15%의 월등한 이자수익 <br/>
-		 <img src="\image\sub-loan_2.png"><br/>
+		 <img src="image\sub-loan_2.png"><br/>
 		<br/>
 		<br/>
 		Q. 돈좀 투자는 왜 수익률이 높나요?<br/>
@@ -87,7 +93,9 @@
 			</table>
 			<hr>
 			<h2> 돈좀은 플랫폼 이용 수수료가 없습니다.</h2>
-			<input type="button" value="투자하기" onclick="javascript:location.href='fundList_total.dj'"><br/>
-
+			<input type="button" value="투자하기" onclick="javascript:location.href='fundList_total.dj'">
+</div>
+</div>
+	<jsp:include page="/WEB-INF/footer.jsp"/>
 </body>
 </html>

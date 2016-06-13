@@ -47,17 +47,17 @@
 					
                 if (response.status == "connected") {
                     // 페이스북 로그인 YES! and 앱 허가 YES!
-                    alert("페이스북 로그인 YES! and 앱 허가 YES!");
+                    //alert("페이스북 로그인 YES! and 앱 허가 YES!");
                     handleFacebookRegist(response);
                 } else if (response.status == "not_authorized") {
                     // 페이스북 로그인 YES! but 앱 허가 NO!
-                    alert("페이스북 로그인 YES! but 앱 허가 NO!");
+                    //alert("페이스북 로그인 YES! but 앱 허가 NO!");
                     FB.login(function (response) {
                                 handleFacebookRegist(response);
                             },
                             {scope: 'email'});
                 } else {    // 페이스북 로그아웃 상태.
-                	alert("페이스북 로그아웃 상태");
+                	//alert("페이스북 로그아웃 상태");
                     FB.login(function (response) {
                                 handleFacebookRegist(response);
                             },
@@ -86,14 +86,10 @@
         		type: "POST",
         		url: "/donjom/main.dj",
         		async:true,
-        		success: function(){
-        			
-        		},
-        		error: function(){
-        			
-        		},
+        		success: function(){},
+        		error: function(){},
         		complete: function(){
-        			location.replace("/donjom/signPro.dj?userId="+userId+"&userName="+userName+"&fbId="+fbId+"&userBirth="+userBirth+"&facebooklogin="+facebooklogin);
+        		location.replace("/donjom/signPro.dj?userId="+userId+"&userName="+userName+"&fbId="+fbId+"&userBirth="+userBirth+"&facebooklogin="+facebooklogin);
         		}
         	});  //ajax "sendPost" end
           });

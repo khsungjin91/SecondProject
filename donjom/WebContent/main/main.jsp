@@ -8,7 +8,7 @@
 <title>welcome to DonJom</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header.jsp"/>
 	<!-- Header Carousel -->
 	<header id="myCarousel" class="carousel slide">
 		<!-- Indicators -->
@@ -293,7 +293,7 @@
 
 
 
-	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/footer.jsp"/>
 
 
 

@@ -116,7 +116,7 @@ if(amount > mi){
 					</tr>
 					<c:forEach var="conlist" items="${contentlist}">
 						<tr>
-							<td colspan="6"><h3>ÄÁÅÙÃ÷</h3>${conlist.p_content}</td>
+							<td colspan="6">${conlist.p_content}</td>
 						</tr>
 					</c:forEach>
 					<tr>
