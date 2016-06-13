@@ -62,7 +62,7 @@
 		select image, sitename, title, content, site, reg from news order by num desc
 	</select>
 	<select id="newsView" resultClass="news" parameterClass="int">
-		select num, title, reg from news where num=#num#
+		select * from news where num = #num# order by num desc
 	</select>
 	<!-- 뉴스 전체 글수  -->
 	<select id="allcount" parameterClass="news">
@@ -95,7 +95,7 @@
 						reg = sysdate 
 	</update>
 	<!-- 뉴스 삭제 -->
-	<delete id="newsDel" parameterClass="news">
+	<delete id="newsDel">
 		delete from news where num = #num#
 	</delete>
 </sqlMap>

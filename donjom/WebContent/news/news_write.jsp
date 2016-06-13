@@ -13,7 +13,7 @@
 	<input type="text" name="serch">
 	<input type="button" value="검색">
 	
-	<form action="news_write.dj" method="post" enctype="multipatr/form-data">
+	<form action="news_writePro.dj" method="post" enctype="multipatr/form-data">
 		
 	<table border="1">
 		<tr>
@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<td> 뉴스내용요약 </td>
-			<td> <input type="text" name="content"> </td>
+			<td> <textarea name="content"> </textarea> </td>
 		</tr>
 		<tr>
 			<td> 자세히 보기 </td>
@@ -39,9 +39,7 @@
 		</tr>
 	</table>
 	<input type="submit" value="뉴스 저장">
-	<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_writePro.dj?no=${news.num}'">
-	<input type="button" value="삭제" onclick="javascript:location.href='news_delete.dj?no=${news.num}'">
-	<input type="button" value="목록" onclick="javascript:location.href='news_manager.dj'">
+	<input type="button" value="취소" onclick="javascript:location.href='news_manager.dj'">
 	</form>
 
 </body>

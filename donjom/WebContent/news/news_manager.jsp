@@ -20,20 +20,20 @@
 	<table border="1">
 		<tr>
 			<td> 번호 </td>
-			<td> 뉴스 제목 </td>
-			<td> 올린 날짜 </td>
+			<td> 제목 </td>
+			<td> 작성일 </td>
 		</tr>
+	
 		<c:forEach var="list" items="${list}">
 		<tr>
 			<td> ${list.num} </td> 
-			<td> ${list.title} </td>
+			<td> <a href="news_view.dj?no=${list.num}"> ${list.title} </td>
 			<td> ${list.reg} </td>
 		</tr>
 		</c:forEach>
+	
 	</table>
 		<input type="submit" value="뉴스 올리기" >
-		<input type="button" value="뉴스 수정" onclick="javascript:location.href='news_modify.dj'">
-		<input type="button" value="뉴스 삭제" onclick="javascrip:location.href='news_delete.dj?no=${news.num}'">
 	</form>
 </body>
 </html>

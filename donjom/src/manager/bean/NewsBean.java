@@ -47,8 +47,28 @@ public class NewsBean {
 	}
 	// 관리자 모드에서 보여지는 뉴스페이지
 	@RequestMapping("/news_manager.dj")
-	public ModelAndView newsmanager(HttpServletRequest request, ManagerNewsDto news){
-		List list = sqlMap.queryForList("newsView", null);
+	public ModelAndView newsmanager(HttpServletRequest request, ManagerNewsDto news, NewsBean page){
+		String pagecurrent = request.getParameter("currentPage");
+		ManagerPageingA input = null;
+		
+		int setting = 1;
+		int currentPage = 0;
+		int blockCount = 10;
+		int blockPage = 10;
+		int paging = 2;
+		
+		List list = sqlMap.queryForList("newsList", null);
+		
+		if(pagecurrent != null){
+			currentPage = Integer.parseInt(pagecurrent);
+		}else {currentPage = 1;}
+		int totalCount = list.size();
+		String pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
+		List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
+		
+		mv.addObject("pagingHtml", paging);
+		mv.addObject("list", pagelist);
+		mv.addObject("setting",setting);
 		mv.addObject("list", list);
 		mv.setViewName("/news/news_manager.jsp");
 		return mv;
@@ -61,31 +81,41 @@ public class NewsBean {
 		mv.setViewName("/news_manager.dj");
 		return mv;
 	}
-	// 뉴스올리기
+	// 뉴스 글쓰기 폼
 	@RequestMapping("/news_write.dj")
-	public ModelAndView newswrite (ManagerNewsDto news){	
-		// input txet에 입력
-		mv.setViewName("news");
-		// db에  저장
-		sqlMap.insert("newsin", news);	
-		mv.addObject("news", news);
+	public ModelAndView newswrite (){	
 		mv.setViewName("/news/news_write.jsp");
 		return mv;
 	}
-	// 뉴스 수정
+	// 뉴스 글쓰기 저장
 	@RequestMapping("/news_writePro.dj")
 	public ModelAndView newswritePro(ManagerNewsDto news){
-		// input text에 DB 불러오기
-		List list = sqlMap.queryForList("newsList", null);
-		mv.addObject("list", list);
-		// input text에 수정할 내용입력
-		mv.setViewName("news");
-		// db에 업데이트로 수정하기
-		sqlMap.update("newsmodify", news);
-		mv.addObject("list", list);
-		mv.setViewName("/news/news_writePro.jsp");
+		sqlMap.insert("newsin", news);
+		mv.setViewName("/news_manager.dj");
 		return mv;
 	}
+	@RequestMapping("/news_view.dj")
+	public ModelAndView newsview(ManagerNewsDto news, int no){
+		news = (ManagerNewsDto) sqlMap.queryForObject("newsView", no);
+		mv.addObject("news", news);
+		mv.setViewName("/news/news_view.jsp");
+		return mv;
+	}
+	@RequestMapping("/news_modify.dj")
+	public ModelAndView newsmodify (ManagerNewsDto news, int no){
+		news = (ManagerNewsDto) sqlMap.queryForObject("newsView", no);
+		mv.addObject("news", news);
+		mv.setViewName("/news/news_modify.jsp");
+		return mv;
+	}
+	@RequestMapping("/news_modifyPro.dj")
+	public ModelAndView newsmodifyPro (ManagerNewsDto news, int no){
+		news.setNum(no);
+		sqlMap.update("newsmodify", news);
+		mv.setViewName("/news_view.dj");
+		return mv;
+	}
+	
 	// 뉴스 삭제
 	@RequestMapping("/news_delete.dj")
 	public ModelAndView newsdeletePro(ManagerNewsDto news, int no){
