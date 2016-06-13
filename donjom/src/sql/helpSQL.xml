@@ -19,7 +19,6 @@
 	
 	
 	
-	
 	<!-- 인포메이션 보드  -->
 	<select id="infoList" resultClass="info">
 	select*from infoboard

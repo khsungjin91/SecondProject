@@ -19,10 +19,15 @@ public class helpFAQ {
 	private ModelAndView mv;
 	
 	@RequestMapping("/help_faq.dj")
-	public ModelAndView helpFaq(HttpServletRequest request){
-		List list;
+	public ModelAndView helpFaq(HttpServletRequest request, String h_category){
+		List list = null;
+		if(h_category == null){
+			list = sqlmap.queryForList("faqList", null);
+
+		}else{
+			list = sqlmap.queryForList("faq_total",h_category);
+		}
 		
-		list = sqlmap.queryForList("faqList", null);
 		
 		mv.addObject("list",list);
 		mv.setViewName("faq/faq_list.jsp");
