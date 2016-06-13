@@ -158,7 +158,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
         </li>
           </ul>
           </c:if>
-      </div><!--/.nav-collapse
+      </div><!--/.nav-collapse-->
       </div>
       <!-- /.container-fluid -->
     </nav>
@@ -178,7 +178,7 @@ $('#loan-cal').on('shown.bs.modal', function () {
 	 </div>
       <div class="modal-footer">
       <div class="text-center">
-        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">´Ý±â</button>
+        <button type="button" class="btn btn-lg bg-red" data-dismiss="modal">´Ý±â</button>
         </div>
       </div>
     </div>

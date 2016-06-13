@@ -112,7 +112,7 @@ function check(){
 
 
 		<div class="text-center">
-		<input type="button" value="계산하기" id="calculator" class="btn  btn-success btn-lg" onclick="return check()"> <br/>
+		<input type="button" value="계산하기" id="calculator" class="btn btn-lg bg-green" onclick="return check()"> <br/>
 	</div>
 
 
