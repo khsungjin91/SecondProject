@@ -49,7 +49,7 @@
 				</c:if>
 				<c:if test="${maincount != 0 }">
 					<c:forEach var="list" items="${list}">
-				<div class="col-md-4">
+				<div class="col-md-4" style="height: 325px;">
 					<div class="box box-solid box-primary ">
 						<div class="box-header with-border">
 							<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name}</a>

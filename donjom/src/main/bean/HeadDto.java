@@ -2,12 +2,19 @@ package main.bean;
 
 public class HeadDto {
 	
-	private int no; 
+	private int no,count; 
 	private String email,nickname,join,profile; 
 	private long total_ch,total_re,total;
 	
 	
 	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getEmail() {
 		return email;
 	}

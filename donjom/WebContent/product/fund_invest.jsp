@@ -8,19 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script>
-	function checkmoney() {
+	function whatmoney() {
 
 		var checkbox = document.user;
-		var amount = checkbox.i_invest.value + '0000';
-		var point = checkbox.point.value;
+		var i_amount = checkbox.i_invest.value + '0000';
+		var mypoint = checkbox.point.value;
 
-
+alert("포인트"+point);
+alert("투자금"+amount);
+		
 		if (!checkbox.confirm.checked) {
 
 			alert("약관에 동의를 하셔야 합니다.");
 			return false;
 		}
-		if (point < amount) {
+		
+		if (mypoint < i_amount) {
 			alert("투자금이 보유금액을 초과합니다. 충전해주세요");
 			return false;
 		}
@@ -153,7 +156,7 @@
 						<input type="hidden" value="${dto.p_name}" name="i_pname"> 
 						<input type="hidden" value="${mypoint}" name="point"> 
 							<input type="checkbox" name="confirm" value=""> 투자이용약관 <a href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br />
-						<br /> <input type="submit" value="투자하기" onclick="return checkmoney()">
+						<br /> <input type="submit" value="투자하기" onclick="return whatmoney()">
 
 					</form>
 					</div>

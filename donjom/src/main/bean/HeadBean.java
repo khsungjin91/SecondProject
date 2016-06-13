@@ -28,7 +28,11 @@ public class HeadBean {
 	 	PointDto pointdto = (PointDto)sqlMap.queryForObject("get_total", no);
 	 	
 	 	total = pointdto.getTotal_ch() - pointdto.getTotal_re();
+	 	
+	 	int count = (Integer)sqlMap.queryForObject("result.alarm", no);
 	
+	 	
+	 	hd.setCount(count);
 	 	hd.setTotal(total);
 	 	hd.setJoin(dto.getJoin());
 	 	hd.setNickname(dto.getNickname());

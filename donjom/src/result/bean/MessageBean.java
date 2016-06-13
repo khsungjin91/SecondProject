@@ -1,6 +1,8 @@
 package result.bean;
 
 
+import java.text.DecimalFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,15 @@ public class MessageBean {
 	
 	public void investMessageGo(InvestDto indto,SqlMapClientTemplate sqlMap, int sns){
 		MessageDto dto = new MessageDto();
-		
+		DecimalFormat df = new DecimalFormat("#,##0");
+		long invest = Long.parseLong(indto.getI_invest());
+		String i_invest = df.format(invest);
 		
 		if(sns == 1){
 			
 		dto.setM_pcode(indto.getI_pcode());
 		dto.setM_content("["+indto.getI_pname()+"/"+indto.getI_pcode()+"]에"+
-							indto.getI_invest()+"0000원이 투자완료 되었습니다.");
+								i_invest+"0000원이 투자완료 되었습니다.");
 		dto.setM_memno(indto.getI_memno());
 		dto.setM_where("투자");
 		dto.setM_check(1);

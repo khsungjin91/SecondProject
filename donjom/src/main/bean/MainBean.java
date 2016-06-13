@@ -18,6 +18,8 @@ import mail.bean.mailTest;
 import point.bean.PointDto;
 import product.bean.FailBean;
 import product.bean.RegisterDto;
+import result.bean.PagingBean;
+import setting.bean.pagingAction;
 import sign.bean.memberDto;
 
 @Controller
@@ -30,7 +32,7 @@ public class MainBean {
 	
 	
 	@RequestMapping("/main.dj")
-	public ModelAndView main(PointDto pdto,memberDto dto,RegisterDto rdto, HttpSession session,HttpServletRequest request){
+	public ModelAndView main(PointDto pdto,memberDto dto,RegisterDto rdto, HttpSession session,HttpServletRequest request,PagingBean page){
 		Date now = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		FailBean fail = new FailBean();
@@ -71,10 +73,11 @@ public class MainBean {
 		//상품리스트 
 		List list = sqlMap.queryForList("productList", null);
 		
-		
 		int total_interest = (Integer)sqlMap.queryForObject("product_count", null);
 		//평균이자율  = 전체 이자율의 합 / product전체 count
+		
 		if(maincount != 0){
+			
 		float interest_count = Float.parseFloat((String) sqlMap.queryForObject("sum_interest", null));
 		y = interest_count/total_interest;
 		//누적대출액 = borrow 에서 success 한 금액의 전체합
@@ -89,8 +92,21 @@ public class MainBean {
 		
 		fail_avg = Double.parseDouble(String.format("%.2f", x));		
 		avg_interest = Double.parseDouble(String.format("%.2f", y));
-		
 		}
+		
+		int paging = 1;
+		pagingAction input = null;
+		String pagingHtml;
+		int totalCount = 0;
+		int currentPage = 1;
+		int blockCount = 6;
+		int blockPage = 10;
+		
+		totalCount = list.size();
+		
+		pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
+		list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
+		
 
 		mv.addObject("maincount", maincount);
 		mv.addObject("fail_avg", fail_avg);

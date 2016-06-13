@@ -46,7 +46,7 @@ window.location="signIn.dj";
 					 </ul> 
 
 
-					<c:if test="${dto.socialnum == null && dto.bankaccnum == null}">
+					<c:if test="${dto.socialnum == null}">
 
 -가상계좌를 할당받으려면 회원인증이 필요합니다.	<br />
 -원천징수 정보까지 입력하셔야 최종인증이 완료됩니다.	<br />
@@ -58,7 +58,7 @@ window.location="signIn.dj";
 					</c:if>
 <br>
 <div class="well">
-					<c:if test="${dto.socialnum != null && dto.bankaccnum != null}">
+					<c:if test="${dto.socialnum != null }">
 								<h3>충전계좌정보</h3>
 								<dl class="dl-horizontal ">
 									<dt>은행명</dt>

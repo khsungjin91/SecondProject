@@ -87,10 +87,10 @@ $('#loan-cal').on('shown.bs.modal', function () {
             <ul class="nav navbar-nav navbar-right">
              <li>
              <a href="notification.dj">
-             <c:if test="${count != 0}">
+         <c:if test="${hd.count != 0}">
              <!-- 석모형 알람이미지 -->
-             <span class="label label-danger"><i class="fa fa-fw fa-check-circle"></i></span>	
-             </c:if>
+         <span class="label label-danger"><i class="fa fa-fw fa-check-circle"></i></span>	
+         </c:if>
             <i class="fa fa-bell fa-lg" aria-hidden="true" id="alram-icon-main"></i></a>
            	</li>
              <li><a href="point_deposit.dj" class="hidden-sm">예치금 
