@@ -215,7 +215,7 @@
 									<td>${list.br_object}</td>
 									<td>${list.br_date}</td>
 									<td><input type="button" value="심사하기"
-										onclick="javascript:location.href='manager_evaluation_write.dj?mememail=${list.mememail}&no=${list.no}'">
+										class="btn bg-green" onclick="javascript:location.href='manager_evaluation_write.dj?mememail=${list.mememail}&no=${list.no}'">
 									</td>
 								</tr>
 							</c:forEach>

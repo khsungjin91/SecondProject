@@ -72,7 +72,7 @@
 									<td><label class="badge bg-olive"> <i
 											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
 									<td>
-									<input type="button" value="심사수정" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
+									<input type="button" value="심사수정" class="btn bg-green" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
 									</td>
 								</tr>
 							</c:forEach>
@@ -98,7 +98,7 @@
 									<td><label class="badge bg-olive"> <i
 											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
 									<td>
-									<input type="button" value="심사수정" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
+									<input type="button" value="심사수정"  class="btn bg-green" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
 									</td>
 								</tr>
 							</c:forEach>
