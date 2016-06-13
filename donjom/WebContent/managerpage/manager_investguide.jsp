@@ -67,7 +67,7 @@
 				<tr>
 					<td> step3 <br/>
 					투자금 입력 후 인증메일 회신<br/>
-					<input type="button" value="자세히 보기" onclick="javascript:location.href='manager_investmethod.jsp'">
+					<input type="button" value="자세히 보기" onclick="javascript:location.href='manager_investmethod.dj'">
 					</td>
 				</tr> 
 			</table>
@@ -87,13 +87,13 @@
 					매월 상환되는 원리금은 투자자 계정의<br/>
 					예치금으로 입금되어 있습니다. 충전/환급 > 환급<br/> 
 					이동 후 원하시는 금액을 24시간 즉시 출금 가능합니다.
-					<input type="button" value="자세히 보기" onclick="javascript:location.href='manager_refundmethod.jsp'">
+					<input type="button" value="자세히 보기" onclick="javascript:location.href='manager_refundmethod.dj'">
 					</td>					
 				</tr> 
 			</table>
 			<hr>
 			<h2> 돈좀은 플랫폼 이용 수수료가 없습니다.</h2>
-			<input type="button" value="투자하기" onclick="javascript:location.href='fundList_total.dj'">
+			<input type="button" value="투자하기" onclick="javascript:location.href='fundList.dj'">
 </div>
 </div>
 	<jsp:include page="/WEB-INF/footer.jsp"/>

@@ -65,7 +65,7 @@ public class ManagerRemittanceBean {
 			int paging = 7;
 			int currentPage = 0;
 			int totalCount = 0;
-			int blockCount =1;
+			int blockCount =10;
 			int blockPage = 10;
 			
 			List remittancelist = sqlMap.queryForList("result.remmitance_after", null);
