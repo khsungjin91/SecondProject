@@ -26,7 +26,7 @@
 </select>
 
 <select id="productList" resultClass="registerDto">
-	select * from product
+	select * from product order by p_date desc
 </select>
 
 <select id="productone" resultClass="registerDto" parameterClass="registerDto">
