@@ -35,6 +35,7 @@ public class ProductListBean {
 		int [] status_count = new int[status.length];
 		List list = null;
 		int maincount = 0;
+	
 		if(category == null){
 		list = sqlMap.queryForList("productList", null);
 		fundcount = (Integer)sqlMap.queryForObject("product_count", null);
@@ -57,10 +58,12 @@ public class ProductListBean {
 		}
 		
 		maincount = list.size();
-		
-		hd = hdbean.headcall(session,sqlMap);
-		
-		mv.addObject("hd", hd);
+	
+		if(session.getAttribute("memId") != null){
+			hd = hdbean.headcall(session,sqlMap);
+			
+			mv.addObject("hd", hd);
+		}
 		
 		mv.addObject("maincount", maincount);
 		mv.addObject("refunds", status_count[0]);
