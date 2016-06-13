@@ -1,18 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
     
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
-<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
- 	
-<title>공지사항</title>
+<head><title>공지사항</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/admin-slider.jsp" />
+
+<div class="container">
 <h1>공지사항</h1>
 <form action="notice_writePro.dj" method="post" class="form-horizontal">
 <div id="notice" class="form-group">
@@ -22,7 +16,6 @@
 		<td>제목 </td>
 		<td><input type="text" class="form-control" name="n_subject"></td>
 		</tr>
-		
 		<tr>
 		<td>내용</td>
 		<td>
@@ -31,14 +24,15 @@
 		</tr>
 		
 	</table>
-	<input type="hidden" value="">
-<input type="submit" value="등록" class="btn btn-default">
-<input type="button" onclick="javascript:location.href='notice.dj'"  value="취소" class="btn btn-default">
+	<div class="text-center">
+		<input type="submit" value="등록" class="btn bg-green">
+		<input type="button" onclick="javascript:location.href='notice.dj'" value="취소" class="btn bg-red">
+	</div>
 	
 
 </div>
 </form>
-
+</div>
 
 <script>
   $(function () {
@@ -49,5 +43,6 @@
     $(".textarea").wysihtml5();
   });
 </script>
+<jsp:include page="/WEB-INF/footer.jsp" />
 </body>
 </html>
