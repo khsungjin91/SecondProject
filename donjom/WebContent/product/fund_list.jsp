@@ -6,7 +6,7 @@
 <title>투자하기</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/header.jsp"/>
 
 <div class="warpper">
 	<div class="container">

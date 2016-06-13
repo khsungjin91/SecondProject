@@ -1,204 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Radar points</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/patterns.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
-<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
-
-<link href="bt/css/styles.css" rel="stylesheet">
-<script type="text/javascript">
-
-  FusionCharts.ready(function(){
-    var fusioncharts = new FusionCharts({
-    type: 'radar',
-    renderAt: 'container',
-    width: '500',
-    height: '380',
-    dataFormat: 'json',
-    dataSource: {
-    	
-        "chart": {
-            "caption": "등급별분포",
-            "numberPreffix": "$",
-            "theme": "fint",
-            "radarfillcolor": "#ffffff"
-        },
-        "categories": [{
-            "category": [{
-                "label": "1등급 | V1"
-            }, {
-                "label": "2등급 | V2"
-            }, {
-                "label": "3등급 | V3"
-            }, {
-                "label": "4등급 | V4"
-            }, {
-                "label": "5등급 | V5"
-            },{
-                "label": "6등급 | V6"
-            }]
-        }],
-        "dataset": [{
-            "seriesname": "신용등급",
-            "data": [{
-                "value": '${avg_interest}'
-            }, {
-                "value": "20"
-            }, {
-                "value": "50"
-            }, {
-                "value": "70"
-            }, {
-                "value": "10"
-            }, {
-                "value": "30"
-            }]
-        }, {
-            "seriesname": "DJ등급",
-            "data": [{
-                "value": "300"
-            }, {
-                "value": "50"
-            }, {
-                "value": "10"
-            }, {
-                "value": "40"
-            }, {
-                "value": "50"
-            }, {
-                "value": "70"
-            }]
-        }]
-    }
-}
-);
-    fusioncharts.render();
-});
-  
-  
-  // 레이더 차트
-  FusionCharts.ready(function(){
-	    var fusioncharts = new FusionCharts({
-	    type: 'radar',
-	    renderAt: 'chart',
-	    width: '500',
-	    height: '350',
-	    dataFormat: 'json',
-	    dataSource: {
-	    	
-	        "chart": {
-	            "caption": "금리별 분포",
-	            "numberPreffix": "$",
-	            "theme": "fint",
-	            "radarfillcolor": "#ffffff"
-	        },
-	        "categories": [{
-	            "category": [{
-	                "label": "5~6.9%"
-	            }, {
-	                "label": "7~8.9%"
-	            }, {
-	                "label": "9~10.9%"
-	            }, {
-	                "label": "11~12.9%"
-	            }, {
-	                "label": "13~14.9%"
-	            }, {
-	                "label": "15% 이상"
-	            }]
-	        }],
-	        "dataset": [{
-	            "data": [{
-	                "value": '${map_r.first}'
-	            }, {
-	                "value": '${map_r.second}'
-	            }, {
-	                "value": '${map_r.thirth}'
-	            }, {
-	                "value": '${map_r.forth}'
-	            }, {
-	                "value": '${map_r.fifth}'
-	            }, {
-	                "value": '${map_r.sixth}'
-	            }]
-	        }]
-	    }
-	}
-	);
-	    fusioncharts.render();
-	});
-
- 
-  
-</script>
-<style>
-#chartdiv3 {
-	width	: 100%;
-	height	: 350px;
-}	
-</style>
+<jsp:include page="/main/script.jsp"/>
+<script type="text/javascript" src="main/chartMain.js"></script>
 </head>
 <body>
-
-<h3>DJ LIVE</h3>
+<jsp:include page="/WEB-INF/header.jsp"/>
 <div class="container">
-	<div class="col-md-6">
-				<div class="box box-primary">
-					<div class="box-header">Doughnut Chart</div>
-					<div class="box-body">
-						<div class="canvas-wrapper">
-							<canvas class="chart" id="doughnut-chart" ></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
-<ul>
-<li>평균이자율(연) : ${avg_interest}%</li>
-<li>누적대출액 : ${accumulate_loan}원</li>
-<li>누적상환액 : 0원</li>
-<li>부도율 : ${fail_avg}%</li>
-</ul>
-<table border="1">
-<tr>
-<td>인당 평균 대출액</td>
-<td>누적 대출자수</td>
-<td>인당 평균 투자액</td>
-<td>누적 투자자수</td>
-<td>건당 평균 투자액</td>
-<td>누적 투자건 수</td>
-</tr> 
-<tr>
-<td> ${borrow_avg}원</td>
-<td>${acc_br_person}명</td>
-<td>${person_avg}원</td>
-<td>${investperson_total}명</td>
-<td>${onebyone_avg}원</td>
-<td>${invest_count}건</td>
-</tr>
-</table>
+	
+	<h2 class="box-header text-center">DJ LIVE</h2>
+
+<ul class="title-djlive list-inline text-center">
+			<li>
+			<div class="title-djlive">평균이자율(연)</div> ${avg_interest}%</li>
+			<li><div class="title-djlive">누적 대출액</div><fmt:formatNumber value="${accumulate_loan}" pattern="#,###" /> 원</li>
+			<li><div class="title-djlive">누적상환액</div> 0원</li>
+			<li><div class="title-djlive">부도율</div> ${fail_avg}%</li>
+		</ul>
+		<div class="col-sm-8 col-sm-offset-2">
+<div class="box box-success text-center">
+	
+	<table class="table">
+		<tr>
+			<td>인당 평균 대출액</td>
+			<td>누적 대출자수</td>
+			<td>인당 평균 투자액</td>
+			<td>누적 투자자수</td>
+			<td>건당 평균 투자액</td>
+			<td>누적 투자건 수</td>
+		</tr> 
+		<tr>
+			<td> ${borrow_avg}원</td>
+			<td>${acc_br_person}명</td>
+			<td>${person_avg}원</td>
+			<td>${investperson_total}명</td>
+			<td>${onebyone_avg}원</td>
+			<td>${invest_count}건</td>
+		</tr>
+	</table>
 ${map_li.r_twelve}
 ${map_li.p_twelve}
 ${map_li.c_twelve}
 ${map_li.b_twelve}
-
-	<div style="width: 70%; margin: 0 auto; ">
- 		<div id="container" style="float: left"></div>
-  		<div id="chart" style="float: right"></div>
+</div></div>
+	<div class="col-sm-6">
+	 <div class="box box-success">
+ 		<div id="container" class="chartbox"></div>
+ 		</div>
+ 		</div>
+ 		<div class="col-sm-6">
+ 		<div class="box box-success">
+  		<div id="chart" class="chartbox"></div>
+  		</div>
   	</div>
-	<div style="margin-top: 500px">
-	<div id="chart_div2"></div>
+  	<div class="col-sm-12">
+	<div class="box box-success">
+		<div id="chart_div2"></div>
+	</div>
 	</div>
 	
-	
-</body>
+	</div>
+</div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -272,5 +138,6 @@ ${map_li.b_twelve}
 <script src="bt/js/chart-data.js"></script>
 <script src="bt/js/easypiechart.js"></script>
 <script src="bt/js/chart.min.js"></script>
+
 </body>
 </html>

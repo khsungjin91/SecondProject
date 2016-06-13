@@ -189,7 +189,7 @@ function checkPwd(){
 			<span class="glyphicon glyphicon-user form-control-feedback"></span>
 			</div>
 			<div class="form-group has-feedback">
-			<input type="text" name="email" id="email" class="form-control" placeholder="이메일" onblur="checkEmail()"> 
+			<input type="email" name="email" id="email" class="form-control" placeholder="이메일" onblur="checkEmail()"> 
 			 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 			 <div id="checkEmail"></div>
 			</div>
