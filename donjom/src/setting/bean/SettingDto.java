@@ -3,11 +3,17 @@ package setting.bean;
 public class SettingDto {
 
 	
-		private String name,birth,gender,mobilenum,bankcode,bankaccnum,socialnum,address,randomacc,email,join;
+		private String name,birth,gender,mobilenum,bankcode,bankaccnum,socialnum,address,randomacc,email,join,nickname;
+		
+		public String getNickname() {
+			return nickname;
+		}
+
+		public void setNickname(String nickname) {
+			this.nickname = nickname;
+		}
+
 		private int no;
-		
-		
-		
 		
 		public String getRandomacc() {
 			return randomacc;

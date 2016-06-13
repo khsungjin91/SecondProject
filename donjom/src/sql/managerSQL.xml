@@ -10,10 +10,14 @@
 	<typeAlias alias="invest" type="product.bean.InvestDto" />
 
 	<!-- 일반회원의 이름,메일,가입날짜 조회 -->
-	<select id="m_member" resultClass="mem">
-		select nickname,
-		email,join from member where confirm=0
-		order by join desc
+	<select id="m_member" resultClass="meminfo">
+		select
+		m.nickname,m.email,m.join
+		from member m ,memberinfo i
+		where m.no=i.no and
+		i.socialnum is  null
+		order by m.join desc
+
 	</select>
 
 	<!-- 일반회원 검색 -->

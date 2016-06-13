@@ -44,13 +44,14 @@ public class ManagerBean {
 		int blockPage=10; // 한번에 보여지는 페이지의 수 
 		int paging=2;
 				
-		List list = sqlMap.queryForList("m_memberInfo",null);
+		List list = sqlMap.queryForList("m_member", null);
+		List list2= sqlMap.queryForList("m_memberInfo", null);
 		if (pagecurrent !=null){
 			currentPage = Integer.parseInt(pagecurrent);
 		}else{currentPage = 1;}
 		
-		int c_count = (Integer)sqlMap.queryForObject("confirmmemCount", null);
-		int m_count = (Integer)sqlMap.queryForObject("memberCount", null);
+		int c_count = list2.size();
+		int m_count = list.size();
 		int totalCount=list.size();
 		String pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 		List pagelist = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
