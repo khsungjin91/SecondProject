@@ -68,13 +68,13 @@ public class SettingBean {
 		
 		if(orgname.equals("")){}else{
 		ModiDto.setEmail(email);
-		ModiDto.setProfile(no + orgname);
+		ModiDto.setProfile(orgname);
 		
 		sqlMap.update("modifyprofile", ModiDto);
 		
 		String path = request.getServletContext().getRealPath("")+"//save//";
 		
-		File copy = new File(path + no +orgname );
+		File copy = new File(path + orgname);
 		
 		mf.transferTo(copy);
 		}
