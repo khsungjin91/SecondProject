@@ -102,6 +102,7 @@
 
  <body > 
   <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+  <c:if test="${sessionScope.memId == null }">
  <div class="login-box">
  
  <div class="login-box-body">
@@ -142,6 +143,15 @@
 
  		</div> <!-- /login box -->
  	</div> 
+ </c:if>
+ 
+ <c:if test="${sessionScope.memId != null}">
+ <div class="login-box">
+ 
+ <div class="login-box-body">
+ 	<h2 class="text-center"> 로그인 상태입니다.</h2> 
+ </div></div>
+ </c:if>
  <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 </body> 
 </html> 
