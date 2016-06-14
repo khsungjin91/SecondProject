@@ -122,7 +122,8 @@ if(amount > mi){
 					<tr>
 						<td colspan="6"><h3>¼­·ù</h3>
 						<c:forEach var="filelist" items="${filelist}">
-								<a href="/donjom/file/${filelist.p_file}">${filelist.p_file}/</a>
+								<div style="float: left;"><a href="/donjom/file/${filelist.p_file}">
+								<img src="/donjom/file/${filelist.p_file}" style="margin-left: 50px" width="150" height="200"/></a></div>
 						</c:forEach></td>
 						
 					</tr>
