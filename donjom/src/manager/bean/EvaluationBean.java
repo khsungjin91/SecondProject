@@ -35,7 +35,7 @@ public class EvaluationBean {
 		
 		int setting=1;
 		int currentPage = 0;
-		int blockCount = 5;
+		int blockCount = 10;
 		int blockPage = 10;
 		int paging = 4;
 		

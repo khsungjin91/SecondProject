@@ -61,12 +61,12 @@ window.location="admin_login.dj";
             <!-- Notifications Menu -->
             <li class="dropdown notifications-menu">
              
-            <c:if test="${sessionScope.adminId!=null}">
+            <c:if test="${sessionScope.adminId != null}">
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs">${id }</span>
+               <strong>${id}</strong> 
               </a>
              <ul class="dropdown-menu" >
           	<li >

@@ -107,7 +107,7 @@
 					</div>
 				</div>
 			</c:forEach>
-			<div align="center">${pagingHtml}</div>
+			<div class="col-sm-12 text-center">${pagingHtml}</div>
 			</c:if>
 	
 				</div>

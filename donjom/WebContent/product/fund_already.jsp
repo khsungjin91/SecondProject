@@ -25,7 +25,7 @@ function fund_cancle(){
 		<div class="box box-success center-block" style="width: 800px;">
 			<div class="box-header text-center">
 			<h3>${sedto.name}님의 대출신청이 완료 되었습니다.</h3>
-			<ul>
+			<ul class="list-unstyled">
 				<li>심사 통과 시 대출금 펀딩이 시작됩니다. </li>
 				<li>v금리/한도 산출을 위해 다음 서류가 필요합니다. </li>
 				<li>아래 서류들을 Fax또는 Email로 보내주시면 대출심사가 완료됩니다. </li>
@@ -49,9 +49,10 @@ function fund_cancle(){
 		</td>
 </tr>
 </table> 
+<div class="text-center">
 <input type="button" value="대출 신청 취소" onclick="return fund_cancle()" class="btn btn-lg bg-orange">
-<input type="button" value="메인으로 가기" onclick="javascript:window.location='main.dj'">
-</div>
+<input type="button" value="메인으로 가기" onclick="javascript:window.location='main.dj'" class="btn btn-lg bg-green">
+</div></div>
 </div>
 <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
 
