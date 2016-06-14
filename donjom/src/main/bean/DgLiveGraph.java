@@ -68,6 +68,8 @@ public class DgLiveGraph {
 		map_r = ig.interast(sqlMap);
 		map_l = mg.monthtotal(sqlMap);
 		
+		int refunds_price = (Integer)sqlMap.queryForObject("result.refunds_price", null);
+		
 		mv.addObject("map_l",map_l);
 		mv.addObject("map_r", map_r); 
 		mv.addObject("acc_br_person", acc_br_person);
@@ -79,6 +81,7 @@ public class DgLiveGraph {
 		mv.addObject("fail_avg", fail_avg);
 		mv.addObject("accumulate_loan", accumulate_loan);
 		mv.addObject("avg_interest", avg_interest);
+		mv.addObject("refunds_price",refunds_price);
 		mv.setViewName("/main/djlive.jsp");
 		return mv;
 	}

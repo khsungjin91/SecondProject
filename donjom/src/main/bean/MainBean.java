@@ -107,12 +107,14 @@ public class MainBean {
 		pagingHtml = page.getPage(currentPage, totalCount, blockCount, blockPage, input, paging);
 		list = page.getList(currentPage, totalCount, blockCount, blockPage, input, list, paging);
 		
-
+		int refunds_price = (Integer)sqlMap.queryForObject("result.refunds_price", null);
+		
 		mv.addObject("maincount", maincount);
 		mv.addObject("fail_avg", fail_avg);
 		mv.addObject("accumulate_loan", accumulate_loan);
 		mv.addObject("avg_interest", avg_interest);
 		mv.addObject("list",list);
+		mv.addObject("refunds_price", refunds_price);
 		mv.setViewName("/main/main.jsp");
 		return mv;
 	}

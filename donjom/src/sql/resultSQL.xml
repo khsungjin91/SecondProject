@@ -85,6 +85,10 @@
 	 select NEXT_DAY((TO_DATE(substr(#p_date#,0,10), 'yyyy-MM-dd')),5) x from product where no=#no#
 </select>
 
+<select id="refunds_price" resultClass="int">
+	select sum(i_money) from refunds
+</select>
+
 <insert id="refunds_insert" parameterClass="java.util.Map">
 	insert into refunds values(refunds_seq.nextval,#no#,#p_code#,#refundmoney#,#times#,sysdate)
 </insert>

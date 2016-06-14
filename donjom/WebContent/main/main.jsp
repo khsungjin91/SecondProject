@@ -74,7 +74,7 @@
 			<li>
 			<div class="title-main">평균이자율(연)</div> ${avg_interest}%</li>
 			<li><div class="title-main">누적 대출액</div><fmt:formatNumber value="${accumulate_loan}" pattern="#,###" /> 원</li>
-			<li><div class="title-main">누적상환액</div> 0원</li>
+			<li><div class="title-main">누적상환액</div><fmt:formatNumber value="${refunds_price}" pattern="#,###" />원</li>
 			<li><div class="title-main">부도율</div> ${fail_avg}%</li>
 		</ul>
 	</div>
