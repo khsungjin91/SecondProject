@@ -25,11 +25,11 @@
 					<div class="col-sm-12">
 						<div class="row">
 							<div class=" col-sm-6 col-md-4 col-sm-offset-2">
-								<h2>Mother of 금융권</h2>
-								<p><h2>돈좀 빌려줘본 DONJOM</h2>
-								<p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br> 돈좀 빌려달라고 해보세요~!!</p>
+								<h2>우리모두 모여서 </h2>
+								<p><h2>빌려주는 따뜻한 금융</h2>
+								<p>매주 수요일 오후 1시 새로운 투자가 시작됩니다.</p>
 								<br>
-								<p><a href="manager_investguide.dj" type="button" class="btn btn-default">투자안내보기</a></p>
+								<p><a href="manager_investguide.dj" type="button" class="btn bg-green">투자안내보기</a></p>
 							</div>
 						</div>
 					</div>
@@ -38,9 +38,9 @@
 			<div class="item">
 				<div class="fill" style="background-image: url('image/slider-5.jpg');">
 					<div class=" col-sm-6 col-md-4 col-sm-offset-2">
-						<h2>Mother of 금융권</h2>
-						<p><h2>돈좀 빌려줘본 DONJOM</h2>
-						<p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br> 돈좀 빌려달라고 해보세요~!!</p>
+						
+						<h2>돈좀은 저금리 시대의 <p>새로운 투자대안을 제공합니다.</h2>
+						<p>돈좀은 전문적인 자체 심사 시스템을 통해 대출 상품을 선별합니다. 그결과, 현재까지 연체율 및 부도율, 개인신용 대출 기중 편균이 엄청 낮은 수익율을 달성하고 있습니다.</p>
 						<br>
 						<p><input type="button" class="btn btn-default" value="투자안내보기"></p>
 					</div>
@@ -49,16 +49,13 @@
 			<div class="item">
 				<div class="fill" style="background-image: url('image/slider-3.jpg');">
 					<div class=" col-sm-6 col-md-4 col-sm-offset-2">
-						<h2>Mother of 금융권</h2>
-						<p><h2>돈좀 빌려줘본 DONJOM</h2>
-						<p>넘쳐나는 대출업계의 마덜오브금융권을 외치는 돈좀에게 <br> 돈좀 빌려달라고 해보세요~!!</p>
+						<h2>새로운 P2P 대출의 히어로즈!!</h2>
+						<p>넘쳐나는 대출업계의 수 많은 수익율 중에 우리 돈좀이 제일 낮고 좋습니다. 여러분의 월급을 지켜드리고 공룡같이 다가오는 대출의 압박에서 지켜드리겠습니다. </p>
 						<br>
 						<p><input type="button" class="btn btn-default" value="투자안내보기"></p>
 					</div>
 				</div>
-				<div class="carousel-caption">
-					<h2>Caption 3</h2>
-				</div>
+				
 			</div>
 		</div>
 
@@ -164,7 +161,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<div class="col-md-3 col-sm-6 ">
+					<div class="col-md-3 col-sm-6">
 						<img class="img-responsive img-portfolio" src="image/icon-main-2.jpg" alt="">
 							<div class=" text-center">
 							<h4><strong>중금리 직거래</strong></h4>
@@ -206,11 +203,11 @@
 
 	<!-- Features Section -->
 	<div class="container">
-	<div class="row">
+	<!-- <div class="row">
 	<div class="col-lg-12">
 	<h3 class="box-header text-center">돈좀 언론이야기</h3>
 	</div>
-	</div>
+	</div> -->
 		<div class="row">
 			<div class="col-lg-12">
 				<h3 class="box-header text-center">돈좀 대표 고객사들 </h3>
@@ -237,9 +234,7 @@
 							 <div class="col-xs-3">
                      			 <img src="image/ta-logo-4.gif" alt="Image" class="img-responsive">
 							 </div>
-							
-							 
-                        </div>
+						</div>
                         <!--/row-->
                     </div>
                     <!--/item-->
