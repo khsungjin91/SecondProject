@@ -55,7 +55,7 @@
 									<td>${list_ev.e_memid}</td>
 									<td>${list_ev.e_memname}</td>
 									<td>${list_ev.e_doccount}</td>
-									<td><a href ="manager_econtents.dj?no=${list.no}">
+									<td><a href ="manager_econtents.dj?no=${list_ev.no}">
 										<c:choose>
 											<c:when test="${fn:length(list_ev.e_content) > 21}">
 												<c:out value="${fn:substring(list_ev.e_content,0,20)}" />....

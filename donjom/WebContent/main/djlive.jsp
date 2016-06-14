@@ -34,18 +34,14 @@
 			<td>누적 투자건 수</td>
 		</tr> 
 		<tr>
-			<td> ${borrow_avg}원</td>
+			<td><fmt:formatNumber value="${borrow_avg}" pattern="#,###" />원</td>
 			<td>${acc_br_person}명</td>
-			<td>${person_avg}원</td>
+			<td><fmt:formatNumber value="${person_avg}" pattern="#,###" />원</td>
 			<td>${investperson_total}명</td>
-			<td>${onebyone_avg}원</td>
+			<td><fmt:formatNumber value="${onebyone_avg}" pattern="#,###" />원</td>
 			<td>${invest_count}건</td>
 		</tr>
 	</table>
-${map_li.r_twelve}
-${map_li.p_twelve}
-${map_li.c_twelve}
-${map_li.b_twelve}
 </div></div>
 	<div class="col-sm-6">
 	 <div class="box box-success">

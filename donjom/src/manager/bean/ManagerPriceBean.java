@@ -127,6 +127,11 @@ public class ManagerPriceBean {
 		//투자자들의 투자금액List 를 가져온다.
 		List price = sqlMap.queryForList("refunds_price", p_code);
 		
+		for(int i = 0; i <email.size() ; i++){
+			System.out.println("email="+email.get(i));
+			System.out.println("price="+price.get(i));
+		}
+		
 		int [] investmoney = new int[price.size()];
 		int [] total = new int[price.size()];
 		
@@ -147,6 +152,8 @@ public class ManagerPriceBean {
 					
 					d = Double.parseDouble(String.format("%.7f", d));
 					total[i] = (int)((Float.parseFloat(price.get(i)+"0000")*d));
+					
+					System.out.println(total[i]);
 					
 					map.put("no", no);
 					map.put("refundmoney", total[i]);
