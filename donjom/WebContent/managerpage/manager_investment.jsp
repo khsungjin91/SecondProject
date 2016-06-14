@@ -7,7 +7,14 @@
 <title>투자이용약관</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/header.jsp"/>
+	<div class="container">
+<div class="box-header">
 		<h2> 투자이용약관 </h2>
+		</div>
+		<div class="box box-primary">
+		<div class="box-body">
+	
 		<table border="1">
 이 약관은 ㈜돈좀(이하 “회사”)가 운영하는 통합회원 패밀리 사이트(이하 “사이트”)에서 제공하는 금융 서비스 및 기타 정보서비스(이하 “서비스”라고 합니다)와 관련하여 “회사”와 귀하간의 권리와 의무, 책임 사항을 규정함을 목적으로 합니다. “회사”는 시스템에 관한 제반 기술과 운영에 대한 모든 권한을 갖고 있으며, 회원에게 제공하는 여신업무는 “회사”와 제휴된 “여신업체”가 전담합니다.<br/>
 ※ 제휴된 여신업체 : ㈜돈좀소셜대부<br/>
@@ -116,6 +123,8 @@
 1. 본 약관은 2016년 06월 15일부터 적용됩니다.<br/>
 		<br/>
 		</table>
+		</div></div></div>
+			<jsp:include page="/WEB-INF/footer.jsp"/>
 
 </body>
 </html>

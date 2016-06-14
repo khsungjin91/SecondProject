@@ -7,7 +7,14 @@
 <title> 이용약관</title>
 </head>
 <body>
-	<h2> 이용약관 </h2>
+<jsp:include page="/WEB-INF/header.jsp"/>
+<div class="container">
+<div class="box-header">
+		<h2> 이용약관 </h2>
+		</div>
+		<div class="box box-primary">
+		<div class="box-body">
+	
 	<table border="1">
 
 		이 약관은 (주)돈좀(이하 "회사")가 운영하는 통합회원 패밀리 사이트(이하 "사이트")에서 제공하는 
@@ -437,6 +444,8 @@
 		1. 본 약관은 2016년 6월 15일부터 적용됩니다.<br/>
 		<br/>
 	</table>
+	</div></div></div>
+	<jsp:include page="/WEB-INF/footer.jsp"/>
 </body>
 </html>
 

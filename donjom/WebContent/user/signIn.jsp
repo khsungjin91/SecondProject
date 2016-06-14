@@ -131,15 +131,15 @@
 	</button> 
  	 </form> 
  <hr>
-		<button class="btn btn-block btn-social btn-facebook" type="button" onclick="FB.login();"> 
+		<button class="btn btn-block btn-social btn-facebook" type="button" onclick="facebookRegist();"> 
  		<i class="fa fa-facebook"></i>페이스북으로 로그인</button>
  	
  		<button class="btn  btn-primary btn-block" type="button" onclick="FB.logout();"> 
  		페이스북 로그아웃</button>
- 	 <ul class="list-inline"> 
-	<li><a href="signUp.dj">DJ회원가입</a></li> 
-	<li><a href="findpw.dj">비밀번호 찾기</a></li> 
-		</ul> 
+ 
+	<a href="signUp.dj">DJ회원가입</a>
+
+
  		</div> <!-- /login box -->
  	</div> 
  <jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

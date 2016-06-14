@@ -39,16 +39,7 @@ public class SignInBean {
 	@RequestMapping("/signPro.dj")
 	public ModelAndView signPro(memberDto dto,sessionDto sedto,HttpSession session,HttpServletRequest request)
 			throws SAXException, IOException, ParserConfigurationException {
-		int x = 1;
-		String confirm = (String)session.getAttribute("memId");
-		
-		if(dto.getEmail().equals(confirm)){
-			
-			x=2;
-			mv.addObject("x",x);
-			mv.setViewName("/user/signError.jsp");
-			
-		}else{
+	
 		
 		String ip  = request.getHeader("X-FORWARDED-FOR");
 		if(ip == null)
@@ -95,17 +86,15 @@ public class SignInBean {
 				}else{
 					sedto.setMove("로그인(실패)");
 					sqlMap.insert("sessioninput", sedto);
-					x = 0;
-					mv.addObject("x", x);
+				
 					mv.setViewName("/user/signError.jsp");
 				}
 				
 			}else{
-				x = 0;
-				mv.addObject("x", x);
+			
 				mv.setViewName("/user/signError.jsp");
 			}
-		}
+		
 		return mv;
 	}
 	

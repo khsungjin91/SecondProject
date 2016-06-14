@@ -7,7 +7,14 @@
 <title> 대출 안내 </title>
 </head>
 <body>
-		<h2> 대출 안내 </h2>
+<jsp:include page="/WEB-INF/header.jsp"/>
+<div class="container">
+<div class="box-header">
+		<h2>대출 안내 </h2>
+		</div>
+		<div class="box box-primary">
+		<div class="box-body">
+		
 		돈좀을 통해 합리적인 중금리 대출을 받으실 수 있습니다!.<br/>
 		<hr>
 		<br>
@@ -94,5 +101,7 @@
 			<hr>
 			<h2> 돈좀은 중도상환 수수료가 없습니다.</h2>
 			<input type="button" value="대출신청" onclick="javascript:location.href='loan_step1.dj'"><br/>
+			<jsp:include page="/WEB-INF/footer.jsp"/>
+			</div></div></div>
 	</body>
 </html>

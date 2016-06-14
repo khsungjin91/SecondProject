@@ -7,7 +7,13 @@
 <title> 개인정보취급방침</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/header.jsp"/>
+<div class="container">
+<div class="box-header">
 		<h2> 개인정보취급방침 </h2>
+		</div>
+		<div class="box box-primary">
+		<div class="box-body">
 	<table>
 <돈좀>('www.donjom.net')은(는) 개인정보보호법에 따라 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다.<br/>
 <돈좀>('www.donjom.net')은(는) 개인정보처리방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.<br/>
@@ -118,6 +124,9 @@
 ①의 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.<br/>
 <br/>
 </table>
-
+</div>
+</div>
+</div>
+<jsp:include page="/WEB-INF/footer.jsp"/>
 </body>
 </html>
