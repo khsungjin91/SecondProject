@@ -145,7 +145,14 @@
 			</div></dd>
 	 		<dt>상환방식</dt>
 	 		<dd><select name="p_way" class="form-control">
-							<option value="${dto.br_way}">${dto.br_way}(대출자희망)</option>
+							<option value="${dto.br_way}">
+							<c:if test="${dto.br_way == '0'}">
+							원리금 균등 상환(대출자희망)
+							</c:if>
+							<c:if test="${dto.br_way == '1'}">
+							원금만기 일시상환(대출자희망)
+							</c:if>
+							</option>
 							<option value="0">원리금 균등상환</option>
 							<option value="1">원금만기 일시상환</option>
 					</select></dd>
