@@ -11,13 +11,13 @@
 	function whatmoney() {
 
 		var checkbox = document.user;
-		var i_amount = checkbox.i_invest.value + '0000';
-		var mypoint = checkbox.point.value;
+		var i_amount = $("#i_invest").val() + '0000';
+		var mypoint = $("#point").val();
 
-alert("포인트"+point);
-alert("투자금"+amount);
+alert("포인트"+ mypoint);
+alert("투자금"+ i_amount);
 		
-		if (!checkbox.confirm.checked) {
+		if (!$("#confirmed").is(":checked")) {
 
 			alert("약관에 동의를 하셔야 합니다.");
 			return false;
@@ -151,11 +151,11 @@ alert("투자금"+amount);
 					${dto.p_price}을/를 참가합니다. <br />
 					<form action="invest_start.dj" method="post" name="user">
 
-						<input type="hidden" value="${amount}" name="i_invest"> 
+						<input type="hidden" value="${amount}" name="i_invest" id="i_invest"> 
 						<input type="hidden" value="${dto.p_code}" name="i_pcode"> 
 						<input type="hidden" value="${dto.p_name}" name="i_pname"> 
-						<input type="hidden" value="${mypoint}" name="point"> 
-							<input type="checkbox" name="confirm" value=""> 투자이용약관 <a href="">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br />
+						<input type="hidden" value="${mypoint}" name="point" id="point"> 
+							<input type="checkbox" name="confirm" id="confirmed"> 투자이용약관 <a href="manager_investment.dj">[보기]</a> 에 동의하며,투자 위험을 확인하고 투자를 확정하겠습니다. <br />
 						<br /> <input type="submit" value="투자하기" onclick="return whatmoney()">
 
 					</form>
