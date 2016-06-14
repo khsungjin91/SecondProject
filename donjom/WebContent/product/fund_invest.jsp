@@ -29,6 +29,14 @@
 </script>
 </head>
 <body>
+
+<c:if test="${sessionScope.memId ==null }">
+	<script>
+	alert("로그인이 필요합니다.");
+	window.location="signIn.dj";
+	</script>
+</c:if>
+
 	<jsp:include page="/WEB-INF/header.jsp" />
 	<div class="container">
 		<h2 class="box-header text-center">투자 미리보기</h2>

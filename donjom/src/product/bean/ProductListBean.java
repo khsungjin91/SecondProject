@@ -72,7 +72,7 @@ public class ProductListBean {
 		String pagingHtml;
 		int totalCount = 0;
 		int currentPage = 0;
-		int blockCount = 3;
+		int blockCount = 6;
 		int blockPage = 10;
 		
 		if(pagecurrent != null){
