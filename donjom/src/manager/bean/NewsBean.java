@@ -115,7 +115,6 @@ public class NewsBean {
 		mv.setViewName("/news_view.dj");
 		return mv;
 	}
-	
 	// 뉴스 삭제
 	@RequestMapping("/news_delete.dj")
 	public ModelAndView newsdeletePro(ManagerNewsDto news, int no){

@@ -27,13 +27,14 @@
 		<c:forEach var="list" items="${list}">
 		<tr>
 			<td> ${list.num} </td> 
-			<td> <a href="news_view.dj?no=${list.num}"> ${list.title} </td>
+			<td> <a href="news_view.dj?no=${list.num}"> ${list.title} </a></td>
 			<td> ${list.reg} </td>
 		</tr>
 		</c:forEach>
 	
 	</table>
 		<input type="submit" value="뉴스 올리기" >
+		<input type="button" value="관리자페이지" onclick="javascript:location.href='manager_board.dj'">
 	</form>
 </body>
 </html>

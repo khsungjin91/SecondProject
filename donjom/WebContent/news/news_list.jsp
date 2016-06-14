@@ -9,20 +9,20 @@
 </head>
 <body>
 <table border="1">
-	<c:if test="${setting == 1 }">
+	
 	<c:forEach var="list" items="${list}">
 	
 		<tr>
 			<td><img src="/donjom/newssave/${list.image}"/></td>
 		</tr>
 		<tr>
-			<td>${list.sitename}</td>
+			<td> ${list.sitename}</td>
 		</tr>
 		<tr>
-			<td>${list.title}</td>
+			<td> ${list.title}</td>
 		</tr>
 		<tr>
-			<td>${list.content}</td>
+			<td> ${list.content}</td>
 		</tr>
 		<tr>
 			<td> ${list.site} </td>
@@ -31,7 +31,7 @@
 	<tr>
 		<td align="center">${pagingHtml} </td>
 	</tr>
-	</c:if>
+
 </table>
 </body>
 </html>
