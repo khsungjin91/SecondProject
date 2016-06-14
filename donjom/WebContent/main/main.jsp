@@ -96,15 +96,27 @@
 			<c:forEach var="list" items="${list}">
 				<div class="col-md-4">
 					<div class="box box-solid box-primary ">
+					<c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
+									<div class="title-fin text-center">
+									펀딩성공 <br>(${list.p_enddate }) 
+									<p style="padding-top:10px;"><a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-lg bg-aqua">자세히보기</a></p>
+										</div>
+									</c:if> 
 						<div class="box-header with-border">
-							<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name}</a>
+						
+									<c:if test="${list.p_success == 'doing' || list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
+										<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name} </a>
+									</c:if> 
+							
 						</div>
 						
 							<div class="box-body link-aa">
 							 
 							<a href="fundView.dj?p_code=${list.p_code}"></a>
 								
-								<div class="title-pr">${list.p_name}</div>
+								<div class="title-pr">
+								${list.p_name}
+								</div>
 								<div class="title-pr-con"> <p>${list.p_purpose}</div>
 							
 								
@@ -128,6 +140,7 @@
 										<b class="text-aqua">펀딩진행중</b>
 									</c:if> 
 									<c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
+									<span class="">${list.p_enddate }</span>
 										<b class="text-green">펀딩성공</b>
 									</c:if> 
 									<c:if test="${list.p_success == 'fail'}">
