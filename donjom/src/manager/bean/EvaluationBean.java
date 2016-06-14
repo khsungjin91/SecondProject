@@ -54,7 +54,7 @@ public class EvaluationBean {
 		mv.addObject("pagingHtml",pagingHtml);
 		mv.addObject("setting",setting);
 		mv.addObject("totalCount",totalCount);
-		mv.addObject("list",pagelist);
+		mv.addObject("list_ev",pagelist);
 		mv.setViewName("/manager/manager_evaluation.jsp");
 
 		return mv;
@@ -64,12 +64,7 @@ public class EvaluationBean {
 	public ModelAndView managerecontents(evaluationDto dto,int no){
 		System.out.println(no);
 		dto = (evaluationDto)sqlMap.queryForObject("econtent",no);
-		
-		System.out.println(dto.getE_content());
-		System.out.println(dto.getE_memname());
-		System.out.println(dto.getE_result());
-		
-		
+
 		mv.addObject("dto",dto);
 		mv.setViewName("/manager/manager_econtents.jsp");
 		return mv;
@@ -150,9 +145,7 @@ public class EvaluationBean {
 		String docOrgName = docmf.getOriginalFilename();
 		
 		String path= request.getServletContext().getRealPath("")+"\\file\\";
-		System.out.println(cpOrgName);
-		System.out.println(docOrgName);
-		
+
 		if(cpOrgName.equals("")){
 			// cporgName이 없을경우
 			

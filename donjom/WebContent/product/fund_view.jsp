@@ -126,9 +126,7 @@ if(amount > mi){
 						</c:forEach></td>
 						
 					</tr>
-
 				</table>
-				<a href="/donjom/file/deth.jpg"><img src="/donjom/file/deth.jpg"/></a>
 			</div>
 		
 </div>

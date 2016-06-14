@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="/WEB-INF/admin-slider.jsp" />
 
-	<div class="content-wrapper">
+	
 		<div class="container">
 			<div class="row">
 				<!-- Content Header (Page header) -->
@@ -18,8 +18,6 @@
 					<h1>대출심사</h1>
 				</div>
 			</div>
-		</div>
-		<hr>
 	</div>
 
 	<div class="container">
@@ -51,53 +49,53 @@
 							<td>심사 결과</td>
 							<td>심사 수정</td>
 						</tr>
-						<c:if test="${setting ==1 }">
-							<c:forEach var="list" items="${list}">
+						<c:if test="${setting == 1 }">
+							<c:forEach var="list_ev" items="${list_ev}">
 								<tr>
-									<td>${list.e_memid}</td>
-									<td>${list.e_memname}</td>
-									<td>${list.e_doccount}</td>
+									<td>${list_ev.e_memid}</td>
+									<td>${list_ev.e_memname}</td>
+									<td>${list_ev.e_doccount}</td>
 									<td><a href ="manager_econtents.dj?no=${list.no}">
 										<c:choose>
-											<c:when test="${fn:length(list.e_content) > 21}">
-												<c:out value="${fn:substring(list.e_content,0,20)}" />....
+											<c:when test="${fn:length(list_ev.e_content) > 21}">
+												<c:out value="${fn:substring(list_ev.e_content,0,20)}" />....
           									</c:when>
 											<c:otherwise>
-												<c:out value="${list.e_content}" />
+												<c:out value="${list_ev.e_content}" />
 											</c:otherwise>
 										</c:choose>
-									</div></td>
+									</a></td>
 								
-									<td><label class="badge bg-olive"> <i
-											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
+									<td><label class="badge bg-olive"> 
+									<i class="fa fa-check fa-lg "></i><br>${list_ev.e_result}</label></td>
 									<td>
-									<input type="button" value="심사수정" class="btn bg-green" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
+									<input type="button" value="심사수정" class="btn bg-green" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list_ev.no}'"/>
 									</td>
 								</tr>
 							</c:forEach>
 							<tr><td colspan="11" align="center">${pagingHtml}</td></tr>
 						</c:if>
 
-						<c:if test="${setting ==2}">
-							<c:forEach var="list" items="${list}">
+						<c:if test="${setting == 2}">
+							<c:forEach var="list_ev" items="${list_ev}">
 								<tr>
-									<td>${list.e_memid}</td>
-									<td>${list.e_memname}</td>
-									<td>${list.e_doccount}</td>
-									<td><a href ="manager_econtents.dj?no=${list.no}">
+									<td>${list_ev.e_memid}</td>
+									<td>${list_ev.e_memname}</td>
+									<td>${list_ev.e_doccount}</td>
+									<td><a href ="manager_econtents.dj?no=${list_ev.no}">
 										<c:choose>
-											<c:when test="${fn:length(list.e_content) > 21}">
-												<c:out value="${fn:substring(list.e_content,0,20)}" />....
+											<c:when test="${fn:length(list_ev.e_content) > 21}">
+												<c:out value="${fn:substring(list_ev.e_content,0,20)}" />....
           									</c:when>
 											<c:otherwise>
-												<c:out value="${list.e_content}" />
+												<c:out value="${list_ev.e_content}" />
 											</c:otherwise>
 										</c:choose>
-									</td>
+									</a></td>
 									<td><label class="badge bg-olive"> <i
-											class="fa fa-check fa-lg "></i><br>${list.e_result}</label></td>
+											class="fa fa-check fa-lg "></i><br>${list_ev.e_result}</label></td>
 									<td>
-									<input type="button" value="심사수정"  class="btn bg-green" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list.no}'"/>
+									<input type="button" value="심사수정"  class="btn bg-green" onclick="javascript:location.href='manager_evaluation_modify.dj?no=${list_ev.no}'"/>
 									</td>
 								</tr>
 							</c:forEach>
