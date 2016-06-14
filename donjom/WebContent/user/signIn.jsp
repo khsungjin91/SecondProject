@@ -47,17 +47,17 @@
 					
                 if (response.status == "connected") {
                     // 페이스북 로그인 YES! and 앱 허가 YES!
-                    alert("페이스북 로그인 YES! and 앱 허가 YES!");
+                    //alert("페이스북 로그인 YES! and 앱 허가 YES!");
                     handleFacebookRegist(response);
                 } else if (response.status == "not_authorized") {
                     // 페이스북 로그인 YES! but 앱 허가 NO!
-                    alert("페이스북 로그인 YES! but 앱 허가 NO!");
+                    //alert("페이스북 로그인 YES! but 앱 허가 NO!");
                     FB.login(function (response) {
                                 handleFacebookRegist(response);
                             },
                             {scope: 'email'});
                 } else {    // 페이스북 로그아웃 상태.
-                	alert("페이스북 로그아웃 상태");
+                	//alert("페이스북 로그아웃 상태");
                     FB.login(function (response) {
                                 handleFacebookRegist(response);
                             },
@@ -135,8 +135,8 @@
 		<button class="btn btn-block btn-social btn-facebook" type="button" onclick="facebookRegist();"> 
  		<i class="fa fa-facebook"></i>페이스북으로 로그인</button>
  	
- 		<button class="btn  btn-primary btn-block" type="button" onclick="FB.logout();"> 
- 		페이스북 로그아웃</button>
+ 		<!-- <button class="btn  btn-primary btn-block" type="button" onclick="FB.logout();"> 
+ 		페이스북 로그아웃</button> -->
  
 	<a href="signUp.dj">DJ회원가입</a>
 
