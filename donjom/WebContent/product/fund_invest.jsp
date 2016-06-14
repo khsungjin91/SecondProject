@@ -11,12 +11,9 @@
 	function whatmoney() {
 
 		var checkbox = document.user;
-		var i_amount = $("#i_invest").val() + '0000';
-		var mypoint = $("#point").val();
+		var i_amount = parseInt($("#i_invest").val()+'0000');
+		var mypoint = parseInt($("#point").val());
 
-alert("포인트"+ mypoint);
-alert("투자금"+ i_amount);
-		
 		if (!$("#confirmed").is(":checked")) {
 
 			alert("약관에 동의를 하셔야 합니다.");
