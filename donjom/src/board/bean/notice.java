@@ -50,6 +50,15 @@ public class notice {
 		
 	}
 	
+	@RequestMapping("notice_admin.dj")
+	public ModelAndView noticeAdmin(noticeDTO nodto, int no){
+		nodto = (noticeDTO)sqlMap.queryForObject("noticeview", no);
+		mv.addObject("nodto",nodto);
+		mv.setViewName("/notice/notice_admin.jsp");
+		return mv;
+		
+	}
+	
 	@RequestMapping("notice_modify.dj")
 	public ModelAndView noticeModify(noticeDTO nodto, int no){
 		nodto = (noticeDTO)sqlMap.queryForObject("noticeview", no);

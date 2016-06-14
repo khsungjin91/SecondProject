@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
-<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
+
 <title>도움말</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/admin-slider.jsp"/>
 <div class="container">
 
 <form action="help_faqPro.dj" method="post">
@@ -44,7 +40,12 @@
  
  	
  </table>
- <input type="submit" class="btn btn-default" value="글작성">
+ <div class="text-center">
+  <input type="submit" class="btn btn-lg bg-green" value="글작성">
+  <input type="submit" class="btn btn-lg bg-red" value="뒤로" onclick="javascript:history.go(-1)">
+  
+ </div>
+
 </form>
 
 

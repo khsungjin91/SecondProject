@@ -31,23 +31,6 @@
 </div>
 	<!-- Main content -->
 	<div class="container">
-		<div class="col-md-3 ">
-			<a href="main.dj">
-				<div class="info-box">
-					<span class="info-box-icon bg-blue"> <img alt=""
-						src="image/home-page.png">
-					</span>
-					<div class="info-box-content">
-						<span class="info-box-text">DONJOM MAIN</span> <span
-							class="info-box-number">돈좀 메인페이지 </span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-			</a>
-			<!-- /.info-box -->
-		</div>
-
-		<div class="row">
 			<a href="manager_borrowmn.dj">
 				<div class="col-lg-3 col-xs-6">
 					<!-- small box -->
@@ -80,7 +63,7 @@
 							</ul>
 						</div>
 					</div>
-			</a> <a href="#">
+			</a>
 					<div class="col-lg-3">
 						<!-- small box -->
 						<div class="small-box bg-yellow">
@@ -94,9 +77,21 @@
 							</ul>
 						</div>
 					</div>
-			</a> <!-- ./col -->
+			 <!-- ./col -->
 		</div>
-
+	<div class="container">
+	<div class="col-md-4 ">
+			<a href="main.dj">
+				
+					<div class="info-box-content">
+						<span class="info-box-text">DONJOM MAIN</span> <span
+							class="info-box-number">돈좀 메인페이지 </span>
+					</div>
+					<!-- /.info-box-content -->
+				
+			</a>
+			<!-- /.info-box -->
+		</div>
 
 		<div class="col-md-4 ">
 			<div class="box box-solid  box-primary ">
@@ -120,7 +115,8 @@
 				</div>
 			</div>
 			<!-- //알림 메세지 -->
-
+</div>
+<div class="col-sm-4">
 			<div class="box box-solid  box-primary ">
 				<div class="box-header">
 					<h3 class="box-title">환급알림</h3>
@@ -147,9 +143,8 @@
 					</c:if>
 				</div>
 			</div>
-			<!-- //알림 메세지 -->
-		</div>
-		<!-- 우측 -->
+			</div>
+			
 		<div class="col-sm-6">
 			<div class="box box-solid  box-primary ">
 				<div class="box-header">
@@ -168,8 +163,33 @@
 					<c:forEach var="list" items="${noList}">
 						<tr>
 							<td>${list.n_num }</td>
-							<td><a href="notice_view.dj?no=${list.n_num}">${list.n_subject }</td>
+							<td><a href="notice_admin.dj?no=${list.n_num}">${list.n_subject }</td>
 							<td>${list.n_reg }</td>
+						</tr>
+					</c:forEach>
+				</table>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-6">
+			<div class="box box-solid  box-primary ">
+				<div class="box-header">
+					<h3 class="box-title">도움말</h3>
+					<div class="box-tools">
+						<a class="btn btn-sm" href="help_faqForm.dj" type="button">글쓰기</a>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table">
+					<tr>
+						<td>no</td>
+						<td>제목</td>
+					</tr>
+					<c:forEach var="list" items="${helpList}">
+						<tr>
+							<td>${list.h_no }</td>
+							<td><a href="help_faq.dj?no=${list.h_no }">${list.h_subject }</td>
 						</tr>
 					</c:forEach>
 				</table>

@@ -102,11 +102,11 @@
 									<p style="padding-top:10px;"><a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-lg bg-aqua">자세히보기</a></p>
 										</div>
 									</c:if> 
-						<div class="box-header with-border">
-						
-									<c:if test="${list.p_success == 'doing' || list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
-										<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name} </a>
-									</c:if> 
+						<div class="box-header with-border text-center">
+						<c:if test="${list.p_category == 'b'}">사업자</c:if> 
+						<c:if test="${list.p_category == 'c'}">매출담보</c:if> 
+						<c:if test="${list.p_category == 'p'}">개인</c:if> 
+						<c:if test="${list.p_category == 'r'}">부동산</c:if> 
 							
 						</div>
 						

@@ -3,14 +3,12 @@
     
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="/WEB-INF/fragment/common-css.jsp" />
-<jsp:include page="/WEB-INF/fragment/common-js.jsp" />
+
 <title>공지사항</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/admin-slider.jsp" />
+<div class="container">
 <h1>공지사항</h1>
 
 <form action="notice_modifyPro.dj?no=${nodto.n_num}" method="post" class="form-horizontal">
@@ -28,13 +26,15 @@
 		</tr>
 		
 	</table>
-<input type="submit" value="수정" class="btn btn-default">
-<input type="button" onclick="javascript:location.href='notice.dj'" value="취소" class="btn btn-default">
+	<div class="text-center">
+<input type="submit" value="수정" class="btn btn-lg bg-green">
+<input type="button" onclick="javascript:location.href='notice.dj'" value="취소" class="btn btn-lg bg-red">
+</div>
 	
 
 </div>
 </form>
-
+</div>
 
 </body>
 </html>

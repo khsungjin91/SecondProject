@@ -8,20 +8,17 @@
 <title>공지사항</title>
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
- <script>
+ <!-- <script>
 $(document).ready(function(){
         $("#notice").load("notice.dj");
         $("#help").load("help_faq.dj");
 });
-</script>
+</script> -->
 </head>
 <body>
 <jsp:include page="/WEB-INF/admin-slider.jsp" />
 	<div id="wrapper">
-
-	
-
-		<!-- Page Content -->
+<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">

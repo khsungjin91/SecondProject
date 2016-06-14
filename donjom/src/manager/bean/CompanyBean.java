@@ -38,10 +38,12 @@ public class CompanyBean {
 		List rm_list = sqlMap.queryForList("company.remittance_list", null);
 		List rf_list = sqlMap.queryForList("company.refunds_list", day);
 		List noList = sqlMap.queryForList("noticelist", null) ;
+		List helplist = sqlMap.queryForList("faqList", null);
 		
 		int rm_count = rm_list.size();
 		int rf_count = rf_list.size();
 		/*System.out.println(rf_count);*/
+		mv.addObject("helpList",helplist);
 		mv.addObject("noList",noList);
 		mv.addObject("rf_count", rf_count);
 		mv.addObject("rm_count", rm_count);

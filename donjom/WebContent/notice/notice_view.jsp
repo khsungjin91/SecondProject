@@ -30,8 +30,7 @@
 		
 	</table>
 <input type="button" value="목록" onclick="javascript:location.href='notice.dj'" class="btn btn-default">
-<input type="button" onclick="javascript:location.href='notice_modify.dj?no=${nodto.n_num}'" value="수정" class="btn btn-default">
-<input type="button" onclick="javascript:location.href='notice_delete.dj?no=${nodto.n_num }'" value="삭제" class="btn btn-default">
+
 	
 </div></div></div>
 </div>

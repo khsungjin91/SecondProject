@@ -34,14 +34,7 @@ window.location="admin_login.dj";
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="manager_member.dj" type="button">회원 관리 </a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">돈좀수정<span class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-				<li><a href="manager_page.dj" type="button">페이지관리</a></li>
-				<li><a href="manager_board.dj" type="button" >게시물관리</a></li>
-				</ul>
-				</li>
+            <li><a href="manager_member.dj" type="button">회원 관리 </a></li>			
 			<li><a href="manager_investmn2.dj" type="button">투자 현황</a></li>
 			<li><a href="manager_borrowmn.dj" type="button">대출 현황</a></li>
 			<li><a href="manager_borrowlist.dj" type="button">평가 업로드</a></li>

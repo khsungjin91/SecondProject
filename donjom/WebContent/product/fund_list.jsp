@@ -49,19 +49,31 @@
 				</c:if>
 				<c:if test="${maincount != 0 }">
 					<c:forEach var="list" items="${list}">
-				<div class="col-md-4" style="height: 325px;">
+				<div class="col-md-4">
 					<div class="box box-solid box-primary ">
-						<div class="box-header with-border">
-							<a href="fundView.dj?p_code=${list.p_code}" >${list.p_name}</a>
+					<c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
+									<div class="title-fin text-center">
+									펀딩성공 <br>(${list.p_enddate }) 
+									<p style="padding-top:10px;"><a href="fundView.dj?p_code=${list.p_code}" type="button" class="btn btn-lg bg-aqua">자세히보기</a></p>
+										</div>
+									</c:if> 
+						<div class="box-header with-border text-center">
+						<c:if test="${list.p_category == 'b'}">사업자</c:if> 
+						<c:if test="${list.p_category == 'c'}">매출담보</c:if> 
+						<c:if test="${list.p_category == 'p'}">개인</c:if> 
+						<c:if test="${list.p_category == 'r'}">부동산</c:if> 
+							
 						</div>
 						
 							<div class="box-body link-aa">
 							 
 							<a href="fundView.dj?p_code=${list.p_code}"></a>
 								
-								<div class="title-pr">${list.p_name}</div>
-								<div class="title-pr-con"> ${list.p_purpose}</div>
-								
+								<div class="title-pr">
+								${list.p_name}
+								</div>
+								<div class="title-pr-con"> <p>${list.p_purpose}</div>
+							
 								
 								<span class="title-con text-green">
 								목표 ${list.p_price} </span><span class="title"> 만원</span> 
@@ -83,6 +95,7 @@
 										<b class="text-aqua">펀딩진행중</b>
 									</c:if> 
 									<c:if test="${list.p_success == 'success' || list.p_success == 'refunds' || list.p_success == 'overend'}">
+									<span class="">${list.p_enddate }</span>
 										<b class="text-green">펀딩성공</b>
 									</c:if> 
 									<c:if test="${list.p_success == 'fail'}">

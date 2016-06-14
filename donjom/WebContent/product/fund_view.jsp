@@ -72,7 +72,10 @@ if(amount > mi){
 							</tr>
 							<tr>
 								<td>${dto.p_code}</td>
-								<td>${dto.p_category}</td>
+								<td><c:if test="${dto.p_category == 'b'}">사업자</c:if> 
+						<c:if test="${dto.p_category == 'c'}">매출담보</c:if> 
+						<c:if test="${dto.p_category == 'p'}">개인</c:if> 
+						<c:if test="${dto.p_category == 'r'}">부동산</c:if></td>
 								<td>Time</td>
 							</tr>
 						</table>
