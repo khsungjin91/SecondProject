@@ -124,10 +124,11 @@ if(amount > mi){
 						<c:forEach var="filelist" items="${filelist}">
 								<a href="/donjom/file/${filelist.p_file}">${filelist.p_file}/</a>
 						</c:forEach></td>
+						
 					</tr>
 
 				</table>
-				
+				<a href="/donjom/file/deth.jpg"><img src="/donjom/file/deth.jpg"/></a>
 			</div>
 		
 </div>
