@@ -48,7 +48,7 @@
 	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"
 		destroy-method="close"
 		p:driverClassName="oracle.jdbc.driver.OracleDriver"
-		p:url="jdbc:oracle:thin:@khmaster.iptime.org:7000:orcl"
+		p:url="jdbc:oracle:thin:@masterkh.iptime.org:7000:orcl"
 		p:username="donjom"
 		p:password="donjom"
 		/>
